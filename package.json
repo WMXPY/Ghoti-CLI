@@ -1,0 +1,22 @@
+{
+  "name": "ghoti-cli",
+  "version": "0.0.0",
+  "description": ":fish: A collection of interesting packages to build a color block style web application",
+  "main": "index.js",
+  "directories": {
+    "doc": "doc"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/WMXPY/Ghoti-CLI.git"
+  },
+  "author": "WMXPY",
+  "license": "SEE LICENSE IN LICENSE",
+  "bugs": {
+    "url": "https://github.com/WMXPY/Ghoti-CLI/issues"
+  },
+  "homepage": "https://github.com/WMXPY/Ghoti-CLI#readme"
+}
