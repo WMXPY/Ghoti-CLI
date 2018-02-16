@@ -6,8 +6,21 @@ require! {
 const argv = process.argv
 const path_ghoti = argv.shift!
 
+const env =
+    test: false
+    output: false
+    debug: false
+
 const command = (command) ->
-    command
+    switch(command)
+        case '-t'
+            'test'
+        case '-o'
+            'output'
+        case '-d'
+            fallthrough
+        default
+            'debug'
 
 const texture = (texture) ->
     texture
@@ -18,8 +31,8 @@ const log = (text) ->
 log argv.map (it) ->
     switch(it.substring 0 1)
         case '-'
-            command it
+            env[command it] = true 
+            it .substring 1 it.length
         default
             texture it
-
-log argv
+log env
