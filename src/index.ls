@@ -1,6 +1,7 @@
 require! {
     fs
     path
+    './configReader.ls': configReader
 }
 
 const argv = process.argv
