@@ -47,7 +47,6 @@ const copyInitReacursion = (root, level, targetPath, beforeLength) ->
             copyToPath (path.join targetPath, floatRoot, file), readFile root + '/' + file
 
     files.forEach eachFile
-    # console.log files
 
 const copyInit = (type, targetPath) ->
     const path_current = process.cwd!
