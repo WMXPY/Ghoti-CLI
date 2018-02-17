@@ -37,3 +37,5 @@ const log = (text) ->
 #         default
 #             texture it
 # log env
+
+log config.initConfig 'react'
