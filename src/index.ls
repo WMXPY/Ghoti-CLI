@@ -1,7 +1,7 @@
 require! {
     fs
     path
-    './configReader.ls': configReader
+    './config.ls': config
 }
 
 const argv = process.argv
@@ -29,11 +29,11 @@ const texture = (texture) ->
 const log = (text) -> 
     console.log text
 
-log argv.map (it) ->
-    switch(it.substring 0 1)
-        case '-'
-            env[command it] = true 
-            it .substring 1 it.length
-        default
-            texture it
-log env
+# log argv.map (it) ->
+#     switch(it.substring 0 1)
+#         case '-'
+#             env[command it] = true 
+#             it .substring 1 it.length
+#         default
+#             texture it
+# log env
