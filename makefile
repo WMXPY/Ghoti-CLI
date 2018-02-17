@@ -1,8 +1,8 @@
 ghoti:
 ifeq ($(UNAME), win32)
-	lsc -co .\dist\ .\src\index.ls
+	lsc -co .\dist\ .\src\*.ls
 else
-	lsc -co ./dist/ ./src/index.ls
+	lsc -co ./dist/ ./src/*.ls
 endif
 
 run:

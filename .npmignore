@@ -1,0 +1,6 @@
+src
+doc
+tex
+.ghoticonfig
+.gitignore
+makefile
