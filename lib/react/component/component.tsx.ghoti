@@ -1,0 +1,19 @@
+import * as React from 'react';
+
+export interface IProps {
+
+}
+
+export interface IState {
+
+}
+
+class ${|component|} extends React.Component <IProps,IState> {
+    public render() {
+        return (<div>
+        
+        </div>);
+    }
+}
+
+export default ${|component|}

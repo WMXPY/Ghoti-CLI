@@ -13,4 +13,7 @@ else
 endif
 
 clean:
+	del dist
+
+cleanA:
 	rm -rf *.aux *.dvi *.fdb* *.fls *.log *.gz *.pdf
