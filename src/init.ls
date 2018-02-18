@@ -54,4 +54,4 @@ const copyInit = (type, targetPath) ->
     makeDir (path.join path_current, targetPath)
     copyInitReacursion root, 0, (path.join path_current, targetPath), root.length
 
-copyInit 'react', './a/'
+export copyInit
