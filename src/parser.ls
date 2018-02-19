@@ -8,6 +8,18 @@ require! {
 const parseGhoti = (text, index) ->
     text.replace 
 
+const parseFile = (text, vars) -> 
+    re = text
+    for i of vars 
+        switch(i)
+            case 'title'
+                re = (re.replace '${|title|}', vars.title)
+            case 'description'
+                re = (re.replace '${|description|}', vars.description)
+            case 'author'
+                re = (re.replace '${|author|}', vars.author)
+    re
+
 const getInput = (question, callback) ->
     const intf = 
         input: process.stdin
@@ -31,11 +43,11 @@ const parseAll = (textList, callback) ->
         title: ''
         description: ''
         author: ''
-    (getInput 'title' (title)->
+    (getInput 'Title: ' (title)->
         vars.title = title
-        (getInput 'description' (description) ->
+        (getInput 'Description: ' (description) ->
             vars.description = description
-            (getInput 'author' (author) ->
+            (getInput 'Author: ' (author) ->
                 vars.author = author
                 (callback (parseAllIn textList, vars))
                 void)
@@ -43,4 +55,5 @@ const parseAll = (textList, callback) ->
         void)
     textList
 
+export parseFile
 export parseAll

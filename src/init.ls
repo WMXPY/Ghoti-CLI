@@ -2,7 +2,7 @@ require! {
     fs
     path
     './log.ls': { log }
-    './parser.ls': { parseAll }
+    './parser.ls': { parseAll, parseFile }
 }
 
 const switchRoot = (type) ->
@@ -18,8 +18,7 @@ const copyToPath = (root, data) ->
     else (fs.writeFileSync root, data, 'utf8')
     
 const readFile = (root, vars) ->
-    (log vars)
-    # (fs.readFileSync root, 'utf8')
+    (parseFile (fs.readFileSync root, 'utf8'), vars)
 
 const makeDir = (root) ->
     if (!(fs.existsSync root))
