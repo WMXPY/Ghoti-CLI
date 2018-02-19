@@ -23,6 +23,7 @@ const getInput = (question, callback) ->
     void
 
 const parseAllIn = (textList, vars) ->
+    vars
     # todo
 
 const parseAll = (textList, callback) ->
@@ -30,16 +31,16 @@ const parseAll = (textList, callback) ->
         title: ''
         description: ''
         author: ''
-    getInput 'title' (title)->
+    (getInput 'title' (title)->
         vars.title = title
-        getInput 'description' (description) ->
+        (getInput 'description' (description) ->
             vars.description = description
-            getInput 'author' (author) ->
+            (getInput 'author' (author) ->
                 vars.author = author
-                callback parseAllIn textList, vars
-                void
-            void
-        void
+                (callback (parseAllIn textList, vars))
+                void)
+            void)
+        void)
     textList
 
 export parseAll
