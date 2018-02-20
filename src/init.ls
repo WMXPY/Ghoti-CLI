@@ -27,7 +27,7 @@ const makeDir = (root) ->
 const logPath = (text, level) ->
     space = ''
     for to level
-        space += '  '
+        space += ' |'
     (log space + text)
 
 const copyInitReacursion = (root, level, targetPath, beforeLength, vars) ->
