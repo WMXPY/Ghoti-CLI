@@ -4,8 +4,9 @@
     "description": "${|description|}",
     "private": true,
     "scripts": {
-        "start": "webpack",
-        "test": "echo \"Error: no test specified\" && exit 1"
+        "start": "make run",
+        "build": "make build",
+        "test": "make tests"
     },
     "author": "${|author|}",
     "license": "SEE LICENSE IN LICENSE",
