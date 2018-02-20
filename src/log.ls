@@ -1,4 +1,4 @@
-const log = (text) -> 
-    console.log text
+const log = (...text) -> 
+    console.log ...text
 
 export log
