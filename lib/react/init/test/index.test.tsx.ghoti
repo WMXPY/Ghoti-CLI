@@ -1,3 +1,4 @@
 import React from 'react';
 import { expect } from 'code';
 import { shallow, configure } from 'enzyme';
+import Index from '../src/index';

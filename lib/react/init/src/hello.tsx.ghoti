@@ -1,4 +1,6 @@
 import * as React from 'react';
+import * as Component from './component/import';
+import Config from './config/config';
 
 export interface IProps {
 
@@ -8,7 +10,7 @@ export interface IState {
 
 }
 
-class ${|component|} extends React.Component <IProps,IState> {
+class Hello extends React.Component <IProps,IState> {
     public constructor(props){
         super(props);
     }
@@ -20,4 +22,4 @@ class ${|component|} extends React.Component <IProps,IState> {
     }
 }
 
-export default ${|component|};
+export default Hello;
