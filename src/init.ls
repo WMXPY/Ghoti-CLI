@@ -1,8 +1,8 @@
 require! {
     fs
     path
-    './log.ls': { log }
-    './parser.ls': { parseAll, parseFile }
+    './log': { log }
+    './parser': { parseAll, parseFile }
 }
 
 const switchRoot = (type) ->

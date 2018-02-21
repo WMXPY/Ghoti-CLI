@@ -1,19 +1,24 @@
 require! {
     fs
     path
-    './log.ls': { log }
+    './log': { log }
 }
 
 const path_argv = process.argv
+const path_node = path_argv.shift!
 const path_ghoti = path_argv.shift!
-const path_path = path_argv.shift!
+const mode = path_argv.shift!
+const path_path = process.cwd!
+ghotiConfig
+if (fs.existsSync (path.join path_path, '.ghoticonfig'))
+    ghotiConfig = (JSON.parse (fs.readFileSync (path.join path_path, '.ghoticonfig')).toString!)
 
 const env =
-    mode: 'init'
+    mode: mode ? 'help'
     test: false
     output: false
     debug: false
-    commands: []
+    texture: []
 
 const command = (command) ->
     switch(command)
@@ -27,13 +32,10 @@ const command = (command) ->
             'debug'
 
 const texture = (texture) ->
-    env.commands.push texture
+    env.texture.push texture
     texture
 
 const argv = ->
-    log (path.join path_path, '.ghoticonfig')
-    log (fs.existsSync (path.join path_path, '.ghoticonfig'))
-    # (log (fs.readFileSync (path.join path_path, '.ghoticonfig')))
     path_argv.map (it) ->
         switch(it.substring 0 1)
             case '-'
@@ -47,3 +49,4 @@ export env
 export argv
 export path_argv
 export path_ghoti
+export ghotiConfig

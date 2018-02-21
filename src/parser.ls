@@ -1,7 +1,7 @@
 require! {
     fs
     path
-    './log.ls': { log }
+    './log': { log }
     readline
 }
 
