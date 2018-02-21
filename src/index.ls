@@ -7,13 +7,14 @@ require! {
 }
 
 const ghoti = ghotiConfig
+argv!
 
 const excute = ->
     switch(env.mode)
         case 'help'
             log env
         case 'init'
-            log env
+            init env.texture[0], env.texture[1]
         case 'component'
             log env
         default

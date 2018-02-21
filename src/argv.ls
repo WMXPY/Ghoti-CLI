@@ -45,6 +45,10 @@ const argv = ->
                 texture it
     env
 
+ghotiConfig
+if (fs.existsSync (path.join path_path, '.ghoticonfig'))
+    ghotiConfig = (JSON.parse (fs.readFileSync (path.join path_path, '.ghoticonfig')).toString!)
+
 export env
 export argv
 export path_argv

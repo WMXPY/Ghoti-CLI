@@ -10,7 +10,8 @@ const switchRoot = (type) ->
         case 'react'
             './lib/react/init'
         default
-            throw new Error 'init have to use format "ghoti init react/vue/react-native/electron-react"'
+            log 'init have to use format "ghoti init react/vue/react-native/electron-react root"'
+            process.exit!
 
 const copyToPath = (root, data) -> 
     if (root.substring root.length - 6, root.length) === '.ghoti'
@@ -48,15 +49,18 @@ const copyInitReacursion = (root, level, targetPath, beforeLength, vars) ->
 
     (files.forEach eachFile)
 
-const copyInit = (type, targetPath, vars) ->
+const copyInit = (type, targetPath, vars, root) ->
     const path_current = (process.cwd!)
-    const root = (switchRoot type)
     (makeDir (path.join path_current, targetPath))
     (copyInitReacursion root, 0, (path.join path_current, targetPath), root.length, vars)
 
 const init = (type, targetPath) ->
     # (copyInit type, targetPath, {})
+    const root = (switchRoot type)
+    if !targetPath
+        log 'init have to use format "ghoti init react/vue/react-native/electron-react root"'
+        process.exit!
     parseAll 'react' (re) ->
-        (copyInit type, targetPath, re)
+        (copyInit type, targetPath, re, root)
 
 export init
