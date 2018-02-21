@@ -5,19 +5,16 @@ require! {
     readline
 }
 
-const parseGhoti = (text, index) ->
-    text.replace 
-
 const parseFile = (text, vars) -> 
     re = text
     for i of vars 
         switch(i)
             case 'title'
-                re = (re.replace '${|title|}', vars.title)
+                re = (re.replace /\${\|title\|}/g, vars.title)
             case 'description'
-                re = (re.replace '${|description|}', vars.description)
+                re = (re.replace /\${\|description\|}/g, vars.description)
             case 'author'
-                re = (re.replace '${|author|}', vars.author)
+                re = (re.replace /\${\|author\|}/g, vars.author)
     re
 
 const getInput = (question, callback) ->
