@@ -1,5 +1,7 @@
 import * as React from 'react';
 import * as Component from './component/import';
+
+import { Route } from 'react-router-dom';
 import Config from './config/config';
 
 export interface IProps {
@@ -10,15 +12,22 @@ export interface IState {
 
 }
 
-class Hello extends React.Component <IProps,IState> {
-    public constructor(props){
+class Hello extends React.Component<IProps, IState> {
+    public constructor(props) {
         super(props);
     }
 
     public render() {
-        return (<div>
-        
-        </div>);
+        return (
+            <React.Fragment>
+                <Route path="/hello" component={() => {
+                    return <div>123</div>;
+                }} />
+                <Route path="/" exact component={() => {
+                    return <div>1243</div>;
+                }} />
+            </React.Fragment>
+        );
     }
 }
 

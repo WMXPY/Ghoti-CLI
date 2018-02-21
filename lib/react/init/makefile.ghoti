@@ -1,5 +1,15 @@
 ${|title|}:
+ifeq ($(UNAME), win32)
+	.\node_modules\.bin\webpack-dev-server --config .\webpack.dev.js
+else
+	./node_modules/.bin/webpack-dev-server --config ./webpack.dev.js
+endif
 
 tests:
 
 build:
+ifeq ($(UNAME), win32)
+	.\node_modules\.bin\webpack --config .\webpack.config.js
+else
+	./node_modules/.bin/webpack --config ./webpack.config.js
+endif

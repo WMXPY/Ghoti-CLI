@@ -1,19 +1,20 @@
 import * as React from "react";
 import * as ReactDOM from "react-dom";
 import { AppContainer } from "react-hot-loader";
-import { HashRouter } from 'react-router-dom';
+import { BrowserRouter } from 'react-router-dom';
 import Hello from "./hello";
 
 import './style/global.sass';
 
 declare const module: any;
+declare const require: any;
 
 const render = (App: any) => {
     ReactDOM.render(
         <AppContainer>
-            <HashRouter>
+            <BrowserRouter>
                 <App />
-            </HashRouter>
+            </BrowserRouter>
         </AppContainer>,
         document.getElementById("container"));
 };
