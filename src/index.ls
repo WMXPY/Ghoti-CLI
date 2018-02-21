@@ -5,7 +5,7 @@ require! {
     './init.ls': { init }
 }
 
-# log argv!
+log argv!
 # log env
-init 'react', './a/'
+# init 'react', './a/'
 # log config.initConfig 'react'

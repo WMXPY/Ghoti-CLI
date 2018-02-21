@@ -2,9 +2,12 @@
   "name": "ghoti-cli",
   "version": "0.0.0",
   "description": ":fish: A collection of interesting packages to build a color block style web application",
-  "main": "dist/index.js",
+  "main": "./dist/index.js",
   "directories": {
     "doc": "doc"
+  },
+  "bin": {
+    "ghoti": "./dist/index.js"
   },
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"

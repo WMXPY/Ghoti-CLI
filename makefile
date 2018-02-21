@@ -7,9 +7,9 @@ endif
 
 run:
 ifeq ($(UNAME), win32)
-	lsc .\src\index.ls -t react
+	lsc .\src\index.ls react
 else
-	lsc ./src/index.ls -t react
+	lsc ./src/index.ls react
 endif
 
 clean:
