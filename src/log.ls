@@ -1,5 +1,5 @@
 require! {
-    './config': { version }
+    './static': { version }
 }
 
 const log = (...text) -> 
@@ -13,30 +13,59 @@ const logPad = (text, pad?) ->
     (log text)
     text
 
+const logSeprate = (length) ->
+    re = ''
+    for i to length
+        re += '-'
+    (log re)
+    re
+
 const br = ->
     (log '\r\n')
 
+const logFace = ->
+    faces = ['( ͡° ͜ʖ ͡°)','(੭ु≧▽≦)੭ु','╰( ᐖ╰)≡(╯ᐛ )╯','.(｡￫‿￩｡)','ఠ_ఠ','ಸ_ಸ','(ಥ_ಥ)','(❁´▽`❁)','(ง •̀_•́)ง┻━┻','┬─┬ノ(\'-\'ノ)',' (´・ω・｀)']
+    const ran = Math.floor ((Math.random! * (faces.length * 500)) % faces.length)
+    log faces[ran]
+    faces[ran]
+
 const logCommand = ->
-    (log '🐟  > 👟  Ghoti-CLI:')
+    const title = '🐟  > 👟  Ghoti-CLI:'
+    (log title)
+    (logSeprate title.length)
+    void
 
 const logVersion = ->
-    (log '🐟  > 📜  Ghoti-CLI Version: ' + version)
+    const title = '🐟  > 📜  Ghoti-CLI Version:'
+    (log title)
+    (logSeprate title.length)
+    (logPad '| version : ' + version, 1)
+    (logPad '| info    : for more info, try "ghoti help"', 1)
+    (logSeprate title.length)
+    (logFace!)
     process.exit!
     void
 
 const logAbout = ->
-    (log '🐟  > 📖  Ghoti-CLI About:')
+    const title = '🐟  > 📖  Ghoti-CLI About:'
+    (log title)
+    (logSeprate title.length)
     (logPad '| version : ' + version, 1)
     (logPad '| source  : https://github.com/WMXPY/Ghoti-CLI', 1)
     (logPad '| author  : WMXPY', 1)
     (logPad '| website : http://mengw.io', 1)
+    (logSeprate title.length)
+    (logFace!)
     process.exit!
     void
 
 const logHelp = (isEmpty?) ->
+    var title
     if isEmpty
-    then (log '🐟  > 🏠  Ghoti-CLI Available commands:')
-    else (log '🐟  > ⭐  Ghoti-CLI Available commands:')
+    then title = '🐟  > 🏠  Ghoti-CLI Available commands:'
+    else title = '🐟  > ⭐  Ghoti-CLI Available commands:'
+    (log title)
+    (logSeprate title.length)
     (logPad '| help      : show command list', 1)
     (logPad '| info      : show detail for a command', 1)
     (logPad '* example - ghoti info init', 2)
@@ -46,19 +75,28 @@ const logHelp = (isEmpty?) ->
     (logPad '* example - ghoti component your-awesome-component', 2)
     (logPad '| about     : show about message', 1)
     (logPad '| version   : show current version', 1)
+    (logSeprate title.length)
+    (logFace!)
     process.exit!
     void
 
 const logUnknown = ->
-    (log '🐟  > 🙋  Ghoti-CLI Unknown command:')
+    const title = '🐟  > 🙋  Ghoti-CLI Unknown command:'
+    (log title)
+    (logSeprate title.length)
     (logPad '| You just inputed a unknown command, try "Ghoti help" for command list', 1)
+    (logSeprate title.length)
+    (logFace!)
     process.exit!
     void
 
 const logInfo = (command) ->
+    var title
     if (Boolean command)
-    then (log '🐟  > 📺  Ghoti-CLI Command information ' + command + ':')
-    else (log 'Ghoti-CLI Error, info target is not available, try 'Ghoti info help'')
+    then title = '🐟  > 📺  Ghoti-CLI Command information ' + command + ':'
+    else title = 'Ghoti-CLI Error, info target is not available, try "Ghoti info help"'
+    (log title)
+    (logSeprate title.length)
     switch(command)
         case 'about'
             (logPad '| Command   : show about message', 1)
@@ -70,17 +108,28 @@ const logInfo = (command) ->
             (logPad '| Command   : show detail of a command', 1)
             (logPad '* example   - ghoti info init', 2)
             (logPad '* arguments - ghoti info [command]', 2)
+            (logPad '* command   - command could be any command name that ghoti available', 2)
         case 'init'
             (logPad '| Command   : init a project', 1)
             (logPad '* example   - ghoti init react your-awesome-project', 2)
             (logPad '* arguments - ghoti init [project type] [project name]', 2)
+            (logPad '* config    - you will be ask for "title", "author", "description" later', 2)
+            (logPad '* type      - type could be "react", "react-native", "vue" or "angular"', 2)
+            (logPad '* name      - name could be anything you want for your project', 2)
         case 'component'
             (logPad '| Command   : create a component', 1)
             (logPad '* example   - ghoti component your-awesome-component', 2)
             (logPad '* arguments - ghoti component [component name]', 2)
+            (logPad '* name      - name could be any component name you want', 2)
         case 'help'
             (logPad '| Command   : show command list', 1)
             (logPad '* example   - ghoti help', 2)
+        default
+            (logPad '| Unknown command - "' + command + '"', 1)
+            (logPad '| "ghoti ' + command + '" is not a functional command for ghoti', 1)
+            (logPad '| for more info, try "ghoti help"', 1)
+    (logSeprate title.length)
+    (logFace!)
     process.exit!
     void
 

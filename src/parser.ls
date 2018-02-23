@@ -2,7 +2,7 @@ require! {
     fs
     path
     './log': { log }
-    './config': { version }
+    './static': { version }
     readline
 }
 
