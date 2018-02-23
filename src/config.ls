@@ -1,6 +1,7 @@
 require! {
     fs
     path
+    './log': { log }
 }
 
 const tempConfig = (type) ->
@@ -20,7 +21,8 @@ const tempConfig = (type) ->
             config = 
                 type: 'react-native'
         default
-            throw new Error 'init have to use format "ghoti init react/vue/react-native/electron-react"'
+            (log 'init have to use format "ghoti init react/vue/react-native/electron-react" "path"')
+            process.exit!
     
     config
 
