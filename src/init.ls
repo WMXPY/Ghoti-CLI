@@ -5,10 +5,10 @@ require! {
     './parser': { parseAll, parseFile }
 }
 
-const switchRoot = (type) ->
+const switchRoot = (type, ghoti_root) ->
     switch(type)
         case 'react'
-            './lib/react/init'
+            (path.join ghoti_root, "lib", "react", "init")
         default
             log 'init have to use format "ghoti init react/vue/react-native/electron-react root"'
             process.exit!
@@ -54,11 +54,11 @@ const copyInit = (type, targetPath, vars, root) ->
     (makeDir (path.join path_current, targetPath))
     (copyInitReacursion root, 0, (path.join path_current, targetPath), root.length, vars)
 
-const init = (type, targetPath) ->
+const init = (ghoti_root, type, targetPath) ->
     # (copyInit type, targetPath, {})
-    const root = (switchRoot type)
+    const root = (switchRoot type, ghoti_root)
     if !targetPath
-        log 'init have to use format "ghoti init react/vue/react-native/electron-react root"'
+        (log 'init have to use format "ghoti init react/vue/react-native/electron-react root"')
         process.exit!
     parseAll 'react' (re) ->
         (copyInit type, targetPath, re, root)

@@ -3,6 +3,7 @@ require! {
     fs,
     path,
     './config': config
+    './config': { updateConfig }
     './log': { log }
     './argv': { argv, env, ghotiConfig, path_ghoti }
     './init': { init }
@@ -10,6 +11,7 @@ require! {
 }
 
 const ghoti = ghotiConfig
+const ghotiCLIPath = (path.join path_ghoti, "..", "..")
 argv!
 
 log ghoti
@@ -17,13 +19,13 @@ log ghoti
 const excute = ->
     switch(env.mode)
         case 'help'
-            log env
+            (log env)
         case 'init'
-            init env.texture[0], env.texture[1]
+            (init ghotiCLIPath, env.texture[0], env.texture[1])
         case 'component'
-            component (path.join path_ghoti, "..", ".."), process.cwd!, ghoti
+            (component ghotiCLIPath, process.cwd!, env.texture[0], ghoti)
         default
-            log 'mode undefined'
+            (log 'mode undefined')
             return void
     void
 

@@ -2,10 +2,11 @@ require! {
     fs,
     path,
     './log': { log }
+    './config': { updateConfig }
 }
 
 const readFile = (root, name) ->
-    (fs.readFileSync root, 'utf8').toString!.replace /\${\|component\|}/g, name
+    (fs.readFileSync root, 'utf8').toString!.replace /\${\|component\|}/g, ("ComponentGhoti" + (name.substring 0,1).toUpperCase! + (name.substring 1, name.length))
 
 const comImport = (ghoti) ->
     re = (ghoti.components.map ((it) ->
@@ -15,10 +16,9 @@ const comImport = (ghoti) ->
         it)).join("\r\n") + "\r\n};"
     re
 
-const component = (root, targetPath, ghoti) ->
-    const target = (path.join targetPath, "src", "component")
-    const data = (readFile (path.join root, "lib", "react", "component", "component.tsx.ghoti"), "test")
+const component = (root, targetPath, name, ghoti) ->
+    const target = (path.join targetPath, "src", "component", name + ".component.tsx" )
+    const data = (readFile (path.join root, "lib", "react", "component", "component.tsx.ghoti"), name)
     fs.writeFileSync target, data, 'utf8'
-    # log comImport ghoti
 
 export component
