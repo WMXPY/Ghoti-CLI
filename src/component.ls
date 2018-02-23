@@ -12,7 +12,7 @@ const ghotiComponentFileName = (name) ->
     name + ".component"
 
 const ghotiComponentExport = (name) ->
-    (ghotiComponentClassName name) + " as " + name
+    "    " + (ghotiComponentClassName name) + " as " + name
 
 const readFile = (root, name) ->
     ((fs.readFileSync root, 'utf8').toString!.replace /\${\|component\|}/g, (ghotiComponentClassName name))

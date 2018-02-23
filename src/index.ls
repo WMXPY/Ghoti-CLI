@@ -8,6 +8,8 @@ require! {
     './argv': { argv, env, ghotiConfig, path_ghoti }
     './init': { init }
     './component': { component }
+    './page': { page }
+    './lambda': { lambda }
 }
 
 const ghoti = ghotiConfig
@@ -29,6 +31,12 @@ const excute = ->
         case 'init'
             (logCommand!)
             (init ghotiCLIPath, env.texture[0], env.texture[1])
+        case 'lambda'
+            (logCommand!)
+            (lambda ghotiCLIPath, process.cwd!, env.texture[0], ghoti)
+        case 'page'
+            (logCommand!)
+            (page ghotiCLIPath, process.cwd!, env.texture[0], ghoti)
         case 'component'
             (logCommand!)
             (component ghotiCLIPath, process.cwd!, env.texture[0], ghoti)

@@ -23,5 +23,11 @@
     },
     "components": [
         
+    ],
+    "pages": [
+
+    ],
+    "lambdas": [
+        
     ]
 }

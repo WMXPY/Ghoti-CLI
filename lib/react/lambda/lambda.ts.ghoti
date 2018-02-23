@@ -1,0 +1,9 @@
+// Lambda function set ${|lambda|}
+
+const ${|lambda|} = (): void => {
+
+}
+
+export {
+    ${|lambda|},
+}

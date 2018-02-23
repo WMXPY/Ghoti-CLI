@@ -1,0 +1,23 @@
+import * as React from 'react';
+
+export interface IProps {
+
+}
+
+export interface IState {
+
+}
+
+class ${|page|} extends React.Component <IProps,IState> {
+    public constructor(props){
+        super(props);
+    }
+
+    public render() {
+        return (<div>
+        
+        </div>);
+    }
+}
+
+export default ${|page|};
