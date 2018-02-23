@@ -1,7 +1,7 @@
 {
     "type": "project",
     "template": "react",
-    "version": "0.0.1",
+    "version": "${|version|}",
     "title": "${|title|}",
     "description": "${|description|}",
     "author": "${|author|}",

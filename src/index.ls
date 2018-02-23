@@ -14,8 +14,6 @@ const ghoti = ghotiConfig
 const ghotiCLIPath = (path.join path_ghoti, "..", "..")
 argv!
 
-log ghoti
-
 const excute = ->
     switch(env.mode)
         case 'help'

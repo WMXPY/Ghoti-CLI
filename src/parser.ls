@@ -7,6 +7,7 @@ require! {
 
 const parseFile = (text, vars) -> 
     re = text
+    re = (re.replace /\${\|version\|}/g, "0.0.2")
     for i of vars 
         switch(i)
             case 'title'

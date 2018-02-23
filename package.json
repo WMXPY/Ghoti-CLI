@@ -1,6 +1,6 @@
 {
   "name": "ghoti-cli",
-  "version": "0.0.1",
+  "version": "0.0.2",
   "description": ":fish: A collection of interesting packages to build a color block style web application",
   "main": "./dist/index.js",
   "directories": {

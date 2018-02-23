@@ -1,8 +1,8 @@
-import * as React from "react";
-import * as ReactDOM from "react-dom";
-import { AppContainer } from "react-hot-loader";
+import * as React from 'react';
+import * as ReactDOM from 'react-dom';
+import { AppContainer } from 'react-hot-loader';
 import { BrowserRouter } from 'react-router-dom';
-import Hello from "./hello";
+import Hello from './hello';
 
 import './style/global.sass';
 
@@ -16,12 +16,12 @@ const render = (App: any) => {
                 <App />
             </BrowserRouter>
         </AppContainer>,
-        document.getElementById("container"));
+        document.getElementById('container'));
 };
 
 render(Hello);
 if (module.hot) {
-    module.hot.accept("./hello", () => {
-        render(require("./hello").default);
+    module.hot.accept('./hello', () => {
+        render(require('./hello').default);
     });
 }
