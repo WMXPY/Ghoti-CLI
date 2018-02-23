@@ -4,6 +4,8 @@ require! {
     './log': { log }
 }
 
+const version = "0.1.0"
+
 const tempConfig = (type) ->
     var config
 
@@ -60,6 +62,7 @@ const initConfig = (type) ->
 const updateConfig = (newConfig) ->
     (writeConfig newConfig)
 
+export version
 export getConfig
 export writeConfig
 export initConfig

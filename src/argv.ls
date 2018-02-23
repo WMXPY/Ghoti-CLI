@@ -14,7 +14,7 @@ if (fs.existsSync (path.join path_path, '.ghoticonfig'))
     ghotiConfig = (JSON.parse (fs.readFileSync (path.join path_path, '.ghoticonfig')).toString!)
 
 const env =
-    mode: mode ? 'help'
+    mode: mode ? 'empty'
     test: false
     output: false
     debug: false

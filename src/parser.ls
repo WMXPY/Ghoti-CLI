@@ -2,12 +2,13 @@ require! {
     fs
     path
     './log': { log }
+    './config': { version }
     readline
 }
 
 const parseFile = (text, vars) -> 
     re = text
-    re = (re.replace /\${\|version\|}/g, "0.0.2")
+    re = (re.replace /\${\|version\|}/g, version)
     for i of vars 
         switch(i)
             case 'title'

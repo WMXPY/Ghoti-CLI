@@ -4,7 +4,7 @@ require! {
     path,
     './config': config
     './config': { updateConfig }
-    './log': { log }
+    './log': { log, logHelp, logInfo, logAbout, logVersion, logCommand, logUnknown }
     './argv': { argv, env, ghotiConfig, path_ghoti }
     './init': { init }
     './component': { component }
@@ -16,15 +16,24 @@ argv!
 
 const excute = ->
     switch(env.mode)
+        case 'about'
+            (logAbout!)
+        case 'empty'
+            (logHelp true)
+        case 'version'
+            (logVersion!)
         case 'help'
-            (log env)
+            (logHelp!)
+        case 'info'
+            (logInfo env.texture[0])
         case 'init'
+            (logCommand!)
             (init ghotiCLIPath, env.texture[0], env.texture[1])
         case 'component'
+            (logCommand!)
             (component ghotiCLIPath, process.cwd!, env.texture[0], ghoti)
         default
-            (log 'mode undefined')
-            return void
+            (logUnknown!)
     void
 
 excute!
