@@ -1,0 +1,11 @@
+// Function set ${|func|}
+
+import Config from '../config/config';
+
+const ${|func|} = (): void => {
+
+};
+
+export {
+    ${|func|},
+};

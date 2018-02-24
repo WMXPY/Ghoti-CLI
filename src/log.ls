@@ -79,8 +79,10 @@ const logHelp = (isEmpty?) ->
     (logPad '* example - ghoti component your-awesome-component', 2)
     (logPad '| page      : create a page', 1)
     (logPad '* example - ghoti page your-awesome-page', 2)
-    (logPad '| lambda    : create a function set', 1)
+    (logPad '| lambda    : create a lambda function set', 1)
     (logPad '* example - ghoti lambda your-awesome-function-name', 2)
+    (logPad '| func      : create a function set', 1)
+    (logPad '* example - ghoti func your-awesome-function-name', 2)
     (logPad '| about     : show about message', 1)
     (logPad '| version   : show current version', 1)
     (logSeprate title.length)
@@ -129,8 +131,13 @@ const logInfo = (command) ->
             (logPad '* example   - ghoti page your-awesome-page', 2)
             (logPad '* arguments - ghoti page [page name]', 2)
             (logPad '* name      - name could be any page name you want', 2)
-        case 'lambda'
+        case 'func'
             (logPad '| Command   : create a function set', 1)
+            (logPad '* example   - ghoti func your-awesome-function-set', 2)
+            (logPad '* arguments - ghoti func [set name]', 2)
+            (logPad '* name      - name could be any set name you want', 2)
+        case 'lambda'
+            (logPad '| Command   : create a lambda function set', 1)
             (logPad '* example   - ghoti lambda your-awesome-function-set', 2)
             (logPad '* arguments - ghoti lambda [set name]', 2)
             (logPad '* name      - name could be any set name you want', 2)

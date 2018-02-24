@@ -2,6 +2,7 @@
 
 import * as React from 'react';
 import * as Component from '../component/import';
+import * as Func from '../func/import';
 import * as Lambda from '../lambda/import';
 
 import Config from '../config/config';

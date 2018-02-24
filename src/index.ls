@@ -10,6 +10,7 @@ require! {
     './component': { component }
     './page': { page }
     './lambda': { lambda }
+    './func': { func }
 }
 
 const ghoti = ghotiConfig
@@ -35,6 +36,10 @@ const excute = ->
         case 'lambda'
             whenDone = (logCommand!)
             (lambda ghotiCLIPath, process.cwd!, env.texture[0], ghoti)
+            (whenDone!)
+        case 'func'
+            whenDone = (logCommand!)
+            (func ghotiCLIPath, process.cwd!, env.texture[0], ghoti)
             (whenDone!)
         case 'page'
             whenDone = (logCommand!)
