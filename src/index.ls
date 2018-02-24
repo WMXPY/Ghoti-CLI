@@ -17,6 +17,7 @@ const ghotiCLIPath = (path.join path_ghoti, "..", "..")
 argv!
 
 const excute = ->
+    var whenDone
     switch(env.mode)
         case 'about'
             (logAbout!)
@@ -29,17 +30,20 @@ const excute = ->
         case 'info'
             (logInfo env.texture[0])
         case 'init'
-            (logCommand!)
-            (init ghotiCLIPath, env.texture[0], env.texture[1])
+            whenDone = (logCommand!)
+            (init ghotiCLIPath, env.texture[0], env.texture[1], whenDone)
         case 'lambda'
-            (logCommand!)
+            whenDone = (logCommand!)
             (lambda ghotiCLIPath, process.cwd!, env.texture[0], ghoti)
+            (whenDone!)
         case 'page'
-            (logCommand!)
+            whenDone = (logCommand!)
             (page ghotiCLIPath, process.cwd!, env.texture[0], ghoti)
+            (whenDone!)
         case 'component'
-            (logCommand!)
+            whenDone = (logCommand!)
             (component ghotiCLIPath, process.cwd!, env.texture[0], ghoti)
+            (whenDone!)
         default
             (logUnknown!)
     void

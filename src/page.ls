@@ -30,8 +30,11 @@ const page = (root, targetPath, name, ghoti) ->
     const importTarget = (path.join targetPath, "src", "page", "import.ts" )
     const data = (readFile (path.join root, "lib", "react", "page", "page.tsx.ghoti"), name)
     (ghoti.pages.push name)
+    (log '| update .ghoticonfig file')
     (updateConfig ghoti)
+    (log '| update import setting')
     (fs.writeFileSync importTarget, (comImport ghoti), 'utf8')
+    (log '| initialize paging script')
     (fs.writeFileSync target, data, 'utf8')
 
 export page

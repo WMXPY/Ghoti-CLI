@@ -33,7 +33,10 @@ const logCommand = ->
     const title = '🐟  > 👟  Ghoti-CLI:'
     (log title)
     (logSeprate title.length)
-    void
+    ->
+        logSeprate title.length
+        logFace!
+        void
 
 const logVersion = ->
     const title = '🐟  > 📜  Ghoti-CLI Version:'
@@ -50,9 +53,10 @@ const logAbout = ->
     const title = '🐟  > 📖  Ghoti-CLI About:'
     (log title)
     (logSeprate title.length)
-    (logPad '| version : ' + version, 1)
     (logPad '| source  : https://github.com/WMXPY/Ghoti-CLI', 1)
     (logPad '| author  : WMXPY', 1)
+    (logPad '| version : ' + version, 1)
+    (logPad '* try to update - npm install -g ghoti-cli', 2)
     (logPad '| website : http://mengw.io', 1)
     (logSeprate title.length)
     (logFace!)

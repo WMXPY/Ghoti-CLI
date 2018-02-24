@@ -30,8 +30,11 @@ const component = (root, targetPath, name, ghoti) ->
     const importTarget = (path.join targetPath, "src", "component", "import.ts" )
     const data = (readFile (path.join root, "lib", "react", "component", "component.tsx.ghoti"), name)
     (ghoti.components.push name)
+    (log '| update .ghoticonfig file')
     (updateConfig ghoti)
+    (log '| update import setting')
     (fs.writeFileSync importTarget, (comImport ghoti), 'utf8')
+    (log '| initialize component script')
     (fs.writeFileSync target, data, 'utf8')
 
 export component

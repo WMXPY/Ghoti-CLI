@@ -54,7 +54,7 @@ const copyInit = (type, targetPath, vars, root) ->
     (makeDir (path.join path_current, targetPath))
     (copyInitReacursion root, 0, (path.join path_current, targetPath), root.length, vars)
 
-const init = (ghoti_root, type, targetPath) ->
+const init = (ghoti_root, type, targetPath, whenDone) ->
     # (copyInit type, targetPath, {})
     const root = (switchRoot type, ghoti_root)
     if !targetPath
@@ -62,5 +62,6 @@ const init = (ghoti_root, type, targetPath) ->
         process.exit!
     parseAll 'react' (re) ->
         (copyInit type, targetPath, re, root)
+        (whenDone!)
 
 export init

@@ -30,8 +30,11 @@ const lambda = (root, targetPath, name, ghoti) ->
     const importTarget = (path.join targetPath, "src", "lambda", "import.ts" )
     const data = (readFile (path.join root, "lib", "react", "lambda", "lambda.ts.ghoti"), name)
     (ghoti.lambdas.push name)
+    (log '| update .ghoticonfig file')
     (updateConfig ghoti)
+    (log '| update import setting')
     (fs.writeFileSync importTarget, (comImport ghoti), 'utf8')
+    (log '| initialize lambda script')
     (fs.writeFileSync target, data, 'utf8')
 
 export lambda
