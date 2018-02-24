@@ -1,6 +1,6 @@
-# Ghoti-Collection
+# Ghoti-CLI
 
-:fish: A CLI tool that help you start develop your new peject within 60 seconds
+:fish: A CLI tool that help you start develop your new project within 60 seconds
 
 ## Install
 
