@@ -1,4 +1,9 @@
+// Component set ${|component|}
+
 import * as React from 'react';
+import * as Lambda from '../lambda/import';
+
+import Config from '../config/config';
 
 export interface IProps {
 

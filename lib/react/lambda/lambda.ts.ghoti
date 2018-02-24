@@ -1,5 +1,7 @@
 // Lambda function set ${|lambda|}
 
+import Config from '../config/config';
+
 const ${|lambda|} = (): void => {
 
 }

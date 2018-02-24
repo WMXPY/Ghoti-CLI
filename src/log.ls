@@ -73,6 +73,10 @@ const logHelp = (isEmpty?) ->
     (logPad '* example - ghoti init react your-awesome-project', 2)
     (logPad '| component : create a component', 1)
     (logPad '* example - ghoti component your-awesome-component', 2)
+    (logPad '| page      : create a page', 1)
+    (logPad '* example - ghoti page your-awesome-page', 2)
+    (logPad '| lambda    : create a function set', 1)
+    (logPad '* example - ghoti lambda your-awesome-function-name', 2)
     (logPad '| about     : show about message', 1)
     (logPad '| version   : show current version', 1)
     (logSeprate title.length)
@@ -116,6 +120,16 @@ const logInfo = (command) ->
             (logPad '* config    - you will be ask for "title", "author", "description" later', 2)
             (logPad '* type      - type could be "react", "react-native", "vue" or "angular"', 2)
             (logPad '* name      - name could be anything you want for your project', 2)
+        case 'page'
+            (logPad '| Command   : create a page', 1)
+            (logPad '* example   - ghoti page your-awesome-page', 2)
+            (logPad '* arguments - ghoti page [page name]', 2)
+            (logPad '* name      - name could be any page name you want', 2)
+        case 'lambda'
+            (logPad '| Command   : create a function set', 1)
+            (logPad '* example   - ghoti lambda your-awesome-function-set', 2)
+            (logPad '* arguments - ghoti lambda [set name]', 2)
+            (logPad '* name      - name could be any set name you want', 2)
         case 'component'
             (logPad '| Command   : create a component', 1)
             (logPad '* example   - ghoti component your-awesome-component', 2)
