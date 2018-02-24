@@ -25,7 +25,13 @@ const comImport = (ghoti) ->
         (ghotiPageExport it) + ",")).join("\r\n") + "\r\n};"
     re
 
-const page = (root, targetPath, name, ghoti) ->
+const page = (root, targetPath, name, ghoti, whenDone) ->
+    for i in ghoti.pages
+        if(i === name)
+            log '| ERROR: page "' + name + '" is already exist'
+            log '| try "ghoti status" to see page list'
+            whenDone!
+            process.exit!
     const target = (path.join targetPath, "src", "page", name + ".page.tsx" )
     const importTarget = (path.join targetPath, "src", "page", "import.ts" )
     const data = (readFile (path.join root, "lib", "react", "page", "page.tsx.ghoti"), name)

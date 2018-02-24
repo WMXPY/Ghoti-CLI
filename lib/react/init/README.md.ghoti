@@ -2,7 +2,7 @@
 
 ${|description|}
 
-## Install
+### Install
 
 ```bash
 npm install

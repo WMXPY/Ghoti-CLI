@@ -25,7 +25,13 @@ const comImport = (ghoti) ->
         (ghotiLambdaExport it) + ",")).join("\r\n") + "\r\n};"
     re
 
-const lambda = (root, targetPath, name, ghoti) ->
+const lambda = (root, targetPath, name, ghoti, whenDone) ->
+    for i in ghoti.lambdas
+        if(i === name)
+            log '| ERROR: lambda "' + name + '" is already exist'
+            log '| try "ghoti status" to see lambda list'
+            whenDone!
+            process.exit!
     const target = (path.join targetPath, "src", "lambda", name + ".lambda.ts" )
     const importTarget = (path.join targetPath, "src", "lambda", "import.ts" )
     const data = (readFile (path.join root, "lib", "react", "lambda", "lambda.ts.ghoti"), name)

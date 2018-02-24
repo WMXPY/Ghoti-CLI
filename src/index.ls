@@ -4,7 +4,7 @@ require! {
     path,
     './config': config
     './config': { updateConfig }
-    './log': { log, logHelp, logInfo, logAbout, logVersion, logCommand, logUnknown }
+    './log': { log, logHelp, logInfo, logAbout, logVersion, logCommand, logUnknown, logStatus }
     './argv': { argv, env, ghotiConfig, path_ghoti }
     './init': { init }
     './component': { component }
@@ -28,6 +28,8 @@ const excute = ->
             (logVersion!)
         case 'help'
             (logHelp!)
+        case 'status'
+            (logStatus ghoti)
         case 'info'
             (logInfo env.texture[0])
         case 'init'
@@ -35,19 +37,23 @@ const excute = ->
             (init ghotiCLIPath, env.texture[0], env.texture[1], whenDone)
         case 'lambda'
             whenDone = (logCommand!)
-            (lambda ghotiCLIPath, process.cwd!, env.texture[0], ghoti)
+            (lambda ghotiCLIPath, process.cwd!, env.texture[0], ghoti, whenDone)
             (whenDone!)
         case 'func'
             whenDone = (logCommand!)
-            (func ghotiCLIPath, process.cwd!, env.texture[0], ghoti)
+            (func ghotiCLIPath, process.cwd!, env.texture[0], ghoti, whenDone)
+            (whenDone!)
+        case 'function'
+            whenDone = (logCommand 'function', 'func')
+            (func ghotiCLIPath, process.cwd!, env.texture[0], ghoti, whenDone)
             (whenDone!)
         case 'page'
             whenDone = (logCommand!)
-            (page ghotiCLIPath, process.cwd!, env.texture[0], ghoti)
+            (page ghotiCLIPath, process.cwd!, env.texture[0], ghoti, whenDone)
             (whenDone!)
         case 'component'
             whenDone = (logCommand!)
-            (component ghotiCLIPath, process.cwd!, env.texture[0], ghoti)
+            (component ghotiCLIPath, process.cwd!, env.texture[0], ghoti, whenDone)
             (whenDone!)
         default
             (logUnknown!)

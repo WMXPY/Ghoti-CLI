@@ -25,7 +25,13 @@ const comImport = (ghoti) ->
         (ghotiComponentExport it) + ",")).join("\r\n") + "\r\n};"
     re
 
-const component = (root, targetPath, name, ghoti) ->
+const component = (root, targetPath, name, ghoti, whenDone) ->
+    for i in ghoti.components
+        if(i === name)
+            log '| ERROR: component "' + name + '" is already exist'
+            log '| try "ghoti status" to see component list'
+            whenDone!
+            process.exit!
     const target = (path.join targetPath, "src", "component", name + ".component.tsx" )
     const importTarget = (path.join targetPath, "src", "component", "import.ts" )
     const data = (readFile (path.join root, "lib", "react", "component", "component.tsx.ghoti"), name)

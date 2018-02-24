@@ -29,9 +29,15 @@ const logFace = ->
     log faces[ran]
     faces[ran]
 
-const logCommand = ->
+const logAlias = (command, original) ->
+    (log 'Tips: "ghoti ' + command + '" is an alia of "ghoti ' + original + '"')
+    void
+
+const logCommand = (command?, original?) ->
     const title = '🐟  > 👟  Ghoti-CLI:'
     (log title)
+    if ((Boolean command) && (Boolean original))
+    then (logAlias command, original)
     (logSeprate title.length)
     ->
         logSeprate title.length
@@ -44,6 +50,33 @@ const logVersion = ->
     (logSeprate title.length)
     (logPad '| version : ' + version, 1)
     (logPad '| info    : for more info, try "ghoti help"', 1)
+    (logSeprate title.length)
+    (logFace!)
+    process.exit!
+    void
+
+const logStatus = (ghoti) ->
+    const title = '🐟  > 📇  Ghoti-CLI Status:'
+    (log title)
+    (logSeprate title.length)
+    (logPad '| Info        : status is came from .ghoticonfig file', 1)
+    (logPad '| Template    : ' + ghoti.template, 1)
+    (logPad '| Author      : ' + ghoti.author, 1)
+    (logPad '| Descript    : ' + ghoti.description, 1)
+    (logPad '| CLI Version : ' + ghoti.version, 1)
+    (logPad '| Title       : ' + ghoti.title, 1)
+    (logPad '| Components  : availble count - ' + ghoti.components.length, 1)
+    for i in ghoti.components
+        (logPad '* component - ' + i, 2)
+    (logPad '| Pages       : availble count - ' + ghoti.pages.length, 1)
+    for i in ghoti.pages
+        (logPad '* page      - ' + i, 2)
+    (logPad '| Functions   : availble count - ' + ghoti.funcs.length, 1)
+    for i in ghoti.funcs
+        (logPad '* function  - ' + i, 2)
+    (logPad '| Lambdas     : availble count - ' + ghoti.lambdas.length, 1)
+    for i in ghoti.lambdas
+        (logPad '* lambda    - ' + i, 2)
     (logSeprate title.length)
     (logFace!)
     process.exit!
@@ -71,6 +104,7 @@ const logHelp = (isEmpty?) ->
     (log title)
     (logSeprate title.length)
     (logPad '| help      : show command list', 1)
+    (logPad '| status    : show status of current project', 1)
     (logPad '| info      : show detail for a command', 1)
     (logPad '* example - ghoti info init', 2)
     (logPad '| init      : init a project', 1)
@@ -114,6 +148,9 @@ const logInfo = (command) ->
         case 'version'
             (logPad '| Command   : show current version', 1)
             (logPad '* example   - ghoti version', 2)
+        case 'status'
+            (logPad '| Command   : show status of current project', 1)
+            (logPad '* example   - ghoti status', 2)
         case 'info'
             (logPad '| Command   : show detail of a command', 1)
             (logPad '* example   - ghoti info init', 2)
@@ -162,6 +199,7 @@ export log
 export logHelp
 export logInfo
 export logAbout
+export logStatus
 export logCommand
 export logVersion
 export logUnknown
