@@ -1,7 +1,9 @@
+// Router
+
 import * as React from 'react';
 import * as Component from './component/import';
-import * as Page from './page/import';
 import * as Lambda from './lambda/import';
+import * as Page from './page/import';
 
 import { Route } from 'react-router-dom';
 import Config from './config/config';

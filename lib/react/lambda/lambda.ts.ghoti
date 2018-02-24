@@ -4,8 +4,8 @@ import Config from '../config/config';
 
 const ${|lambda|} = (): void => {
 
-}
+};
 
 export {
     ${|lambda|},
-}
+};
