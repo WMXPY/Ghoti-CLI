@@ -1,7 +1,7 @@
 require! {
     fs
     path
-    './log': { log }
+    './log': { log, logPostInstall }
     './parser': { parseAll, parseFile }
 }
 
@@ -60,8 +60,10 @@ const init = (ghoti_root, type, targetPath, whenDone) ->
     if !targetPath
         (log 'init have to use format "ghoti init react/vue/react-native/electron-react root"')
         process.exit!
-    parseAll 'react' (re) ->
+    parseAll 'react' (re, typesciprt) ->
         (copyInit type, targetPath, re, root)
+        (logPostInstall targetPath, typesciprt)
         (whenDone!)
+        void
 
 export init

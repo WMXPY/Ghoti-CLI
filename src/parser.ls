@@ -3,12 +3,25 @@ require! {
     path
     './log': { log }
     './static': { version }
+    'child_process': { exec }
     readline
 }
 
-const parseFile = (text, vars) -> 
+const checkTypescript = (callback) ->
+    const child = (exec 'tsc -v', (err, stdout, stderr) ->
+        if err
+        then callback false
+        else callback true
+        void
+    )
+    void
+
+const parseFile = (text, vars, typescript?) -> 
     re = text
     re = (re.replace /\${\|version\|}/g, version)
+    if typescript
+    then re = (re.replace /\${\|typescript\|}/g, '"typescript": "^2.7.2",')
+    else re = (re.replace /\${\|typescript\|}/g, '')
     for i of vars 
         switch(i)
             case 'title'
@@ -38,21 +51,23 @@ const parseAllIn = (textList, vars) ->
     # todo
 
 const parseAll = (textList, callback) ->
-    const vars = 
-        title: ''
-        description: ''
-        author: ''
-    (getInput 'Title: ' (title)->
-        vars.title = title
-        (getInput 'Description: ' (description) ->
-            vars.description = description
-            (getInput 'Author: ' (author) ->
-                vars.author = author
-                (callback (parseAllIn textList, vars))
+    checkTypescript (typescriptExist) ->
+        const vars = 
+            title: ''
+            description: ''
+            author: ''
+        (getInput 'Title: ' (title)->
+            vars.title = title
+            (getInput 'Description: ' (description) ->
+                vars.description = description
+                (getInput 'Author: ' (author) ->
+                    vars.author = author
+                    (callback (parseAllIn textList, vars), typescriptExist)
+                    void)
                 void)
             void)
-        void)
-    textList
+        void
 
 export parseFile
 export parseAll
+export checkTypescript

@@ -1,6 +1,6 @@
 # Ghoti-Collection
 
-> Hello!
+:fish: A CLI tool that help you start develop your new peject within 60 seconds
 
 ## Install
 
@@ -13,9 +13,5 @@ sudo npm install -g ghoti-cli
 ## Usage
 
 ```bash
-ghoti react ./path
+ghoti init react ./path
 ```
-
-:fish: A collection of interesting packages to build a color block style web application
-
-This is the repo of links to projects by me!

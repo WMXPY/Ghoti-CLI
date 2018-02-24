@@ -131,7 +131,7 @@ const logUnknown = ->
     (logPad '| You just inputed a unknown command, try "Ghoti help" for command list', 1)
     (logSeprate title.length)
     (logFace!)
-    process.exit!
+    # process.exit!
     void
 
 const logInfo = (command) ->
@@ -195,6 +195,22 @@ const logInfo = (command) ->
     process.exit!
     void
 
+const logPostInstall = (targetPath, typescript) ->
+    (log '')
+    (logPad 'Congratulations!!! 😎', 1)
+    (log '')
+    (logPad '| All needed files are configed and "almost" ready to go!', 1)
+    (logPad '| JUST A FEW MORE STEP: ', 1)
+    (logPad '* cd ' + targetPath, 2)
+    (logPad '* npm install', 2)
+    if !typescript
+    then (logPad '* npm link typescript', 2)
+    (logPad '| Thats all, have fun', 1)
+    (logPad '* make       --> to start development', 2)
+    (logPad '* make build --> to build project', 2)
+    (logPad '* make tests --> to run unit tests', 2)
+    (log '')
+
 export log
 export logHelp
 export logInfo
@@ -203,3 +219,4 @@ export logStatus
 export logCommand
 export logVersion
 export logUnknown
+export logPostInstall
