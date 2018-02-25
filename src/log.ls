@@ -89,7 +89,7 @@ const logAbout = ->
     (logPad '| source  : https://github.com/WMXPY/Ghoti-CLI', 1)
     (logPad '| author  : WMXPY', 1)
     (logPad '| version : ' + version, 1)
-    (logPad '* try to update - npm install -g ghoti-cli', 2)
+    (logPad '* try to update > npm install -g ghoti-cli', 2)
     (logPad '| website : http://mengw.io', 1)
     (logSeprate title.length)
     (logFace!)
@@ -143,48 +143,50 @@ const logInfo = (command) ->
     (logSeprate title.length)
     switch(command)
         case 'about'
-            (logPad '| Command   : show about message', 1)
+            (logPad '| Command : show about message', 1)
             (logPad '* example   - ghoti about', 2)
         case 'version'
-            (logPad '| Command   : show current version', 1)
+            (logPad '| Command : show current version', 1)
             (logPad '* example   - ghoti version', 2)
         case 'status'
-            (logPad '| Command   : show status of current project', 1)
+            (logPad '| Command : show status of current project', 1)
             (logPad '* example   - ghoti status', 2)
         case 'info'
-            (logPad '| Command   : show detail of a command', 1)
+            (logPad '| Command : show detail of a command', 1)
             (logPad '* example   - ghoti info init', 2)
             (logPad '* arguments - ghoti info [command]', 2)
             (logPad '* command   - command could be any command name that ghoti available', 2)
         case 'init'
-            (logPad '| Command   : init a project', 1)
+            (logPad '| Command : init a project', 1)
             (logPad '* example   - ghoti init react your-awesome-project', 2)
             (logPad '* arguments - ghoti init [project type] [project name]', 2)
             (logPad '* config    - you will be ask for "title", "author", "description" later', 2)
-            (logPad '* type      - type could be "react", "react-native", "vue" or "angular"', 2)
+            (logPad '* type      - type could be "react", "react-ssr", "react-native", "vue" or "angular"', 2)
+            (logPad '# react     > normal react project', 3)
+            (logPad '# react-ssr > react project with ssr feature', 3)
             (logPad '* name      - name could be anything you want for your project', 2)
         case 'page'
-            (logPad '| Command   : create a page', 1)
+            (logPad '| Command : create a page', 1)
             (logPad '* example   - ghoti page your-awesome-page', 2)
             (logPad '* arguments - ghoti page [page name]', 2)
             (logPad '* name      - name could be any page name you want', 2)
         case 'func'
-            (logPad '| Command   : create a function set', 1)
+            (logPad '| Command : create a function set', 1)
             (logPad '* example   - ghoti func your-awesome-function-set', 2)
             (logPad '* arguments - ghoti func [set name]', 2)
             (logPad '* name      - name could be any set name you want', 2)
         case 'lambda'
-            (logPad '| Command   : create a lambda function set', 1)
+            (logPad '| Command : create a lambda function set', 1)
             (logPad '* example   - ghoti lambda your-awesome-function-set', 2)
             (logPad '* arguments - ghoti lambda [set name]', 2)
             (logPad '* name      - name could be any set name you want', 2)
         case 'component'
-            (logPad '| Command   : create a component', 1)
+            (logPad '| Command : create a component', 1)
             (logPad '* example   - ghoti component your-awesome-component', 2)
             (logPad '* arguments - ghoti component [component name]', 2)
             (logPad '* name      - name could be any component name you want', 2)
         case 'help'
-            (logPad '| Command   : show command list', 1)
+            (logPad '| Command : show command list', 1)
             (logPad '* example   - ghoti help', 2)
         default
             (logPad '| Unknown command - "' + command + '"', 1)
@@ -203,7 +205,7 @@ const logPostInstall = (targetPath, typescript) ->
     (logPad '| JUST A FEW MORE STEP: ', 1)
     (logPad '* cd ' + targetPath, 2)
     (logPad '* npm install', 2)
-    if !typescript
+    if typescript
     then (logPad '* npm link typescript', 2)
     (logPad '| Thats all, have fun', 1)
     (logPad '* make       --> to start development', 2)
