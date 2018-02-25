@@ -162,8 +162,9 @@ const logInfo = (command) ->
             (logPad '* arguments - ghoti init [project type] [project name]', 2)
             (logPad '* config    - you will be ask for "title", "author", "description" later', 2)
             (logPad '* type      - type could be "react", "react-ssr", "react-native", "vue" or "angular"', 2)
-            (logPad '# react     > normal react project', 3)
-            (logPad '# react-ssr > react project with ssr feature', 3)
+            (logPad '# react      > normal react project, also alias as "react-normal"', 3)
+            (logPad '# react-lite > react project with ssr feature', 3)
+            (logPad '# react-ssr  > lite react project with no lint and test feature', 3)
             (logPad '* name      - name could be anything you want for your project', 2)
         case 'page'
             (logPad '| Command : create a page', 1)
