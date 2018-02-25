@@ -36,6 +36,7 @@
     "dependencies": {
         "react": "^16.2.0",
         "react-dom": "^16.2.0",
+        "react-router-config": "^1.0.0-beta.4",
         "react-router-dom": "^4.2.2"
     }
 }

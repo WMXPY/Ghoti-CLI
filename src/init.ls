@@ -8,7 +8,9 @@ require! {
 const switchRoot = (type, ghoti_root) ->
     switch(type)
         case 'react'
-            (path.join ghoti_root, "lib", "react", "init")
+            (path.join ghoti_root, "lib", "react-normal")
+        case 'react-ssr'
+            (path.join ghoti_root, "lib", "react-ssr")
         default
             log 'init have to use format "ghoti init react/vue/react-native/electron-react root"'
             process.exit!
