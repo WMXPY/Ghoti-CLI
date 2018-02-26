@@ -35,9 +35,22 @@ const component = (root, targetPath, name, ghoti, whenDone) ->
             log '| try "ghoti status" to see component list'
             whenDone!
             process.exit!
-    const target = (path.join targetPath, "src", "component", name + ".component.tsx" )
-    const importTarget = (path.join targetPath, "src", "component", "import.ts" )
-    const data = (readFile (path.join root, "lib", "react", "component", "component.tsx.ghoti"), name, ghoti)
+    var data, target, importTarget
+    switch ghoti.type
+        case 'react'
+            data = (readFile (path.join root, "lib", "react", "component", "component.tsx.ghoti"), name, ghoti)
+            target = (path.join targetPath, "src", "component", name + ".component.tsx" )
+            importTarget = (path.join targetPath, "src", "component", "import.ts" )
+        case 'react-js'
+            data = (readFile (path.join root, "lib", "react-js", "component", "component.tsx.ghoti"), name, ghoti)
+            target = (path.join targetPath, "src", "component", name + ".component.jsx" )
+            importTarget = (path.join targetPath, "src", "component", "import.js" )
+        default
+            log '| ERROR: type "' + ghoti.type + '" is not support'
+            log '| try "ghoti status" to see current type issue'
+            log '| try "ghoti whatis ' + ghoti.type + '" is there any known issue'
+            whenDone!
+            process.exit!
     (ghoti.components.push name)
     (log '| update .ghoticonfig file')
     (updateConfig ghoti)

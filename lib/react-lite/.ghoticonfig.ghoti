@@ -1,6 +1,7 @@
 {
     "type": "project",
     "template": "react",
+    "sub": "lite",
     "version": "${|version|}",
     "title": "${|title|}",
     "description": "${|description|}",

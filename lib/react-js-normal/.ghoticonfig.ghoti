@@ -1,7 +1,7 @@
 {
     "type": "project",
-    "template": "react",
-    "sub": "ssr",
+    "template": "react-js",
+    "sub": "normal",
     "version": "${|version|}",
     "title": "${|title|}",
     "description": "${|description|}",
