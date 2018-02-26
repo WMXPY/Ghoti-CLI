@@ -57,6 +57,19 @@ const logVersion = ->
     void
 
 const logStatus = (ghoti) ->
+    if (
+    !Boolean ghoti.template 
+    || !Boolean ghoti.author
+    || !Boolean ghoti.description
+    || !Boolean ghoti.version
+    || !Boolean ghoti.title
+    || !Boolean ghoti.components
+    || !Boolean ghoti.pages
+    || !Boolean ghoti.funcs
+    || !Boolean ghoti.lambdas)
+        (log 'ERROR, ghoti have no at least one required configeration')
+        (log 'Try to fix it: "ghoti fix"')
+        process.exit!
     const title = '🐟  > 📇  Ghoti-CLI Status:'
     (log title)
     (logSeprate title.length)

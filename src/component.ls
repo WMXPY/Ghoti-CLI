@@ -21,6 +21,10 @@ const readFile = (root, name, ghoti) ->
     re
 
 const comImport = (ghoti) ->
+    if !Boolean ghoti.components
+        (log 'ERROR, ghoti have no components configeration')
+        (log 'Try to fix it: "ghoti fix"')
+        process.exit!
     re = (ghoti.components.map ((it) ->
         "import " + (ghotiComponentClassName it) + " from './" + (ghotiComponentFileName it) + "';")).join("\r\n")
     re += "\r\n"
@@ -29,6 +33,10 @@ const comImport = (ghoti) ->
     re
 
 const component = (root, targetPath, name, ghoti, whenDone) ->
+    if !Boolean ghoti.components
+        (log 'ERROR, ghoti have no components configeration')
+        (log 'Try to fix it: "ghoti fix"')
+        process.exit!
     for i in ghoti.components
         if(i === name)
             log '| ERROR: component "' + name + '" is already exist'

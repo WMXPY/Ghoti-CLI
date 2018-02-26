@@ -7,13 +7,13 @@ endif
 
 run:
 ifeq ($(UNAME), win32)
-	lsc .\src\index.ls react
+	lsc .\src\index.ls whatis react
 else
-	lsc ./src/index.ls react
+	lsc ./src/index.ls whatis react
 endif
 
 clean:
 	del dist
 
-cleanA:
+cleanTEX:
 	rm -rf *.aux *.dvi *.fdb* *.fls *.log *.gz *.pdf

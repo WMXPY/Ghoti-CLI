@@ -21,6 +21,10 @@ const readFile = (root, name, ghoti) ->
     re
 
 const comImport = (ghoti) ->
+    if !Boolean ghoti.funcs
+        (log 'ERROR, ghoti have no functions configeration')
+        (log 'Try to fix it: "ghoti fix"')
+        process.exit!
     re = (ghoti.funcs.map ((it) ->
         "import * as " + (ghotiFuncClassName it) + " from './" + (ghotiFuncFileName it) + "';")).join("\r\n")
     re += "\r\n"
@@ -29,6 +33,10 @@ const comImport = (ghoti) ->
     re
 
 const func = (root, targetPath, name, ghoti, whenDone) ->
+    if !Boolean ghoti.funcs
+        (log 'ERROR, ghoti have no functions configeration')
+        (log 'Try to fix it: "ghoti fix"')
+        process.exit!
     for i in ghoti.funcs
         if(i === name)
             log '| ERROR: function "' + name + '" is already exist'
