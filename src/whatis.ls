@@ -6,6 +6,13 @@ const whatis = (keyword) ->
             'test with mocha'
             'support server side render'
         ]
+        'react-next-ssr': [
+            'react single page application'
+            'use typescript'
+            'webpack 4'
+            'test with mocha'
+            'support server side render'
+        ]
         'react': [
             'react single page application'
             'test with mocha'
