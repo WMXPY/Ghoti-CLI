@@ -1,7 +1,8 @@
 #!/usr/bin/env node
 require! {
-    fs,
-    path,
+    fs
+    path
+    os
     './config': config
     './config': { updateConfig }
     './log': { log, logHelp, logInfo, logAbout, logVersion, logCommand, logUnknown, logStatus }
@@ -14,7 +15,12 @@ require! {
 }
 
 const ghoti = ghotiConfig
-const ghotiCLIPath = (path.join path_ghoti, "..", "..")
+
+var ghotiCLIPath
+if os.platform! === 'win32'
+then ghotiCLIPath = (path.join path_ghoti, "..", "..")
+else ghotiCLIPath = (path.join path_ghoti, "..", "..", "lib", "node_modules", "ghoti-cli")
+
 argv!
 
 const excute = ->
@@ -59,7 +65,7 @@ const excute = ->
             (logUnknown!)
     void
 
-excute!
+export excute
 # log env
 # init 'react', './a/'
 # log config.initConfig 'react'

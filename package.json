@@ -2,12 +2,12 @@
   "name": "ghoti-cli",
   "version": "1.0.0",
   "description": ":fish: A CLI tool that help you start develop your new project within 60 seconds",
-  "main": "./dist/index.js",
+  "main": "dist/index.js",
   "directories": {
     "doc": "doc"
   },
   "bin": {
-    "ghoti": "./dist/index.js"
+    "ghoti": "bin/ghoti"
   },
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
@@ -21,5 +21,9 @@
   "bugs": {
     "url": "https://github.com/WMXPY/Ghoti-CLI/issues"
   },
-  "homepage": "https://github.com/WMXPY/Ghoti-CLI#readme"
+  "homepage": "https://github.com/WMXPY/Ghoti-CLI#readme",
+  "devEngines": {
+    "node": ">=7.x",
+    "npm": ">=4.x"
+  }
 }

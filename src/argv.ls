@@ -3,7 +3,6 @@ require! {
     path
     './log': { log }
 }
-
 const path_argv = process.argv
 const path_node = path_argv.shift!
 const path_ghoti = path_argv.shift!

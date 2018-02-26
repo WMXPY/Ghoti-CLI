@@ -1,0 +1,5 @@
+#!/usr/bin/env node
+
+var ghoti = require('../dist/index.js').excute;
+
+ghoti();

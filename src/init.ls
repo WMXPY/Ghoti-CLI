@@ -8,7 +8,7 @@ require! {
 const switchRoot = (type, ghoti_root) ->
     switch(type)
         case 'react-normal'
-        fallthrough
+            fallthrough
         case 'react'
             (path.join ghoti_root, "lib", "react-normal")
         case 'react-ssr'
