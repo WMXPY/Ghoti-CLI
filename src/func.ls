@@ -14,8 +14,11 @@ const ghotiFuncFileName = (name) ->
 const ghotiFuncExport = (name) ->
     "    " + (ghotiFuncClassName name) + " as " + name
 
-const readFile = (root, name) ->
-    ((fs.readFileSync root, 'utf8').toString!.replace /\${\|func\|}/g, (ghotiFuncClassName name))
+const readFile = (root, name, ghoti) ->
+    re = ((fs.readFileSync root, 'utf8').toString!)
+    re = (re.replace /\${\|func\|}/g, (ghotiFuncClassName name))
+    re = (re.replace /\${\|author\|}/g, ghoti.author || "unknown")
+    re
 
 const comImport = (ghoti) ->
     re = (ghoti.funcs.map ((it) ->
@@ -34,7 +37,7 @@ const func = (root, targetPath, name, ghoti, whenDone) ->
             process.exit!
     const target = (path.join targetPath, "src", "func", name + ".func.ts" )
     const importTarget = (path.join targetPath, "src", "func", "import.ts" )
-    const data = (readFile (path.join root, "lib", "react", "func", "func.ts.ghoti"), name)
+    const data = (readFile (path.join root, "lib", "react", "func", "func.ts.ghoti"), name, ghoti)
     (ghoti.funcs.push name)
     (log '| update .ghoticonfig file')
     (updateConfig ghoti)

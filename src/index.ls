@@ -66,6 +66,3 @@ const excute = ->
     void
 
 export excute
-# log env
-# init 'react', './a/'
-# log config.initConfig 'react'

@@ -14,8 +14,11 @@ const ghotiPageFileName = (name) ->
 const ghotiPageExport = (name) ->
     "    " + (ghotiPageClassName name) + " as " + name
 
-const readFile = (root, name) ->
-    ((fs.readFileSync root, 'utf8').toString!.replace /\${\|page\|}/g, (ghotiPageClassName name))
+const readFile = (root, name, ghoti) ->
+    re = ((fs.readFileSync root, 'utf8').toString!)
+    re = (re.replace /\${\|page\|}/g, (ghotiPageClassName name))
+    re = (re.replace /\${\|author\|}/g, ghoti.author || "unknown")
+    re
 
 const comImport = (ghoti) ->
     re = (ghoti.pages.map ((it) ->
@@ -34,7 +37,7 @@ const page = (root, targetPath, name, ghoti, whenDone) ->
             process.exit!
     const target = (path.join targetPath, "src", "page", name + ".page.tsx" )
     const importTarget = (path.join targetPath, "src", "page", "import.ts" )
-    const data = (readFile (path.join root, "lib", "react", "page", "page.tsx.ghoti"), name)
+    const data = (readFile (path.join root, "lib", "react", "page", "page.tsx.ghoti"), name, ghoti)
     (ghoti.pages.push name)
     (log '| update .ghoticonfig file')
     (updateConfig ghoti)

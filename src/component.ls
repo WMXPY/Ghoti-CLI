@@ -14,8 +14,11 @@ const ghotiComponentFileName = (name) ->
 const ghotiComponentExport = (name) ->
     "    " + (ghotiComponentClassName name) + " as " + name
 
-const readFile = (root, name) ->
-    ((fs.readFileSync root, 'utf8').toString!.replace /\${\|component\|}/g, (ghotiComponentClassName name))
+const readFile = (root, name, ghoti) ->
+    re = ((fs.readFileSync root, 'utf8').toString!)
+    re = (re.replace /\${\|component\|}/g, (ghotiComponentClassName name))
+    re = (re.replace /\${\|author\|}/g, ghoti.author || "unknown")
+    re
 
 const comImport = (ghoti) ->
     re = (ghoti.components.map ((it) ->
@@ -34,7 +37,7 @@ const component = (root, targetPath, name, ghoti, whenDone) ->
             process.exit!
     const target = (path.join targetPath, "src", "component", name + ".component.tsx" )
     const importTarget = (path.join targetPath, "src", "component", "import.ts" )
-    const data = (readFile (path.join root, "lib", "react", "component", "component.tsx.ghoti"), name)
+    const data = (readFile (path.join root, "lib", "react", "component", "component.tsx.ghoti"), name, ghoti)
     (ghoti.components.push name)
     (log '| update .ghoticonfig file')
     (updateConfig ghoti)
