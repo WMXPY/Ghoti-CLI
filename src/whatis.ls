@@ -28,6 +28,11 @@ const whatis = (keyword) ->
             'react single page application'
             'in development'
         ]
+        'react-unstructured': [
+            'react single page application'
+            'unstructured'
+            'cannot use ghoti extend commands in the repo'
+        ]
         '.ghoticonfig': [
             'configeration of ghoti project'
         ]

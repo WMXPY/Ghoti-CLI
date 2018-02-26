@@ -1,7 +1,7 @@
 {
   "name": "ghoti-cli",
-  "version": "1.1.1",
-  "description": ":fish: A CLI tool that help you start develop your new project within 60 seconds",
+  "version": "1.1.2",
+  "description": ":fish: A CLI tool that helps you start developing your new project within 60 seconds",
   "main": "dist/index.js",
   "directories": {
     "doc": "doc"

@@ -22,6 +22,8 @@ const switchRoot = (type, ghoti_root) ->
             (path.join ghoti_root, "lib", "react-ssr")
         case 'react-lite'
             (path.join ghoti_root, "lib", "react-lite")
+        case 'react-unstructured'
+            (path.join ghoti_root, "lib", "react-unstructured")
         default
             log 'init have to use format "ghoti init react/vue/react-native/electron-react root"'
             process.exit!
