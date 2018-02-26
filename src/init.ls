@@ -11,6 +11,13 @@ const switchRoot = (type, ghoti_root) ->
             fallthrough
         case 'react'
             (path.join ghoti_root, "lib", "react-normal")
+        case 'react-normal-js'
+            fallthrough
+        case 'react-js-normal'
+            fallthrough
+        case 'react-js'
+            log 'REACT JS IS NOT SUPPORT WELL YET!!!!'
+            (path.join ghoti_root, "lib", "react-js-normal")
         case 'react-ssr'
             (path.join ghoti_root, "lib", "react-ssr")
         case 'react-lite'

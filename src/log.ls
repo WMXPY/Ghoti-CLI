@@ -1,5 +1,6 @@
 require! {
     './static': { version }
+    './whatis': { whatis }
 }
 
 const log = (...text) -> 
@@ -107,6 +108,8 @@ const logHelp = (isEmpty?) ->
     (logPad '| status    : show status of current project', 1)
     (logPad '| info      : show detail for a command', 1)
     (logPad '* example - ghoti info init', 2)
+    (logPad '| whatis    : show info of a keyword', 1)
+    (logPad '* example - ghoti whatis react-ssr', 2)
     (logPad '| init      : init a project', 1)
     (logPad '* example - ghoti init react your-awesome-project', 2)
     (logPad '| component : create a component', 1)
@@ -151,6 +154,15 @@ const logInfo = (command) ->
         case 'status'
             (logPad '| Command : show status of current project', 1)
             (logPad '* example   - ghoti status', 2)
+        case 'whatIs'
+            fallthrough
+        case 'what'
+            fallthrough
+        case 'whatis'
+            (logPad '| Command : show info of a keyword', 1)
+            (logPad '* example   - ghoti whatis react-ssr', 2)
+            (logPad '* arguments - ghoti whatis [keyword]', 2)
+            (logPad '* command   - keyword could be any thing, you will know if it not in the database of ghoti', 2)
         case 'info'
             (logPad '| Command : show detail of a command', 1)
             (logPad '* example   - ghoti info init', 2)
@@ -198,6 +210,18 @@ const logInfo = (command) ->
     process.exit!
     void
 
+const logWhatIs = (keyword) ->
+    const title = '🐟  > 🏇🏼  Ghoti-CLI what is "' + keyword + '":'
+    (log title)
+    (logSeprate title.length)
+    const whatisK = (whatis keyword)
+    if whatisK
+    then whatisK.map (it) ->
+        (logPad '| ' + it, 1)
+    else (logPad '| Not complated yet', 1)
+    (logSeprate title.length)
+    (logFace!)
+
 const logPostInstall = (targetPath, typescript) ->
     (log '')
     (logPad 'Congratulations!!! 😎', 1)
@@ -223,3 +247,4 @@ export logCommand
 export logVersion
 export logUnknown
 export logPostInstall
+export logWhatIs
