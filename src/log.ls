@@ -209,9 +209,9 @@ const logPostInstall = (targetPath, typescript) ->
     if typescript
     then (logPad '* npm link typescript', 2)
     (logPad '| Thats all, have fun', 1)
-    (logPad '* make       --> to start development', 2)
-    (logPad '* make build --> to build project', 2)
-    (logPad '* make tests --> to run unit tests', 2)
+    (logPad '* npm start     --> to start development', 2)
+    (logPad '* npm run build --> to build project', 2)
+    (logPad '* npm test      --> to run unit tests', 2)
     (log '')
 
 export log

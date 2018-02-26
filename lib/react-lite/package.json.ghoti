@@ -4,11 +4,12 @@
     "description": "${|description|}",
     "private": true,
     "scripts": {
-        "start": "make run",
-        "build": "make build"
+        "start": "webpack-dev-server --config .\webpack.dev.js",
+        "build": "webpack --config .\webpack.config.js",
+        "test": "mocha"
     },
     "author": "${|author|}",
-    "license": "SEE LICENSE IN LICENSE",
+    "license": "NO LICENSE",
     "devDependencies": {
         "@types/react": "^16.0.38",
         "@types/react-dom": "^16.0.4",
