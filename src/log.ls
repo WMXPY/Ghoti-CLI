@@ -1,5 +1,6 @@
 require! {
     './static': { version }
+    './whatis': { whatis }
 }
 
 const log = (...text) -> 
@@ -211,7 +212,11 @@ const logWhatIs = (keyword) ->
     const title = '🐟  > 🏇🏼  Ghoti-CLI what is "' + keyword + '":'
     (log title)
     (logSeprate title.length)
-    (logPad '| Not complated yet', 1)
+    const whatisK = (whatis keyword)
+    if whatisK
+    then whatisK.map (it) ->
+        (logPad '| ' + it, 1)
+    else (logPad '| Not complated yet', 1)
     (logSeprate title.length)
     (logFace!)
 
