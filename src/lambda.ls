@@ -21,6 +21,10 @@ const readFile = (root, name, ghoti) ->
     re
 
 const comImport = (ghoti) ->
+    if !Boolean ghoti.lambdas
+        (log 'ERROR, ghoti have no lambdas configeration')
+        (log 'Try to fix it: "ghoti fix"')
+        process.exit!
     re = (ghoti.lambdas.map ((it) ->
         "import * as " + (ghotiLambdaClassName it) + " from './" + (ghotiLambdaFileName it) + "';")).join("\r\n")
     re += "\r\n"
@@ -29,6 +33,10 @@ const comImport = (ghoti) ->
     re
 
 const lambda = (root, targetPath, name, ghoti, whenDone) ->
+    if !Boolean ghoti.lambdas
+        (log 'ERROR, ghoti have no lambdas configeration')
+        (log 'Try to fix it: "ghoti fix"')
+        process.exit!
     for i in ghoti.lambdas
         if(i === name)
             log '| ERROR: lambda "' + name + '" is already exist'

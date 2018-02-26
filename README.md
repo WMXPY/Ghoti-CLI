@@ -4,20 +4,7 @@
 
 ## Dependence
 
-You might need `make` to use pre configed commands, and `typescript` to reduce install time.
-
-To install make
-
-```bash
-# win32
-choco install make
-# ubuntu
-sudo apt-get install make
-# debian
-sudo yum install make
-# mac
-brew install make
-```
+You might need `typescript` to reduce install time.
 
 To install typescript
 
@@ -38,5 +25,11 @@ sudo npm install -g ghoti-cli
 ## Usage
 
 ```bash
-ghoti init react ./path
+ghoti init [type] [path]
+```
+
+find available types with 
+
+```bash
+ghoti info init
 ```

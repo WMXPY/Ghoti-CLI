@@ -21,6 +21,10 @@ const readFile = (root, name, ghoti) ->
     re
 
 const comImport = (ghoti) ->
+    if !Boolean ghoti.pages
+        (log 'ERROR, ghoti have no pages configeration')
+        (log 'Try to fix it: "ghoti fix"')
+        process.exit!
     re = (ghoti.pages.map ((it) ->
         "import " + (ghotiPageClassName it) + " from './" + (ghotiPageFileName it) + "';")).join("\r\n")
     re += "\r\n"
@@ -29,6 +33,10 @@ const comImport = (ghoti) ->
     re
 
 const page = (root, targetPath, name, ghoti, whenDone) ->
+    if !Boolean ghoti.pages
+        (log 'ERROR, ghoti have no pages configeration')
+        (log 'Try to fix it: "ghoti fix"')
+        process.exit!
     for i in ghoti.pages
         if(i === name)
             log '| ERROR: page "' + name + '" is already exist'
