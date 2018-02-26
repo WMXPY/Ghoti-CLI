@@ -43,6 +43,8 @@ const excute = ->
             (init ghotiCLIPath, env.texture[0], env.texture[1], whenDone)
         case 'whatIs'
             fallthrough
+        case 'what'
+            fallthrough
         case 'whatis'
             (logWhatIs env.texture[0])
         case 'lambda'

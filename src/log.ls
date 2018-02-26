@@ -156,6 +156,8 @@ const logInfo = (command) ->
             (logPad '* example   - ghoti status', 2)
         case 'whatIs'
             fallthrough
+        case 'what'
+            fallthrough
         case 'whatis'
             (logPad '| Command : show info of a keyword', 1)
             (logPad '* example   - ghoti whatis react-ssr', 2)
@@ -245,3 +247,4 @@ export logCommand
 export logVersion
 export logUnknown
 export logPostInstall
+export logWhatIs
