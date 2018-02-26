@@ -4,8 +4,8 @@
     "description": "${|description|}",
     "private": true,
     "scripts": {
-        "start": "webpack-dev-server --config .\webpack.dev.js",
-        "build": "webpack --config .\webpack.config.js",
+        "start": "webpack-dev-server --config .\\webpack.dev.js",
+        "build": "webpack --config .\\webpack.config.js",
         "test": "mocha"
     },
     "author": "${|author|}",
