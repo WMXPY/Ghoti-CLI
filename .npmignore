@@ -4,3 +4,6 @@ tex
 .ghoticonfig
 .gitignore
 makefile
+test
+script
+package-lock.json
