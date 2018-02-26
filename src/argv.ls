@@ -10,7 +10,8 @@ const mode = path_argv.shift!
 const path_path = process.cwd!
 ghotiConfig
 if (fs.existsSync (path.join path_path, '.ghoticonfig'))
-    ghotiConfig = (JSON.parse (fs.readFileSync (path.join path_path, '.ghoticonfig')).toString!)
+then ghotiConfig = (JSON.parse (fs.readFileSync (path.join path_path, '.ghoticonfig')).toString!)
+else ghotiConfig = {}
 
 const env =
     mode: mode ? 'empty'
