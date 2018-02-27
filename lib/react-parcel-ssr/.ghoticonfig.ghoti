@@ -1,7 +1,7 @@
 {
     "type": "project",
     "template": "react",
-    "sub": "ssr",
+    "sub": "parcel-ssr",
     "version": "${|version|}",
     "title": "${|title|}",
     "description": "${|description|}",
@@ -13,13 +13,13 @@
                 "router": "browser-router"
             }
         },
-        "pack": "webpack",
+        "pack": "parcel",
         "test": {
             "test": "mocha",
             "expect": "code",
             "render": "enzyme"
         },
-        "style": "scss",
+        "style": "sass",
         "sub": "typescript"
     },
     "components": [
