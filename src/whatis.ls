@@ -47,6 +47,12 @@ const whatis = (keyword) ->
             'unstructured'
             'cannot use ghoti extend commands in the repo'
         ]
+        'git-init': [
+            'git init'
+            'git add .'
+            'git remote add origin https://github.com/somewhere.git'
+            'git push -u origin master'
+        ]
         '.ghoticonfig': [
             'configeration of ghoti project'
         ]

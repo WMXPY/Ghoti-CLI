@@ -253,6 +253,8 @@ const logPostInstall = (targetPath, typescript) ->
     (logPad '* npm start     --> to start development', 2)
     (logPad '* npm run build --> to build project', 2)
     (logPad '* npm test      --> to run unit tests', 2)
+    (logPad '| TIPS: How to init a git repo, try:', 1)
+    (logPad '* ghoti whatis git-init', 2)
     (log '')
 
 export log
