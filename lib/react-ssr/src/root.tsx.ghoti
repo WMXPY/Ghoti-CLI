@@ -4,10 +4,6 @@
  */
 
 import * as React from 'react';
-import * as Component from './component/import';
-import * as Func from './func/import';
-import * as Lambda from './lambda/import';
-import * as Page from './page/import';
 
 import { renderRoutes } from 'react-router-config';
 
@@ -18,17 +14,9 @@ export interface IProps {
     route: any;
 }
 
-export interface IState {
-
-}
-
-class AppRoot extends React.Component<IProps,IState> {
+class AppRoot extends React.Component<IProps, {}> {
     public render() {
-        return (
-            <div>
-                {renderRoutes(this.props.route.routes)}
-            </div>
-        );
+        return renderRoutes(this.props.route.routes);
     }
 }
 
