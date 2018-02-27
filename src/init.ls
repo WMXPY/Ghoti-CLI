@@ -20,6 +20,8 @@ const switchRoot = (type, ghoti_root) ->
             (path.join ghoti_root, "lib", "react-js-normal")
         case 'react-ssr'
             (path.join ghoti_root, "lib", "react-ssr")
+        case 'react-parcel-ssr'
+            (path.join ghoti_root, "lib", "react-parcel-ssr")
         case 'react-next-ssr'
             (path.join ghoti_root, "lib", "react-next-ssr")
         case 'react-lite'

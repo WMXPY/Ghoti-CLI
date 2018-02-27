@@ -190,6 +190,7 @@ const logInfo = (command) ->
             (logPad '# react              > normal react project, also alias as "react-normal"', 3)
             (logPad '# react-lite         > lite react project with no lint and test feature', 3)
             (logPad '# react-ssr          > react project with ssr feature', 3)
+            (logPad '# react-parcel-ssr   > parcel react project with ssr feature', 3)
             (logPad '# react-next-ssr     > webpack 4 react project with ssr feature', 3)
             (logPad '# react-unstructured > unstructured react project', 3)
             (logPad '# react-js           > normal react project, also alias as "react-js-normal"', 3)

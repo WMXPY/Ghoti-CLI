@@ -6,6 +6,13 @@ const whatis = (keyword) ->
             'test with mocha'
             'support server side render'
         ]
+        'react-parcel-ssr': [
+            'react single page application'
+            'use typescript'
+            'use parcel to pack'
+            'test with mocha'
+            'support server side render'
+        ]
         'react-next-ssr': [
             'react single page application'
             'use typescript'
