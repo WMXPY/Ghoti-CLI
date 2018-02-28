@@ -5,53 +5,46 @@ require! {
     './config': { updateConfig }
 }
 
-const ghotiLambdaClassName = (name) ->
-    "LambdaGhoti" + (name.substring 0,1).toUpperCase! + (name.substring 1, name.length)
+const ghotiTestClassName = (name) ->
+    "TestGhoti" + (name.substring 0,1).toUpperCase! + (name.substring 1, name.length)
 
-const ghotiLambdaFileName = (name) ->
-    name + ".lambda"
+const ghotiTestFileName = (name) ->
+    name + ".test.tsx"
 
-const ghotiLambdaExport = (name) ->
-    "    " + (ghotiLambdaClassName name) + " as " + name
+const ghotiFeatureClassName = (name) ->
+    "FeatureGhoti" + (name.substring 0,1).toUpperCase! + (name.substring 1, name.length)
+
+const ghotiFeatureFileName = (name) ->
+    name + ".feature"
 
 const readFile = (root, name, ghoti) ->
     re = ((fs.readFileSync root, 'utf8').toString!)
-    re = (re.replace /\${\|lambda\|}/g, (ghotiLambdaClassName name))
+    re = (re.replace /\${\|test\|}/g, (ghotiTestClassName name))
+    re = (re.replace /\${\|feature\|}/g, (ghotiFeatureClassName name))
     re = (re.replace /\${\|author\|}/g, ghoti.author || "unknown")
     re
 
-const comImport = (ghoti) ->
-    if !Boolean ghoti.lambdas
-        (log 'ERROR, ghoti have no lambdas configeration')
+const feature = (root, targetPath, name, ghoti, whenDone) ->
+    if !Boolean ghoti.features
+        (log 'ERROR, ghoti have no features configeration')
         (log 'Try to fix it: "ghoti fix"')
         process.exit!
-    re = (ghoti.lambdas.map ((it) ->
-        "import * as " + (ghotiLambdaClassName it) + " from './" + (ghotiLambdaFileName it) + "';")).join("\r\n")
-    re += "\r\n"
-    re += "export {\r\n" + (ghoti.lambdas.map ((it) ->
-        (ghotiLambdaExport it) + ",")).join("\r\n") + "\r\n};"
-    re
-
-const lambda = (root, targetPath, name, ghoti, whenDone) ->
-    if !Boolean ghoti.lambdas
-        (log 'ERROR, ghoti have no lambdas configeration')
-        (log 'Try to fix it: "ghoti fix"')
-        process.exit!
-    for i in ghoti.lambdas
+    for i in ghoti.features
         if(i === name)
-            log '| ERROR: lambda "' + name + '" is already exist'
-            log '| try "ghoti status" to see lambda list'
+            log '| ERROR: feature "' + name + '" is already exist'
+            log '| try "ghoti status" to see features list'
             whenDone!
             process.exit!
-    const target = (path.join targetPath, "src", "lambda", name + ".lambda.ts" )
-    const importTarget = (path.join targetPath, "src", "lambda", "import.ts" )
-    const data = (readFile (path.join root, "lib", "react", "lambda", "lambda.ts.ghoti"), name, ghoti)
-    (ghoti.lambdas.push name)
+    const target = (path.join targetPath, "test", (ghotiTestFileName name))
+    const featureTarget = (path.join targetPath, "feature", (ghotiFeatureFileName name))
+    const data = (readFile (path.join root, "lib", "react", "test", "test.test.tsx.ghoti"), name, ghoti)
+    const featureData = (readFile (path.join root, "lib", "react", "feature", "feature.feature"), name, ghoti)
+    (ghoti.features.push name)
     (log '| update .ghoticonfig file')
     (updateConfig ghoti)
-    (log '| update import setting')
-    (fs.writeFileSync importTarget, (comImport ghoti), 'utf8')
-    (log '| initialize lambda script')
+    (log '| initialize test script')
     (fs.writeFileSync target, data, 'utf8')
+    (log '| initialize feature file')
+    (fs.writeFileSync featureTarget, featureData, 'utf8')
 
-export lambda
+export feature
