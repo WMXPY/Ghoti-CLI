@@ -123,6 +123,8 @@ const postInstall = (type) ->
             '$empty'
             'Here is some useful npm shortcuts for your devlopment'
             '$empty'
+            'npm run feature [feature name]    > create a feature'
+            '$empty'
             'npm run build                     > bundle application for production'
             'npm start                         > start development with localhost server'
             'npm test                          > test features by mocha'
