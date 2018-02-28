@@ -4,6 +4,7 @@
     "description": "${|description|}",
     "private": true,
     "scripts": {
+        "component": "ghoti component",
         "feature": "ghoti feature",
         "func": "ghoti func",
         "lambda": "ghoti lambda",
