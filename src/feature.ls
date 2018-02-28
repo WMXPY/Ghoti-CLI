@@ -38,7 +38,7 @@ const feature = (root, targetPath, name, ghoti, whenDone) ->
     const target = (path.join targetPath, "test", (ghotiTestFileName name))
     const featureTarget = (path.join targetPath, "feature", (ghotiFeatureFileName name))
     const data = (readFile (path.join root, "lib", "react", "test", "test.test.tsx.ghoti"), name, ghoti)
-    const featureData = (readFile (path.join root, "lib", "react", "feature", "feature.feature"), name, ghoti)
+    const featureData = (readFile (path.join root, "lib", "react", "feature", "feature.feature.ghoti"), name, ghoti)
     (ghoti.features.push name)
     (log '| update .ghoticonfig file')
     (updateConfig ghoti)
