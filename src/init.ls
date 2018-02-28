@@ -20,8 +20,15 @@ const switchRoot = (type, ghoti_root) ->
             (path.join ghoti_root, "lib", "react-js-normal")
         case 'react-ssr'
             (path.join ghoti_root, "lib", "react-ssr")
+        case 'react-parcel-ssr'
+            log 'REACT PARCEL IS NOT SUPPORT WELL YET!!!!'
+            (path.join ghoti_root, "lib", "react-parcel-ssr")
+        case 'react-next-ssr'
+            (path.join ghoti_root, "lib", "react-next-ssr")
         case 'react-lite'
             (path.join ghoti_root, "lib", "react-lite")
+        case 'react-unstructured'
+            (path.join ghoti_root, "lib", "react-unstructured")
         default
             log 'init have to use format "ghoti init react/vue/react-native/electron-react root"'
             process.exit!
@@ -75,7 +82,7 @@ const init = (ghoti_root, type, targetPath, whenDone) ->
         process.exit!
     parseAll 'react' (re, typesciprt) ->
         (copyInit type, targetPath, re, root)
-        (logPostInstall targetPath, typesciprt)
+        (logPostInstall targetPath, type, typesciprt)
         (whenDone!)
         void
 

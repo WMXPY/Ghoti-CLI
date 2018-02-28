@@ -19,7 +19,7 @@
             "expect": "code",
             "render": "enzyme"
         },
-        "style": "scss",
+        "style": "sass",
         "sub": "typescript"
     },
     "components": [
@@ -32,6 +32,9 @@
 
     ],
     "lambdas": [
+        
+    ],
+    "features": [
         
     ]
 }

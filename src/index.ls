@@ -5,13 +5,14 @@ require! {
     os
     './config': config
     './config': { updateConfig }
-    './log': { log, logHelp, logInfo, logAbout, logVersion, logCommand, logUnknown, logStatus, logWhatIs }
+    './log': { log, logHelp, logHelpMore, logInfo, logPostNPMInstall, logAbout, logVersion, logCommand, logUnknown, logStatus, logWhatIs }
     './argv': { argv, env, ghotiConfig, path_ghoti }
     './init': { init }
     './component': { component }
     './page': { page }
     './lambda': { lambda }
     './func': { func }
+    './feature': { feature }
 }
 
 const ghoti = ghotiConfig
@@ -34,6 +35,8 @@ const excute = ->
             (logVersion!)
         case 'help'
             (logHelp!)
+        case 'help+'
+            (logHelpMore!)
         case 'status'
             (logStatus ghoti)
         case 'info'
@@ -47,9 +50,15 @@ const excute = ->
             fallthrough
         case 'whatis'
             (logWhatIs env.texture[0])
+        case 'post'
+            (logPostNPMInstall env.texture[0])
         case 'lambda'
             whenDone = (logCommand!)
             (lambda ghotiCLIPath, process.cwd!, env.texture[0], ghoti, whenDone)
+            (whenDone!)
+        case 'feature'
+            whenDone = (logCommand!)
+            (feature ghotiCLIPath, process.cwd!, env.texture[0], ghoti, whenDone)
             (whenDone!)
         case 'func'
             whenDone = (logCommand!)
