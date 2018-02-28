@@ -82,7 +82,7 @@ const init = (ghoti_root, type, targetPath, whenDone) ->
         process.exit!
     parseAll 'react' (re, typesciprt) ->
         (copyInit type, targetPath, re, root)
-        (logPostInstall targetPath, typesciprt)
+        (logPostInstall targetPath, type, typesciprt)
         (whenDone!)
         void
 

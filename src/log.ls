@@ -239,7 +239,7 @@ const logWhatIs = (keyword) ->
     (logSeprate title.length)
     (logFace!)
 
-const logPostInstall = (targetPath, typescript) ->
+const logPostInstall = (targetPath, type, typescript) ->
     (log '')
     (logPad 'Congratulations!!! 😎', 1)
     (log '')
