@@ -50,6 +50,7 @@ const logVersion = ->
     (log title)
     (logSeprate title.length)
     (logPad '| version : ' + version, 1)
+    (logPad '* try to update > npm install -g ghoti-cli', 2)
     (logPad '| info    : for more info, try "ghoti help"', 1)
     (logSeprate title.length)
     (logFace!)
@@ -103,8 +104,39 @@ const logAbout = ->
     (logPad '| source  : https://github.com/WMXPY/Ghoti-CLI', 1)
     (logPad '| author  : WMXPY', 1)
     (logPad '| version : ' + version, 1)
-    (logPad '* try to update > npm install -g ghoti-cli', 2)
+    (logPad '| license : CC-BY-SA', 1)
     (logPad '| website : http://mengw.io', 1)
+    (logPad '| contact : wm@mengw.io', 1)
+    (logSeprate title.length)
+    (logFace!)
+    process.exit!
+    void
+
+const logHelpMore = ->
+    const title ='🐟  > ⭐  Ghoti-CLI Available commands:'
+    (log title)
+    (logSeprate title.length)
+    (logPad '| help      : show command list', 1)
+    (logPad '| help+     : show command list with more example', 1)
+    (logPad '| status    : show status of current project', 1)
+    (logPad '| info      : show detail for a command', 1)
+    (logPad '* example - ghoti info init', 2)
+    (logPad '| whatis    : show info of a keyword', 1)
+    (logPad '* example - ghoti whatis react-ssr', 2)
+    (logPad '| init      : init a project', 1)
+    (logPad '* example - ghoti init react your-awesome-project', 2)
+    (logPad '| feature   : create a feature and testing case', 1)
+    (logPad '* example - ghoti feature your-awesome-feature', 2)
+    (logPad '| component : create a component', 1)
+    (logPad '* example - ghoti component your-awesome-component', 2)
+    (logPad '| page      : create a page', 1)
+    (logPad '* example - ghoti page your-awesome-page', 2)
+    (logPad '| lambda    : create a lambda function set', 1)
+    (logPad '* example - ghoti lambda your-awesome-function-name', 2)
+    (logPad '| func      : create a function set', 1)
+    (logPad '* example - ghoti func your-awesome-function-name', 2)
+    (logPad '| about     : show about message', 1)
+    (logPad '| version   : show current version', 1)
     (logSeprate title.length)
     (logFace!)
     process.exit!
@@ -118,21 +150,16 @@ const logHelp = (isEmpty?) ->
     (log title)
     (logSeprate title.length)
     (logPad '| help      : show command list', 1)
+    (logPad '| help+     : show command list with more example', 1)
     (logPad '| status    : show status of current project', 1)
     (logPad '| info      : show detail for a command', 1)
-    (logPad '* example - ghoti info init', 2)
     (logPad '| whatis    : show info of a keyword', 1)
-    (logPad '* example - ghoti whatis react-ssr', 2)
     (logPad '| init      : init a project', 1)
-    (logPad '* example - ghoti init react your-awesome-project', 2)
+    (logPad '| feature   : create a feature and testing case', 1)
     (logPad '| component : create a component', 1)
-    (logPad '* example - ghoti component your-awesome-component', 2)
     (logPad '| page      : create a page', 1)
-    (logPad '* example - ghoti page your-awesome-page', 2)
     (logPad '| lambda    : create a lambda function set', 1)
-    (logPad '* example - ghoti lambda your-awesome-function-name', 2)
     (logPad '| func      : create a function set', 1)
-    (logPad '* example - ghoti func your-awesome-function-name', 2)
     (logPad '| about     : show about message', 1)
     (logPad '| version   : show current version', 1)
     (logSeprate title.length)
@@ -215,9 +242,17 @@ const logInfo = (command) ->
             (logPad '* example   - ghoti component your-awesome-component', 2)
             (logPad '* arguments - ghoti component [component name]', 2)
             (logPad '* name      - name could be any component name you want', 2)
+        case 'feature'
+            (logPad '| Command : create a feature and testing case', 1)
+            (logPad '* example   - ghoti feature your-awesome-feature', 2)
+            (logPad '* arguments - ghoti feature [feature name]', 2)
+            (logPad '* name      - name could be any feature name you want', 2)
         case 'help'
             (logPad '| Command : show command list', 1)
             (logPad '* example   - ghoti help', 2)
+        case 'help+'
+            (logPad '| Command : show command list with more example', 1)
+            (logPad '* example   - ghoti help+', 2)
         default
             (logPad '| Unknown command - "' + command + '"', 1)
             (logPad '| "ghoti ' + command + '" is not a functional command for ghoti', 1)
@@ -259,6 +294,7 @@ const logPostInstall = (targetPath, type, typescript) ->
 
 export log
 export logHelp
+export logHelpMore
 export logInfo
 export logAbout
 export logStatus

@@ -5,7 +5,7 @@ require! {
     os
     './config': config
     './config': { updateConfig }
-    './log': { log, logHelp, logInfo, logAbout, logVersion, logCommand, logUnknown, logStatus, logWhatIs }
+    './log': { log, logHelp, logHelpMore, logInfo, logAbout, logVersion, logCommand, logUnknown, logStatus, logWhatIs }
     './argv': { argv, env, ghotiConfig, path_ghoti }
     './init': { init }
     './component': { component }
@@ -35,6 +35,8 @@ const excute = ->
             (logVersion!)
         case 'help'
             (logHelp!)
+        case 'help+'
+            (logHelpMore!)
         case 'status'
             (logStatus ghoti)
         case 'info'
