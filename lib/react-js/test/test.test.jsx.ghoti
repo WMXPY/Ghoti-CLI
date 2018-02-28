@@ -21,12 +21,14 @@ configure({
 
 describe('${|test|}', () => {
 
+    let ${|test|}
+
     beforeEach(() => {
-        // do
+        ${|test|} = shallow(<div>${|test|}</div>);
     });
 
     it('${|test|}', () => {
-        expect('qqq'.to.be.equal('qqq'));
+        expect(${|test|}.type()).to.be.equal('div');
     });
 
 });

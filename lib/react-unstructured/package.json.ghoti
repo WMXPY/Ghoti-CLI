@@ -4,8 +4,10 @@
     "description": "${|description|}",
     "private": true,
     "scripts": {
-        "start": "webpack-dev-server --config .\\webpack.dev.js",
         "build": "webpack --config .\\webpack.config.js",
+        "feature": "ghoti feautre",
+        "postinstall": "ghoti post unstructured",
+        "start": "webpack-dev-server --config .\\webpack.dev.js",
         "test": "mocha"
     },
     "author": "${|author|}",

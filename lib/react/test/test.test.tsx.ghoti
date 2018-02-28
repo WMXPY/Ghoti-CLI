@@ -5,10 +5,11 @@
  * @fileoverview Feature description ${|feature|}
  */
 
-import React from 'react';
 import { expect } from 'code';
 import { shallow, configure } from 'enzyme';
-import Adapter from 'enzyme-adapter-react-16';
+
+import * as React from 'react';
+import * as Adapter from 'enzyme-adapter-react-16';
 
 import * as Component from '../src/component/import';
 import * as Func from '../src/func/import';
@@ -19,14 +20,16 @@ configure({
     adapter: new Adapter(),
 });
 
-describe('${|test|}', () => {
+describe('${|test|}', (): void => {
 
-    beforeEach(() => {
-        // do
+    let ${|test|}: ShallowWrapper<HTMLElement>;
+
+    beforeEach((): void => {
+        ${|test|} = shallow(<div>${|test|}</div>);
     });
 
-    it('${|test|}', () => {
-        expect('qqq'.to.be.equal('qqq'));
+    it('${|test|}', (): void => {
+        expect(${|test|}.type()).to.be.equal('div');
     });
 
 });
