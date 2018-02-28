@@ -5,7 +5,7 @@
     "private": true,
     "scripts": {
         "build": "webpack --config .\\webpack.config.js",
-        "feature": "ghoti feautre",
+        "feature": "ghoti feature",
         "func": "ghoti func",
         "lambda": "ghoti lambda",
         "page": "ghoti page",
