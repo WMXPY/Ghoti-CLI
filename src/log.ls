@@ -1,6 +1,6 @@
 require! {
     './static': { version }
-    './whatis': { whatis }
+    './whatis': { whatis, postInstall }
 }
 
 const log = (...text) -> 
@@ -137,6 +137,9 @@ const logHelpMore = ->
     (logPad '* example - ghoti func your-awesome-function-name', 2)
     (logPad '| about     : show about message', 1)
     (logPad '| version   : show current version', 1)
+    (logPad '| post      : show post install information', 1)
+    (logPad '* info    - normally you don\'t need to call this function', 2)
+    (logPad '* example - ghoti post type', 2)
     (logSeprate title.length)
     (logFace!)
     process.exit!
@@ -162,6 +165,7 @@ const logHelp = (isEmpty?) ->
     (logPad '| func      : create a function set', 1)
     (logPad '| about     : show about message', 1)
     (logPad '| version   : show current version', 1)
+    (logPad '| post      : show post install information', 1)
     (logSeprate title.length)
     (logFace!)
     process.exit!
@@ -203,6 +207,11 @@ const logInfo = (command) ->
             (logPad '* example   - ghoti whatis react-ssr', 2)
             (logPad '* arguments - ghoti whatis [keyword]', 2)
             (logPad '* command   - keyword could be any thing, you will know if it not in the database of ghoti', 2)
+        case 'post'
+            (logPad '| Command : show post install information', 1)
+            (logPad '* info      - normally you don\'t need to call this function', 2)
+            (logPad '* arguments - ghoti post [type]', 2)
+            (logPad '* command   - keyword should be a init type of ghoti init', 2)
         case 'info'
             (logPad '| Command : show detail of a command', 1)
             (logPad '* example   - ghoti info init', 2)
@@ -274,6 +283,18 @@ const logWhatIs = (keyword) ->
     (logSeprate title.length)
     (logFace!)
 
+const logPostNPMInstall = (type) ->
+    const title = '🐟  > 🦉  Ghoti-CLI information "' + type + '":'
+    (log title)
+    (logSeprate title.length)
+    const postInstallK = (postInstall type)
+    if postInstallK
+    then postInstallK.map (it) ->
+        (logPad '| ' + it, 1)
+    else (logPad '| "' + type + '" is not a exist ghoti init type' , 1)
+    (logSeprate title.length)
+    (logFace!)
+
 const logPostInstall = (targetPath, type, typescript) ->
     (log '')
     (logPad 'Congratulations!!! 😎', 1)
@@ -302,4 +323,5 @@ export logCommand
 export logVersion
 export logUnknown
 export logPostInstall
+export logPostNPMInstall
 export logWhatIs

@@ -5,7 +5,7 @@ require! {
     os
     './config': config
     './config': { updateConfig }
-    './log': { log, logHelp, logHelpMore, logInfo, logAbout, logVersion, logCommand, logUnknown, logStatus, logWhatIs }
+    './log': { log, logHelp, logHelpMore, logInfo, logPostNPMInstall, logAbout, logVersion, logCommand, logUnknown, logStatus, logWhatIs }
     './argv': { argv, env, ghotiConfig, path_ghoti }
     './init': { init }
     './component': { component }
@@ -50,6 +50,8 @@ const excute = ->
             fallthrough
         case 'whatis'
             (logWhatIs env.texture[0])
+        case 'post'
+            (logPostNPMInstall env.texture[0])
         case 'lambda'
             whenDone = (logCommand!)
             (lambda ghotiCLIPath, process.cwd!, env.texture[0], ghoti, whenDone)
