@@ -1,7 +1,7 @@
 require! {
     fs,
     path,
-    './log': { log }
+    './log': { log, logPad }
     './config': { updateConfig }
 }
 
@@ -34,15 +34,16 @@ const comImport = (ghoti) ->
 
 const component = (root, targetPath, name, ghoti, whenDone, env) ->
     if !Boolean ghoti.components
-        (log 'ERROR, ghoti have no components configeration')
-        (log 'Try to fix it: "ghoti fix"')
-        process.exit!
+        (logPad '| ERROR, ghoti have no components configeration', 1)
+        (logPad '| Try to fix it: "ghoti fix"', 1)
+        (whenDone!)
+        (process.exit!)
     for i in ghoti.components
         if(i === name)
-            log '| ERROR: component "' + name + '" is already exist'
-            log '| try "ghoti status" to see component list'
-            whenDone!
-            process.exit!
+            (log '| ERROR: component "' + name + '" is already exist')
+            (log '| try "ghoti status" to see component list')
+            (whenDone!)
+            (process.exit!)
     var data, target, importTarget
     switch ghoti.type
         case 'react'

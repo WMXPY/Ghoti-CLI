@@ -300,24 +300,38 @@ const logPostNPMInstall = (type, env?) ->
     (logFace!)
 
 const logPostInstall = (targetPath, type, typescript, env?) ->
-    (log '')
-    (logPad 'Congratulations!!! 😎', 1)
-    (log '')
-    (logPad '| All needed files are configed and "almost" ready to go!', 1)
-    (logPad '| JUST A FEW MORE STEP: ', 1)
-    (logPad '* cd ' + targetPath, 2)
-    (logPad '* npm install', 2)
-    if typescript
-    then (logPad '* npm link typescript', 2)
-    (logPad '| Thats all, have fun', 1)
-    (logPad '* npm start     --> to start development', 2)
-    (logPad '* npm run build --> to build project', 2)
-    (logPad '* npm test      --> to run unit tests', 2)
-    (logPad '| TIPS: How to init a git repo, try:', 1)
-    (logPad '* ghoti whatis git-init', 2)
-    (log '')
+    switch type
+        case 'feature'
+            (log '')
+            (logPad 'Congratulations!!! 😎', 1)
+            (log '')
+        default
+            (log '')
+            (logPad 'Congratulations!!! 😎', 1)
+            (log '')
+            (logPad '| All needed files are configed and "almost" ready to go!', 1)
+            (logPad '| JUST A FEW MORE STEP: ', 1)
+            (log '')
+            (logPad '* cd ' + targetPath, 2)
+            (logPad '* npm install', 2)
+            if typescript
+            then (logPad '* npm link typescript', 2)
+            (log '')
+            (logPad '| Thats all, have fun', 1)
+            (logPad '| You will see how to modify, develop, and build your project after install', 1)
+            (logPad '| You can also always checkout those information by use following methods', 1)
+            (logPad '* run "ghoti post ' + type + '" anywhere', 2)
+            (logPad '* run "npm hint" in your project folder', 2)
+            # (logPad '* npm start     --> to start development', 2)
+            # (logPad '* npm run build --> to build project', 2)
+            # (logPad '* npm test      --> to run unit tests', 2)
+            # (log '')
+            (logPad '| TIPS: How to init a git repo, try:', 1)
+            (logPad '* ghoti whatis git-init', 2)
+    void
 
 export log
+export logPad
 export logHelp
 export logHelpMore
 export logInfo
