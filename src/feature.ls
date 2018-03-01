@@ -24,7 +24,7 @@ const readFile = (root, name, ghoti) ->
     re = (re.replace /\${\|author\|}/g, ghoti.author || "unknown")
     re
 
-const feature = (root, targetPath, name, ghoti, whenDone) ->
+const feature = (root, targetPath, name, ghoti, whenDone, env) ->
     if !Boolean ghoti.features
         (log 'ERROR, ghoti have no features configeration')
         (log 'Try to fix it: "ghoti fix"')

@@ -32,7 +32,7 @@ const comImport = (ghoti) ->
         (ghotiComponentExport it) + ",")).join("\r\n") + "\r\n};"
     re
 
-const component = (root, targetPath, name, ghoti, whenDone) ->
+const component = (root, targetPath, name, ghoti, whenDone, env) ->
     if !Boolean ghoti.components
         (log 'ERROR, ghoti have no components configeration')
         (log 'Try to fix it: "ghoti fix"')

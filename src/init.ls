@@ -74,7 +74,7 @@ const copyInit = (type, targetPath, vars, root) ->
     (makeDir (path.join path_current, targetPath))
     (copyInitReacursion root, 0, (path.join path_current, targetPath), root.length, vars)
 
-const init = (ghoti_root, type, targetPath, whenDone) ->
+const init = (ghoti_root, type, targetPath, whenDone, env) ->
     # (copyInit type, targetPath, {})
     const root = (switchRoot type, ghoti_root)
     if !targetPath

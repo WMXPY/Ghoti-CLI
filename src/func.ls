@@ -32,7 +32,7 @@ const comImport = (ghoti) ->
         (ghotiFuncExport it) + ",")).join("\r\n") + "\r\n};"
     re
 
-const func = (root, targetPath, name, ghoti, whenDone) ->
+const func = (root, targetPath, name, ghoti, whenDone, env) ->
     if !Boolean ghoti.funcs
         (log 'ERROR, ghoti have no functions configeration')
         (log 'Try to fix it: "ghoti fix"')

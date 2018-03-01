@@ -28,56 +28,56 @@ const excute = ->
     var whenDone
     switch(env.mode)
         case 'about'
-            (logAbout!)
+            (logAbout env)
         case 'empty'
-            (logHelp true)
+            (logHelp true, env)
         case 'version'
-            (logVersion!)
+            (logVersion env)
         case 'help'
-            (logHelp!)
+            (logHelp false, env)
         case 'help+'
-            (logHelpMore!)
+            (logHelpMore env)
         case 'status'
-            (logStatus ghoti)
+            (logStatus ghoti, env)
         case 'info'
-            (logInfo env.texture[0])
+            (logInfo env.texture[0], env)
         case 'init'
             whenDone = (logCommand!)
-            (init ghotiCLIPath, env.texture[0], env.texture[1], whenDone)
+            (init ghotiCLIPath, env.texture[0], env.texture[1], whenDone, env)
         case 'whatIs'
             fallthrough
         case 'what'
             fallthrough
         case 'whatis'
-            (logWhatIs env.texture[0])
+            (logWhatIs env.texture[0], env)
         case 'post'
-            (logPostNPMInstall env.texture[0])
+            (logPostNPMInstall env.texture[0], env)
         case 'lambda'
             whenDone = (logCommand!)
-            (lambda ghotiCLIPath, process.cwd!, env.texture[0], ghoti, whenDone)
+            (lambda ghotiCLIPath, process.cwd!, env.texture[0], ghoti, whenDone, env)
             (whenDone!)
         case 'feature'
             whenDone = (logCommand!)
-            (feature ghotiCLIPath, process.cwd!, env.texture[0], ghoti, whenDone)
+            (feature ghotiCLIPath, process.cwd!, env.texture[0], ghoti, whenDone, env)
             (whenDone!)
         case 'func'
             whenDone = (logCommand!)
-            (func ghotiCLIPath, process.cwd!, env.texture[0], ghoti, whenDone)
+            (func ghotiCLIPath, process.cwd!, env.texture[0], ghoti, whenDone, env)
             (whenDone!)
         case 'function'
             whenDone = (logCommand 'function', 'func')
-            (func ghotiCLIPath, process.cwd!, env.texture[0], ghoti, whenDone)
+            (func ghotiCLIPath, process.cwd!, env.texture[0], ghoti, whenDone, env)
             (whenDone!)
         case 'page'
             whenDone = (logCommand!)
-            (page ghotiCLIPath, process.cwd!, env.texture[0], ghoti, whenDone)
+            (page ghotiCLIPath, process.cwd!, env.texture[0], ghoti, whenDone, env)
             (whenDone!)
         case 'component'
             whenDone = (logCommand!)
-            (component ghotiCLIPath, process.cwd!, env.texture[0], ghoti, whenDone)
+            (component ghotiCLIPath, process.cwd!, env.texture[0], ghoti, whenDone, env)
             (whenDone!)
         default
-            (logUnknown!)
+            (logUnknown env)
     void
 
 export excute

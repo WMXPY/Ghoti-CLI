@@ -32,7 +32,7 @@ const comImport = (ghoti) ->
         (ghotiLambdaExport it) + ",")).join("\r\n") + "\r\n};"
     re
 
-const lambda = (root, targetPath, name, ghoti, whenDone) ->
+const lambda = (root, targetPath, name, ghoti, whenDone, env) ->
     if !Boolean ghoti.lambdas
         (log 'ERROR, ghoti have no lambdas configeration')
         (log 'Try to fix it: "ghoti fix"')

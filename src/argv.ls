@@ -15,6 +15,7 @@ else ghotiConfig = {}
 
 const env =
     mode: mode ? 'empty'
+    auto: false
     test: false
     output: false
     debug: false
@@ -26,6 +27,8 @@ const command = (command) ->
             'test'
         case '-o'
             'output'
+        case '-a'
+            'auto'
         case '-d'
             fallthrough
         default

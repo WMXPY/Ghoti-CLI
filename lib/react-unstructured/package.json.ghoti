@@ -5,8 +5,9 @@
     "private": true,
     "scripts": {
         "build": "webpack --config .\\webpack.config.js",
-        "feature": "ghoti feature",
-        "postinstall": "ghoti post unstructured",
+        "feature": "ghoti feature -a",
+        "hint": "ghoti post -a unstructured",
+        "postinstall": "ghoti post -a unstructured",
         "start": "webpack-dev-server --config .\\webpack.dev.js",
         "test": "mocha"
     },

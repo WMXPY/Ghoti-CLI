@@ -45,7 +45,7 @@ const logCommand = (command?, original?) ->
         logFace!
         void
 
-const logVersion = ->
+const logVersion = (env?) ->
     const title = '🐟  > 📜  Ghoti-CLI Version:'
     (log title)
     (logSeprate title.length)
@@ -57,7 +57,7 @@ const logVersion = ->
     process.exit!
     void
 
-const logStatus = (ghoti) ->
+const logStatus = (ghoti, env?) ->
     if (
     !Boolean ghoti.template 
     || !Boolean ghoti.author
@@ -97,7 +97,7 @@ const logStatus = (ghoti) ->
     process.exit!
     void
 
-const logAbout = ->
+const logAbout = (env?) ->
     const title = '🐟  > 📖  Ghoti-CLI About:'
     (log title)
     (logSeprate title.length)
@@ -112,7 +112,7 @@ const logAbout = ->
     process.exit!
     void
 
-const logHelpMore = ->
+const logHelpMore = (env?) ->
     const title ='🐟  > ⭐  Ghoti-CLI Available commands:'
     (log title)
     (logSeprate title.length)
@@ -145,7 +145,7 @@ const logHelpMore = ->
     process.exit!
     void
 
-const logHelp = (isEmpty?) ->
+const logHelp = (isEmpty?, env?) ->
     var title
     if isEmpty
     then title = '🐟  > 🏠  Ghoti-CLI Available commands:'
@@ -171,17 +171,17 @@ const logHelp = (isEmpty?) ->
     process.exit!
     void
 
-const logUnknown = ->
+const logUnknown = (env?) ->
     const title = '🐟  > 🙋  Ghoti-CLI Unknown command:'
     (log title)
     (logSeprate title.length)
-    (logPad '| You just inputed a unknown command, try "Ghoti help" for command list', 1)
+    (logPad '| You just inputed a unknown command, try "ghoti help" for command list', 1)
     (logSeprate title.length)
     (logFace!)
     # process.exit!
     void
 
-const logInfo = (command) ->
+const logInfo = (command, env?) ->
     var title
     if (Boolean command)
     then title = '🐟  > 📺  Ghoti-CLI Command information ' + command + ':'
@@ -271,7 +271,7 @@ const logInfo = (command) ->
     process.exit!
     void
 
-const logWhatIs = (keyword) ->
+const logWhatIs = (keyword, env?) ->
     const title = '🐟  > 🏇🏼  Ghoti-CLI what is "' + keyword + '":'
     (log title)
     (logSeprate title.length)
@@ -283,19 +283,23 @@ const logWhatIs = (keyword) ->
     (logSeprate title.length)
     (logFace!)
 
-const logPostNPMInstall = (type) ->
+const logPostNPMInstall = (type, env?) ->
     const title = '🐟  > 🦉  Ghoti-CLI information "' + type + '":'
     (log title)
     (logSeprate title.length)
     const postInstallK = (postInstall type)
     if postInstallK
     then postInstallK.map (it) ->
-        (logPad '| ' + it, 1)
+        switch it
+            case '$empty'
+                (log '')
+            default
+                (logPad '| ' + it, 1)
     else (logPad '| "' + type + '" is not a exist ghoti init type' , 1)
     (logSeprate title.length)
     (logFace!)
 
-const logPostInstall = (targetPath, type, typescript) ->
+const logPostInstall = (targetPath, type, typescript, env?) ->
     (log '')
     (logPad 'Congratulations!!! 😎', 1)
     (log '')

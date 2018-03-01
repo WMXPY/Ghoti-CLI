@@ -32,7 +32,7 @@ const comImport = (ghoti) ->
         (ghotiPageExport it) + ",")).join("\r\n") + "\r\n};"
     re
 
-const page = (root, targetPath, name, ghoti, whenDone) ->
+const page = (root, targetPath, name, ghoti, whenDone, env) ->
     if !Boolean ghoti.pages
         (log 'ERROR, ghoti have no pages configeration')
         (log 'Try to fix it: "ghoti fix"')
