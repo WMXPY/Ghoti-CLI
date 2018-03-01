@@ -6,7 +6,7 @@
  */
 
 import { expect } from 'code';
-import { shallow, configure } from 'enzyme';
+import { shallow, ShallowWrapper, configure } from 'enzyme';
 
 import * as React from 'react';
 import * as Adapter from 'enzyme-adapter-react-16';
