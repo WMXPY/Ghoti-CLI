@@ -101,11 +101,11 @@ const logAbout = (env?) ->
     const title = '🐟  > 📖  Ghoti-CLI About:'
     (log title)
     (logSeprate title.length)
-    (logPad '| source  : https://github.com/WMXPY/Ghoti-CLI', 1)
+    (logPad '| source  : //github.com/WMXPY/Ghoti-CLI', 1)
     (logPad '| author  : WMXPY', 1)
     (logPad '| version : ' + version, 1)
     (logPad '| license : CC-BY-SA', 1)
-    (logPad '| website : http://mengw.io', 1)
+    (logPad '| website : //mengw.io', 1)
     (logPad '| contact : wm@mengw.io', 1)
     (logSeprate title.length)
     (logFace!)
@@ -278,8 +278,10 @@ const logWhatIs = (keyword, env?) ->
     const whatisK = (whatis keyword)
     if whatisK
     then whatisK.map (it) ->
-        (logPad '| ' + it, 1)
-    else (logPad '| Not complated yet', 1)
+            (logPad '| ' + it, 1)
+    # else if 1111
+    #     1
+    else (logPad '| "' + keyword + '" is not in ghoti database')
     (logSeprate title.length)
     (logFace!)
 
