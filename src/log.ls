@@ -317,7 +317,8 @@ const logPostInstall = (targetPath, type, typescript, env?) ->
             (logPad '* cd ' + targetPath, 2)
             (logPad '* npm install', 2)
             if typescript
-            then (logPad '* npm link typescript', 2)
+                (logPad '* npm link typescript', 2)
+                (logPad '* version of typescript must be >= 2.7.0', 2)
             (log '')
             (logPad '| Thats all, have fun', 1)
             (logPad '| You will see how to modify, develop, and build your project after install', 1)
