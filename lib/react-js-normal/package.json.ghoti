@@ -4,6 +4,18 @@
     "description": "${|description|}",
     "private": true,
     "scripts": {
+<<<<<<< Updated upstream
+=======
+<<<<<<< HEAD
+        "build": "webpack --config webpack.config.js",
+        "feature": "ghoti feature",
+        "func": "ghoti func",
+        "lambda": "ghoti lambda",
+        "page": "ghoti page",
+        "postinstall": "ghoti post react-js-normal",
+        "start": "webpack-dev-server --config webpack.dev.js --open",
+=======
+>>>>>>> Stashed changes
         "build": "webpack --config .\\webpack.config.js",
         "component": "ghoti component -a",
         "feature": "ghoti feature -a",
@@ -13,6 +25,7 @@
         "page": "ghoti page -a",
         "postinstall": "ghoti post -a react-ssr",
         "start": "webpack-dev-server --config .\\webpack.dev.js",
+>>>>>>> 179c006bb56486b201093b3c2d8818086c034a5f
         "test": "mocha"
     },
     "author": "${|author|}",

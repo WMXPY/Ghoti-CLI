@@ -43,7 +43,7 @@ let config = {
             },
             {
                 enforce: "pre",
-                test: /\.js$/,
+                test: /\.(t|j)sx?$/,
                 loader: "source-map-loader",
             }
         ]
