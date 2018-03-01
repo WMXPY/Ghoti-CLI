@@ -4,15 +4,12 @@
     "description": "${|description|}",
     "private": true,
     "scripts": {
-<<<<<<< Updated upstream
-=======
 <<<<<<< HEAD
         "build": "webpack --config webpack.config.js",
         "feature": "ghoti feature",
         "postinstall": "ghoti post unstructured",
         "start": "webpack-dev-server --config webpack.dev.js --open",
 =======
->>>>>>> Stashed changes
         "build": "webpack --config .\\webpack.config.js",
         "feature": "ghoti feature -a",
         "hint": "ghoti post -a unstructured",
