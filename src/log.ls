@@ -128,6 +128,8 @@ const logHelpMore = (env?) ->
     (logPad '* example - ghoti fix some-issue', 2)
     (logPad '| init * *    : init a project', 1)
     (logPad '* example - ghoti init react your-awesome-project', 2)
+    (loaPad '| update      : update ghoti-cli version of current project', 1)
+    (loaPad '* example - ghoti update', 2)
     (logPad '| feature *   : create a feature and testing case', 1)
     (logPad '* example - ghoti feature your-awesome-feature', 2)
     (logPad '| component * : create a component', 1)
@@ -163,6 +165,7 @@ const logHelp = (isEmpty?, env?) ->
     (logPad '| fix         : try to auto fix issue', 1)    
     (logPad '| fix *       : show error message if it is knowned', 1)
     (logPad '| init * *    : init a project', 1)
+    (loaPad '| update      : update ghoti-cli version of current project', 1)
     (logPad '| feature *   : create a feature and testing case', 1)
     (logPad '| component * : create a component', 1)
     (logPad '| page *      : create a page', 1)
@@ -243,6 +246,9 @@ const logInfo = (command, env?) ->
             (logPad '# react-unstructured > unstructured react project', 3)
             (logPad '# react-js           > normal react project, also alias as "react-js-normal"', 3)
             (logPad '* name      - name could be anything you want for your project', 2)
+        case 'update'
+            (logPad '| Command : update ghoti-cli version of current project', 1)
+            (logPad '* example   - ghoti update', 2)
         case 'page'
             (logPad '| Command : create a page', 1)
             (logPad '* example   - ghoti page your-awesome-page', 2)
@@ -316,6 +322,9 @@ const logPostNPMInstall = (type, env?) ->
     (logSeprate title.length)
     (logFace!)
 
+const logUpdate = (ghoti, env?) ->
+    log ghoti
+
 const logPostInstall = (targetPath, type, typescript, env?) ->
     switch type
         case 'feature'
@@ -361,3 +370,4 @@ export logUnknown
 export logPostInstall
 export logPostNPMInstall
 export logWhatIs
+export logUpdate
