@@ -53,7 +53,7 @@ const excute = ->
             (logWhatIs env.texture[0], env)
         case 'fix'
             whenDone = (logCommand!)
-            (fix env.texture[0], whenDone, env)
+            (fix env.texture[0], ghoti, whenDone, env)
         case 'post'
             (logPostNPMInstall env.texture[0], env)
         case 'lambda'
