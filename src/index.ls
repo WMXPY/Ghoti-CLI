@@ -13,6 +13,7 @@ require! {
     './lambda': { lambda }
     './func': { func }
     './feature': { feature }
+    './fix': { fix }
 }
 
 const ghoti = ghotiConfig
@@ -50,6 +51,9 @@ const excute = ->
             fallthrough
         case 'whatis'
             (logWhatIs env.texture[0], env)
+        case 'fix'
+            whenDone = (logCommand!)
+            (fix env.texture[0], whenDone, env)
         case 'post'
             (logPostNPMInstall env.texture[0], env)
         case 'lambda'
