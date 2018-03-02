@@ -3,35 +3,14 @@ require! {
     path
     './log': { log, logPostInstall }
     './parser': { parseAll, parseFile }
+    './lib': { lib }
 }
 
 const switchRoot = (type, ghoti_root) ->
-    switch(type)
-        case 'react-normal'
-            fallthrough
-        case 'react'
-            (path.join ghoti_root, "lib", "react-normal")
-        case 'react-normal-js'
-            fallthrough
-        case 'react-js-normal'
-            fallthrough
-        case 'react-js'
-            (log 'REACT JS IS NOT SUPPORT WELL YET!!!!')
-            (path.join ghoti_root, "lib", "react-js-normal")
-        case 'react-ssr'
-            (path.join ghoti_root, "lib", "react-ssr")
-        case 'react-parcel-ssr'
-            (log 'REACT PARCEL IS NOT SUPPORT WELL YET!!!!')
-            (path.join ghoti_root, "lib", "react-parcel-ssr")
-        case 'react-next-ssr'
-            (path.join ghoti_root, "lib", "react-next-ssr")
-        case 'react-lite'
-            (path.join ghoti_root, "lib", "react-lite")
-        case 'react-unstructured'
-            (path.join ghoti_root, "lib", "react-unstructured")
-        default
-            (log 'init have to use format "ghoti init react/vue/react-native/electron-react root"')
-            process.exit!
+    const re = (lib type, ghoti_root)
+    if re
+    then re.path
+    else null
 
 const copyToPath = (root, data) -> 
     if (root.substring root.length - 6, root.length) === '.ghoti'
@@ -76,10 +55,11 @@ const copyInit = (type, targetPath, vars, root) ->
 
 const init = (ghoti_root, type, targetPath, whenDone, env) ->
     # (copyInit type, targetPath, {})
-    const root = (switchRoot type, ghoti_root)
     if !targetPath
         (log 'init have to use format "ghoti init react/vue/react-native/electron-react root"')
         (process.exit!)
+    const root = (switchRoot type, ghoti_root)
+    
     (parseAll 'react' (re, typesciprt) ->
         (copyInit type, targetPath, re, root)
         (logPostInstall targetPath, type, typesciprt)
