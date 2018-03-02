@@ -22,7 +22,7 @@ if os.platform! === 'win32'
 then ghotiCLIPath = (path.join path_ghoti, "..", "..")
 else ghotiCLIPath = (path.join path_ghoti, "..", "..", "lib", "node_modules", "ghoti-cli")
 
-argv!
+(argv!)
 
 const excute = ->
     var whenDone

@@ -33,7 +33,7 @@ const tempConfig = (type) ->
 const getConfig = ->
     var config
 
-    const path_current = process.cwd!
+    const path_current = (process.cwd!)
     const configExist = (fs.existsSync (path.join path_current, '.ghoticonfig'))
 
     if configExist
@@ -43,7 +43,7 @@ const getConfig = ->
     config
 
 const writeConfig = (config) ->
-    const path_current = process.cwd!
+    const path_current = (process.cwd!)
     const configExist = (fs.existsSync path.join path_current, '.ghoticonfig')
     
     if configExist

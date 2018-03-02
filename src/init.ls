@@ -16,12 +16,12 @@ const switchRoot = (type, ghoti_root) ->
         case 'react-js-normal'
             fallthrough
         case 'react-js'
-            log 'REACT JS IS NOT SUPPORT WELL YET!!!!'
+            (log 'REACT JS IS NOT SUPPORT WELL YET!!!!')
             (path.join ghoti_root, "lib", "react-js-normal")
         case 'react-ssr'
             (path.join ghoti_root, "lib", "react-ssr")
         case 'react-parcel-ssr'
-            log 'REACT PARCEL IS NOT SUPPORT WELL YET!!!!'
+            (log 'REACT PARCEL IS NOT SUPPORT WELL YET!!!!')
             (path.join ghoti_root, "lib", "react-parcel-ssr")
         case 'react-next-ssr'
             (path.join ghoti_root, "lib", "react-next-ssr")
@@ -30,7 +30,7 @@ const switchRoot = (type, ghoti_root) ->
         case 'react-unstructured'
             (path.join ghoti_root, "lib", "react-unstructured")
         default
-            log 'init have to use format "ghoti init react/vue/react-native/electron-react root"'
+            (log 'init have to use format "ghoti init react/vue/react-native/electron-react root"')
             process.exit!
 
 const copyToPath = (root, data) -> 
@@ -52,7 +52,7 @@ const logPath = (text, level) ->
     (log space + text)
 
 const copyInitReacursion = (root, level, targetPath, beforeLength, vars) ->
-    files = fs.readdirSync(root);
+    files = (fs.readdirSync(root))
 
     const eachFile = (file) ->
         const pathname = root + '/' + file
@@ -79,11 +79,11 @@ const init = (ghoti_root, type, targetPath, whenDone, env) ->
     const root = (switchRoot type, ghoti_root)
     if !targetPath
         (log 'init have to use format "ghoti init react/vue/react-native/electron-react root"')
-        process.exit!
-    parseAll 'react' (re, typesciprt) ->
+        (process.exit!)
+    (parseAll 'react' (re, typesciprt) ->
         (copyInit type, targetPath, re, root)
         (logPostInstall targetPath, type, typesciprt)
         (whenDone!)
-        void
+        void)
 
 export init

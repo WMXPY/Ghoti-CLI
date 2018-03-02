@@ -38,12 +38,12 @@ const getInput = (question, callback) ->
         output: process.stdout
         terminal: false
 
-    const rl = readline.createInterface intf
+    const rl = (readline.createInterface intf)
 
-    rl.question question, (answer) ->
-        rl.close!
-        callback answer
-        void
+    (rl.question question, (answer) ->
+        (rl.close!)
+        (callback answer)
+        void)
     void
 
 const parseAllIn = (textList, vars) ->

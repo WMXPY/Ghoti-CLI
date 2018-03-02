@@ -109,7 +109,7 @@ const logAbout = (env?) ->
     (logPad '| contact : wm@mengw.io', 1)
     (logSeprate title.length)
     (logFace!)
-    process.exit!
+    (process.exit!)
     void
 
 const logHelpMore = (env?) ->
@@ -142,7 +142,7 @@ const logHelpMore = (env?) ->
     (logPad '* example - ghoti post type', 2)
     (logSeprate title.length)
     (logFace!)
-    process.exit!
+    (process.exit!)
     void
 
 const logHelp = (isEmpty?, env?) ->
@@ -168,7 +168,7 @@ const logHelp = (isEmpty?, env?) ->
     (logPad '| post      : show post install information', 1)
     (logSeprate title.length)
     (logFace!)
-    process.exit!
+    (process.exit!)
     void
 
 const logUnknown = (env?) ->
@@ -268,7 +268,7 @@ const logInfo = (command, env?) ->
             (logPad '| for more info, try "ghoti help"', 1)
     (logSeprate title.length)
     (logFace!)
-    process.exit!
+    (process.exit!)
     void
 
 const logWhatIs = (keyword, env?) ->
@@ -277,11 +277,14 @@ const logWhatIs = (keyword, env?) ->
     (logSeprate title.length)
     const whatisK = (whatis keyword)
     if whatisK
-    then whatisK.map (it) ->
-            (logPad '| ' + it, 1)
+    then 
+        (logPad '| "' + keyword + '" is: ', 1)
+        (log '')
+        (whatisK.map (it) ->
+            (logPad '| ' + it, 1))
     # else if 1111
     #     1
-    else (logPad '| "' + keyword + '" is not in ghoti database')
+    else (logPad '| "' + keyword + '" is not in ghoti database', 1)
     (logSeprate title.length)
     (logFace!)
 
@@ -291,12 +294,12 @@ const logPostNPMInstall = (type, env?) ->
     (logSeprate title.length)
     const postInstallK = (postInstall type)
     if postInstallK
-    then postInstallK.map (it) ->
+    then (postInstallK.map (it) ->
         switch it
             case '$empty'
                 (log '')
             default
-                (logPad '| ' + it, 1)
+                (logPad '| ' + it, 1))
     else (logPad '| "' + type + '" is not a exist ghoti init type' , 1)
     (logSeprate title.length)
     (logFace!)

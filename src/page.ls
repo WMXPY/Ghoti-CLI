@@ -15,6 +15,7 @@ const ghotiPageExport = (name) ->
     "    " + (ghotiPageClassName name) + " as " + name
 
 const readFile = (root, name, ghoti) ->
+    var re
     re = ((fs.readFileSync root, 'utf8').toString!)
     re = (re.replace /\${\|page\|}/g, (ghotiPageClassName name))
     re = (re.replace /\${\|author\|}/g, ghoti.author || "unknown")
@@ -24,7 +25,8 @@ const comImport = (ghoti) ->
     if !Boolean ghoti.pages
         (log 'ERROR, ghoti have no pages configeration')
         (log 'Try to fix it: "ghoti fix"')
-        process.exit!
+        (process.exit!)
+    var re
     re = (ghoti.pages.map ((it) ->
         "import " + (ghotiPageClassName it) + " from './" + (ghotiPageFileName it) + "';")).join("\r\n")
     re += "\r\n"
@@ -36,13 +38,13 @@ const page = (root, targetPath, name, ghoti, whenDone, env) ->
     if !Boolean ghoti.pages
         (log 'ERROR, ghoti have no pages configeration')
         (log 'Try to fix it: "ghoti fix"')
-        process.exit!
+        (process.exit!)
     for i in ghoti.pages
         if(i === name)
-            log '| ERROR: page "' + name + '" is already exist'
-            log '| try "ghoti status" to see page list'
-            whenDone!
-            process.exit!
+            (log '| ERROR: page "' + name + '" is already exist')
+            (log '| try "ghoti status" to see page list')
+            (whenDone!)
+            (process.exit!)
     const target = (path.join targetPath, "src", "page", name + ".page.tsx" )
     const importTarget = (path.join targetPath, "src", "page", "import.ts" )
     const data = (readFile (path.join root, "lib", "react", "page", "page.tsx.ghoti"), name, ghoti)
