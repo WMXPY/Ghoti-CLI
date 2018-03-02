@@ -43,6 +43,7 @@ ghoti component [component name]
 ghoti page [page name]
 ghoti lambda [lambda name]
 ghoti func [function name]
+ghoti feature [feature name]
 ```
 
 ### What is a component, page, lambda, and fun
@@ -52,6 +53,10 @@ A component should be used as a reusable react class; a page is an unreusable re
 ### What is the difference between lambda and function
 
 Lambda shall be developed with functional programming without side effect, like mapping a JSON to a simple array, and function is better to be used as logic codes.
+
+### What is a feature
+
+A feature is used to make use case scenario; when you are generating a feature, ghoti will automatically create a test file for you to test.
 
 ### Am I have to use these?
 
