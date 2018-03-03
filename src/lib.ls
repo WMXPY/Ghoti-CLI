@@ -14,7 +14,12 @@ const defaultLogs = (part) ->
 
 const libs = [
     {
-        name: ['react-ssr']
+        name: [
+            'react-ssr'
+            'react-server'
+            'react-server-side-render'
+            'react-server-side-rending'
+        ]
         path: 'react-ssr'
         postLog: (defaultLogs [
             'npm run feature [feature name]     > create a feature'
@@ -35,7 +40,9 @@ const libs = [
         ]
     }
     {
-        name: ['react-parcel-ssr']
+        name: [
+            'react-parcel-ssr'
+        ]
         path: 'react-parcel-ssr'
         postLog: (defaultLogs [
             'npm run feature [feature name]     > create a feature'
@@ -57,7 +64,9 @@ const libs = [
         ]
     }
     {
-        name: ['react-next-ssr']
+        name: [
+            'react-next-ssr'
+        ]
         path: 'react-next-ssr'
         postLog: (defaultLogs [
             'npm run feature [feature name]     > create a feature'
@@ -79,7 +88,13 @@ const libs = [
         ]
     }
     {
-        name: ['react', 'react-normal', 'react-default']
+        name: [
+            'react'
+            'react-ts'
+            'react-normal'
+            'react-normal-ts'
+            'react-default'
+        ]
         path: 'react-normal'
         postLog: (defaultLogs [
             'npm run feature [feature name]     > create a feature'
@@ -99,7 +114,10 @@ const libs = [
         ]
     }
     {
-        name: ['react-lite', 'react-tiny']
+        name: [
+            'react-lite'
+            'react-tiny'
+        ]
         path: 'react-lite'
         postLog: (defaultLogs [
             'npm run feature [feature name]     > create a feature'
@@ -117,7 +135,12 @@ const libs = [
         ]
     }
     {
-        name: ['react-js', 'react-js-normal']
+        name: [
+            'react-js'
+            'react-js-normal'
+            'react-normal-js'
+            'react-js-default'
+        ]
         path: 'react-js'
         postLog: (defaultLogs [
             'npm run feature [feature name]     > create a feature'
@@ -136,7 +159,10 @@ const libs = [
         ]
     }
     {
-        name: ['react-unstructured']
+        name: [
+            'react-unstructured'
+            'react-none'
+        ]
         path: 'react-unstructured'
         postLog: (defaultLogs [
             'Here are some useful shortcuts for your hacking'
@@ -155,6 +181,12 @@ const libs = [
         ]
     }
 ]
+
+const libList = ->
+    const re = []
+    for i in libs
+        (re.push i.name[0])
+    re
 
 const libPath = (folderName, ghoti_root) ->
     (path.join ghoti_root, "lib", folderName)
@@ -178,3 +210,4 @@ const lib = (libName, ghoti_root?) ->
     else null
 
 export lib
+export libList

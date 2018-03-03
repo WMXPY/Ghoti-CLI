@@ -26,10 +26,6 @@ const tempConfig = (type) ->
     
     config
 
-    # const config = 
-    #     a: 1
-    #     b: 2
-
 const getConfig = ->
     var config
 

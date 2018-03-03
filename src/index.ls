@@ -5,7 +5,7 @@ require! {
     os
     './config': config
     './config': { updateConfig }
-    './log': { log, logHelp, logHelpMore, logInfo, logPostNPMInstall, logAbout, logVersion, logCommand, logUnknown, logStatus, logWhatIs, logUpdate }
+    './log': { log, logHelp, logHelpMore, logInfo, logPostNPMInstall, logAbout, logVersion, logCommand, logUnknown, logStatus, logWhatIs, logUpdate, logList }
     './argv': { argv, env, ghotiConfig, path_ghoti }
     './init': { init }
     './component': { component }
@@ -28,7 +28,8 @@ else ghotiCLIPath = (path.join path_ghoti, "..", "..", "lib", "node_modules", "g
 
 const excute = ->
     var whenDone
-    switch(env.mode)
+    const mode = (env.mode.toLowerCase!)
+    switch(mode)
         case 'about'
             (logAbout env)
         case 'empty'
@@ -55,6 +56,8 @@ const excute = ->
             fallthrough
         case 'whatis'
             (logWhatIs env.texture[0], env)
+        case 'list'
+            (logList env)
         case 'fix'
             whenDone = (logCommand!)
             (fix env.texture[0], ghoti, whenDone, env)

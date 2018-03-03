@@ -1,6 +1,7 @@
 require! {
     './static': { version }
     './whatis': { whatis, postInstall }
+    './lib': { lib, libList }
 }
 
 const log = (...text) -> 
@@ -126,10 +127,11 @@ const logHelpMore = (env?) ->
     (logPad '| fix         : try to auto fix issue', 1)    
     (logPad '| fix *       : show error message if it is knowned', 1)
     (logPad '* example - ghoti fix some-issue', 2)
+    (logPad '| list        : show list of available init type', 1)
     (logPad '| init * *    : init a project', 1)
     (logPad '* example - ghoti init react your-awesome-project', 2)
-    (loaPad '| update      : update ghoti-cli version of current project', 1)
-    (loaPad '* example - ghoti update', 2)
+    (logPad '| update      : update ghoti-cli version of current project', 1)
+    (logPad '* example - ghoti update', 2)
     (logPad '| feature *   : create a feature and testing case', 1)
     (logPad '* example - ghoti feature your-awesome-feature', 2)
     (logPad '| component * : create a component', 1)
@@ -164,8 +166,9 @@ const logHelp = (isEmpty?, env?) ->
     (logPad '| whatis *    : show info of a keyword', 1)
     (logPad '| fix         : try to auto fix issue', 1)    
     (logPad '| fix *       : show error message if it is knowned', 1)
+    (logPad '| list        : show list of available init type', 1)
     (logPad '| init * *    : init a project', 1)
-    (loaPad '| update      : update ghoti-cli version of current project', 1)
+    (logPad '| update      : update ghoti-cli version of current project', 1)
     (logPad '| feature *   : create a feature and testing case', 1)
     (logPad '| component * : create a component', 1)
     (logPad '| page *      : create a page', 1)
@@ -232,6 +235,9 @@ const logInfo = (command, env?) ->
             (logPad '* example   - ghoti info init', 2)
             (logPad '* arguments - ghoti info [command]', 2)
             (logPad '* command   - command could be any command name that ghoti available', 2)
+        case 'list'
+            (logPad '| Command : show list of available init type', 1)
+            (logPad '* example   - ghoti list', 2)
         case 'init'
             (logPad '| Command : init a project', 1)
             (logPad '* example   - ghoti init react your-awesome-project', 2)
@@ -305,6 +311,8 @@ const logWhatIs = (keyword, env?) ->
     else (logPad '| "' + keyword + '" is not in ghoti database', 1)
     (logSeprate title.length)
     (logFace!)
+    (process.exit!)
+    void
 
 const logPostNPMInstall = (type, env?) ->
     const title = '🐟  > 🦉  Ghoti-CLI information "' + type + '":'
@@ -321,9 +329,25 @@ const logPostNPMInstall = (type, env?) ->
     else (logPad '| "' + type + '" is not a exist ghoti init type' , 1)
     (logSeprate title.length)
     (logFace!)
+    (process.exit!)
+    void
 
 const logUpdate = (ghoti, env?) ->
     log ghoti
+
+const logList = ->
+    const re = (libList!)
+    const title = '🐟  > 📇  Ghoti-CLI List:'
+    (log title)
+    (logSeprate title.length)
+    (logPad '| You can use "ghoti whatis [name]" for more information!', 1)
+    (log '')
+    re.map (it) ->
+        (logPad ('| ' + it), 1)
+    (logSeprate title.length)
+    (logFace!)
+    (process.exit!)
+    void
 
 const logPostInstall = (targetPath, type, typescript, env?) ->
     switch type
@@ -371,3 +395,4 @@ export logPostInstall
 export logPostNPMInstall
 export logWhatIs
 export logUpdate
+export logList
