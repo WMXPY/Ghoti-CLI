@@ -21,6 +21,10 @@ const libs = [
             'react-server-side-rending'
         ]
         path: 'react-ssr'
+        common: [
+            'public'
+            'lints'
+        ]
         postLog: (defaultLogs [
             'npm run feature [feature name]     > create a feature'
             'npm run lambda [function name]     > create a lambda function set'
@@ -42,6 +46,10 @@ const libs = [
     {
         name: [
             'react-parcel-ssr'
+        ]
+        common: [
+            'public'
+            'lints'
         ]
         path: 'react-parcel-ssr'
         postLog: (defaultLogs [
@@ -66,6 +74,10 @@ const libs = [
     {
         name: [
             'react-next-ssr'
+        ]
+        common: [
+            'public'
+            'lints'
         ]
         path: 'react-next-ssr'
         postLog: (defaultLogs [
@@ -95,6 +107,10 @@ const libs = [
             'react-normal-ts'
             'react-default'
         ]
+        common: [
+            'public'
+            'lints'
+        ]
         path: 'react-normal'
         postLog: (defaultLogs [
             'npm run feature [feature name]     > create a feature'
@@ -118,6 +134,7 @@ const libs = [
             'react-lite'
             'react-tiny'
         ]
+        common: []
         path: 'react-lite'
         postLog: (defaultLogs [
             'npm run feature [feature name]     > create a feature'
@@ -141,6 +158,9 @@ const libs = [
             'react-normal-js'
             'react-js-default'
         ]
+        common: [
+            'public'
+        ]
         path: 'react-js'
         postLog: (defaultLogs [
             'npm run feature [feature name]     > create a feature'
@@ -163,6 +183,10 @@ const libs = [
             'react-unstructured'
             'react-none'
         ]
+        common: [
+            'public'
+            'lints'
+        ]
         path: 'react-unstructured'
         postLog: (defaultLogs [
             'Here are some useful shortcuts for your hacking'
@@ -182,32 +206,38 @@ const libs = [
     }
 ]
 
-const libList = ->
-    const re = []
-    for i in libs
-        (re.push i.name[0])
-    re
+(const libList = ->
+    (const re = [])
+    (for i in libs
+        (re.push i.name[0]))
+    re)
 
-const libPath = (folderName, ghoti_root) ->
-    (path.join ghoti_root, "lib", folderName)
+(const libPath = (folderName, ghoti_root) ->
+    (path.join ghoti_root, "lib", folderName))
 
-const compareName = (name, name2) ->
-    const splitName = (((name.split '-').join '').toLowerCase!)
-    const splitName2 = (((name2.split '-').join '').toLowerCase!)
-    return splitName === splitName2
+(const commonPath = (folderName, ghoti_root) ->
+    (path.join ghoti_root, "lib", "common", folderName))
 
-const lib = (libName, ghoti_root?) ->
-    var re
-    for i in libs
-        for j in i.name
-            if (compareName j, libName)
-                re = {...i}
-    if ghoti_root
-    then re.path = (libPath re.path, ghoti_root)
+(const compareName = (name, name2) ->
+    (const splitName = (((name.split '-').join '').toLowerCase!))
+    (const splitName2 = (((name2.split '-').join '').toLowerCase!))
+    splitName === splitName2)
 
-    if re
+(const lib = (libName, ghoti_root?) ->
+    (var re)
+    (for i in libs
+        (for j in i.name
+            (if (compareName j, libName)
+                re = {...i})))
+    (if ghoti_root
+    then 
+        re.path = (libPath re.path, ghoti_root)
+        (for i to re.common.length - 1
+            re.common[i] = commonPath(re.common[i], ghoti_root)))
+
+    (if re
     then re
-    else null
+    else null))
 
-export lib
-export libList
+(export lib)
+(export libList)

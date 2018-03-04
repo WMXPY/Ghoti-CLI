@@ -9,7 +9,7 @@ require! {
 (const switchRoot = (type, ghoti_root) ->
     (const re = (lib type, ghoti_root))
     (if re
-    then re.path
+    then re
     else null))
 
 (const copyToPath = (root, data) -> 
@@ -59,8 +59,15 @@ require! {
         (log 'init have to use format "ghoti init react/vue/electron-react root"')
         (process.exit!))
     (const root = (switchRoot type, ghoti_root))
-    (parseAll 'react' (re, typesciprt) ->
-        (copyInit type, targetPath, re, root)
+    (parseAll type, (re, typesciprt) ->
+        (log ' | @ Copying lib files')
+        (copyInit type, targetPath, re, root.path)
+        (log ' | @ Copying common files')
+        (var count)
+        (count = 0)
+        for i in root.common
+            (log ' | @ Common files chunk ' + count++)
+            (copyInit type, targetPath, re, i)
         (logPostInstall targetPath, type, typesciprt)
         (whenDone!)
         void))
