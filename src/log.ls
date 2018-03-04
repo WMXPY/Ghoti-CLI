@@ -35,6 +35,10 @@ require! {
         '.(｡￫‿￩｡)'
         'ఠ_ఠ'
         'ಸ_ಸ'
+        '눈_눈'
+        '(๑>◡<๑)'
+        '┌(ㆆ㉨ㆆ)ʃ'
+        '(´≖◞౪◟≖)'
         '(ಥ_ಥ)'
         '(❁´▽`❁)'
         '(ง •̀_•́)ง┻━┻'
@@ -77,15 +81,15 @@ require! {
     (log title)
     (logSeprate title.length)
     (if (
-    !Boolean ghoti.template 
-    || !Boolean ghoti.author
-    || !Boolean ghoti.description
-    || !Boolean ghoti.version
-    || !Boolean ghoti.title
-    || !Boolean ghoti.components
-    || !Boolean ghoti.pages
-    || !Boolean ghoti.funcs
-    || !Boolean ghoti.lambdas)
+    (!(Boolean ghoti.template))
+    || (!(Boolean ghoti.author))
+    || (!(Boolean ghoti.description))
+    || (!(Boolean ghoti.version))
+    || (!(Boolean ghoti.title))
+    || (!(Boolean ghoti.components))
+    || (!(Boolean ghoti.pages))
+    || (!(Boolean ghoti.funcs))
+    || (!(Boolean ghoti.lambdas)))
         (logPad '| ERROR, ghoti have no at least one required configeration', 1)
         (logPad '| Try to fix it: "ghoti fix"', 1)
         (logSeprate title.length)
@@ -150,8 +154,8 @@ const logHelpMore = (env?) ->
 (const logHelp = (isEmpty?, env?) ->
     (var title)
     (if isEmpty
-    then title = '🐟  > 🏠  Ghoti-CLI Available commands:'
-    else title = '🐟  > ⭐  Ghoti-CLI Available commands:')
+    then (title = '🐟  > 🏠  Ghoti-CLI Available commands:')
+    else (title = '🐟  > ⭐  Ghoti-CLI Available commands:'))
     (log title)
     (logSeprate title.length)
     (const commands = ((allCommands!).map (it) ->
@@ -281,26 +285,22 @@ const logHelpMore = (env?) ->
             (logPad '| You can also always checkout those information by use following methods', 1)
             (logPad '* run "ghoti post ' + type + '" anywhere', 2)
             (logPad '* run "npm hint" in your project folder', 2)
-            # (logPad '* npm start     --> to start development', 2)
-            # (logPad '* npm run build --> to build project', 2)
-            # (logPad '* npm test      --> to run unit tests', 2)
-            # (log '')
             (logPad '| TIPS: How to init a git repo, try:', 1)
             (logPad '* ghoti whatis git-init', 2))
     void)
 
-export log
-export logPad
-export logHelp
-export logHelpMore
-export logInfo
-export logAbout
-export logStatus
-export logCommand
-export logVersion
-export logUnknown
-export logPostInstall
-export logPostNPMInstall
-export logWhatIs
-export logUpdate
-export logList
+(export log)
+(export logPad)
+(export logHelp)
+(export logHelpMore)
+(export logInfo)
+(export logAbout)
+(export logStatus)
+(export logCommand)
+(export logVersion)
+(export logUnknown)
+(export logPostInstall)
+(export logPostNPMInstall)
+(export logWhatIs)
+(export logUpdate)
+(export logList)

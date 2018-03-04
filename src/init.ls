@@ -56,7 +56,9 @@ require! {
 
 (const init = (ghoti_root, type, targetPath, whenDone, env) ->
     (if (!targetPath)
-        (log 'init have to use format "ghoti init react/vue/electron-react root"')
+        (log 'init have to use format "ghoti init [type] [path]"')
+        (log 'type could be any typename in list "ghoti list"')
+        (log 'Try: "ghoti info init"')
         (process.exit!))
     (const root = (switchRoot type, ghoti_root))
     (parseAll type, (re, typesciprt) ->

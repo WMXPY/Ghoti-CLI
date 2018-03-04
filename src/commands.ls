@@ -167,7 +167,7 @@ const list = [
             }
             {
                 name: 'type'
-                value: 'type could be "react", "react-ssr", "vue" or "angular", try "ghoti list"'
+                value: 'type could be any typename in list "ghoti list"'
             }
             {
                 name: 'name'

@@ -9,7 +9,9 @@ require! {
         case 'react'
             './lib/react/init'
         default
-            throw new Error 'init have to use format "ghoti init react/vue/electron-react"'))
+            (log 'init have to use format "ghoti init "')
+            (process.exit!)
+            throw new Error ))
 
 (const copyToPath = (root, data) -> 
     (if (root.substring root.length - 6, root.length) === '.ghoti'

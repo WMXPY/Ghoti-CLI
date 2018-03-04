@@ -57,11 +57,12 @@ require! {
             title: ''
             description: ''
             author: '')
-        (getInput 'Title: ' (title)->
+        (log '✒️  More about your awesome project~')
+        (getInput 'Title       : ' (title)->
             (vars.title = title)
-            (getInput 'Description: ' (description) ->
+            (getInput 'Description : ' (description) ->
                 (vars.description = description)
-                (getInput 'Author: ' (author) ->
+                (getInput 'Author      : ' (author) ->
                     (vars.author = author)
                     (callback (parseAllIn textList, vars), typescriptExist)
                     void)
