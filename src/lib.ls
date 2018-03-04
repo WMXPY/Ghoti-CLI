@@ -2,7 +2,7 @@ require! {
     path
 }
 
-const defaultLogs = (part) ->
+(const defaultLogs = (part) ->
     [
         '$empty'
         'Here are some useful shortcuts for your hacking'
@@ -10,7 +10,7 @@ const defaultLogs = (part) ->
         '$empty'
         ...part
         '$empty'
-    ]
+    ])
 
 const libs = [
     {

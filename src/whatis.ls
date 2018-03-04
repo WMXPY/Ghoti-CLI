@@ -2,19 +2,19 @@ require! {
     './lib': { lib }
 }
 
-const postInstall = (type) ->
-    re = lib(type)
-    if re
+(const postInstall = (type) ->
+    (re = lib(type))
+    (if re
     then re.postLog
-    else null
+    else null))
 
-const whatis = (keyword) ->
-    var re
-    re = (lib keyword)
-    if re
-    then return re.whatis
+(const whatis = (keyword) ->
+    (var re)
+    (re = (lib keyword))
+    (if re
+    then return re.whatis)
 
-    re = {
+    (re = {
         'git-init': [
             'git init'
             'git add .'
@@ -24,11 +24,11 @@ const whatis = (keyword) ->
         '.ghoticonfig': [
             'configeration of ghoti project'
         ]
-    }
+    })
 
-    if re[keyword]
+    (if re[keyword]
     then re[keyword]
-    else null
+    else null))
 
 export whatis
 export postInstall

@@ -7,66 +7,67 @@ require! {
     readline
 }
 
-const checkTypescript = (callback) ->
-    const child = (exec 'tsc -v', (err, stdout, stderr) ->
-        if err
+(const checkTypescript = (callback) ->
+    (const child = (exec 'tsc -v', (err, stdout, stderr) ->
+        (if err
         then callback false
-        else callback true
+        else callback true)
         void
-    )
-    void
+    ))
+    void)
 
-const parseFile = (text, vars, typescript?) -> 
-    re = text
-    re = (re.replace /\${\|version\|}/g, version)
-    if typescript
+(const parseFile = (text, vars, typescript?) -> 
+    (var re)
+    (re = text)
+    (re = (re.replace /\${\|version\|}/g, version))
+    (if typescript
     then re = (re.replace /\${\|typescript\|}/g, '"typescript": "^2.7.2",')
-    else re = (re.replace /\${\|typescript\|}/g, '')
-    for i of vars 
-        switch(i)
+    else re = (re.replace /\${\|typescript\|}/g, ''))
+    (for i of vars 
+        (switch(i)
             case 'title'
                 re = (re.replace /\${\|title\|}/g, vars.title)
             case 'description'
                 re = (re.replace /\${\|description\|}/g, vars.description)
             case 'author'
-                re = (re.replace /\${\|author\|}/g, vars.author)
-    re
+                re = (re.replace /\${\|author\|}/g, vars.author)))
+    re)
 
-const getInput = (question, callback) ->
-    const intf = 
+(const getInput = (question, callback) ->
+    (const intf = 
         input: process.stdin
         output: process.stdout
-        terminal: false
+        terminal: false)
 
-    const rl = (readline.createInterface intf)
+    (const rl = (readline.createInterface intf))
 
     (rl.question question, (answer) ->
         (rl.close!)
         (callback answer)
         void)
-    void
+    void)
 
-const parseAllIn = (textList, vars) ->
-    vars
+(const parseAllIn = (textList, vars) ->
+    vars)
     # todo
 
-const parseAll = (textList, callback) ->
-    checkTypescript (typescriptExist) ->
-        const vars = 
+(const parseAll = (textList, callback) ->
+    (checkTypescript (typescriptExist) ->
+        (const vars = 
             title: ''
             description: ''
-            author: ''
+            author: '')
         (getInput 'Title: ' (title)->
-            vars.title = title
+            (vars.title = title)
             (getInput 'Description: ' (description) ->
-                vars.description = description
+                (vars.description = description)
                 (getInput 'Author: ' (author) ->
-                    vars.author = author
+                    (vars.author = author)
                     (callback (parseAllIn textList, vars), typescriptExist)
                     void)
                 void)
             void)
-        void
+        void))
 
 export parseFile
 export parseAll
