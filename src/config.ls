@@ -4,57 +4,54 @@ require! {
     './log': { log }
 }
 
-const tempConfig = (type) ->
+(const tempConfig = (type) ->
     var config
 
-    switch(type)
+    (switch(type)
         case 'react'
-            config = 
-                type: 'react'
+            (config = 
+                type: 'react')
         case 'vue'
-            config = 
-                type: 'vue'
+            (config = 
+                type: 'vue')
         case 'electron-react'
-            config = 
-                type: 'electron-react'
-        case 'react-native'
-            config = 
-                type: 'react-native'
+            (config = 
+                type: 'electron-react')
         default
-            (log 'init have to use format "ghoti init react/vue/react-native/electron-react" "path"')
-            process.exit!
+            (log 'init have to use format "ghoti init react/vue/electron-react" "path"')
+            (process.exit!))
     
-    config
+    config)
 
-const getConfig = ->
-    var config
+(const getConfig = ->
+    (var config)
 
-    const path_current = (process.cwd!)
-    const configExist = (fs.existsSync (path.join path_current, '.ghoticonfig'))
+    (const path_current = (process.cwd!))
+    (const configExist = (fs.existsSync (path.join path_current, '.ghoticonfig')))
 
-    if configExist
+    (if configExist
     then config = (JSON.parse (fs.readFileSync (path.join path_current, '.ghoticonfig'), 'utf8'))
-    else config = null
+    else config = null)
 
-    config
+    config)
 
-const writeConfig = (config) ->
-    const path_current = (process.cwd!)
-    const configExist = (fs.existsSync path.join path_current, '.ghoticonfig')
+(const writeConfig = (config) ->
+    (const path_current = (process.cwd!))
+    (const configExist = (fs.existsSync path.join path_current, '.ghoticonfig'))
     
-    if configExist
+    (if configExist
         (fs.writeFileSync (path.join path_current, '.ghoticonfig'), (JSON.stringify config) , 'utf8')
         configExist
     else 
         (fs.writeFileSync (path.join path_current, '.ghoticonfig'), (JSON.stringify config) , 'utf8')
-        true
+        true))
 
 
-const initConfig = (type) ->
-    (writeConfig (tempConfig type))
+(const initConfig = (type) ->
+    (writeConfig (tempConfig type)))
 
-const updateConfig = (newConfig) ->
-    (writeConfig newConfig)
+(const updateConfig = (newConfig) ->
+    (writeConfig newConfig))
 
 export getConfig
 export writeConfig
