@@ -24,6 +24,14 @@ require! {
     (log re)
     re)
 
+(const getMaxLength = (list) ->
+    (var len)
+    (len = 0)
+    (for i in list
+        (if i.length >= len
+        then len = i.length))
+    len)
+
 (const br = ->
     (log '\r\n'))
 
