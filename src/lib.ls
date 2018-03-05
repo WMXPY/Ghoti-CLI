@@ -20,6 +20,7 @@ const libs = [
             'react-server-side-render'
             'react-server-side-rending'
         ]
+        author: '$ghoti'
         path: 'react-ssr'
         common: [
             'public'
@@ -51,6 +52,7 @@ const libs = [
             'public'
             'lints'
         ]
+        author: '$ghoti'
         path: 'react-parcel-ssr'
         postLog: (defaultLogs [
             'npm run feature [feature name]     > create a feature'
@@ -79,6 +81,7 @@ const libs = [
             'public'
             'lints'
         ]
+        author: '$ghoti'
         path: 'react-next-ssr'
         postLog: (defaultLogs [
             'npm run feature [feature name]     > create a feature'
@@ -111,6 +114,7 @@ const libs = [
             'public'
             'lints'
         ]
+        author: '$ghoti'
         path: 'react-normal'
         postLog: (defaultLogs [
             'npm run feature [feature name]     > create a feature'
@@ -135,6 +139,7 @@ const libs = [
             'react-tiny'
         ]
         common: []
+        author: '$ghoti'
         path: 'react-lite'
         postLog: (defaultLogs [
             'npm run feature [feature name]     > create a feature'
@@ -161,6 +166,7 @@ const libs = [
         common: [
             'public'
         ]
+        author: '$ghoti'
         path: 'react-js'
         postLog: (defaultLogs [
             'npm run feature [feature name]     > create a feature'
@@ -187,6 +193,7 @@ const libs = [
             'public'
             'lints'
         ]
+        author: '$ghoti'
         path: 'react-unstructured'
         postLog: (defaultLogs [
             'Here are some useful shortcuts for your hacking'
@@ -209,7 +216,10 @@ const libs = [
 (const libList = ->
     (const re = [])
     (for i in libs
-        (re.push i.name[0]))
+        (const ea = 
+            name: i.name[0]
+            author: i.author)
+        (re.push ea))
     re)
 
 (const libPath = (folderName, ghoti_root) ->

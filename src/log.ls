@@ -255,7 +255,7 @@ const logHelpMore = (env?) ->
     (logPad '| You can use "ghoti whatis [name]" for more information!', 1)
     (log '')
     (re.forEach (it) ->
-        (logPad ('| ' + it), 1))
+        (logPad ('| ' + it.name + ' ' + it.author), 1))
     (logSeprate title.length)
     (logFace!)
     (process.exit!)
