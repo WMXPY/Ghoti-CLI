@@ -23,7 +23,6 @@ const libs = [
         author: '$ghoti'
         path: 'react-ssr'
         common: [
-            'license'
             'ghoti'
             'public'
             'eslint'
@@ -65,7 +64,6 @@ const libs = [
         author: '$ghoti'
         path: 'react-thin-ssr'
         common: [
-            'license'
             'ghoti'
             'public'
             'eslint'
@@ -104,7 +102,6 @@ const libs = [
             'react-server-parcel'
         ]
         common: [
-            'license'
             'ghoti'
             'public'
             'eslint'
@@ -144,7 +141,6 @@ const libs = [
             'react-server-next'
         ]
         common: [
-            'license'
             'ghoti'
             'public'
             'eslint'
@@ -188,7 +184,6 @@ const libs = [
             'react-default'
         ]
         common: [
-            'license'
             'ghoti'
             'public'
             'eslint'
@@ -258,11 +253,9 @@ const libs = [
             'react-js-default'
         ]
         common: [
-            'license'
             'ghoti'
             'public'
             'eslint'
-            'license'
             'ghoti'
             'sass-style'
         ]
@@ -290,7 +283,6 @@ const libs = [
             'react-none'
         ]
         common: [
-            'license'
             'ghoti'
             'public'
             'eslint'
@@ -358,3 +350,4 @@ const libs = [
 
 (export lib)
 (export libList)
+(export commonPath)

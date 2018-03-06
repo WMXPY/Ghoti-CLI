@@ -3,7 +3,7 @@ require! {
     path
     './log': { log, logPostInstall }
     './parser': { parseAll, parseFile }
-    './lib': { lib }
+    './lib': { lib, commonPath }
 }
 
 (const switchRoot = (type, ghoti_root) ->
@@ -22,8 +22,8 @@ require! {
     then (fs.writeFileSync (root.substring 0, root.length - 6), data, 'utf8')
     else (fs.writeFileSync root, data, 'utf8')))
     
-(const readFile = (root, vars) ->
-    (parseFile (fs.readFileSync root, 'utf8'), vars))
+(const readFile = (filename, root, vars) ->
+    (parseFile filename, (fs.readFileSync root, 'utf8'), vars))
 
 (const makeDir = (root) ->
     (if (!(fs.existsSync root))
@@ -50,7 +50,7 @@ require! {
             (copyInitReacursion root + '/' + file, level + 1, targetPath, beforeLength, vars)
         else
             (logPath '* ' + (removeTail file), level)
-            (copyToPath (path.join targetPath, floatRoot, file), (readFile root + '/' + file, vars))))
+            (copyToPath (path.join targetPath, floatRoot, file), (readFile file, root + '/' + file, vars))))
 
     (files.forEach eachFile))
 
@@ -66,15 +66,18 @@ require! {
         (log 'Try: "ghoti info init"')
         (process.exit!))
     (const root = (switchRoot type, ghoti_root))
-    (parseAll type, (re, typesciprt) ->
+    (parseAll type, targetPath, env, (re, typesciprt) ->
         (log ' | @ Copying lib files')
         (copyInit type, targetPath, re, root.path)
         (log ' | @ Copying common files')
         (var count)
+        (const common = [...root.common])
         (count = 0)
-        for i in root.common
+        (if re.open
+            (common.push (commonPath 'license', ghoti_root)))
+        (for i in common
             (log ' | @ Common files chunk ' + count++)
-            (copyInit type, targetPath, re, i)
+            (copyInit type, targetPath, re, i))
         (logPostInstall targetPath, type, typesciprt)
         (whenDone!)
         void))

@@ -16,13 +16,20 @@ require! {
     ))
     void)
 
-(const parseFile = (text, vars, typescript?) -> 
+(const parseFile = (filename, text, vars, typescript?) -> 
     (var re)
     (re = text)
     (re = (re.replace /\${\|version\|}/g, version))
     (if typescript
     then re = (re.replace /\${\|typescript\|}/g, '"typescript": "^2.7.2",')
     else re = (re.replace /\${\|typescript\|}/g, ''))
+    (if (filename === 'package.json.ghoti')
+        (if(vars.open)
+            re = (re.replace /\${\|private\|}/g, 'false')
+            re = (re.replace /\${\|license\|}/g, 'SEE LICENSE IN LICENSE')
+        else
+            re = (re.replace /\${\|private\|}/g, 'true')
+            re = (re.replace /\${\|license\|}/g, 'PRIVATE')))
     (for i of vars 
         (switch(i)
             case 'title'
@@ -51,20 +58,32 @@ require! {
     vars)
     # todo
 
-(const parseAll = (textList, callback) ->
+(const parseAll = (textList, targetPath, env, callback) ->
     (checkTypescript (typescriptExist) ->
         (const vars = 
             title: ''
             description: ''
-            author: '')
+            author: ''
+            open: false
+            )
         (log '✒️  More about your awesome project~')
-        (getInput 'Title       : ' (title)->
-            (vars.title = title)
-            (getInput 'Description : ' (description) ->
+        (const titleQuestionText = 'Project Title (default: ' + targetPath + ') :\n=>> ')
+        (getInput titleQuestionText, (title)->
+            (if title === ''
+            then vars.title = targetPath
+            else vars.title = title)
+            (const descriptionQuestionText = 'Description of ' + vars.title + ' :\n=>> ')
+            (getInput descriptionQuestionText, (description) ->
                 (vars.description = description)
-                (getInput 'Author      : ' (author) ->
+                (const authorQuestionText = 'Author of ' + vars.title + ' :\n=>> ')
+                (getInput authorQuestionText, (author) ->
                     (vars.author = author)
-                    (callback (parseAllIn textList, vars), typescriptExist)
+                    (const openQuestionText = 'Is ' + vars.title + ' a open source project? (Y/N, default: N):\n=>> ')
+                    (getInput openQuestionText, (open) ->
+                        (if open === 'Y'
+                        then vars.open = true)
+                        (log '')
+                        (callback (parseAllIn textList, vars), typescriptExist))
                     void)
                 void)
             void)
