@@ -1,8 +1,9 @@
 require! {
-    './static': { version }
+    './static/static': { version }
     './whatis': { whatis, postInstall }
-    './lib': { lib, libList }
-    './commands': { getCommand, allCommands, padRight, getMaxLength_List, getMaxLength_Plus, getMaxLength_Entire }
+    './static/lib': { lib, libList }
+    './logs/logTable': { logTable }
+    './static/commands': { getCommand, allCommands, padRight, getMaxLength_List, getMaxLength_Plus, getMaxLength_Entire }
 }
 
 (const log = (...text) -> 
@@ -262,13 +263,14 @@ const logHelpMore = (env?) ->
 (const logList = ->
     (const re = (libList!))
     (const title = '🐟  > 📇  Ghoti-CLI List:')
-    (log title)
-    (logSeprate title.length)
-    (logPad '| You can use "ghoti whatis [name]" for more information!', 1)
-    (log '')
-    (re.forEach (it) ->
-        (logPad ('| ' + it.name + ' ' + it.author), 1))
-    (logSeprate title.length)
+    (log title)   
+    (log 'You can use "ghoti whatis [name]" for more information!') 
+    (const table = re.map (it) ->
+        ([
+            it.name
+            it.author
+        ]))
+    (logTable table, 'type', 'author')
     (logFace!)
     (process.exit!)
     void)

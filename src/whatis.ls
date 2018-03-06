@@ -1,5 +1,5 @@
 require! {
-    './lib': { lib }
+    './static/lib': { lib }
 }
 
 (const postInstall = (type) ->
