@@ -9,6 +9,10 @@ require! {
     (console.log ...text)
     text)
 
+(const logInline = (text) ->
+    (process.stdout.write text)
+    text)
+
 (const logPad = (text, pad?) ->
     (if pad
         (for i to pad
@@ -298,6 +302,7 @@ const logHelpMore = (env?) ->
     void)
 
 (export log)
+(export logInline)
 (export logPad)
 (export logHelp)
 (export logHelpMore)

@@ -67,19 +67,20 @@ require! {
         (process.exit!))
     (const root = (switchRoot type, ghoti_root))
     (parseAll type, targetPath, env, (re, typesciprt) ->
-        (log ' | @ Copying lib files')
-        (copyInit type, targetPath, re, root.path)
-        (log ' | @ Copying common files')
-        (var count)
-        (const common = [...root.common])
-        (count = 0)
-        (if re.open
-            (common.push (commonPath 'license', ghoti_root)))
-        (for i in common
-            (log ' | @ Common files chunk ' + count++)
-            (copyInit type, targetPath, re, i))
-        (logPostInstall targetPath, type, typesciprt)
-        (whenDone!)
+        log re
+        # (log ' | @ Copying lib files')
+        # (copyInit type, targetPath, re, root.path)
+        # (log ' | @ Copying common files')
+        # (var count)
+        # (const common = [...root.common])
+        # (count = 0)
+        # (if re.open
+        #     (common.push (commonPath 'license', ghoti_root)))
+        # (for i in common
+        #     (log ' | @ Common files chunk ' + count++)
+        #     (copyInit type, targetPath, re, i))
+        # (logPostInstall targetPath, type, typesciprt)
+        # (whenDone!)
         void))
 
 export init

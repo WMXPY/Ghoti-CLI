@@ -1,7 +1,7 @@
 require! {
     fs
     path
-    './log': { log }
+    './log': { log, logInline }
     './static': { version }
     'child_process': { exec }
     readline
@@ -40,7 +40,7 @@ require! {
                 re = (re.replace /\${\|author\|}/g, vars.author)))
     re)
 
-(const getInput = (question, callback) ->
+(const getInput = (question, defaultText, callback) ->
     (const intf = 
         input: process.stdin
         output: process.stdout
@@ -48,8 +48,32 @@ require! {
 
     (const rl = (readline.createInterface intf))
 
+    (if ((defaultText === true) || (defaultText === false))
+    then
+        (if defaultText
+        then (question += ' (Y/N, default: Y)')
+        else (question += ' (Y/N, default: N)'))
+    else
+        (if defaultText
+        then (question += ' (default: ' + defaultText + ')')))
+    
+    (question += ' :\n=>> ')
+
     (rl.question question, (answer) ->
         (rl.close!)
+        (if defaultText === true || defaultText === false
+        then 
+            (if answer === ''
+            then answer = defaultText
+            else
+                (if answer === 'Y'
+                then answer = true
+                else if answer === 'N'
+                then answer = false))
+        else
+            (if answer === ''
+            then 
+                (answer = defaultText)))
         (callback answer)
         void)
     void)
@@ -67,22 +91,18 @@ require! {
             open: false
             )
         (log '✒️  More about your awesome project~')
-        (const titleQuestionText = 'Project Title (default: ' + targetPath + ') :\n=>> ')
-        (getInput titleQuestionText, (title)->
-            (if title === ''
-            then vars.title = targetPath
-            else vars.title = title)
-            (const descriptionQuestionText = 'Description of ' + vars.title + ' :\n=>> ')
-            (getInput descriptionQuestionText, (description) ->
+        (const titleQuestionText = 'Project Title')
+        (getInput titleQuestionText, targetPath, (title)->
+            (vars.title = title)
+            (const descriptionQuestionText = 'Description of ' + vars.title)
+            (getInput descriptionQuestionText, '', (description) ->
                 (vars.description = description)
-                (const authorQuestionText = 'Author of ' + vars.title + ' :\n=>> ')
-                (getInput authorQuestionText, (author) ->
+                (const authorQuestionText = 'Author of ' + vars.title)
+                (getInput authorQuestionText, '', (author) ->
                     (vars.author = author)
-                    (const openQuestionText = 'Is ' + vars.title + ' a open source project? (Y/N, default: N):\n=>> ')
-                    (getInput openQuestionText, (open) ->
-                        (if open === 'Y'
-                        then vars.open = true)
-                        (log '')
+                    (const openQuestionText = 'Is ' + vars.title + ' is an open source project?')
+                    (getInput openQuestionText, false, (open) ->
+                        (vars.open = open)
                         (callback (parseAllIn textList, vars), typescriptExist))
                     void)
                 void)
