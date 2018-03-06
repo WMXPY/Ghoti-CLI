@@ -1,7 +1,7 @@
 require! {
     fs
     path
-    './log': { log, logPad }
+    '../log/log': { log, logPad }
 }
 
 const errorList = 

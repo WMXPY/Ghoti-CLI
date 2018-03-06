@@ -1,9 +1,9 @@
 require! {
     fs
     path
-    './log': { log, logPostInstall }
+    '../log/log': { log, logPostInstall }
     './parser': { parseAll, parseFile }
-    './static/lib': { lib, commonPath }
+    '../static/lib': { lib, commonPath }
 }
 
 (const switchRoot = (type, ghoti_root) ->

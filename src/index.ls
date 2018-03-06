@@ -3,18 +3,18 @@ require! {
     fs
     path
     os
-    './config': config
-    './config': { updateConfig }
-    './log': { log, logHelp, logHelpMore, logInfo, logPostNPMInstall, logAbout, logVersion, logCommand, logUnknown, logStatus, logWhatIs, logUpdate, logList }
-    './argv': { argv, env, ghotiConfig, path_ghoti }
-    './init': { init }
+    './func/config': config
+    './func/config': { updateConfig }
+    './log/log': { log, logHelp, logHelpMore, logInfo, logPostNPMInstall, logAbout, logVersion, logCommand, logUnknown, logStatus, logWhatIs, logUpdate, logList }
+    './func/argv': { argv, env, ghotiConfig, path_ghoti }
+    './func/init': { init }
     './structure/component': { component }
     './structure/page': { page }
     './structure/lambda': { lambda }
     './structure/func': { func }
     './structure/feature': { feature }
-    './fix': { fix }
-    './update': { update }
+    './func/fix': { fix }
+    './func/update': { update }
 }
 
 const ghoti = ghotiConfig

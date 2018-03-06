@@ -1,7 +1,7 @@
 require! {
     fs
     path
-    './log': { log }
+    '../log/log': { log }
 }
 (const path_argv = (process.argv))
 (const path_node = (path_argv.shift!))

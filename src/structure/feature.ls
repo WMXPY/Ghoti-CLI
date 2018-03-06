@@ -1,8 +1,8 @@
 require! {
     fs,
     path,
-    '../log': { log }
-    '../config': { updateConfig }
+    '../log/log': { log, logPad }
+    '../func/config': { updateConfig }
 }
 
 (const ghotiTestClassName = (name) ->

@@ -1,7 +1,7 @@
 require! {
     fs
     path
-    './log': { log, logPostInstall }
+    '../log/log': { log, logPostInstall }
     './parser': { parseAll, parseFile }
 }
 

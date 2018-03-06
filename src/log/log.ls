@@ -1,9 +1,9 @@
 require! {
-    './static/static': { version }
-    './whatis': { whatis, postInstall }
-    './static/lib': { lib, libList }
-    './logs/logTable': { logTable }
-    './static/commands': { getCommand, allCommands, padRight, getMaxLength_List, getMaxLength_Plus, getMaxLength_Entire }
+    '../static/static': { version }
+    '../func/whatis': { whatis, postInstall }
+    '../static/lib': { lib, libList }
+    './logTable': { logTable }
+    '../static/commands': { getCommand, allCommands, padRight, getMaxLength_List, getMaxLength_Plus, getMaxLength_Entire }
 }
 
 (const log = (...text) -> 

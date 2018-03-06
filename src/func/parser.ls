@@ -1,8 +1,8 @@
 require! {
     fs
     path
-    './log': { log, logInline }
-    './static/static': { version }
+    '../log/log': { log, logInline }
+    '../static/static': { version }
     'child_process': { exec }
     readline
 }
