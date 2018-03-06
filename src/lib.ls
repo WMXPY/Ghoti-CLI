@@ -24,10 +24,15 @@ const libs = [
         path: 'react-ssr'
         common: [
             'license'
+            'ghoti'
             'public'
             'eslint'
             'tslint'
             'typescript'
+            'typescript-config'
+            'typescript-feature'
+            'typescript-structure'
+            'sass-style'
         ]
         postLog: (defaultLogs [
             'npm run feature [feature name]     > create a feature'
@@ -61,10 +66,15 @@ const libs = [
         path: 'react-thin-ssr'
         common: [
             'license'
+            'ghoti'
             'public'
             'eslint'
             'tslint'
             'typescript'
+            'typescript-config'
+            'typescript-feature'
+            'typescript-structure'
+            'sass-style'
         ]
         postLog: (defaultLogs [
             'npm run feature [feature name]     > create a feature'
@@ -95,10 +105,15 @@ const libs = [
         ]
         common: [
             'license'
+            'ghoti'
             'public'
             'eslint'
             'tslint'
             'typescript'
+            'typescript-config'
+            'typescript-feature'
+            'typescript-structure'
+            'sass-style'
         ]
         author: '$ghoti'
         path: 'react-parcel-ssr'
@@ -130,11 +145,15 @@ const libs = [
         ]
         common: [
             'license'
+            'ghoti'
             'public'
             'eslint'
             'tslint'
             'typescript'
+            'typescript-config'
+            'typescript-feature'
             'typescript-structure'
+            'sass-style'
         ]
         author: '$ghoti'
         path: 'react-next-ssr'
@@ -170,10 +189,15 @@ const libs = [
         ]
         common: [
             'license'
+            'ghoti'
             'public'
             'eslint'
             'tslint'
             'typescript'
+            'typescript-config'
+            'typescript-feature'
+            'typescript-structure'
+            'sass-style'
         ]
         author: '$ghoti'
         path: 'react-normal'
@@ -200,7 +224,13 @@ const libs = [
             'react-tiny'
         ]
         common: [
+            'ghoti'
             'typescript'
+            'public'
+            'typescript-config'
+            'typescript-feature'
+            'typescript-structure'
+            'sass-style'
         ]
         author: '$ghoti'
         path: 'react-lite'
@@ -229,8 +259,12 @@ const libs = [
         ]
         common: [
             'license'
+            'ghoti'
             'public'
             'eslint'
+            'license'
+            'ghoti'
+            'sass-style'
         ]
         author: '$ghoti'
         path: 'react-js'
@@ -257,9 +291,14 @@ const libs = [
         ]
         common: [
             'license'
+            'ghoti'
             'public'
             'eslint'
             'tslint'
+            'typescript'
+            'typescript-config'
+            'typescript-feature'
+            'sass-style'
         ]
         author: '$ghoti'
         path: 'react-unstructured'
