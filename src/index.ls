@@ -8,11 +8,11 @@ require! {
     './log': { log, logHelp, logHelpMore, logInfo, logPostNPMInstall, logAbout, logVersion, logCommand, logUnknown, logStatus, logWhatIs, logUpdate, logList }
     './argv': { argv, env, ghotiConfig, path_ghoti }
     './init': { init }
-    './component': { component }
-    './page': { page }
-    './lambda': { lambda }
-    './func': { func }
-    './feature': { feature }
+    './structure/component': { component }
+    './structure/page': { page }
+    './structure/lambda': { lambda }
+    './structure/func': { func }
+    './structure/feature': { feature }
     './fix': { fix }
     './update': { update }
 }
