@@ -8,24 +8,25 @@ ${|description|}
 npm install
 ```
 
-### Test
+### Devlopment, test and Build
 
 ```bash
-make tests
+npm start
+npm test
+npm run build
 ```
 
-### Start
+### Commands for Ghoti-CLI structure
 
 ```bash
-make
+npm run component [component name]
+npm run page [page name]
+npm run lambda [lambda name]
+npm run func [function name]
+npm run feature [feature name]
+npm run hint
 ```
 
-### Build
-
-```bash
-make build
-```
-
-> created by Ghoti-CLI ${|version|}
+> Created by [Ghoti-CLI](https://github.com/WMXPY/Ghoti-CLI/) ${|version|}
 
 <a rel="license" href="http://creativecommons.org/licenses/by-sa/4.0/"><img alt="Creative Commons License" style="border-width:0" src="https://i.creativecommons.org/l/by-sa/4.0/88x31.png" /></a><br />This work is licensed under a <a rel="license" href="http://creativecommons.org/licenses/by-sa/4.0/">Creative Commons Attribution-ShareAlike 4.0 International License</a>.

@@ -4,7 +4,7 @@ tex
 .ghoticonfig
 .gitignore
 makefile
-test
+tests
 script
 package-lock.json
 a

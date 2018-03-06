@@ -4,10 +4,11 @@
     "description": "${|description|}",
     "private": true,
     "scripts": {
-        "build": "webpack --config .\\webpack.config.js",
-        "feature": "ghoti feature",
-        "postinstall": "ghoti post unstructured",
-        "start": "webpack-dev-server --config .\\webpack.dev.js",
+        "build": "webpack --config webpack.config.js",
+        "feature": "ghoti feature -a",
+        "hint": "ghoti post -a unstructured",
+        "postinstall": "ghoti post -a unstructured",
+        "start": "webpack-dev-server --config webpack.dev.js --open",
         "test": "mocha"
     },
     "author": "${|author|}",

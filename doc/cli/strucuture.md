@@ -1,0 +1,1 @@
+# Use Ghoti style project structure
