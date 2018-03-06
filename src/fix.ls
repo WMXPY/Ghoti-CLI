@@ -14,6 +14,13 @@ const errorList =
             ]
         }
         {
+            name: 'require-not-found'
+            value: [
+                'mostly is because you are installed wired ghoti version'
+                'use "ghoti about"'
+            ]
+        }
+        {
             name: 'ts-is-not-a-Package'
             value: [
                 'mostly is because you are installed typescript, but not linked it to the project'

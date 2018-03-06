@@ -6,7 +6,6 @@ require! {
 
 (const tempConfig = (type) ->
     var config
-
     (switch(type)
         case 'react'
             (config = 
@@ -18,9 +17,9 @@ require! {
             (config = 
                 type: 'electron-react')
         default
-            (log 'init have to use format "ghoti init react/vue/electron-react" "path"')
+            (log 'ghoti init have to use format "ghoti init [type] [path]"')
+            (log 'You can findout all type with "ghoti list"')
             (process.exit!))
-    
     config)
 
 (const getConfig = ->

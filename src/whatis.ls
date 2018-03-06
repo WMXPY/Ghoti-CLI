@@ -8,6 +8,9 @@ require! {
     then re.postLog
     else null))
 
+const parseKeyword = (keyword) ->
+    keyword
+
 (const whatis = (keyword) ->
     (var re)
     (re = (lib keyword))
