@@ -1,5 +1,0 @@
-@import './color.sass'
-
-html
-    height: 100%
-    

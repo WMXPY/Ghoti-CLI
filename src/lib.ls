@@ -23,6 +23,7 @@ const libs = [
         author: '$ghoti'
         path: 'react-ssr'
         common: [
+            'license'
             'public'
             'eslint'
             'tslint'
@@ -59,6 +60,7 @@ const libs = [
         author: '$ghoti'
         path: 'react-thin-ssr'
         common: [
+            'license'
             'public'
             'eslint'
             'tslint'
@@ -92,6 +94,7 @@ const libs = [
             'react-server-parcel'
         ]
         common: [
+            'license'
             'public'
             'eslint'
             'tslint'
@@ -126,10 +129,12 @@ const libs = [
             'react-server-next'
         ]
         common: [
+            'license'
             'public'
             'eslint'
             'tslint'
             'typescript'
+            'typescript-structure'
         ]
         author: '$ghoti'
         path: 'react-next-ssr'
@@ -164,6 +169,7 @@ const libs = [
             'react-default'
         ]
         common: [
+            'license'
             'public'
             'eslint'
             'tslint'
@@ -222,6 +228,7 @@ const libs = [
             'react-js-default'
         ]
         common: [
+            'license'
             'public'
             'eslint'
         ]
@@ -249,6 +256,7 @@ const libs = [
             'react-none'
         ]
         common: [
+            'license'
             'public'
             'eslint'
             'tslint'
