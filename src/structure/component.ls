@@ -1,8 +1,8 @@
 require! {
     fs,
     path,
-    './log': { log, logPad }
-    './config': { updateConfig }
+    '../log': { log, logPad }
+    '../config': { updateConfig }
 }
 
 (const ghotiComponentClassName = (name) ->

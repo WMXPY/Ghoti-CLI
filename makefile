@@ -1,33 +1,45 @@
-ghoti: logs.ls static.ls
+ls := lsc -co
+
+ghoti: logs.ls static.ls structure.ls
 ifeq ($(UNAME), win32)
-	lsc -co .\dist\ .\src\*.ls
+	$(ls) .\dist\ .\src\*.ls
 else
-	lsc -co ./dist/ ./src/*.ls
+	$(ls) ./dist/ ./src/*.ls
 endif
 
 logs.ls:
 ifeq ($(UNAME), win32)
-	lsc -co .\dist\logs\ .\src\logs\*.ls
+	$(ls) .\dist\logs\ .\src\logs\*.ls
 else
-	lsc -co ./dist/logs/ ./src/logs/*.ls
+	$(ls) ./dist/logs/ ./src/logs/*.ls
 endif
 
 static.ls:
 ifeq ($(UNAME), win32)
-	lsc -co .\dist\static\ .\src\static\*.ls
+	$(ls) .\dist\static\ .\src\static\*.ls
 else
-	lsc -co ./dist/static/ ./src/static/*.ls
+	$(ls) ./dist/static/ ./src/static/*.ls
+endif
+
+structure.ls:
+ifeq ($(UNAME), win32)
+	$(ls) .\dist\structure\ .\src\structure\*.ls
+else
+	$(ls) ./dist/structure/ ./src/structure/*.ls
 endif
 
 run:
 ifeq ($(UNAME), win32)
-	lsc .\src\index.ls whatis react
+	lsc .\src\index.ls
 else
-	lsc ./src/index.ls whatis react
+	lsc ./src/index.ls
 endif
 
 clean:
-	del dist
-
-cleanTEX:
+ifeq ($(UNAME), win32)
+	del .\dist
+	del *.aux *.dvi *.fdb* *.fls *.log *.gz *.pdf
+else
+	rm -rf ./dist
 	rm -rf *.aux *.dvi *.fdb* *.fls *.log *.gz *.pdf
+endif
