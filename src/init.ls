@@ -3,7 +3,7 @@ require! {
     path
     './log': { log, logPostInstall }
     './parser': { parseAll, parseFile }
-    './lib': { lib, commonPath }
+    './static/lib': { lib, commonPath }
 }
 
 (const switchRoot = (type, ghoti_root) ->
