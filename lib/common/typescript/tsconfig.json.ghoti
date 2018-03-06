@@ -5,6 +5,7 @@
         "module": "commonjs",
         "noImplicitAny": false,
         "strict": false,
+        "outDir": "dist",
         "removeComments": true,
         "strictNullChecks": false,
         "noImplicitThis": false,
@@ -18,7 +19,12 @@
             "es2017"
         ]
     },
+    "exclude": [
+        "node_modules",
+        "public"
+    ],
     "include": [
         "src/**/*",
+        "render/**/*"
     ]
 }

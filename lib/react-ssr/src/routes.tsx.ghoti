@@ -8,26 +8,27 @@ import * as Pages from './page/import';
 
 import Root from './root';
 
-const routes = [
-    {
-        component: Root,
-        routes: [
-            {
-                component: () => <div>1</div>,
-                exact: true,
-                path: '/',
+export default function (props) {
+    const routes = [
+        {
+            component: Root,
+            routes: [
+                {
+                    component: () => <div>Path = /</div>,
+                    exact: true,
+                    path: '/',
 
-            },
-            {
-                component: () => <div>1</div>,
-                path: '/home',
-            },
-            {
-                component: () => <div>404</div>,
-                path: '*',
-            },
-        ],
-    },
-];
-
-export default routes;
+                },
+                {
+                    component: () => <div>Path = /home</div>,
+                    path: '/home',
+                },
+                {
+                    component: () => <div>404</div>,
+                    path: '*',
+                },
+            ],
+        },
+    ];
+    return routes;
+};

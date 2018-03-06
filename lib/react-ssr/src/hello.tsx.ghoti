@@ -18,7 +18,7 @@ class Hello extends React.Component<{}, {}> {
     public render() {
         return (
             <BrowserRouter>
-                {renderRoutes(routes)}
+                {renderRoutes(routes(this.props))}
             </BrowserRouter>
         );
     }
