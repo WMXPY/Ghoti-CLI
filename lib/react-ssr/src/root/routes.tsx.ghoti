@@ -4,7 +4,7 @@
  */
 
 import * as React from 'react';
-import * as Pages from './page/import';
+import * as Pages from '../page/import';
 
 import Root from './root';
 

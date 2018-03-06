@@ -24,7 +24,9 @@ const libs = [
         path: 'react-ssr'
         common: [
             'public'
-            'lints'
+            'eslint'
+            'tslint'
+            'typescript'
         ]
         postLog: (defaultLogs [
             'npm run feature [feature name]     > create a feature'
@@ -42,15 +44,58 @@ const libs = [
             'use typescript'
             'test with mocha'
             'support server side render'
+            'suggested'
+        ]
+    }
+    {
+        name: [
+            'react-thin-ssr'
+            'react-ssr-thin'
+            'react-server-thin'
+            'react-thin-server'
+            'react-thin-server-side-render'
+            'react-thin-server-side-rending'
+        ]
+        author: '$ghoti'
+        path: 'react-thin-ssr'
+        common: [
+            'public'
+            'eslint'
+            'tslint'
+            'typescript'
+        ]
+        postLog: (defaultLogs [
+            'npm run feature [feature name]     > create a feature'
+            'npm run lambda [function name]     > create a lambda function set'
+            'npm run component [function name]  > create a component'
+            'npm run page [page name]           > create a page'
+            'npm run func [function name]       > create a function set'
+            '$empty'
+            'npm run build                      > bundle application for production'
+            'npm start                          > start development with localhost server'
+            'npm test                           > test features by mocha'
+        ])
+        whatis: [
+            'react single page application'
+            'use typescript'
+            'test with mocha'
+            'support server side render'
+            'use sample middleware'
+            'not suggested'
         ]
     }
     {
         name: [
             'react-parcel-ssr'
+            'react-parcel-server'
+            'react-ssr-parcel'
+            'react-server-parcel'
         ]
         common: [
             'public'
-            'lints'
+            'eslint'
+            'tslint'
+            'typescript'
         ]
         author: '$ghoti'
         path: 'react-parcel-ssr'
@@ -76,10 +121,15 @@ const libs = [
     {
         name: [
             'react-next-ssr'
+            'react-next-server'
+            'react-ssr-next'
+            'react-server-next'
         ]
         common: [
             'public'
-            'lints'
+            'eslint'
+            'tslint'
+            'typescript'
         ]
         author: '$ghoti'
         path: 'react-next-ssr'
@@ -105,14 +155,19 @@ const libs = [
     {
         name: [
             'react'
+            'react-typescript'
             'react-ts'
             'react-normal'
             'react-normal-ts'
+            'react-ts-normal'
+            'react-typescript-normal'
             'react-default'
         ]
         common: [
             'public'
-            'lints'
+            'eslint'
+            'tslint'
+            'typescript'
         ]
         author: '$ghoti'
         path: 'react-normal'
@@ -138,7 +193,9 @@ const libs = [
             'react-lite'
             'react-tiny'
         ]
-        common: []
+        common: [
+            'typescript'
+        ]
         author: '$ghoti'
         path: 'react-lite'
         postLog: (defaultLogs [
@@ -159,12 +216,14 @@ const libs = [
     {
         name: [
             'react-js'
+            'react-javascript'
             'react-js-normal'
             'react-normal-js'
             'react-js-default'
         ]
         common: [
             'public'
+            'eslint'
         ]
         author: '$ghoti'
         path: 'react-js'
@@ -191,7 +250,8 @@ const libs = [
         ]
         common: [
             'public'
-            'lints'
+            'eslint'
+            'tslint'
         ]
         author: '$ghoti'
         path: 'react-unstructured'

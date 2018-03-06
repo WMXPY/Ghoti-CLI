@@ -7,7 +7,7 @@ import * as React from 'react';
 import { renderToString } from 'react-dom/server';
 import { renderRoutes } from 'react-router-config';
 import StaticRouter from 'react-router-dom/StaticRouter';
-import routes from '../src/routes';
+import routes from '../src/root/routes';
 
 export default function (route, data) {
     const content = renderToString(
@@ -22,7 +22,7 @@ export default function (route, data) {
                     </StaticRouter>
                 </div>
             </body>
-            <script id="initial-data" type="text/plain" data-json={data}></script>
+            <script id="initial-data" type="text/plain" data-json={JSON.stringify(data)}></script>
             <script src="bundle.js"></script>
         </html>
     );

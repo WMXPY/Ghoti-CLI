@@ -12,6 +12,11 @@ require! {
     then re
     else null))
 
+(const removeTail = (filename) ->
+    (if (filename.substring filename.length - 6, filename.length) === '.ghoti'
+    then (filename.substring 0, filename.length - 6)
+    else filename))
+
 (const copyToPath = (root, data) -> 
     (if (root.substring root.length - 6, root.length) === '.ghoti'
     then (fs.writeFileSync (root.substring 0, root.length - 6), data, 'utf8')
@@ -39,12 +44,12 @@ require! {
         (const stat = (fs.lstatSync pathname))
         (const floatRoot = (root.substring beforeLength, root.length))
 
-        (if (stat.isDirectory!)
-            (logPath '- ' + file, level)
+        (if ((stat.isDirectory)!)
+            (logPath '- ' + (removeTail file), level)
             (makeDir (path.join targetPath, floatRoot, file))
             (copyInitReacursion root + '/' + file, level + 1, targetPath, beforeLength, vars)
         else
-            (logPath '* ' + file, level)
+            (logPath '* ' + (removeTail file), level)
             (copyToPath (path.join targetPath, floatRoot, file), (readFile root + '/' + file, vars))))
 
     (files.forEach eachFile))

@@ -5,6 +5,6 @@
 
 import renderer from './render';
 
-export default function (props) {
-    return renderer('/', props);
+export default function (route, props) {
+    return renderer(route, props);
 };

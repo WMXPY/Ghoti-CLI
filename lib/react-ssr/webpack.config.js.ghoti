@@ -11,7 +11,7 @@ const BUILD_DIR = path.resolve(__dirname, 'dist');
 const APP_DIR = path.resolve(__dirname, 'src');
 
 let config = {
-    entry: APP_DIR + "/index.tsx",
+    entry: APP_DIR + "/index.build.tsx",
     output: {
         filename: "bundle.js",
         path: BUILD_DIR
@@ -20,8 +20,7 @@ let config = {
         extensions: [".ts", ".tsx", ".js", ".json", ".css", ".sass"]
     },
     module: {
-        rules: [
-            {
+        rules: [{
                 test: /\.tsx?$/,
                 use: [{
                     loader: 'awesome-typescript-loader',

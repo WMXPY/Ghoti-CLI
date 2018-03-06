@@ -18,8 +18,8 @@ export interface IState {
 
 }
 
-class ${|component|} extends React.Component <IProps,IState> {
-    public constructor(props){
+class ${|component|} extends React.Component<IProps, IState> {
+    public constructor(props) {
         super(props);
     }
 
