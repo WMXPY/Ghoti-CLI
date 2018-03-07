@@ -77,6 +77,15 @@ require! {
         (logFace!)
         void))
 
+(const logSymbol = (mark) ->
+    (const title = '🐟  > 💫  Ghoti-CLI SYMBOL ' + mark + ':')
+    (log title)
+    (logSeprate title.length) 
+    (->
+        (logSeprate title.length)
+        (logFace!)
+        void))
+
 (const logVersion = (env?) ->
     (const title = '🐟  > 📜  Ghoti-CLI Version:')
     (log title)
@@ -312,6 +321,7 @@ const logHelpMore = (env?) ->
 (export logAbout)
 (export logStatus)
 (export logCommand)
+(export logSymbol)
 (export logVersion)
 (export logUnknown)
 (export logPostInstall)

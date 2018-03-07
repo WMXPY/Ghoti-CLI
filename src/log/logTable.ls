@@ -1,6 +1,6 @@
-(const log = (...text) -> 
-    (console.log ...text)
-    text)
+require! {
+    './std': { log }
+}
 
 (const logSeprate = (length) ->
     (var re)
