@@ -155,6 +155,15 @@ require! {
     (process.exit!)
     void)
 
+const logUnderline = ->
+    (const title = '🐟  > 🎆  Ghoti-CLI Introducing GHOTI UNDERLINE:')
+    (log title)
+    (logSeprate title.length)
+    (logSeprate title.length)
+    (logFace!)
+    (process.exit!)
+    void
+
 const logHelpMore = (env?) ->
     (const title ='🐟  > ⭐  Ghoti-CLI Available commands:')
     (log title)
@@ -319,6 +328,7 @@ const logHelpMore = (env?) ->
 (export logHelpMore)
 (export logInfo)
 (export logAbout)
+(export logUnderline)
 (export logStatus)
 (export logCommand)
 (export logSymbol)

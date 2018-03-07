@@ -1,5 +1,59 @@
 const list = [
     {
+        command: ['_']
+        arguments: 0
+        info: 'Check "ghoti underline"'
+        plus: [
+            {
+                name: 'example'
+                value: 'ghoti _'
+            }
+            {
+                name: 'example'
+                value: 'ghoti _board'
+            }
+        ]
+        more: [
+            {
+                name: 'intro'
+                value: 'Introducing GHOTI UNDERLINE, check "ghoti underline"'
+            }
+        ]
+    }
+    {
+        command: ['_']
+        arguments: 1
+        info: 'Check "ghoti underline"'
+        plus: [
+            {
+                name: 'example'
+                value: 'ghoti _+ component devlopment'
+            }
+            {
+                name: 'example'
+                value: 'ghoti _board- component devlopment'
+            }
+        ]
+        more: [
+            {
+                name: 'intro'
+                value: 'Introducing GHOTI UNDERLINE, check "ghoti underline"'
+            }
+        ]
+    }
+    {
+        command: ['underline']
+        arguments: 0
+        info: 'show what is GHOTI UNDERLINE'
+        plus: [
+            {
+                name: 'example'
+                value: 'ghoti underline'
+            }
+        ]
+        more: []
+    }
+    {
         command: ['about']
         arguments: 0
         info: 'show about message'

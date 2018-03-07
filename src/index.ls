@@ -5,7 +5,7 @@ require! {
     os
     './func/config': config
     './func/config': { updateConfig }
-    './log/log': { log, logHelp, logHelpMore, logInfo, logPostNPMInstall, logAbout, logVersion, logCommand, logSymbol, logUnknown, logStatus, logWhatIs, logUpdate, logList }
+    './log/log': { log, logHelp, logHelpMore, logInfo, logPostNPMInstall, logAbout, logUnderline, logVersion, logCommand, logSymbol, logUnknown, logStatus, logWhatIs, logUpdate, logList }
     './func/argv': { argv, env, ghotiConfig, path_ghoti }
     './func/init': { init }
     './structure/component': { component }
@@ -16,6 +16,7 @@ require! {
     './func/fix': { fix }
     './func/update': { update }
     './ame/underline': { underline, plus, minus }
+    './ame/excute': { checkAme, excuteAme }
 }
 
 const ghoti = ghotiConfig
@@ -88,20 +89,13 @@ const excute = ->
             whenDone = (logCommand!)
             (component ghotiCLIPath, process.cwd!, env.texture[0], ghoti, whenDone, env)
             (whenDone!)
-        case '_'
-            whenDone = (logSymbol!)
-            (underline env.texture[0])
-            (whenDone!)
-        case '_+'
-            whenDone = (logSymbol!)
-            (plus env.texture[0])
-            (whenDone!)
-        case '_-'
-            whenDone = (logSymbol!)
-            (minus env.texture[0])
-            (whenDone!)
+        case 'underline'
+            (logUnderline!)
         default
-            (logUnknown env)
+            const ameResult = (checkAme mode)
+            if ameResult
+            then (excuteAme ameResult, env.texture, ghoti, logSymbol, env, ghotiCLIPath, process.cwd!)
+            else (logUnknown env)
     void
 
 export excute
