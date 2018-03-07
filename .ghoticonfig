@@ -11,17 +11,42 @@
                     "prog": 45
                 },
                 {
-                    "name": "a",
+                    "name": "b",
                     "type": "set",
                     "child": [{
-                            "name": "aa",
+                            "name": "ba",
                             "type": "task",
                             "prog": 30
                         },
                         {
-                            "name": "ab",
+                            "name": "bb",
                             "type": "task",
                             "prog": 20
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "name": "bmbistus",
+            "type": "set",
+            "child": [{
+                    "name": "q",
+                    "type": "task",
+                    "prog": 32
+                },
+                {
+                    "name": "w",
+                    "type": "set",
+                    "child": [{
+                            "name": "qq",
+                            "type": "task",
+                            "prog": 90
+                        },
+                        {
+                            "name": "qw",
+                            "type": "task",
+                            "prog": 100
                         }
                     ]
                 }

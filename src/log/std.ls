@@ -13,6 +13,14 @@
     (log text)
     text)
 
+(const logHalfPad = (text, pad?) ->
+    (if pad
+        (for i to pad
+            text = ' ' + text))
+    (log text)
+    text)
+
 export log
 export logPad
+export logHalfPad
 export logInline

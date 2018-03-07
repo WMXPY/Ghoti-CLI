@@ -1,5 +1,6 @@
 require! {
     '../log/std': { log, logPad }
+    './underline': { calculateProgress }
 }
 
 const checkAme = (command) ->
@@ -10,13 +11,22 @@ const checkAme = (command) ->
     else null
 
 const amePath = (other) ->
+    other = JSON.parse JSON.stringify other
     var command
     if other[other.length - 1] === '+'
+    || other[other.length - 1] === '|'
     || other[other.length - 1] === '-'
     || other[other.length - 1] === '?'
     then command = other.pop!
+    else if other[other.length - 1] === ''
+    then 
+        other.pop!
+        command = '?'
     else command = '?'
-    command
+    {
+        command
+        other
+    }
 
 const ameActive = (logSymbol) ->
     const whenDone = logSymbol '~~~'
@@ -26,32 +36,61 @@ const ameActive = (logSymbol) ->
     whenDone!
     process.exit!
 
-const amePlus = (path, context) ->
+const accessPath = (path, ame) ->
+    var re, stat
+    re = JSON.parse JSON.stringify ame
+    stat = false
+    for i in path
+        if re.child
+        then re = re.child
+        for j in re
+            if j.name === i
+            then 
+                re = j
+                stat = true
+                break
+        if !stat
+        then 
+            logPad '| ' + i + ' is not a valid path'
+            process.exit!
+        else stat = false
+    re
+
+const ameSet = (path, context, ghoti) ->
     log path
     log context
 
-const ameMinus = (path, context) ->
+const amePlus = (path, context, ghoti) ->
     log path
     log context
 
-const ameStatus = (path, context) ->
+const ameMinus = (path, context, ghoti) ->
     log path
     log context
 
-const excuteAme = (other, contexts, ghoti, logSymbol, env, ghotiCLIPath, targetPath) ->
+const ameStatus = (path, context, ghoti) ->
+    const ame = ghoti.underline.path
+    const current = accessPath path, ame
+    const { total, amount } = calculateProgress current, true
+    log '| Overall Prograss: ' + ((amount / total).toFixed 2) + '%'
+
+
+const excuteAme = (oriOther, contexts, ghoti, logSymbol, env, ghotiCLIPath, targetPath) ->
     var whenDone
     if !ghoti.underline.active
     then ameActive logSymbol
-    const command = amePath other
+    const { command, other } = amePath oriOther
     whenDone = logSymbol command
     const context = contexts.join ' '
     switch command
         case '?'
-            ameStatus other, context
+            ameStatus other, context, ghoti
+        case '|'
+            ameSet other, context, ghoti
         case '+'
-            amePlus other, context
+            amePlus other, context, ghoti
         case '-' 
-            ameMinus other, context
+            ameMinus other, context, ghoti
     whenDone!
     process.exit!
     void
