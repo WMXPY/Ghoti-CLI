@@ -21,5 +21,8 @@
         },
         "style": "sass",
         "sub": "typescript"
+    },
+    "underline": {
+        "active": false
     }
 }

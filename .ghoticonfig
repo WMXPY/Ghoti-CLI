@@ -1,3 +1,31 @@
 {
-    "type": "origin"
+    "type": "origin",
+    "underline": {
+        "active": true,
+        "path": [{
+            "name": "ambistus",
+            "type": "set",
+            "child": [{
+                    "name": "a",
+                    "type": "task",
+                    "prog": 45
+                },
+                {
+                    "name": "a",
+                    "type": "set",
+                    "child": [{
+                            "name": "aa",
+                            "type": "task",
+                            "prog": 30
+                        },
+                        {
+                            "name": "ab",
+                            "type": "task",
+                            "prog": 20
+                        }
+                    ]
+                }
+            ]
+        }]
+    }
 }

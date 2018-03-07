@@ -4,7 +4,7 @@
 
 ## Dependence
 
-You might need `typescript` to reduce install time.
+You might need `typescript` installed globally to reduce install time.
 
 To install typescript
 
@@ -22,7 +22,7 @@ npm link typescript
 sudo npm link typescript
 ```
 
-If `typescript` is not installed, `npm install` will automatically install it for you.
+If `typescript` is not installed globally, `npm install` will automatically install it for you.
 
 ## Install
 
@@ -52,7 +52,7 @@ ghoti info init
 ghoti component [component name]
 ghoti page [page name]
 ghoti lambda [lambda name]
-ghoti func [function name]
+ghoti func [func name]
 ghoti feature [feature name]
 ```
 

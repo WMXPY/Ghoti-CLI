@@ -2,7 +2,7 @@
   "name": "ghoti-cli",
   "version": "2.0.1",
   "description": ":fish: A CLI tool that helps you start developing your new project within 60 seconds",
-  "main": "dist/index.js",
+  "main": "bin/import",
   "directories": {
     "doc": "doc"
   },
@@ -10,7 +10,7 @@
     "ghoti": "bin/ghoti"
   },
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "make tests"
   },
   "repository": {
     "type": "git",

@@ -3,8 +3,8 @@ require! {
     '../func/config': { getConfig, writeConfig }
 }
 
-const underline = (name?, progress?) ->
-    name
+const underline = (ghoti) ->
+    ghoti
 
 const puls = (name) ->
     name
