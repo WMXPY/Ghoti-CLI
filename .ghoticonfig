@@ -3,54 +3,55 @@
     "underline": {
         "active": true,
         "path": [{
-            "name": "ambistus",
-            "type": "set",
-            "child": [{
-                    "name": "a",
-                    "type": "task",
-                    "prog": 45
-                },
-                {
-                    "name": "b",
-                    "type": "set",
-                    "child": [{
-                            "name": "ba",
-                            "type": "task",
-                            "prog": 30
-                        },
-                        {
-                            "name": "bb",
-                            "type": "task",
-                            "prog": 20
-                        }
-                    ]
-                }
-            ]
-        },
-        {
-            "name": "bmbistus",
-            "type": "set",
-            "child": [{
-                    "name": "q",
-                    "type": "task",
-                    "prog": 32
-                },
-                {
-                    "name": "w",
-                    "type": "set",
-                    "child": [{
-                            "name": "qq",
-                            "type": "task",
-                            "prog": 90
-                        },
-                        {
-                            "name": "qw",
-                            "type": "task",
-                            "prog": 100
-                        }
-                    ]
-                }
-            ]
-        }]
+                "name": "ambistus",
+                "type": "set",
+                "child": [{
+                        "name": "a",
+                        "type": "task",
+                        "prog": 45
+                    },
+                    {
+                        "name": "b",
+                        "type": "set",
+                        "child": [{
+                                "name": "ba",
+                                "type": "task",
+                                "prog": 30
+                            },
+                            {
+                                "name": "bb",
+                                "type": "task",
+                                "prog": 20
+                            }
+                        ]
+                    }
+                ]
+            },
+            {
+                "name": "bmbistus",
+                "type": "set",
+                "child": [{
+                        "name": "q",
+                        "type": "task",
+                        "prog": 32
+                    },
+                    {
+                        "name": "w",
+                        "type": "set",
+                        "child": [{
+                                "name": "qq",
+                                "type": "task",
+                                "prog": 90
+                            },
+                            {
+                                "name": "qw",
+                                "type": "task",
+                                "prog": 100
+                            }
+                        ]
+                    }
+                ]
+            }
+        ]
     }
 }

@@ -1,6 +1,7 @@
 require! {
     '../log/std': { log, logPad }
-    './underline': { calculateProgress }
+    './underline': { mergeGhoti, calculateProgress, calculateNewUnderlinePlus }
+    '../func/config': { getConfig, writeConfig }
 }
 
 const checkAme = (command) ->
@@ -56,13 +57,23 @@ const accessPath = (path, ame) ->
         else stat = false
     re
 
+const ameUpdate = (path, contexts, ghoti) ->
+    const setting = contexts.shift!
+    const context = contexts.join ' '
+    const ame = ghoti.underline.path
+    const current = accessPath path, ame
+
 const ameSet = (path, context, ghoti) ->
     log path
     log context
 
 const amePlus = (path, context, ghoti) ->
-    log path
-    log context
+    const ame = ghoti.underline.path
+    const current = accessPath path, ame
+    const re = calculateNewUnderlinePlus current, context
+    const newGhoti = mergeGhoti ghoti, path, re
+    log newGhoti.underline.path[0].child
+    void
 
 const ameMinus = (path, context, ghoti) ->
     log path
@@ -72,7 +83,8 @@ const ameStatus = (path, context, ghoti) ->
     const ame = ghoti.underline.path
     const current = accessPath path, ame
     const { total, amount } = calculateProgress current, true
-    log '| Overall Prograss: ' + ((amount / total).toFixed 2) + '%'
+    log '| Total Tasks      : ' + ((amount / total).toFixed 2) + '%'
+    log '| Overall Progress : ' + ((amount / total).toFixed 2) + '%'
 
 
 const excuteAme = (oriOther, contexts, ghoti, logSymbol, env, ghotiCLIPath, targetPath) ->
@@ -91,6 +103,8 @@ const excuteAme = (oriOther, contexts, ghoti, logSymbol, env, ghotiCLIPath, targ
             amePlus other, context, ghoti
         case '-' 
             ameMinus other, context, ghoti
+        case '!'
+            ameUpdate other, contexts, ghoti
     whenDone!
     process.exit!
     void
