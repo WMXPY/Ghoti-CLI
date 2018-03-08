@@ -40,12 +40,13 @@ const mergeGhoti = (ghoti, pathE, re) ->
         then subPath[i] = re
     newGhoti
 
-const calculateNewUnderlinePlus = (currentE, name) ->
+const calculateNewUnderlinePlus = (currentE, name, whenDone) ->
     const current = JSON.parse JSON.stringify currentE
     if current.type === 'task'
     then 
         logPad '| New task must be created in a "set" not a "task"', 1
         logPad '| You can use "ghoti _[somepath]_|" to create a "set"', 1
+        whenDone!
         process.exit!
     else
         if current.child
@@ -65,7 +66,7 @@ const calculateNewUnderlinePlus = (currentE, name) ->
             process.exit!
     current
 
-const calculateProgress = (current, doLog?) ->
+const calculateProgress = (current, whenDone, doLog? = false, logLevel? = 1) ->
     var total, amount
     total = 0
     amount = 0
@@ -78,12 +79,16 @@ const calculateProgress = (current, doLog?) ->
             if Rcurrent.type === 'task'
             then 
                 if doLog
-                then logHalfPad '| ' + Rcurrent.name + ' > Progress:' + Rcurrent.prog + '%', level
+                then 
+                    if level <= logLevel
+                    then logHalfPad '| ' + Rcurrent.name + ' > Progress:' + Rcurrent.prog + '%', level
                 amount += Rcurrent.prog
                 total += 1
             else
                 if doLog
-                then logHalfPad '* ' + Rcurrent.name + ' > Size:' + Rcurrent.child.length, level
+                then 
+                    if level <= logLevel
+                    then logHalfPad '* ' + Rcurrent.name + ' > Size:' + Rcurrent.child.length, level
                 for i in Rcurrent.child
                     calculateProgressRecursion i, level + 1
         void

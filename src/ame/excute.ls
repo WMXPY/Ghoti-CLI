@@ -37,7 +37,7 @@ const ameActive = (logSymbol) ->
     whenDone!
     process.exit!
 
-const accessPath = (path, ame) ->
+const accessPath = (path, ame, whenDone) ->
     var re, stat
     re = JSON.parse JSON.stringify ame
     stat = false
@@ -52,37 +52,38 @@ const accessPath = (path, ame) ->
                 break
         if !stat
         then 
-            logPad '| ' + i + ' is not a valid path'
+            logPad '| "' + i + '" is not a valid path'
+            whenDone!
             process.exit!
         else stat = false
     re
 
-const ameUpdate = (path, contexts, ghoti) ->
+const ameUpdate = (path, contexts, ghoti, whenDone) ->
     const setting = contexts.shift!
     const context = contexts.join ' '
     const ame = ghoti.underline.path
-    const current = accessPath path, ame
+    const current = accessPath path, ame, whenDone
 
-const ameSet = (path, context, ghoti) ->
+const ameSet = (path, context, ghoti, whenDone) ->
     log path
     log context
 
-const amePlus = (path, context, ghoti) ->
+const amePlus = (path, context, ghoti, whenDone) ->
     const ame = ghoti.underline.path
-    const current = accessPath path, ame
-    const re = calculateNewUnderlinePlus current, context
-    const newGhoti = mergeGhoti ghoti, path, re
+    const current = accessPath path, ame, whenDone
+    const re = calculateNewUnderlinePlus current, context, whenDone
+    const newGhoti = mergeGhoti ghoti, path, re, whenDone
     log newGhoti.underline.path[0].child
     void
 
-const ameMinus = (path, context, ghoti) ->
+const ameMinus = (path, context, ghoti, whenDone) ->
     log path
     log context
 
-const ameStatus = (path, context, ghoti) ->
+const ameStatus = (path, context, ghoti, whenDone) ->
     const ame = ghoti.underline.path
-    const current = accessPath path, ame
-    const { total, amount } = calculateProgress current, true
+    const current = accessPath path, ame, whenDone
+    const { total, amount } = calculateProgress current, whenDone, true
     log '| Total Tasks      : ' + ((amount / total).toFixed 2) + '%'
     log '| Overall Progress : ' + ((amount / total).toFixed 2) + '%'
 
@@ -96,15 +97,15 @@ const excuteAme = (oriOther, contexts, ghoti, logSymbol, env, ghotiCLIPath, targ
     const context = contexts.join ' '
     switch command
         case '?'
-            ameStatus other, context, ghoti
+            ameStatus other, context, ghoti, whenDone
         case '|'
-            ameSet other, context, ghoti
+            ameSet other, context, ghoti, whenDone
         case '+'
-            amePlus other, context, ghoti
+            amePlus other, context, ghoti, whenDone
         case '-' 
-            ameMinus other, context, ghoti
+            ameMinus other, context, ghoti, whenDone
         case '!'
-            ameUpdate other, contexts, ghoti
+            ameUpdate other, contexts, ghoti, whenDone
     whenDone!
     process.exit!
     void
