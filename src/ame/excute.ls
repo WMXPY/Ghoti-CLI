@@ -18,11 +18,20 @@ const amePath = (other) ->
     || other[other.length - 1] === '|'
     || other[other.length - 1] === '-'
     || other[other.length - 1] === '?'
+    || other[other.length - 1] === '!'
     then command = other.pop!
     else if other[other.length - 1] === ''
     then 
         other.pop!
         command = '?'
+    else if other[other.length - 1].substring other[other.length - 1].length - 1, other[other.length - 1].length === '+'
+    || other[other.length - 1].substring other[other.length - 1].length - 1, other[other.length - 1].length === '|'
+    || other[other.length - 1].substring other[other.length - 1].length - 1, other[other.length - 1].length === '-'
+    || other[other.length - 1].substring other[other.length - 1].length - 1, other[other.length - 1].length === '?'
+    || other[other.length - 1].substring other[other.length - 1].length - 1, other[other.length - 1].length === '!'
+    then 
+        command = other[other.length - 1].substring other[other.length - 1].length - 1, other[other.length - 1].length
+        other[other.length - 1] = other[other.length - 1].substring 0, other[other.length - 1].length - 1
     else command = '?'
     {
         command
@@ -65,8 +74,9 @@ const ameUpdate = (path, contexts, ghoti, whenDone) ->
     const current = accessPath path, ame, whenDone
 
 const ameSet = (path, context, ghoti, whenDone) ->
-    log path
-    log context
+    const ame = ghoti.underline.path
+    const current = accessPath path, ame, whenDone
+    log current
 
 const amePlus = (path, context, ghoti, whenDone) ->
     const ame = ghoti.underline.path
@@ -93,7 +103,7 @@ const excuteAme = (oriOther, contexts, ghoti, logSymbol, env, ghotiCLIPath, targ
     if !ghoti.underline.active
     then ameActive logSymbol
     const { command, other } = amePath oriOther
-    whenDone = logSymbol command
+    whenDone = logSymbol command, other[other.length - 1]
     const context = contexts.join ' '
     switch command
         case '?'

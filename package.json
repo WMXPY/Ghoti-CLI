@@ -7,7 +7,8 @@
     "doc": "doc"
   },
   "bin": {
-    "ghoti": "bin/ghoti"
+    "ghoti": "bin/ghoti",
+    "nuh": "bin/ghoti"
   },
   "scripts": {
     "test": "make tests"

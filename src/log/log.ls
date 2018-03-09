@@ -77,8 +77,11 @@ require! {
         (logFace!)
         void))
 
-(const logSymbol = (mark) ->
-    (const title = '🐟  > 💫  Ghoti-CLI SYMBOL ' + mark + ':')
+(const logSymbol = (mark, path?) ->
+    var title
+    if path
+    then (title = '🐟  > 💫  Ghoti-CLI SYMBOL ' + mark + ' of "' + path + '":')
+    else (title = '🐟  > 💫  Ghoti-CLI SYMBOL ' + mark + ':')
     (log title)
     (logSeprate title.length) 
     (->
