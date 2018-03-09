@@ -2,66 +2,6 @@
     "type": "origin",
     "underline": {
         "active": true,
-        "path": [{
-                "name": "ambistus",
-                "type": "set",
-                "tea": [],
-                "child": [{
-                        "name": "a",
-                        "type": "task",
-                        "tea": [],
-                        "prog": 45
-                    },
-                    {
-                        "name": "b",
-                        "type": "set",
-                        "tea": [],
-                        "child": [{
-                                "name": "ba",
-                                "type": "task",
-                                "tea": [],
-                                "prog": 30
-                            },
-                            {
-                                "name": "bb",
-                                "type": "task",
-                                "tea": [],
-                                "prog": 20
-                            }
-                        ]
-                    }
-                ]
-            },
-            {
-                "name": "bmbistus",
-                "type": "set",
-                "tea": [],
-                "child": [{
-                        "name": "q",
-                        "type": "task",
-                        "tea": [],
-                        "prog": 32
-                    },
-                    {
-                        "name": "w",
-                        "type": "set",
-                        "tea": [],
-                        "child": [{
-                                "name": "qq",
-                                "type": "task",
-                                "tea": [],
-                                "prog": 90
-                            },
-                            {
-                                "name": "qw",
-                                "type": "task",
-                                "tea": [],
-                                "prog": 100
-                            }
-                        ]
-                    }
-                ]
-            }
-        ]
+        "path": []
     }
 }

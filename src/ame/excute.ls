@@ -1,6 +1,6 @@
 require! {
     '../log/std': { log, logPad }
-    './underline': { mergeGhoti, calculateNewUpdate, calculateProgress, calculateNewUnderlinePlus }
+    './underline': { mergeGhoti, calculateNewUpdate, calculateProgress, calculateNewMinus, calculateNewUnderlineSet, calculateNewUnderlinePlus }
     '../func/config': { getConfig, writeConfig }
 }
 
@@ -76,32 +76,43 @@ const ameUpdate = (path, contexts, ghoti, whenDone) ->
     const current = accessPath path, ame, whenDone
     const re = calculateNewUpdate current, setting, context, whenDone
     const newGhoti = mergeGhoti ghoti, path, re, whenDone
-    log newGhoti.underline.path[1].child[0]
+    log newGhoti.underline.path
     void
 
 const ameSet = (path, context, ghoti, whenDone) ->
     const ame = ghoti.underline.path
     const current = accessPath path, ame, whenDone
-    log current
+    const re = calculateNewUnderlineSet current, context, whenDone
+    const newGhoti = mergeGhoti ghoti, path, re, whenDone
+    log newGhoti.underline.path
+    void
 
 const amePlus = (path, context, ghoti, whenDone) ->
     const ame = ghoti.underline.path
     const current = accessPath path, ame, whenDone
     const re = calculateNewUnderlinePlus current, context, whenDone
     const newGhoti = mergeGhoti ghoti, path, re, whenDone
-    log newGhoti.underline.path[0].child
+    log newGhoti.underline.path
     void
 
 const ameMinus = (path, context, ghoti, whenDone) ->
-    log path
-    log context
+    const ame = ghoti.underline.path
+    const current = accessPath path, ame, whenDone
+    const re = calculateNewMinus current, context, whenDone
+    const newGhoti = mergeGhoti ghoti, path, re, whenDone
+    log newGhoti.underline.path
+    void
 
 const ameStatus = (path, context, ghoti, whenDone) ->
     const ame = ghoti.underline.path
     const current = accessPath path, ame, whenDone
     const { total, amount } = calculateProgress current, whenDone, true
-    log '| Total Tasks      : ' + total
-    log '| Overall Progress : ' + ((amount / total).toFixed 2) + '%'
+    if total === 0
+    then
+        log '| No task to show is target path'
+    else
+        log '| Total Tasks      : ' + total
+        log '| Overall Progress : ' + ((amount / total).toFixed 2) + '%'
 
 
 const excuteAme = (oriOther, contexts, ghoti, logSymbol, env, ghotiCLIPath, targetPath) ->
