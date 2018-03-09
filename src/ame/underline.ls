@@ -40,12 +40,36 @@ const mergeGhoti = (ghoti, pathE, re) ->
         then subPath[i] = re
     newGhoti
 
+const calculateNewUpdate = (currentE, progress, comment, whenDone) ->
+    const current = JSON.parse JSON.stringify currentE
+    if current.type === 'set'
+    then 
+        logPad '| Progress update must be created in a "task" not a "set"', 1
+        logPad '| You can use "ghoti _[somepath]! [prog] [...Comments]" to update a "task"', 1
+        whenDone!
+        process.exit!
+    else
+        if parseInt(progress) === NaN
+        then 
+            logPad '| You can use "ghoti _[somepath]! [prog] [...Comments]" to update a "task"', 1
+            whenDone!
+            process.exit!
+        current.tea.push {
+            type: 'prog'
+            from: current.prog
+            to: parseInt(progress)
+            comment
+        }
+        current.prog = parseInt(progress)
+    current
+
+
 const calculateNewUnderlinePlus = (currentE, name, whenDone) ->
     const current = JSON.parse JSON.stringify currentE
     if current.type === 'task'
     then 
         logPad '| New task must be created in a "set" not a "task"', 1
-        logPad '| You can use "ghoti _[somepath]_|" to create a "set"', 1
+        logPad '| You can use "ghoti _[somepath]#" to create a "set"', 1
         whenDone!
         process.exit!
     else
@@ -81,14 +105,14 @@ const calculateProgress = (current, whenDone, doLog? = false, logLevel? = 1) ->
                 if doLog
                 then 
                     if level <= logLevel
-                    then logHalfPad '| ' + Rcurrent.name + ' > Progress:' + Rcurrent.prog + '%', level
+                    then logHalfPad '* ' + Rcurrent.name + ' > Progress: ' + Rcurrent.prog + '%', level
                 amount += Rcurrent.prog
                 total += 1
             else
                 if doLog
                 then 
                     if level <= logLevel
-                    then logHalfPad '* ' + Rcurrent.name + ' > Size:' + Rcurrent.child.length, level
+                    then logHalfPad '- ' + Rcurrent.name + ' > Size: ' + Rcurrent.child.length, level
                 for i in Rcurrent.child
                     calculateProgressRecursion i, level + 1
         void
@@ -103,4 +127,5 @@ export puls
 export minus
 export mergeGhoti
 export calculateProgress
+export calculateNewUpdate
 export calculateNewUnderlinePlus

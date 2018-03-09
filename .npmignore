@@ -1,6 +1,7 @@
 src
 doc
 tex
+package-lock.json
 .ghoticonfig
 .gitignore
 makefile

@@ -1,6 +1,6 @@
 require! {
     '../log/std': { log, logPad }
-    './underline': { mergeGhoti, calculateProgress, calculateNewUnderlinePlus }
+    './underline': { mergeGhoti, calculateNewUpdate, calculateProgress, calculateNewUnderlinePlus }
     '../func/config': { getConfig, writeConfig }
 }
 
@@ -15,7 +15,7 @@ const amePath = (other) ->
     other = JSON.parse JSON.stringify other
     var command
     if other[other.length - 1] === '+'
-    || other[other.length - 1] === '|'
+    || other[other.length - 1] === '#'
     || other[other.length - 1] === '-'
     || other[other.length - 1] === '?'
     || other[other.length - 1] === '!'
@@ -24,15 +24,16 @@ const amePath = (other) ->
     then 
         other.pop!
         command = '?'
-    else if other[other.length - 1].substring other[other.length - 1].length - 1, other[other.length - 1].length === '+'
-    || other[other.length - 1].substring other[other.length - 1].length - 1, other[other.length - 1].length === '|'
-    || other[other.length - 1].substring other[other.length - 1].length - 1, other[other.length - 1].length === '-'
-    || other[other.length - 1].substring other[other.length - 1].length - 1, other[other.length - 1].length === '?'
-    || other[other.length - 1].substring other[other.length - 1].length - 1, other[other.length - 1].length === '!'
+    else if (other[other.length - 1].substring other[other.length - 1].length - 1, other[other.length - 1].length) === '+'
+    || (other[other.length - 1].substring other[other.length - 1].length - 1, other[other.length - 1].length) === '#'
+    || (other[other.length - 1].substring other[other.length - 1].length - 1, other[other.length - 1].length) === '-'
+    || (other[other.length - 1].substring other[other.length - 1].length - 1, other[other.length - 1].length) === '?'
+    || (other[other.length - 1].substring other[other.length - 1].length - 1, other[other.length - 1].length) === '!'
     then 
         command = other[other.length - 1].substring other[other.length - 1].length - 1, other[other.length - 1].length
         other[other.length - 1] = other[other.length - 1].substring 0, other[other.length - 1].length - 1
-    else command = '?'
+    else 
+        command = '?'
     {
         command
         other
@@ -68,10 +69,15 @@ const accessPath = (path, ame, whenDone) ->
     re
 
 const ameUpdate = (path, contexts, ghoti, whenDone) ->
+    contexts = JSON.parse JSON.stringify contexts
     const setting = contexts.shift!
     const context = contexts.join ' '
     const ame = ghoti.underline.path
     const current = accessPath path, ame, whenDone
+    const re = calculateNewUpdate current, setting, context, whenDone
+    const newGhoti = mergeGhoti ghoti, path, re, whenDone
+    log newGhoti.underline.path[1].child[0]
+    void
 
 const ameSet = (path, context, ghoti, whenDone) ->
     const ame = ghoti.underline.path
@@ -94,7 +100,7 @@ const ameStatus = (path, context, ghoti, whenDone) ->
     const ame = ghoti.underline.path
     const current = accessPath path, ame, whenDone
     const { total, amount } = calculateProgress current, whenDone, true
-    log '| Total Tasks      : ' + ((amount / total).toFixed 2) + '%'
+    log '| Total Tasks      : ' + total
     log '| Overall Progress : ' + ((amount / total).toFixed 2) + '%'
 
 
@@ -108,7 +114,7 @@ const excuteAme = (oriOther, contexts, ghoti, logSymbol, env, ghotiCLIPath, targ
     switch command
         case '?'
             ameStatus other, context, ghoti, whenDone
-        case '|'
+        case '#'
             ameSet other, context, ghoti, whenDone
         case '+'
             amePlus other, context, ghoti, whenDone
