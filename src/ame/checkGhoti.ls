@@ -7,8 +7,6 @@ const checkGhoti = (ghoti) ->
         && ghoti.sub
         && ghoti.version
         && ghoti.title
-        && ghoti.description
-        && ghoti.author
         && ghoti.config
         && ghoti.underline
         && ghoti.features

@@ -72,6 +72,22 @@ const accessPath = (path, ame, whenDone) ->
         else stat = false
     re
 
+const ameStatus = (path, context, ghoti, whenDone, isEdit?) ->
+    const ame = ghoti.underline.path
+    const current = accessPath path, ame, whenDone
+    const { total, amount } = calculateProgress current, whenDone, true
+    if isEdit
+    then
+        log '| Excution complete'
+    else
+        if total === 0
+        then
+            log '| No task to show in target path'
+        else
+            log '| Total Tasks      : ' + total
+            log '| Overall Progress : ' + ((amount / total).toFixed 2) + '%'
+    void
+    
 const ameUpdate = (path, contexts, ghoti, whenDone) ->
     contexts = JSON.parse JSON.stringify contexts
     const setting = contexts.shift!
@@ -80,6 +96,7 @@ const ameUpdate = (path, contexts, ghoti, whenDone) ->
     const current = accessPath path, ame, whenDone
     const re = calculateNewUpdate current, setting, context, whenDone
     const newGhoti = mergeGhoti ghoti, path, re, whenDone
+    ameStatus path, context, newGhoti, whenDone, true
     writeConfig newGhoti
     void
 
@@ -90,6 +107,7 @@ const ameSet = (path, context, ghoti, whenDone) ->
     then
         const re = calculateNewUnderlineSet current, context, whenDone
         const newGhoti = mergeGhoti ghoti, path, re, whenDone
+        ameStatus path, context, newGhoti, whenDone, true
         writeConfig newGhoti
     else
         log '| Input is not valid'
@@ -103,6 +121,7 @@ const amePlus = (path, context, ghoti, whenDone) ->
     then
         const re = calculateNewUnderlinePlus current, context, whenDone
         const newGhoti = mergeGhoti ghoti, path, re, whenDone
+        ameStatus path, context, newGhoti, whenDone, true
         writeConfig newGhoti
     else
         log '| Input is not valid'
@@ -114,20 +133,9 @@ const ameMinus = (path, context, ghoti, whenDone) ->
     const current = accessPath path, ame, whenDone
     const re = calculateNewMinus current, context, whenDone
     const newGhoti = mergeGhoti ghoti, path, re, whenDone
+    ameStatus path, context, newGhoti, whenDone, true
     writeConfig newGhoti
     void
-
-const ameStatus = (path, context, ghoti, whenDone) ->
-    const ame = ghoti.underline.path
-    const current = accessPath path, ame, whenDone
-    const { total, amount } = calculateProgress current, whenDone, true
-    if total === 0
-    then
-        log '| No task to show is target path'
-    else
-        log '| Total Tasks      : ' + total
-        log '| Overall Progress : ' + ((amount / total).toFixed 2) + '%'
-
 
 const excuteAme = (oriOther, contexts, ghoti, logSymbol, env, ghotiCLIPath, targetPath) ->
     var whenDone
