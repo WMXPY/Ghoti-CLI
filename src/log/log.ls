@@ -162,10 +162,11 @@ const logUnderline = ->
     (const title = '🐟  > 🎆  Ghoti-CLI Introducing GHOTI UNDERLINE:')
     (log title)
     (logSeprate title.length)
-    (logSeprate title.length)
-    (logFace!)
-    (process.exit!)
-    void
+    (->
+        (logSeprate title.length)
+        (logFace!)
+        (process.exit!)
+        void)
 
 const logHelpMore = (env?) ->
     (const title ='🐟  > ⭐  Ghoti-CLI Available commands:')

@@ -53,6 +53,26 @@ const whatIsCurrent = (current) ->
         default
             'Ghoti underline Root or not a underline path'
 
+const checkAvailbility = (current, context) ->
+    switch current.type
+        case 'set' # current is set
+            if context === ''
+            then return false
+            for i in current.child
+                if i.name === context
+                then return false
+            return true
+        case 'task' # current is task
+            return true
+        default # current is root
+            if context === ''
+            then return false
+            for i in current
+                if i.name === context
+                then return false
+            return true
+    true
+
 const calculateNewUpdate = (currentE, progress, comment, whenDone) ->
     const current = JSON.parse JSON.stringify currentE
     if current.type !== 'task'
@@ -191,6 +211,7 @@ export underline
 export puls
 export minus
 export mergeGhoti
+export checkAvailbility
 export calculateProgress
 export calculateNewMinus
 export calculateNewUpdate

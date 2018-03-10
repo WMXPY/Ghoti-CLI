@@ -1,8 +1,12 @@
 require! {
     '../log/std': { log, logPad }
-    './underline': { mergeGhoti, calculateNewUpdate, calculateProgress, calculateNewMinus, calculateNewUnderlineSet, calculateNewUnderlinePlus }
+    './underline': { mergeGhoti, checkAvailbility, calculateNewUpdate, calculateProgress, calculateNewMinus, calculateNewUnderlineSet, calculateNewUnderlinePlus }
     '../func/config': { getConfig, writeConfig }
 }
+
+const stopImmediatly = (whenDone) ->
+    whenDone!
+    process.exit!
 
 const checkAme = (command) ->
     const first = command.substring 0, 1
@@ -76,23 +80,33 @@ const ameUpdate = (path, contexts, ghoti, whenDone) ->
     const current = accessPath path, ame, whenDone
     const re = calculateNewUpdate current, setting, context, whenDone
     const newGhoti = mergeGhoti ghoti, path, re, whenDone
-    log newGhoti.underline.path
+    writeConfig newGhoti
     void
 
 const ameSet = (path, context, ghoti, whenDone) ->
     const ame = ghoti.underline.path
     const current = accessPath path, ame, whenDone
-    const re = calculateNewUnderlineSet current, context, whenDone
-    const newGhoti = mergeGhoti ghoti, path, re, whenDone
-    log newGhoti.underline.path
+    if checkAvailbility current, context
+    then
+        const re = calculateNewUnderlineSet current, context, whenDone
+        const newGhoti = mergeGhoti ghoti, path, re, whenDone
+        writeConfig newGhoti
+    else
+        log '| Input is not valid'
+        stopImmediatly(whenDone)
     void
 
 const amePlus = (path, context, ghoti, whenDone) ->
     const ame = ghoti.underline.path
     const current = accessPath path, ame, whenDone
-    const re = calculateNewUnderlinePlus current, context, whenDone
-    const newGhoti = mergeGhoti ghoti, path, re, whenDone
-    log newGhoti.underline.path
+    if checkAvailbility current, context
+    then
+        const re = calculateNewUnderlinePlus current, context, whenDone
+        const newGhoti = mergeGhoti ghoti, path, re, whenDone
+        writeConfig newGhoti
+    else
+        log '| Input is not valid'
+        stopImmediatly(whenDone)
     void
 
 const ameMinus = (path, context, ghoti, whenDone) ->
@@ -100,7 +114,7 @@ const ameMinus = (path, context, ghoti, whenDone) ->
     const current = accessPath path, ame, whenDone
     const re = calculateNewMinus current, context, whenDone
     const newGhoti = mergeGhoti ghoti, path, re, whenDone
-    log newGhoti.underline.path
+    writeConfig newGhoti
     void
 
 const ameStatus = (path, context, ghoti, whenDone) ->

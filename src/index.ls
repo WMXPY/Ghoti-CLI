@@ -15,7 +15,7 @@ require! {
     './structure/feature': { feature }
     './func/fix': { fix }
     './func/update': { update }
-    './ame/underline': { underline, plus, minus }
+    './ame/init': { initUnderline }
     './ame/excute': { checkAme, excuteAme }
 }
 
@@ -90,7 +90,9 @@ const excute = ->
             (component ghotiCLIPath, process.cwd!, env.texture[0], ghoti, whenDone, env)
             (whenDone!)
         case 'underline'
-            (logUnderline!)
+            whenDone = (logUnderline!)
+            initUnderline ghoti, whenDone
+            whenDone!
         default
             const ameResult = (checkAme mode)
             if ameResult

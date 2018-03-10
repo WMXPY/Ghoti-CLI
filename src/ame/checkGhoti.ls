@@ -1,16 +1,19 @@
 const checkGhoti = (ghoti) ->
     if ghoti.type
-    && ghoti.template
-    && ghoti.sub
-    && ghoti.version
-    && ghoti.title
-    && ghoti.description
-    && ghoti.author
-    && ghoti.config
-    && ghoti.underline
-    && ghoti.features
-        true
-    false
+    then
+        if ghoti.type === 'origin'
+        then return true
+        else if ghoti.template
+        && ghoti.sub
+        && ghoti.version
+        && ghoti.title
+        && ghoti.description
+        && ghoti.author
+        && ghoti.config
+        && ghoti.underline
+        && ghoti.features
+        then return true
+    return false
 
 const checkUnderline = (ghoti) ->
     if ghoti.underline.active
