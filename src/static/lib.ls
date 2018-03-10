@@ -340,8 +340,8 @@ const libs = [
         (for j in i.name
             (if (compareName j, libName)
                 re = {...i})))
-    if !Boolean re
-    then return null
+    (if (!(Boolean re))
+    then return null)
     (if ghoti_root
     then 
         re.path = (libPath re.path, ghoti_root)

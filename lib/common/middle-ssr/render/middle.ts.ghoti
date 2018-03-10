@@ -5,6 +5,8 @@
 
 import renderer from './render';
 
-export default function (route, props) {
+export default function (Route, Props) {
+    const route = Route || "/"
+    const props = Props || {}
     return renderer(route, props);
 };

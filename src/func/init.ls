@@ -17,6 +17,10 @@ require! {
     then (filename.substring 0, filename.length - 6)
     else filename))
 
+const copyToPathBinary = (targetPath, filePath) ->
+    log targetPath
+    log filePath
+
 (const copyToPath = (root, data) -> 
     (if (root.substring root.length - 6, root.length) === '.ghoti'
     then (fs.writeFileSync (root.substring 0, root.length - 6), data, 'utf8')
@@ -40,17 +44,22 @@ require! {
     (const files = (fs.readdirSync(root)))
 
     (const eachFile = (file) ->
-        (const pathname = root + '/' + file)
+        (const pathname = (path.join root, file))
         (const stat = (fs.lstatSync pathname))
         (const floatRoot = (root.substring beforeLength, root.length))
 
         (if ((stat.isDirectory)!)
             (logPath '- ' + (removeTail file), level)
             (makeDir (path.join targetPath, floatRoot, file))
-            (copyInitReacursion root + '/' + file, level + 1, targetPath, beforeLength, vars)
+            (copyInitReacursion pathname, level + 1, targetPath, beforeLength, vars)
         else
-            (logPath '* ' + (removeTail file), level)
-            (copyToPath (path.join targetPath, floatRoot, file), (readFile file, root + '/' + file, vars))))
+            if (file.substring file.length - 6, file.length) === '.ghotb'
+            then 
+                (logPath '# ' + (removeTail file), level)
+                copyToPathBinary (path.join targetPath, floatRoot, file), pathname
+            else 
+                (logPath '* ' + (removeTail file), level)
+                (copyToPath (path.join targetPath, floatRoot, file), (readFile file, pathname, vars))))
 
     (files.forEach eachFile))
 
@@ -66,12 +75,12 @@ require! {
         (log 'Try: "ghoti info init"')
         (process.exit!))
     (const root = (switchRoot type, ghoti_root))
-    if !Boolean root
+    (if (!(Boolean root))
     then 
-        (log '| type "' + type + '" is not a valid type of ghoti type')
-        (log '| Try "ghoti list" for the list of valid types')
-        whenDone!
-        process.exit!
+        (log ' | type "' + type + '" is not a valid type of ghoti type')
+        (log ' | Try "ghoti list" for the list of valid types')
+        (whenDone!)
+        (process.exit!))
     (parseAll type, targetPath, env, (re, typesciprt) ->
         (log ' | @ Copying lib files')
         (copyInit type, targetPath, re, root.path)
