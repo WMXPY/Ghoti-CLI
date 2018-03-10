@@ -66,6 +66,12 @@ require! {
         (log 'Try: "ghoti info init"')
         (process.exit!))
     (const root = (switchRoot type, ghoti_root))
+    if !Boolean root
+    then 
+        (log '| type "' + type + '" is not a valid type of ghoti type')
+        (log '| Try "ghoti list" for the list of valid types')
+        whenDone!
+        process.exit!
     (parseAll type, targetPath, env, (re, typesciprt) ->
         (log ' | @ Copying lib files')
         (copyInit type, targetPath, re, root.path)

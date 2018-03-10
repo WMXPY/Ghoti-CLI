@@ -32,6 +32,7 @@ const libs = [
             'typescript-feature'
             'typescript-structure'
             'sass-style'
+            'middle-ssr'
         ]
         postLog: (defaultLogs [
             'npm run feature [feature name]     > create a feature'
@@ -111,6 +112,7 @@ const libs = [
             'typescript-feature'
             'typescript-structure'
             'sass-style'
+            'middle-ssr'
         ]
         author: '$ghoti'
         path: 'react-parcel-ssr'
@@ -338,6 +340,8 @@ const libs = [
         (for j in i.name
             (if (compareName j, libName)
                 re = {...i})))
+    if !Boolean re
+    then return null
     (if ghoti_root
     then 
         re.path = (libPath re.path, ghoti_root)
