@@ -334,6 +334,7 @@ const libs = [
         author: '$ghoti'
         path: 'react-ghoti-train'
         postLog: [
+            '$empty'
             'HELLO WORLD!'
             'This example will help you start use ghoti in your project'
             '$empty'

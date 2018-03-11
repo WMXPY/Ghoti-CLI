@@ -8,10 +8,10 @@
         "component": "ghoti component -a",
         "feature": "ghoti feature -a",
         "func": "ghoti func -a",
-        "hint": "ghoti post -a react-ssr",
+        "hint": "ghoti post -a ghoti-example",
         "lambda": "ghoti lambda -a",
         "page": "ghoti page -a",
-        "postinstall": "ghoti post -a react-ssr",
+        "postinstall": "ghoti post -a ghoti-example",
         "start": "webpack-dev-server --config webpack.dev.js --open",
         "test": "mocha"
     },

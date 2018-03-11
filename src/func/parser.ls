@@ -24,11 +24,14 @@ require! {
     then re = (re.replace /\${\|typescript\|}/g, '"typescript": "^2.7.2",')
     else re = (re.replace /\${\|typescript\|}/g, ''))
     (if (filename === 'package.json.ghoti')
+    || (filename === 'README.md.ghoti')
         (if(vars.open)
             re = (re.replace /\${\|private\|}/g, 'false')
+            re = (re.replace /\${\|readme\|}/g, '\n<a rel="license" href="http://creativecommons.org/licenses/by-sa/4.0/"><img alt="Creative Commons License" style="border-width:0" src="https://i.creativecommons.org/l/by-sa/4.0/88x31.png" /></a><br />This work is licensed under a <a rel="license" href="http://creativecommons.org/licenses/by-sa/4.0/">Creative Commons Attribution-ShareAlike 4.0 International License</a>.\n')
             re = (re.replace /\${\|license\|}/g, 'SEE LICENSE IN LICENSE')
         else
             re = (re.replace /\${\|private\|}/g, 'true')
+            re = (re.replace /\${\|readme\|}/g, '')
             re = (re.replace /\${\|license\|}/g, 'PRIVATE')))
     (for i of vars 
         (switch(i)
