@@ -312,6 +312,42 @@ const libs = [
             'cannot use ghoti extend commands in the repo'
         ]
     }
+    {
+        name: [
+            'react-ghoti-training'
+            'react-training-ghoti'
+            'training-ghoti'
+            'ghoti-training'
+            'example-ghoti'
+            'ghoti-example'
+        ]
+        common: [
+            'ghoti'
+            'public'
+            'eslint'
+            'tslint'
+            'typescript'
+            'typescript-config'
+            'typescript-feature'
+            'sass-style'
+        ]
+        author: '$ghoti'
+        path: 'react-ghoti-train'
+        postLog: [
+            'HELLO WORLD!'
+            'This example will help you start use ghoti in your project'
+            '$empty'
+            'TO START'
+            'RUN "npm start" in your terminal'
+            '$empty'
+        ]
+        whatis: [
+            'help you know what ghoti do'
+            'react single page application'
+            'unstructured'
+            'cannot use ghoti extend commands in the repo'
+        ]
+    }
 ]
 
 (const libList = ->

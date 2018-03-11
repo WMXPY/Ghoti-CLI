@@ -48,8 +48,7 @@ const ameActive = (logSymbol) ->
     logPad '| Underline is not actived yet', 1
     logPad '| Know more about GHOTI UNDERLINE, and activate it', 1
     logPad '| Try "ghoti underline" in your project', 1
-    whenDone!
-    process.exit!
+    stopImmediatly(whenDone)
 
 const accessPath = (path, ame, whenDone) ->
     var re, stat
@@ -67,8 +66,7 @@ const accessPath = (path, ame, whenDone) ->
         if !stat
         then 
             logPad '| "' + i + '" is not a valid path'
-            whenDone!
-            process.exit!
+            stopImmediatly(whenDone)
         else stat = false
     re
 
@@ -139,6 +137,8 @@ const ameMinus = (path, context, ghoti, whenDone) ->
 
 const excuteAme = (oriOther, contexts, ghoti, logSymbol, env, ghotiCLIPath, targetPath) ->
     var whenDone
+    if !ghoti.underline
+    then ameActive logSymbol
     if !ghoti.underline.active
     then ameActive logSymbol
     const { command, other } = amePath oriOther
@@ -155,8 +155,7 @@ const excuteAme = (oriOther, contexts, ghoti, logSymbol, env, ghotiCLIPath, targ
             ameMinus other, context, ghoti, whenDone
         case '!'
             ameUpdate other, contexts, ghoti, whenDone
-    whenDone!
-    process.exit!
+    stopImmediatly(whenDone)
     void
 
 export checkAme
