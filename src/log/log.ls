@@ -159,7 +159,7 @@ require! {
     void)
 
 const logUnderline = ->
-    (const title = '🐟  > 🎆  Ghoti-CLI Introducing GHOTI UNDERLINE:')
+    (const title = '🐟  > 🎆  Ghoti-CLI GHOTI UNDERLINE:')
     (log title)
     (logSeprate title.length)
     (->

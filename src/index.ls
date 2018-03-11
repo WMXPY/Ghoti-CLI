@@ -91,8 +91,7 @@ const excute = ->
             (whenDone!)
         case 'underline'
             whenDone = (logUnderline!)
-            initUnderline ghoti, whenDone
-            whenDone!
+            (initUnderline ghoti, whenDone)
         default
             const ameResult = (checkAme mode)
             if ameResult
