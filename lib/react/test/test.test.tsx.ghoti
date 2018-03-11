@@ -20,7 +20,7 @@ configure({
     adapter: new Adapter(),
 });
 
-describe('${|test|}', (): void => {
+describe('Hello, ${|test|}!', (): void => {
 
     let ${|test|}: ShallowWrapper<HTMLElement>;
 
@@ -28,7 +28,7 @@ describe('${|test|}', (): void => {
         ${|test|} = shallow(<div>${|test|}</div>);
     });
 
-    it('${|test|}', (): void => {
+    it('Initial ${|test|}', (): void => {
         expect(${|test|}.type()).to.be.equal('div');
     });
 

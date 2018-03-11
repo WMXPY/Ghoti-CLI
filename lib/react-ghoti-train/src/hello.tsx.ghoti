@@ -12,15 +12,9 @@ import * as Page from './page/import';
 import { Route } from 'react-router-dom';
 import Config from './config/config';
 
-export interface IProps {
+import Example from './example';
 
-}
-
-export interface IState {
-
-}
-
-class Hello extends React.Component<IProps, IState> {
+class Hello extends React.Component<{}, {}> {
     public constructor(props) {
         super(props);
     }
@@ -28,12 +22,8 @@ class Hello extends React.Component<IProps, IState> {
     public render() {
         return (
             <React.Fragment>
-                <Route path="/hello" component={() => {
-                    return <div>123</div>;
-                }} />
-                <Route path="/" exact component={() => {
-                    return <div>1243</div>;
-                }} />
+                <Route path="/" component={Example} />
+                <Route path="/example" component={null} />
             </React.Fragment>
         );
     }

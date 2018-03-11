@@ -8,11 +8,10 @@ ${|description|}
 npm install
 ```
 
-### Devlopment and Build
+### Start example
 
 ```bash
 npm start
-npm run build
 ```
 
 ### Commands for Ghoti-CLI structure

@@ -4,7 +4,6 @@
     "description": "${|description|}",
     "private": true,
     "scripts": {
-        "build": "webpack --config webpack.config.js",
         "component": "ghoti component -a",
         "feature": "ghoti feature -a",
         "func": "ghoti func -a",
@@ -15,7 +14,7 @@
         "start": "webpack-dev-server --config webpack.dev.js --open",
         "test": "mocha"
     },
-    "author": "${|author|}",
+    "author": "ghoti-cli",
     "license": "SEE LICENSE IN LICENSE",
     "devDependencies": {
         "@types/code": "^4.0.4",
@@ -42,7 +41,6 @@
         "tslint": "^5.9.1",
         "ts-node": "^5.0.0",
         ${|typescript|}
-        "uglifyjs-webpack-plugin": "^1.2.2",
         "webpack": "^3.10.0",
         "webpack-dev-server": "^2.11.1"
     },

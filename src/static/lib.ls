@@ -329,9 +329,10 @@ const libs = [
             'typescript'
             'typescript-config'
             'typescript-feature'
+            'typescript-structure'
             'sass-style'
         ]
-        author: '$ghoti'
+        author: '$ghoti-example'
         path: 'react-ghoti-train'
         postLog: [
             '$empty'

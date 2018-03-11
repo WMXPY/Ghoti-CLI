@@ -7,7 +7,7 @@
 import Config from '../config/config';
 
 const ${|lambda|} = (): void => {
-
+    // Hello, ${|lambda|}!
 };
 
 export {
