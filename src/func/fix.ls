@@ -7,28 +7,51 @@ require! {
 const errorList = 
     [
         {
-            name: 'Typescript-is-not-a-Package'
+            name: [
+                'typescript'
+                'is'
+                'not'
+                'a'
+                'package'
+            ]
             value: [
                 'mostly is because you are installed typescript, but not linked it to the project'
                 'use "npm link typescript"'
             ]
         }
         {
-            name: 'require-not-found'
+            name: [
+                'require'
+                'not'
+                'found'
+            ]
             value: [
                 'mostly is because you are installed wired ghoti version'
                 'use "ghoti about"'
             ]
         }
         {
-            name: 'ts-is-not-a-Package'
+            name: [
+                'typescript'
+                'is'
+                'not'
+                'a'
+                'package'
+            ]
             value: [
                 'mostly is because you are installed typescript, but not linked it to the project'
                 'use "npm link typescript"'
             ]
         }
         {
-            name: 'Cannot-Cast-Null-to-Object-Webpack'
+            name: [
+                'cannot'
+                'cast'
+                'null'
+                'to'
+                'object'
+                'webpack'
+            ]
             value: [
                 'mostly is because the version of typescript is too low to use awesome-typescript-loader'
                 'for win32 use "npm install -g typescript"'
@@ -36,42 +59,78 @@ const errorList =
             ]
         }
         {
-            name: 'Ghoti-have-no-Components-Configeration'
+            name: [
+                'ghoti'
+                'have'
+                'no'
+                'components'
+                'configeration'
+            ]
             value: [
                 'mostly is because you are not in a ghoti project folder'
                 'go into a ghoti project folder'
             ]
         }
         {
-            name: 'Ghoti-have-no-Pages-Configeration'
+            name: [
+                'ghoti'
+                'have'
+                'no'
+                'pages'
+                'configeration'
+            ]
             value: [
                 'mostly is because you are not in a ghoti project folder'
                 'go into a ghoti project folder'
             ]
         }
         {
-            name: 'Ghoti-have-no-Lambdas-Configeration'
+            name: [
+                'ghoti'
+                'have'
+                'no'
+                'lambdas'
+                'configeration'
+            ]
             value: [
                 'mostly is because you are not in a ghoti project folder'
                 'go into a ghoti project folder'
             ]
         }
         {
-            name: 'Ghoti-have-no-Functions-Configeration'
+            name: [
+                'ghoti'
+                'have'
+                'no'
+                'functions'
+                'configeration'
+            ]
             value: [
                 'mostly is because you are not in a ghoti project folder'
                 'go into a ghoti project folder'
             ]
         }
         {
-            name: 'Ghoti-have-no-Funcs-Configeration'
+            name: [
+                'ghoti'
+                'have'
+                'no'
+                'guncs'
+                'configeration'
+            ]
             value: [
                 'mostly is because you are not in a ghoti project folder'
                 'go into a ghoti project folder'
             ]
         }
         {
-            name: 'Ghoti-have-no-Features-Configeration'
+            name: [
+                'ghoti'
+                'have'
+                'no'
+                'features'
+                'configeration'
+            ]
             value: [
                 'mostly is because you are not in a ghoti project folder'
                 'go into a ghoti project folder'
@@ -85,47 +144,61 @@ const autoFix = (ghoti, env?) ->
     (logPad '| Try "ghoti about"', 1)
     void
 
-const findError = (errorName) ->
+const findError = (errorNameListE) ->
+    const errorNameList = errorNameListE.map (it) ->
+        it.toLowerCase!
+    var count
     for i in errorList
-        if i.name === errorName
-            return i
+        count = 0
+        for j in i.name
+            if (errorNameList.indexOf (j.toLowerCase!)) !== -1
+            then count++
+        if count === i.name.length
+        then return i
     null
 
-const findSim = (errorName) ->
+const findSim = (errorNameListE) ->
+    const errorNameList = errorNameListE.map (it) ->
+        it.toLowerCase!
     const sameList = []
+    var count
     for i in errorList
-        if ((i.name.toUpperCase!).indexOf (errorName.toUpperCase!)) !== -1
-            (sameList.push i)
+        count = 0
+        for j in i.name
+            if (errorNameList.indexOf (j.toLowerCase!)) !== -1
+            then count++
+        if count >= (parseInt i.name.length / 2)
+        then (sameList.push i)
     sameList
 
-const logError = (errorName, ghoti, env?) ->
-    const errorObj = (findError errorName)
+const logError = (errorNameList, ghoti, env?) ->
+    const errorObj = (findError errorNameList)
     if errorObj
     then 
-        (logPad '| Solution for "' + errorObj.name + '":', 1)
+        (logPad '| Solution for "' + (errorObj.name.join ' ') + '":', 1)
         (errorObj.value.map (it) ->
             (logPad '* ' + it, 2)
             void)
     else 
-        const list = (findSim errorName)
+        const list = (findSim errorNameList)
         if list.length > 0
         then 
-            (logPad '| "' + errorName + '" is not in the list', 1)
+            (logPad '| "' + (errorNameList.join ' ') + '" is not in the list', 1)
             (logPad '| Still, there are some similar error: ', 1)
             (list.map (it) ->
-                (logPad '* ' + it.name, 2)
+                (logPad '* ' + (it.name.join ' '), 2)
                 void)
-            (logPad '| Use "ghoti fix [issue name]" to checkout solution', 1)
+            (logPad '| Use "ghoti fix [...issue name]" to checkout solution', 1)
             (logPad '| You have to type full error name!', 1)
         else
-            (logPad '| Error "' + errorName + '" is not in the list', 1)
+            (logPad '| Error "' + (errorNameList.join ' ') + '" is not in the list', 1)
         (logPad '| Let me know your issue?', 1)
         (logPad '| Try "ghoti about"', 1)
     void
 
-const fix = (errorName, ghoti, whenDone, env?) ->
-    if errorName
-    then (logError errorName, env)
+const fix = (errorNameList, ghoti, whenDone, env?) ->
+    if errorNameList.length > 0
+    then (logError errorNameList, env)
     else (autoFix env)
     (whenDone!)
     void
