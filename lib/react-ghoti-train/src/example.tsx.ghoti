@@ -26,6 +26,7 @@ class Example extends React.Component<{}, IState> {
     public constructor(props) {
         super(props);
         let step = localStorage.getItem('step');
+        this.setStep = this.setStep.bind(this);
         this.state = {
             step: parseInt(step, 10) || 0,
         };
@@ -45,16 +46,24 @@ class Example extends React.Component<{}, IState> {
 
     protected nextStep() {
         localStorage.setItem('step', (this.state.step + 1).toString());
-        this.setState({
-            step: this.state.step + 1,
-        });
+        this.setStep(this.state.step + 1);
     }
 
     protected priviousStep() {
         localStorage.setItem('step', (this.state.step - 1).toString());
-        this.setState({
-            step: this.state.step - 1,
-        });
+        this.setStep(this.state.step - 1);
+    }
+
+    protected setStep(step: number) {
+        if (step < 0) {
+            setStep(0);
+        } else if (step > 9){
+            setStep(9);
+        } else {
+            this.setState({
+                step
+            });
+        }
     }
 
     protected _mapSteps(value: string, index: number) {
@@ -68,7 +77,7 @@ class Example extends React.Component<{}, IState> {
                     'Hello, in this example, we assume you have experience in React',
                     'Here are some quick start example for you to know how GHOTI structure working',
                     'You can always click NEXT button to continue process',
-                ]
+                ];
             case 1:
                 return [
                     'First, lets create a page of your side',
@@ -95,12 +104,36 @@ class Example extends React.Component<{}, IState> {
                 ];
             case 5:
                 return [
-                    'Add a button to each element in your list, we are going to make it do some function',
-                    'In ghoti cli suggested structure, a function set should be used as function collection with side effect, like API, I/O, etc.',
-                    'A lambda set should be used as functional function collection without side effect, like calculation, parseing, etc.',
+                    'Add a button to each element in your list; we are going to make it do some function',
+                    'In ghoti cli suggested structure, a function set should be used as function collection with a side effect, like API, I/O, etc.',
+                    'A lambda set should be used as functional function collection without side effect, like calculation, parsing, etc.',
+                    'Run "npm run lambda calc" in your project',
+                ];
+            case 6:
+                return [
+                    'Check out your /src/func/calc.func.ts file',
+                    'Write a simple function like determin a string\' length is larger than 5 or not',
+                    'Add your function into export list, with ghoti cli func and lambda file structure, export default is not suggested',
+                ];
+            case 7:
+                return [
+                    'Back to /src/pages/example.page.tsx, Lambda and Func sets are alreay imported for you',
+                    'With webpack, functions will not be duplicated imported, pre-imported function can make things easier and clearer',
+                    'Try your function in the list',
+                ];
+            case 8:
+                return [
+                    'Fetch package is already pre-installed for you, typescript support await/ async grammar well,'
+                    'Run "npm run func fetch" in your project',
+                    'Use fetch API and await/ async grammar to get some data from the internet, and render them in your list',
+                ];
+            case 9:
+                return [
+                    'Your application looks awesome, its time to build it up',
+                    'Run "npm run build" in your project',
                 ];
             default:
-                return []
+                return [];
         }
     }
 }

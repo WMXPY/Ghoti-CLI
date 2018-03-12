@@ -42,13 +42,24 @@ const excute = ->
             (logHelp false, env)
         case 'help+'
             (logHelpMore env)
+        case 'stat'
+            fallthrough
         case 'status'
             (logStatus ghoti, env)
+        case 'inf'
+            fallthrough
         case 'info'
             (logInfo env.texture[0], env)
+        case 'create'
+            fallthrough
+        case 'template'
+            fallthrough
         case 'init'
             whenDone = (logCommand!)
             (init ghotiCLIPath, env.texture[0], env.texture[1], whenDone, env)
+        case 'example'
+            whenDone = (logCommand!)
+            (init ghotiCLIPath, 'ghoti-example', env.texture[0], whenDone, env)
         case 'update'
             whenDone = (logUpdate ghoti, env)
             (update whenDone, env)
@@ -63,6 +74,8 @@ const excute = ->
         case 'fix'
             whenDone = (logCommand!)
             (fix env.texture, ghoti, whenDone, env)
+        case 'hint'
+            fallthrough
         case 'post'
             (logPostNPMInstall env.texture[0], env)
         case 'lambda'

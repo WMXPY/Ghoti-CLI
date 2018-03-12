@@ -8,12 +8,20 @@ const list = [
                 name: 'example'
                 value: 'ghoti _'
             }
+        ]
+        more: [
             {
                 name: 'example'
                 value: 'ghoti _board'
             }
-        ]
-        more: [
+            {
+                name: 'example'
+                value: 'ghoti _board_inner'
+            }
+            {
+                name: 'example'
+                value: 'ghoti _board_inner?'
+            }
             {
                 name: 'intro'
                 value: 'Introducing GHOTI UNDERLINE, check "ghoti underline"'
@@ -27,14 +35,22 @@ const list = [
         plus: [
             {
                 name: 'example'
-                value: 'ghoti _+ component devlopment'
-            }
-            {
-                name: 'example'
-                value: 'ghoti _board- component devlopment'
+                value: 'ghoti _+ component-devlopment'
             }
         ]
         more: [
+            {
+                name: 'example'
+                value: 'ghoti _board- done!!!'
+            }
+            {
+                name: 'example'
+                value: 'ghoti _board! 50 half way done'
+            }
+            {
+                name: 'example'
+                value: 'ghoti _board# inner'
+            }
             {
                 name: 'intro'
                 value: 'Introducing GHOTI UNDERLINE, check "ghoti underline"'
@@ -78,7 +94,10 @@ const list = [
         more: []
     }
     {
-        command: ['status']
+        command: [
+            'status'
+            'stat'
+        ]
         arguments: 0
         info: 'show status of current project'
         plus: [
@@ -90,7 +109,11 @@ const list = [
         more: []
     }
     {
-        command: ['whatis']
+        command: [
+            'whatis'
+            'what'
+            'whatIs'
+        ]
         arguments: 0
         info: 'show info of a keyword'
         plus: [
@@ -143,7 +166,10 @@ const list = [
         ]
     }
     {
-        command: ['post']
+        command: [
+            'post'
+            'hint'
+        ]
         arguments: 1
         info: 'show post install information'
         plus: [
@@ -168,7 +194,10 @@ const list = [
         ]
     }
     {
-        command: ['info']
+        command: [
+            'info'
+            'inf'
+        ]
         arguments: 1
         info: 'show detail of a command'
         plus: [
@@ -201,7 +230,11 @@ const list = [
         more: []
     }
     {
-        command: ['init']
+        command: [
+            'init'
+            'create'
+            'template'
+        ]
         arguments: 2
         info: 'init a project'
         plus: [
@@ -226,6 +259,23 @@ const list = [
             {
                 name: 'name'
                 value: 'name could be anything you want for your project'
+            }
+        ]
+    }
+    {
+        command: ['example']
+        arguments: 1
+        info: 'create a example'
+        plus: [
+            {
+                name: 'example'
+                value: 'ghoti example [example path]'
+            }
+        ]
+        more: [
+            {
+                name: 'path'
+                value: 'example target path'
             }
         ]
     }
@@ -263,7 +313,10 @@ const list = [
         ]
     }
     {
-        command: ['function', 'func']
+        command: [
+            'function'
+            'func'
+        ]
         arguments: 1
         info: 'create a ghoti structure function'
         plus: [
