@@ -30,7 +30,7 @@ require! {
         "import * as " + (ghotiLambdaClassName it) + " from './" + (ghotiLambdaFileName it) + "';")).join("\r\n"))
     (re += "\r\n")
     (re += "export {\r\n" + (ghoti.lambdas.map ((it) ->
-        (ghotiLambdaExport it) + ",")).join("\r\n") + "\r\n};")
+        (ghotiLambdaExport it) + ",")).join("\r\n") + "\r\n};\r\n")
     re)
 
 (const lambda = (root, targetPath, name, ghoti, whenDone, env) ->

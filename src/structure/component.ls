@@ -30,7 +30,7 @@ require! {
         "import " + (ghotiComponentClassName it) + " from './" + (ghotiComponentFileName it) + "';")).join("\r\n"))
     (re += "\r\n")
     (re += "export {\r\n" + (ghoti.components.map ((it) ->
-        (ghotiComponentExport it) + ",")).join("\r\n") + "\r\n};")
+        (ghotiComponentExport it) + ",")).join("\r\n") + "\r\n};\r\n")
     re)
 
 (const component = (root, targetPath, name, ghoti, whenDone, env) ->
@@ -46,7 +46,7 @@ require! {
             (whenDone!)
             (process.exit!))
     (var data, target, importTarget)
-    (switch ghoti.type
+    (switch ghoti.template
         case 'react'
             data = (readFile (path.join root, "lib", "react", "component", "component.tsx.ghoti"), name, ghoti)
             target = (path.join targetPath, "src", "component", name + ".component.tsx" )
@@ -56,9 +56,9 @@ require! {
             target = (path.join targetPath, "src", "component", name + ".component.jsx" )
             importTarget = (path.join targetPath, "src", "component", "import.js" )
         default
-            (log '| ERROR: type "' + ghoti.type + '" is not support')
-            (log '| try "ghoti status" to see current type issue')
-            (log '| try "ghoti whatis ' + ghoti.type + '" is there any known issue')
+            (log '| ERROR: type "' + ghoti.template + '" is not supported')
+            (log '| Try "ghoti status" to see current type issue')
+            (log '| Try "ghoti whatis ' + ghoti.template + '" is there any known issue')
             (whenDone!)
             (process.exit!))
     (ghoti.components.push name)

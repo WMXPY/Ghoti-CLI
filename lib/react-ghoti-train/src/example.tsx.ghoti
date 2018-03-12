@@ -56,9 +56,9 @@ class Example extends React.Component<{}, IState> {
 
     protected setStep(step: number) {
         if (step < 0) {
-            setStep(0);
+            this.setStep(0);
         } else if (step > 9){
-            setStep(9);
+            this.setStep(9);
         } else {
             this.setState({
                 step
@@ -85,7 +85,7 @@ class Example extends React.Component<{}, IState> {
                 ];
             case 2:
                 return [
-                    'You should have a page setted up',
+                    'You should have a page set up',
                     'To make it part of your router, go to /src/hello.tsx',
                     'Change example route\'s component value from "null" to "Page.example"',
                     'Try it with change your browser link to "localhost:8080/example"',
@@ -123,7 +123,7 @@ class Example extends React.Component<{}, IState> {
                 ];
             case 8:
                 return [
-                    'Fetch package is already pre-installed for you, typescript support await/ async grammar well,'
+                    'Fetch package is already pre-installed for you, typescript support await/ async grammar well',
                     'Run "npm run func fetch" in your project',
                     'Use fetch API and await/ async grammar to get some data from the internet, and render them in your list',
                 ];
