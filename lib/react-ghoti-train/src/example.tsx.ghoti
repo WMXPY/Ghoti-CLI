@@ -129,8 +129,8 @@ class Example extends React.Component<{}, IState> {
                 ];
             case 9:
                 return [
-                    'Your application looks awesome, its time to build it up',
-                    'Run "npm run build" in your project',
+                    'Your application now looks awesome',
+                    'Delete this folder, Run "ghoti init react [project-name]" to start a real thing!',
                 ];
             default:
                 return [];
