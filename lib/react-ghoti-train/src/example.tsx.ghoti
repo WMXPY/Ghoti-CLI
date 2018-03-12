@@ -25,7 +25,7 @@ export interface IState {
 class Example extends React.Component<{}, IState> {
     public constructor(props) {
         super(props);
-        let step = localStorage.getItem("step");
+        let step = localStorage.getItem('step');
         this.state = {
             step: parseInt(step, 10) || 0,
         };
@@ -34,25 +34,24 @@ class Example extends React.Component<{}, IState> {
     public render() {
         return (
             <div>
-                <div>Hello, assume you have experienced with React</div>
-                <div>Here are some quick start example for you to know how GHOTI structure working</div>
+                <div>ghoti-cli quick start example</div>
                 <hr />
                 {this.steps.bind(this)(this.state.step).map(this._mapSteps)}
-                <div>After that, click <button onClick={this.nextStep.bind(this)}>this button</button><button onClick={this.priviousStep.bind(this)}>BACK</button></div>
+                <div><button onClick={this.nextStep.bind(this)}>NEXT</button><button onClick={this.priviousStep.bind(this)}>BACK</button></div>
                 <hr />
             </div>
         );
     }
 
     protected nextStep() {
-        localStorage.setItem("step", (this.state.step + 1).toString());
+        localStorage.setItem('step', (this.state.step + 1).toString());
         this.setState({
             step: this.state.step + 1,
         });
     }
 
     protected priviousStep() {
-        localStorage.setItem("step", (this.state.step - 1).toString());
+        localStorage.setItem('step', (this.state.step - 1).toString());
         this.setState({
             step: this.state.step - 1,
         });
@@ -66,26 +65,42 @@ class Example extends React.Component<{}, IState> {
         switch (step) {
             case 0:
                 return [
-                    'First, lets create a page of your side',
-                    'Type "ghoti page example" in your terminal',
-                ];
+                    'Hello, in this example, we assume you have experience in React',
+                    'Here are some quick start example for you to know how GHOTI structure working',
+                    'You can always click NEXT button to continue process',
+                ]
             case 1:
+                return [
+                    'First, lets create a page of your side',
+                    'Type "npm run page example" in your terminal',
+                ];
+            case 2:
                 return [
                     'You should have a page setted up',
                     'To make it part of your router, go to /src/hello.tsx',
                     'Change example route\'s component value from "null" to "Page.example"',
                     'Try it with change your browser link to "localhost:8080/example"',
                 ];
-            case 2:
-                return [
-                    'You can make some change for fun',
-                    'GOAL: we are going to render a list and calculate complex math problem',
-                ];
             case 3:
                 return [
-                    'First, lets create a page of your side',
-                    'Type "ghoti page example" in your terminal',
+                    'You can make some change for fun',
+                    'We are going to render a list and calculate complex math problem',
+                    'Since, we want to reuse that list component, Use "npm run component list" to create one',
                 ];
+            case 4:
+                return [
+                    'Simplly use whatever method you want to complete the list component',
+                    'You may need to give it a sample test case to make it render normally',
+                    'In /src/pages/example.page.tsx file, put <Component.list {[...props you setted]} /> to test it',
+                ];
+            case 5:
+                return [
+                    'Add a button to each element in your list, we are going to make it do some function',
+                    'In ghoti cli suggested structure, a function set should be used as function collection with side effect, like API, I/O, etc.',
+                    'A lambda set should be used as functional function collection without side effect, like calculation, parseing, etc.',
+                ];
+            default:
+                return []
         }
     }
 }

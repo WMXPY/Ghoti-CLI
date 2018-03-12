@@ -17,15 +17,15 @@ let config = {
         'react-hot-loader/patch',
         'webpack-dev-server/client',
         'webpack/hot/only-dev-server',
-        APP_DIR + "/index.tsx"
+        APP_DIR + '/index.tsx'
     ],
     output: {
-        filename: "bundle.js",
+        filename: 'bundle.js',
         path: BUILD_DIR,
         publicPath: '/'
     },
     resolve: {
-        extensions: [".ts", ".tsx", ".js", ".json", ".css", ".sass"]
+        extensions: ['.ts', '.tsx', '.js', '.json', '.css', '.sass']
     },
     module: {
         rules: [{
@@ -46,9 +46,9 @@ let config = {
                 ]
             },
             {
-                enforce: "pre",
+                enforce: 'pre',
                 test: /\.(t|j)sx?$/,
-                loader: "source-map-loader",
+                loader: 'source-map-loader',
             }
         ]
     },
