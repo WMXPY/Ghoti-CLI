@@ -6,6 +6,6 @@
         "default_icon": "favicon.ico"
     },
     "permissions": [
-        "http://api.flickr.com/"
+        "http://lunuh.com/"
     ]
 }

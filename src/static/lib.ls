@@ -225,7 +225,7 @@ const libs = [
             'react-extension-chrome'
         ]
         common: [
-            'public'
+            'public-lite'
             'eslint'
             'tslint'
             'typescript'
