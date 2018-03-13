@@ -21,6 +21,7 @@ const parseKeyword = (keyword) ->
         'git-init': [
             'git init'
             'git add .'
+            'git commit -m "ghoti init"'
             'git remote add origin https://github.com/somewhere.git'
             'git push -u origin master'
         ]
