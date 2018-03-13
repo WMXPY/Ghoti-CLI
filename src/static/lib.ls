@@ -217,6 +217,44 @@ const libs = [
     }
     {
         name: [
+            'react-chrome-extension'
+            'react-chrome'
+            'react-ts-chrome-extension'
+            'react-ts-chrome'
+            'react-chrome-ts'
+            'react-extension-chrome'
+        ]
+        common: [
+            'public'
+            'eslint'
+            'tslint'
+            'typescript'
+            'typescript-config'
+            'typescript-feature'
+            'typescript-structure'
+            'sass-style'
+        ]
+        author: '$ghoti'
+        path: 'react-chrome-extension'
+        postLog: (defaultLogs [
+            'npm run feature [feature name]     > create a feature'
+            'npm run lambda [function name]     > create a lambda function set'
+            'npm run component [function name]  > create a component'
+            'npm run page [page name]           > create a page'
+            'npm run func [function name]       > create a function set'
+            '$empty'
+            'npm run build                      > bundle application for production'
+            'npm start                          > start development with localhost server'
+            'npm test                           > test features by mocha'
+        ])
+        whatis: [
+            'react chrome extension'
+            'test with mocha'
+            'use typescript'
+        ]
+    }
+    {
+        name: [
             'react-lite'
             'react-tiny'
         ]
