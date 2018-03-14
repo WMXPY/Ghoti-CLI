@@ -1,7 +1,7 @@
 {
     "type": "project",
     "template": "react",
-    "sub": "normal",
+    "sub": "chrome-extension",
     "version": "${|version|}",
     "title": "${|title|}",
     "description": "${|description|}",
