@@ -3,10 +3,15 @@
 
 <head>
     <meta charset="UTF-8" />
+    <meta name="theme-color" content="#000000">
+    <link rel="shortcut icon" href="%PUBLIC_URL%/favicon.ico">
     <title>${|title|}</title>
 </head>
 
 <body>
+    <noscript>
+        JavaScript is unabled
+    </noscript>
     <div id="container"></div>
 </body>
 
