@@ -58,7 +58,9 @@ const list = [
         ]
     }
     {
-        command: ['underline']
+        command: [
+            'underline'
+        ]
         arguments: 0
         info: 'show what is GHOTI UNDERLINE'
         plus: [
@@ -70,7 +72,24 @@ const list = [
         more: []
     }
     {
-        command: ['about']
+        command: [
+            'game'
+            'minigame'
+        ]
+        arguments: 0
+        info: 'show what is GHOTI GAME'
+        plus: [
+            {
+                name: 'example'
+                value: 'ghoti game'
+            }
+        ]
+        more: []
+    }
+    {
+        command: [
+            'about'
+        ]
         arguments: 0
         info: 'show about message'
         plus: [
@@ -82,7 +101,9 @@ const list = [
         more: []
     }
     {
-        command: ['version']
+        command: [
+            'version'
+        ]
         arguments: 0
         info: 'show current version'
         plus: [
@@ -272,7 +293,9 @@ const list = [
         ]
     }
     {
-        command: ['example']
+        command: [
+            'example'
+        ]
         arguments: 1
         info: 'create a example'
         plus: [
@@ -289,7 +312,9 @@ const list = [
         ]
     }
     {
-        command: ['update']
+        command: [
+            'update'
+        ]
         arguments: 0
         info: 'update ghoti-cli version of current project'
         plus: [
@@ -301,7 +326,9 @@ const list = [
         more: []
     }
     {
-        command: ['page']
+        command: [
+            'page'
+        ]
         arguments: 1
         info: 'create a ghoti structure page'
         plus: [
@@ -346,7 +373,9 @@ const list = [
         ]
     }
     {
-        command: ['lambda']
+        command: [
+            'lambda'
+        ]
         arguments: 1
         info: 'create a ghoti structure lambda'
         plus: [
@@ -367,7 +396,9 @@ const list = [
         ]
     }
     {
-        command: ['component']
+        command: [
+            'component'
+        ]
         arguments: 1
         info: 'create a ghoti structure component'
         plus: [
@@ -388,7 +419,9 @@ const list = [
         ]
     }
     {
-        command: ['feature']
+        command: [
+            'feature'
+        ]
         arguments: 1
         info: 'create a ghoti structure feature'
         plus: [
@@ -409,7 +442,10 @@ const list = [
         ]
     }
     {
-        command: ['help']
+        command: [
+            'help'
+            '?'
+        ]
         arguments: 0
         info: 'show command list'
         plus: [
@@ -421,7 +457,10 @@ const list = [
         more: []
     }
     {
-        command: ['help+']
+        command: [
+            'help+'
+            '?+'
+        ]
         arguments: 0
         info: 'show command list with more example'
         plus: [

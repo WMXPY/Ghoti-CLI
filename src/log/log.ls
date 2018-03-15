@@ -168,6 +168,25 @@ const logUnderline = ->
         (process.exit!)
         void)
 
+const logGame = ->
+    (const title = '🐟  > 🎲  Ghoti-CLI Minigame:')
+    (log title)
+    (logSeprate title.length)
+    (->
+        (logSeprate title.length)
+        (logFace!)
+        (process.exit!)
+        void)
+
+(const logGameCommand = ->
+    (const title = '🐟  > 🎮  Ghoti-CLI Minigame:')
+    (log title)
+    (logSeprate title.length) 
+    (->
+        (logSeprate title.length)
+        (logFace!)
+        void))
+
 const logHelpMore = (env?) ->
     (const title ='🐟  > ⭐  Ghoti-CLI Available commands:')
     (log title)
@@ -343,3 +362,5 @@ const logHelpMore = (env?) ->
 (export logWhatIs)
 (export logUpdate)
 (export logList)
+(export logGame)
+(export logGameCommand)

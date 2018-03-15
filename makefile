@@ -1,6 +1,6 @@
 ls := lsc -co
 
-ghoti: log.ls static.ls func.ls structure.ls ame.ls
+ghoti: log.ls static.ls func.ls structure.ls ame.ls game.ls
 ifeq ($(UNAME), win32)
 	$(ls) .\dist\ .\src\*.ls
 else
@@ -42,6 +42,12 @@ else
 	$(ls) ./dist/ame/ ./src/ame/*.ls
 endif
 
+game.ls:
+ifeq ($(UNAME), win32)
+	$(ls) .\dist\game\ .\src\game\*.ls
+else
+	$(ls) ./dist/game/ ./src/game/*.ls
+endif
 
 run:
 ifeq ($(UNAME), win32)

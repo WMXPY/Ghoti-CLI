@@ -5,7 +5,7 @@ require! {
     os
     './func/config': config
     './func/config': { updateConfig }
-    './log/log': { log, logHelp, logHelpMore, logInfo, logPostNPMInstall, logAbout, logUnderline, logVersion, logCommand, logSymbol, logUnknown, logStatus, logWhatIs, logUpdate, logList }
+    './log/log': { log, logHelp, logHelpMore, logInfo, logPostNPMInstall, logAbout, logUnderline, logVersion, logCommand, logSymbol, logUnknown, logStatus, logWhatIs, logUpdate, logList, logGame, logGameCommand }
     './func/argv': { argv, env, ghotiConfig, path_ghoti }
     './func/init': { init }
     './structure/component': { component }
@@ -17,6 +17,7 @@ require! {
     './func/update': { update }
     './ame/init': { initUnderline }
     './ame/excute': { checkAme, excuteAme }
+    './game/game': { minigame }
 }
 
 (const ghoti = ghotiConfig)
@@ -38,8 +39,12 @@ const excute = ->
             (logHelp true, env)
         case 'version'
             (logVersion env)
+        case '?'
+            fallthrough
         case 'help'
             (logHelp false, env)
+        case '?+'
+            fallthrough
         case 'help+'
             (logHelpMore env)
         case 'stat'
@@ -109,6 +114,13 @@ const excute = ->
         case 'underline'
             whenDone = (logUnderline!)
             (initUnderline ghoti, whenDone)
+        case 'game'
+            fallthrough
+        case 'minigame'
+            whenDone = (logGame!)
+            minigame ghoti, whenDone
+        case 'frog'
+            whenDone = (logGameCommand!)
         default
             (const ameResult = (checkAme mode))
             (if ameResult
