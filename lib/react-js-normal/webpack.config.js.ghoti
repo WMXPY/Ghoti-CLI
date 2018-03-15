@@ -4,22 +4,24 @@
  */
 
 const path = require('path');
-const HtmlWebpackPlugin = require('html-webpack-plugin');
 const webpack = require('webpack');
+const HtmlWebpackPlugin = require('html-webpack-plugin');
 const UglifyJSPlugin = require('uglifyjs-webpack-plugin');
+const CopyWebpackPlugin = require('copy-webpack-plugin');
 
-const BUILD_DIR = path.resolve(__dirname, 'dist');
+const BUILD_DIR = path.resolve(__dirname, 'app', 'dist');
 const APP_DIR = path.resolve(__dirname, 'src');
-const PUBLIC_DIR = path.resolve(__dirname, 'public', 'template.html')
+const PUBLIC_DIR = path.resolve(__dirname, 'public', 'template.html');
+const FAVICON_DIR = path.resolve(__dirname, 'public', 'favicon.ico');
+const MANIFEST_DIR = path.resolve(__dirname, 'public', 'manifest.json');
 
 let config = {
-    entry: APP_DIR + "/index.tsx",
+    entry: APP_DIR + "/index.jsx",
     output: {
         filename: "bundle.js",
         path: BUILD_DIR
     },
     resolve: {
-        // Add '.ts' and '.tsx' as resolvable extensions.
         extensions: [".ts", ".tsx", ".js", ".json", ".css", ".sass"]
     },
     module: {

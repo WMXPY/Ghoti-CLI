@@ -6,9 +6,12 @@
 const path = require('path');
 const webpack = require('webpack');
 const UglifyJSPlugin = require('uglifyjs-webpack-plugin');
+const CopyWebpackPlugin = require('copy-webpack-plugin');
 
 const BUILD_DIR = path.resolve(__dirname, 'dist');
 const APP_DIR = path.resolve(__dirname, 'src');
+const FAVICON_DIR = path.resolve(__dirname, 'public', 'favicon.ico');
+const MANIFEST_DIR = path.resolve(__dirname, 'public', 'manifest.json');
 
 let config = {
     entry: APP_DIR + "/index.build.tsx",
@@ -48,6 +51,13 @@ let config = {
         new webpack.DefinePlugin({
             'process.env.NODE_ENV': JSON.stringify(process.env.NODE_ENV || 'production')
         }),
+        new CopyWebpackPlugin([{
+            from: FAVICON_DIR,
+            to: BUILD_DIR,
+        }, {
+            from: MANIFEST_DIR,
+            to: BUILD_DIR,
+        }], {}),
         new UglifyJSPlugin()
     ]
 };
