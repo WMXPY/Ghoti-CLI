@@ -134,7 +134,10 @@ const list = [
         ]
     }
     {
-        command: ['fix']
+        command: [
+            'fix'
+            'issue'
+        ]
         arguments: 0
         info: 'try to auto fix issue'
         plus: [
@@ -145,7 +148,10 @@ const list = [
         ]
     }
     {
-        command: ['fix']
+        command: [
+            'fix'
+            'issue'
+        ]
         arguments: 1
         info: 'show error message if it is knowned'
         plus: [
@@ -218,7 +224,10 @@ const list = [
         ]
     }
     {
-        command: ['list']
+        command: [
+            'list'
+            'types'
+        ]
         arguments: 0
         info: 'show list of available init type'
         plus: [

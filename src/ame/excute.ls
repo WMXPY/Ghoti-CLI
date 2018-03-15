@@ -123,7 +123,7 @@ const amePlus = (path, context, ghoti, whenDone) ->
         writeConfig newGhoti
     else
         log '| Input is not valid'
-        stopImmediatly(whenDone)
+        stopImmediatly whenDone
     void
 
 const ameMinus = (path, context, ghoti, whenDone) ->
@@ -134,29 +134,29 @@ const ameMinus = (path, context, ghoti, whenDone) ->
     ameStatus path, context, newGhoti, whenDone, true
     writeConfig newGhoti
     void
-
+(
 const excuteAme = (oriOther, contexts, ghoti, logSymbol, env, ghotiCLIPath, targetPath) ->
-    var whenDone
-    if !ghoti.underline
-    then ameActive logSymbol
-    if !ghoti.underline.active
-    then ameActive logSymbol
-    const { command, other } = amePath oriOther
-    whenDone = logSymbol command, other[other.length - 1]
-    const context = contexts.join ' '
-    switch command
+    (var whenDone)
+    (if (!ghoti.underline)
+    then ameActive logSymbol)
+    (if (!ghoti.underline.active)
+    then ameActive logSymbol)
+    (const { command, other } = (amePath oriOther))
+    whenDone = (logSymbol command, other[other.length - 1])
+    (const context = (contexts.join ' '))
+    (switch command
         case '?'
-            ameStatus other, context, ghoti, whenDone
+            (ameStatus other, context, ghoti, whenDone)
         case '#'
-            ameSet other, context, ghoti, whenDone
+            (ameSet other, context, ghoti, whenDone)
         case '+'
-            amePlus other, context, ghoti, whenDone
+            (amePlus other, context, ghoti, whenDone)
         case '-' 
-            ameMinus other, context, ghoti, whenDone
+            (ameMinus other, context, ghoti, whenDone)
         case '!'
-            ameUpdate other, contexts, ghoti, whenDone
-    stopImmediatly(whenDone)
-    void
+            (ameUpdate other, contexts, ghoti, whenDone))
+    (stopImmediatly whenDone)
+    void)
 
 export checkAme
 export excuteAme

@@ -19,17 +19,17 @@ require! {
     './ame/excute': { checkAme, excuteAme }
 }
 
-const ghoti = ghotiConfig
+(const ghoti = ghotiConfig)
 
-var ghotiCLIPath
-if os.platform! === 'win32'
+(var ghotiCLIPath)
+(if (os.platform !== 'win32')
 then ghotiCLIPath = (path.join path_ghoti, "..", "..")
-else ghotiCLIPath = (path.join path_ghoti, "..", "..", "lib", "node_modules", "ghoti-cli")
+else ghotiCLIPath = (path.join path_ghoti, "..", "..", "lib", "node_modules", "ghoti-cli"))
 
 (argv!)
 
 const excute = ->
-    var whenDone
+    (var whenDone)
     const mode = (env.mode.toLowerCase!)
     switch(mode)
         case 'about'
@@ -69,8 +69,12 @@ const excute = ->
             fallthrough
         case 'whatis'
             (logWhatIs env.texture[0], env)
+        case 'types'
+            fallthrough
         case 'list'
             (logList env)
+        case 'issue'
+            fallthrough
         case 'fix'
             whenDone = (logCommand!)
             (fix env.texture, ghoti, whenDone, env)
@@ -106,10 +110,10 @@ const excute = ->
             whenDone = (logUnderline!)
             (initUnderline ghoti, whenDone)
         default
-            const ameResult = (checkAme mode)
-            if ameResult
+            (const ameResult = (checkAme mode))
+            (if ameResult
             then (excuteAme ameResult, env.texture, ghoti, logSymbol, env, ghotiCLIPath, process.cwd!)
-            else (logUnknown env)
+            else (logUnknown env))
     void
 
 export excute
