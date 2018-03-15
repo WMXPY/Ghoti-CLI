@@ -226,6 +226,7 @@ const libs = [
         ]
         common: [
             'public-lite'
+            'ghoti'
             'eslint'
             'tslint'
             'typescript'
