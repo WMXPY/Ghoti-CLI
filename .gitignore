@@ -6,6 +6,7 @@
 *.gz
 *.pdf
 dist
+!lib/**/dist
 a
 b
 c
