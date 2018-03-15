@@ -1,5 +1,23 @@
 @import './color.sass'
 
-html
+html, body, #container
     height: 100%
-    
+    padding: 0
+    margin: 0
+
+.${|title|}-grid-layout
+    height: 100%
+    display: grid
+    grid-template-columns: [left] 200px [center] auto [end]
+    grid-template-rows: [top] 100px [middle] auto [foot]
+    grid-template-areas: "logo content" "nav content"
+    background-color: green
+
+.${|title|}-grid-area-a
+    grid-area: logo
+
+.${|title|}-grid-area-b
+    grid-area: nav
+
+.${|title|}-grid-area-c
+    grid-area: content
