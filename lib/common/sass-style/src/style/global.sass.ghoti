@@ -21,3 +21,13 @@ html, body, #container
 
 .${|title|}-grid-area-c
     grid-area: content
+    overflow: hidden
+
+.${|title|}-flex-layout
+    display: flex
+    flex-direction: column
+    flex-wrap: nowrap
+    align-items: flex-start
+
+.${|title|}-flex-element
+    height: 100px
