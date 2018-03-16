@@ -3,14 +3,14 @@
 
 <head>
     <meta charset="UTF-8" />
-    <meta name="theme-color" content="#000000">
+    <meta name="theme-color" content="#ffffff">
     <link rel="shortcut icon" href="favicon.ico">
     <title>${|title|}</title>
 </head>
 
 <body>
     <noscript>
-        JavaScript is unabled
+        JavaScript is unabled, ${|title|} require JavaScript to render.
     </noscript>
     <div id="container"></div>
 </body>

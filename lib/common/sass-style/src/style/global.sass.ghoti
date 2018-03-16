@@ -31,3 +31,17 @@ html, body, #container
 
 .${|title|}-flex-element
     height: 100px
+
+.${|title|}-flex-flow-layout
+    display: flex
+    flex-direction: row
+    flex-wrap: wrap
+    height: auto
+
+.${|title|}-flex-flow-element
+    flex: initial
+    height: 150px
+    width: 50%
+
+.${|title|}-flex-inner
+    padding: 10px

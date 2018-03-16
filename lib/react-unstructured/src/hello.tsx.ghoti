@@ -8,15 +8,7 @@ import * as React from 'react';
 import { Route } from 'react-router-dom';
 import Config from './config/config';
 
-export interface IProps {
-
-}
-
-export interface IState {
-
-}
-
-class Hello extends React.Component<IProps, IState> {
+class Hello extends React.Component<{}, {}> {
     public constructor(props) {
         super(props);
     }
@@ -25,10 +17,10 @@ class Hello extends React.Component<IProps, IState> {
         return (
             <React.Fragment>
                 <Route path="/hello" component={() => {
-                    return <div>123</div>;
+                    return <div>Route</div>;
                 }} />
                 <Route path="/" exact component={() => {
-                    return <div>1243</div>;
+                    return <div>Home</div>;
                 }} />
             </React.Fragment>
         );
