@@ -76,15 +76,25 @@ const libs = [
         author: '$ghoti'
         path: 'react-thin-ssr'
         common: [
-            'ghoti'
-            'public'
-            'eslint'
-            'tslint'
-            'typescript'
-            'typescript-config'
-            'typescript-feature'
-            'typescript-structure'
-            'sass-style'
+            {
+                path: 'react'
+                commons: [
+                    'typescript'
+                    'typescript-feature'
+                    'typescript-structure'
+                    'sass-style'
+                ]
+            }
+            {
+                path: 'common'
+                commons: [
+                    'ghoti'
+                    'public'
+                    'eslint'
+                    'tslint'
+                    'typescript-config'
+                ]
+            }
         ]
         postLog: (defaultLogs [
             'npm run feature [feature name]     > create a feature'
@@ -119,15 +129,25 @@ const libs = [
             'react-default'
         ]
         common: [
-            'ghoti'
-            'public'
-            'eslint'
-            'tslint'
-            'typescript'
-            'typescript-config'
-            'typescript-feature'
-            'typescript-structure'
-            'sass-style'
+            {
+                path: 'react'
+                commons: [
+                    'typescript'
+                    'typescript-feature'
+                    'typescript-structure'
+                    'sass-style'
+                ]
+            }
+            {
+                path: 'common'
+                commons: [
+                    'ghoti'
+                    'public'
+                    'eslint'
+                    'tslint'
+                    'typescript-config'
+                ]
+            }
         ]
         author: '$ghoti'
         path: 'react-normal'
@@ -159,15 +179,25 @@ const libs = [
             'react-extension-chrome'
         ]
         common: [
-            'public-lite'
-            'ghoti'
-            'eslint'
-            'tslint'
-            'typescript'
-            'typescript-config'
-            'typescript-feature'
-            'typescript-structure'
-            'sass-style'
+            {
+                path: 'react'
+                commons: [
+                    'typescript'
+                    'typescript-feature'
+                    'typescript-structure'
+                    'sass-style'
+                ]
+            }
+            {
+                path: 'common'
+                commons: [
+                    'ghoti'
+                    'public-lite'
+                    'eslint'
+                    'tslint'
+                    'typescript-config'
+                ]
+            }
         ]
         author: '$ghoti'
         path: 'react-chrome-extension'
@@ -195,13 +225,23 @@ const libs = [
             'react-tiny'
         ]
         common: [
-            'ghoti'
-            'typescript'
-            'public'
-            'typescript-config'
-            'typescript-feature'
-            'typescript-structure'
-            'sass-style'
+            {
+                path: 'react'
+                commons: [
+                    'typescript'
+                    'typescript-feature'
+                    'typescript-structure'
+                    'sass-style'
+                ]
+            }
+            {
+                path: 'common'
+                commons: [
+                    'ghoti'
+                    'public'
+                    'typescript-config'
+                ]
+            }
         ]
         author: '$ghoti'
         path: 'react-lite'
@@ -230,11 +270,20 @@ const libs = [
             'react-js-default'
         ]
         common: [
-            'ghoti'
-            'public'
-            'eslint'
-            'ghoti'
-            'sass-style'
+            {
+                path: 'react'
+                commons: [
+                    'sass-style'
+                ]
+            }
+            {
+                path: 'common'
+                commons: [
+                    'ghoti'
+                    'public'
+                    'eslint'
+                ]
+            }
         ]
         author: '$ghoti'
         path: 'react-js'
@@ -261,14 +310,24 @@ const libs = [
             'react-none'
         ]
         common: [
-            'ghoti'
-            'public'
-            'eslint'
-            'tslint'
-            'typescript'
-            'typescript-config'
-            'typescript-feature'
-            'sass-style'
+            {
+                path: 'react'
+                commons: [
+                    'typescript'
+                    'typescript-feature'
+                    'sass-style'
+                ]
+            }
+            {
+                path: 'common'
+                commons: [
+                    'ghoti'
+                    'public'
+                    'eslint'
+                    'tslint'
+                    'typescript-config'
+                ]
+            }
         ]
         author: '$ghoti'
         path: 'react-unstructured'
@@ -299,17 +358,27 @@ const libs = [
             'ghoti-example'
         ]
         common: [
-            'ghoti'
-            'public'
-            'eslint'
-            'tslint'
-            'typescript'
-            'typescript-config'
-            'typescript-feature'
-            'typescript-structure'
-            'sass-style'
+            {
+                path: 'react'
+                commons: [
+                    'typescript'
+                    'typescript-feature'
+                    'typescript-structure'
+                    'sass-style'
+                ]
+            }
+            {
+                path: 'common'
+                commons: [
+                    'ghoti'
+                    'public'
+                    'eslint'
+                    'tslint'
+                    'typescript-config'
+                ]
+            }
         ]
-        author: '$ghoti-example'
+        author: '$ghoti'
         path: 'react-ghoti-train'
         postLog: [
             '$empty'
@@ -342,8 +411,8 @@ const libs = [
 (const libPath = (folderName, ghoti_root) ->
     (path.join ghoti_root, "lib", folderName))
 
-(const commonPath = (folderName, ghoti_root) ->
-    (path.join ghoti_root, "lib", "common", folderName))
+(const commonPath = (folderName, commonName, ghoti_root) ->
+    (path.join ghoti_root, "lib", "common", folderName, commonName))
 
 (const compareName = (name, name2) ->
     (const splitName = (((name.split '-').join '').toLowerCase!))
@@ -360,10 +429,12 @@ const libs = [
     then return null)
     (if ghoti_root
     then 
-        re.path = (libPath re.path, ghoti_root)
-        (for i to re.common.length - 1
-            re.common[i] = commonPath(re.common[i], ghoti_root)))
-
+        (const commonList = [])
+        (re.path = (libPath re.path, ghoti_root))
+        (for i in re.common
+            (for j in i.commons
+                (commonList.push commonPath(i.path, j, ghoti_root))))
+        (re.common = commonList))
     (if re
     then re
     else null))

@@ -18,23 +18,23 @@ require! {
     then (filename.substring 0, filename.length - 6)
     else filename))
 
-const copyToPathBinary = (targetPath, filePath, whenDone) ->
-    const fileReadStream = fs.createReadStream filePath
-    const fileWriteStream = fs.createWriteStream removeTail targetPath
-    fileReadStream.pipe fileWriteStream
-    (fileWriteStream.on 'error' ->
-        fileWriteStream.end!
-        log '| Error on binary file copy'
-        log '| Try "ghoti fix binary file copy"'
-        whenDone!
-        process.exit!)
-    (fileReadStream.on 'error' ->
-        fileWriteStream.end!
-        log '| Error on binary file copy'
-        log '| Try "ghoti fix binary file copy"'
-        whenDone!
-        process.exit!)
-    void
+(const copyToPathBinary = (targetPath, filePath, whenDone) ->
+    (const fileReadStream = (fs.createReadStream filePath))
+    (const fileWriteStream = (fs.createWriteStream (removeTail targetPath)))
+    (fileReadStream.pipe fileWriteStream)
+    (fileWriteStream.on 'error', ->
+        (fileWriteStream.end!)
+        (log '| Error on binary file copy')
+        (log '| Try "ghoti fix binary file copy"')
+        (whenDone!)
+        (process.exit!))
+    (fileReadStream.on 'error', ->
+        (fileWriteStream.end!)
+        (log '| Error on binary file copy')
+        (log '| Try "ghoti fix binary file copy"')
+        (whenDone!)
+        (process.exit!))
+    void)
 
 (const copyToPath = (root, data) -> 
     (if (root.substring root.length - 6, root.length) === '.ghoti'
@@ -61,7 +61,6 @@ const copyToPathBinary = (targetPath, filePath, whenDone) ->
         (const pathname = (path.join root, file))
         (const stat = (fs.lstatSync pathname))
         (const floatRoot = (root.substring beforeLength, root.length))
-
         (if ((stat.isDirectory)!)
             (logPath '- ' + (removeTail file), level)
             (makeDir (path.join targetPath, floatRoot, file))
@@ -74,7 +73,6 @@ const copyToPathBinary = (targetPath, filePath, whenDone) ->
             else 
                 (logPath '* ' + (removeTail file), level)
                 (copyToPath (path.join targetPath, floatRoot, file), (readFile file, pathname, vars))))
-
     (files.forEach eachFile))
 
 (const copyInit = (type, targetPath, vars, root, whenDone) ->
@@ -103,7 +101,7 @@ const copyToPathBinary = (targetPath, filePath, whenDone) ->
         (const common = [...root.common])
         (count = 0)
         (if re.open
-            (common.push (commonPath 'license', ghoti_root)))
+            (common.push (commonPath 'common', 'license', ghoti_root)))
         (for i in common
             (log ' | @ Common files chunk ' + count++)
             (copyInit type, targetPath, re, i))
@@ -111,4 +109,4 @@ const copyToPathBinary = (targetPath, filePath, whenDone) ->
         (whenDone!)
         void))
 
-export init
+(export init)

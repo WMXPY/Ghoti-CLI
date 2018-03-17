@@ -2,7 +2,7 @@
     "name": "${|title|}",
     "version": "0.0.0",
     "description": "${|description|}",
-    "private": true,
+    "private": ${|private|},
     "scripts": {
         "build": "webpack --config webpack.config.js",
         "feature": "ghoti feature -a",

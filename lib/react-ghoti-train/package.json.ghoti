@@ -2,7 +2,7 @@
     "name": "${|title|}",
     "version": "0.0.0",
     "description": "${|description|}",
-    "private": true,
+    "private": ${|private|},
     "scripts": {
         "component": "ghoti component -a",
         "feature": "ghoti feature -a",
