@@ -47,6 +47,7 @@ const libs = [
         ])
         whatis: [
             'react single page application'
+            'build with webpack 3'
             'use typescript'
             'test with mocha'
             'support server side render'
@@ -88,50 +89,12 @@ const libs = [
         ])
         whatis: [
             'react single page application'
+            'build with webpack 3'
             'use typescript'
             'test with mocha'
             'support server side render'
             'use sample middleware'
             'not suggested'
-        ]
-    }
-    {
-        name: [
-            'react-next-ssr'
-            'react-next-server'
-            'react-ssr-next'
-            'react-server-next'
-        ]
-        common: [
-            'ghoti'
-            'public'
-            'eslint'
-            'tslint'
-            'typescript'
-            'typescript-config'
-            'typescript-feature'
-            'typescript-structure'
-            'sass-style'
-        ]
-        author: '$ghoti'
-        path: 'react-next-ssr'
-        postLog: (defaultLogs [
-            'npm run feature [feature name]     > create a feature'
-            'npm run lambda [function name]     > create a lambda function set'
-            'npm run component [function name]  > create a component'
-            'npm run page [page name]           > create a page'
-            'npm run func [function name]       > create a function set'
-            '$empty'
-            'npm run build                      > bundle application for production'
-            'npm start                          > start development with localhost server'
-            'npm test                           > test features by mocha'
-        ])
-        whatis: [
-            'react single page application'
-            'use typescript'
-            'webpack 4'
-            'test with mocha'
-            'support server side render'
         ]
     }
     {
@@ -171,6 +134,7 @@ const libs = [
         ])
         whatis: [
             'react single page application'
+            'build with webpack 3'
             'test with mocha'
             'use typescript'
         ]
@@ -210,6 +174,7 @@ const libs = [
         ])
         whatis: [
             'react chrome extension'
+            'build with webpack 3'
             'test with mocha'
             'use typescript'
         ]
@@ -242,6 +207,7 @@ const libs = [
         ])
         whatis: [
             'react single page application'
+            'build with webpack 3'
             'use typescript'
         ]
     }
@@ -275,6 +241,7 @@ const libs = [
         ])
         whatis: [
             'react single page application'
+            'build with webpack 3'
             'in development'
         ]
     }
@@ -307,6 +274,7 @@ const libs = [
         ])
         whatis: [
             'react single page application'
+            'build with webpack 3'
             'unstructured'
             'cannot use ghoti extend commands in the repo'
         ]
@@ -345,6 +313,7 @@ const libs = [
         whatis: [
             'help you know what ghoti do'
             'react single page application'
+            'build with webpack 3'
             'unstructured'
             'cannot use ghoti extend commands in the repo'
         ]
