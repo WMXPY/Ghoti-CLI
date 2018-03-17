@@ -23,16 +23,26 @@ const libs = [
         author: '$ghoti'
         path: 'react-ssr'
         common: [
-            'ghoti'
-            'public'
-            'eslint'
-            'tslint'
-            'typescript'
-            'typescript-config'
-            'typescript-feature'
-            'typescript-structure'
-            'sass-style'
-            'middle-ssr'
+            {
+                path: 'react'
+                commons: [
+                    'typescript'
+                    'typescript-feature'
+                    'typescript-structure'
+                    'sass-style'
+                    'middle-ssr'
+                ]
+            }
+            {
+                path: 'common'
+                commons: [
+                    'ghoti'
+                    'public'
+                    'eslint'
+                    'tslint'
+                    'typescript-config'
+                ]
+            }
         ]
         postLog: (defaultLogs [
             'npm run feature [feature name]     > create a feature'
