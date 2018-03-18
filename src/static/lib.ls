@@ -350,6 +350,49 @@ const libs = [
     }
     {
         name: [
+            'vue'
+            'vue-normal'
+        ]
+        common: [
+            {
+                path: 'vue'
+                commons: [
+                    'typescript'
+                    'typescript-feature'
+                    'typescript-structure'
+                ]
+            }
+            {
+                path: 'common'
+                commons: [
+                    'ghoti'
+                    'public'
+                    'eslint'
+                    'tslint'
+                    'typescript-config'
+                ]
+            }
+        ]
+        author: '$ghoti'
+        path: 'vue-normal'
+        postLog: (defaultLogs [
+            'Here are some useful shortcuts for your hacking'
+            'You can always enter "npm run hint" for this message again'
+            '$empty'
+            'npm run feature [feature name]     > create a feature'
+            '$empty'
+            'npm run build                      > bundle application for production'
+            'npm start                          > start development with localhost server'
+            'npm test                           > test features by mocha'
+        ])
+        whatis: [
+            'vue.js single page application'
+            'build with webpack 3'
+            'ghoti cli structure'
+        ]
+    }
+    {
+        name: [
             'react-ghoti-training'
             'react-training-ghoti'
             'training-ghoti'

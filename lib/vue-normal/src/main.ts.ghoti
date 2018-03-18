@@ -1,0 +1,29 @@
+import Vue, { CreateElement } from 'vue';
+import Component from './component/addon';
+import VueRouter, { RouterOptions } from 'vue-router';
+import * as Pages from './page/import';
+
+Vue.use(VueRouter);
+Vue.use(Component);
+
+const routerOptions: RouterOptions = {
+    mode: 'history',
+    base: '/',
+    linkActiveClass: 'router-link-active',
+    linkExactActiveClass: 'router-link-exact-active',
+    routes: [
+        {
+            path: '/',
+            component: {
+                template: '<div>Hello World!</div>'
+            }
+        },
+    ]
+}
+
+const router = new VueRouter(routerOptions);
+
+new Vue({
+    router
+}).$mount('#container');
+

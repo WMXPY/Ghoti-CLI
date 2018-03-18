@@ -1,0 +1,43 @@
+{
+    "type": "project",
+    "template": "vue",
+    "sub": "normal",
+    "version": "${|version|}",
+    "title": "${|title|}",
+    "description": "${|description|}",
+    "author": "${|author|}",
+    "config": {
+        "router": {
+            "router": "vue-router",
+            "config": {
+                "router": "browser"
+            }
+        },
+        "pack": "webpack",
+        "test": {
+            "test": "mocha",
+            "expect": "code",
+            "render": "enzyme"
+        },
+        "style": "sass",
+        "sub": "typescript"
+    },
+    "underline": {
+        "active": false
+    },
+    "components": [
+        
+    ],
+    "pages": [
+
+    ],
+    "funcs": [
+
+    ],
+    "lambdas": [
+        
+    ],
+    "features": [
+        
+    ]
+}
