@@ -1,3 +1,6 @@
-var ghoti = require('../dist/index.js').excute;
+#!/usr/bin/env node
+
+const ghoti = require('../dist/index.js').excute;
 console.log('Ghoti-cli is a command line tool, you should not import it like this');
-module.export = ghoti;
+module.exports = ghoti;
+module.exports.default = ghoti;

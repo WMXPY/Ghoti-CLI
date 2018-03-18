@@ -1,18 +1,4 @@
-# Ghoti-CLI
-
-[![npm version](https://badge.fury.io/js/ghoti-cli.svg)](https://badge.fury.io/js/ghoti-cli)
-[![Gitter](https://badges.gitter.im/WMXPY/ghoti-cli.svg)](https://gitter.im/WMXPY/ghoti-cli?utm_source=badge&utm_medium=badge&utm_campaign=pr-badge)
-![downloads](https://img.shields.io/npm/dm/ghoti-cli.svg)
-
-:fish: A CLI tool that helps you start developing your new project within 60 seconds
-
-## Install
-
-```bash
-npm install -g ghoti-cli
-# or
-sudo npm install -g ghoti-cli
-```
+# Ghoti-cli Introduction
 
 ## Dependence
 
@@ -81,5 +67,3 @@ No, you can use any function set you want, just init with type "react-unstructur
 You can always try `ghoti help` anywhere; `npm run hint` or `ghoti fix` in your created project to see if there is a trouble solution.
 
 `ghoti fix [error name]` like `ghoti fix typescript is not a package` can help you find out if the error is already known when you know the error name.
-
-<a rel="license" href="http://creativecommons.org/licenses/by-sa/4.0/"><img alt="Creative Commons License" style="border-width:0" src="https://i.creativecommons.org/l/by-sa/4.0/88x31.png" /></a><br />This work is licensed under a <a rel="license" href="http://creativecommons.org/licenses/by-sa/4.0/">Creative Commons Attribution-ShareAlike 4.0 International License</a>.

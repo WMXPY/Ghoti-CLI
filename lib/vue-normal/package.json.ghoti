@@ -2,7 +2,7 @@
   "name": "${|title|}",
   "version": "0.0.0",
   "description": "${|description|}",
-  "main": "index.js",
+  "main": "dist/bundle.js",
   "private": ${|private|},
   "scripts": {
     "start": "webpack-dev-server --config webpack.dev.js --inline --open",

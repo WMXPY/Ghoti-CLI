@@ -194,7 +194,6 @@ const libs = [
             {
                 path: 'common'
                 commons: [
-                    'ghoti'
                     'public-lite'
                     'public-template-lite'
                     'eslint'
