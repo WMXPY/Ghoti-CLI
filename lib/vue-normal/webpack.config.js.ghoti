@@ -17,10 +17,10 @@ const MANIFEST_DIR = path.resolve(__dirname, 'public', 'manifest.json');
 
 let config = {
     entry: {
-        bundle: APP_DIR + "/main.ts",
+        bundle: path.join(APP_DIR, "main.ts"),
     },
     output: {
-        filename: "[name].js",
+        filename: "[name].[chunkhash:8].js",
         path: BUILD_DIR,
     },
     resolve: {
