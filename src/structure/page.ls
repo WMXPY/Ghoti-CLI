@@ -1,6 +1,7 @@
 require! {
     fs,
     path,
+    './common': { comments }
     '../log/log': { log, logPad }
     '../func/config': { updateConfig }
 }
@@ -8,8 +9,10 @@ require! {
 (const ghotiPageClassName = (name) ->
     "PageGhoti" + (name.substring 0,1).toUpperCase! + (name.substring 1, name.length))
 
-(const ghotiPageFileName = (name) ->
-    name + ".page")
+(const ghotiPageFileName = (name, vue?) ->
+    if vue
+    then name + '.page.vue'
+    else name + '.page' )
 
 (const ghotiPageExport = (name) ->
     "    " + (ghotiPageClassName name) + " as " + name)
@@ -27,8 +30,23 @@ require! {
         (log 'Try to fix it: "ghoti fix"')
         (process.exit!))
     (var re)
-    (re = (ghoti.pages.map ((it) ->
+    re = comments 'page'
+    (re += (ghoti.pages.map ((it) ->
         "import " + (ghotiPageClassName it) + " from './" + (ghotiPageFileName it) + "';")).join("\r\n"))
+    (re += "\r\n")
+    (re += "export {\r\n" + (ghoti.pages.map ((it) ->
+        (ghotiPageExport it) + ",")).join("\r\n") + "\r\n};\r\n")
+    re)
+
+(const comImportVue = (ghoti) ->
+    (if (!(Boolean ghoti.pages))
+        (log 'ERROR, ghoti have no pages configeration')
+        (log 'Try to fix it: "ghoti fix"')
+        (process.exit!))
+    (var re)
+    re = comments 'pages'
+    (re += (ghoti.pages.map ((it) ->
+        "import " + (ghotiPageClassName it) + " from './" + (ghotiPageFileName it, true) + "';")).join("\r\n"))
     (re += "\r\n")
     (re += "export {\r\n" + (ghoti.pages.map ((it) ->
         (ghotiPageExport it) + ",")).join("\r\n") + "\r\n};\r\n")
@@ -45,14 +63,36 @@ require! {
             (log '| try "ghoti status" to see page list')
             (whenDone!)
             (process.exit!)))
-    (const target = (path.join targetPath, "src", "page", name + ".page.tsx" ))
-    (const importTarget = (path.join targetPath, "src", "page", "import.ts" ))
-    (const data = (readFile (path.join root, "lib", "react", "page", "page.tsx.ghoti"), name, ghoti))
+    (var data, target, importTarget)
+    (switch ghoti.template
+        case 'react'
+            data = (readFile (path.join root, "lib", "react", "page", "page.tsx.ghoti"), name, ghoti)
+            target = (path.join targetPath, "src", "page", name + ".page.tsx" )
+            importTarget = (path.join targetPath, "src", "page", "import.ts" )
+        case 'react-js'
+            data = (readFile (path.join root, "lib", "react-js", "page", "page.jsx.ghoti"), name, ghoti)
+            target = (path.join targetPath, "src", "page", name + ".page.jsx" )
+            importTarget = (path.join targetPath, "src", "page", "import.js" )
+        case 'vue'
+            data = (readFile (path.join root, "lib", "vue", "page", "page.vue.ghoti"), name, ghoti)
+            target = (path.join targetPath, "src", "page", name + ".page.vue" )
+            importTarget = (path.join targetPath, "src", "page", "import.ts" )
+        default
+            (log '| ERROR: type "' + ghoti.template + '" is not supported')
+            (log '| Try "ghoti status" to see current type issue')
+            (log '| Try "ghoti whatis ' + ghoti.template + '" is there any known issue')
+            (whenDone!)
+            (process.exit!))
     (ghoti.pages.push name)
     (log '| update .ghoticonfig file')
     (updateConfig ghoti)
-    (log '| update import setting')
-    (fs.writeFileSync importTarget, (comImport ghoti), 'utf8')
+    switch ghoti.template
+        case 'vue'
+            (log '| update addon setting')
+            (fs.writeFileSync importTarget, (comImportVue ghoti), 'utf8')
+        default
+            (log '| update import setting')
+            (fs.writeFileSync importTarget, (comImport ghoti), 'utf8')
     (log '| initialize paging script')
     (fs.writeFileSync target, data, 'utf8')
     void)

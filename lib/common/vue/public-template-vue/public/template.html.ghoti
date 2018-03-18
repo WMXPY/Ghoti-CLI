@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="theme-color" content="#ffffff">
+    <link rel="manifest" href="manifest.json">
+    <link rel="shortcut icon" href="favicon.ico">
+    <title>${|title|}</title>
+</head>
+
+<body>
+    <noscript>
+        JavaScript is unabled, ${|title|} require JavaScript to render.
+    </noscript>
+    <div id="container">
+        <router-view></router-view>
+    </div>
+</body>
+
+</html>

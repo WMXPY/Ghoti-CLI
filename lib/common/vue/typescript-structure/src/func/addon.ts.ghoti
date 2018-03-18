@@ -1,0 +1,13 @@
+/**
+ * @author ${|author|}
+ * @overview func interface addon file
+ * @fileoverview You need edit this file by hand to inject your function to Vue constructor
+ */
+
+import Vue, { VueConstructor } from 'vue';
+import * as Func from './import';
+
+export default {
+    install: (Vue: VueConstructor, options?: any) => {
+    }
+}

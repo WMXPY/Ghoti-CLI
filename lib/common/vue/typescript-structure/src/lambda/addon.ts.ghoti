@@ -1,0 +1,13 @@
+/**
+ * @author ${|author|}
+ * @overview lambda interface addon file
+ * @fileoverview You need edit this file by hand to inject your function to Vue constructor
+ */
+
+import Vue, { VueConstructor } from 'vue';
+import * as Lambda from './import';
+
+export default {
+    install: (Vue: VueConstructor, options?: any) => {
+    }
+}

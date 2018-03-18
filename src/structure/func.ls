@@ -1,6 +1,7 @@
 require! {
     fs,
     path,
+    './common': { comments }
     '../log/log': { log, logPad }
     '../func/config': { updateConfig }
 }
@@ -25,7 +26,9 @@ const comImport = (ghoti) ->
         (log 'ERROR, ghoti have no functions configeration')
         (log 'Try to fix it: "ghoti fix"')
         (process.exit!)
-    re = ((ghoti.funcs.map ((it) ->
+    var re
+    re = comments 'funcs'
+    re += ((ghoti.funcs.map ((it) ->
         "import * as " + (ghotiFuncClassName it) + " from './" + (ghotiFuncFileName it) + "';")).join("\r\n"))
     re += "\r\n"
     re += "export {\r\n" + (ghoti.funcs.map ((it) ->

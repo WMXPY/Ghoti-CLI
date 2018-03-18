@@ -38,6 +38,7 @@ const libs = [
                 commons: [
                     'ghoti'
                     'public'
+                    'public-template'
                     'eslint'
                     'tslint'
                     'typescript-config'
@@ -90,6 +91,7 @@ const libs = [
                 commons: [
                     'ghoti'
                     'public'
+                    'public-template'
                     'eslint'
                     'tslint'
                     'typescript-config'
@@ -143,6 +145,7 @@ const libs = [
                 commons: [
                     'ghoti'
                     'public'
+                    'public-template'
                     'eslint'
                     'tslint'
                     'typescript-config'
@@ -193,6 +196,7 @@ const libs = [
                 commons: [
                     'ghoti'
                     'public-lite'
+                    'public-template-lite'
                     'eslint'
                     'tslint'
                     'typescript-config'
@@ -239,6 +243,7 @@ const libs = [
                 commons: [
                     'ghoti'
                     'public'
+                    'public-template'
                     'typescript-config'
                 ]
             }
@@ -281,6 +286,7 @@ const libs = [
                 commons: [
                     'ghoti'
                     'public'
+                    'public-template'
                     'eslint'
                 ]
             }
@@ -323,6 +329,7 @@ const libs = [
                 commons: [
                     'ghoti'
                     'public'
+                    'public-template'
                     'eslint'
                     'tslint'
                     'typescript-config'
@@ -360,6 +367,7 @@ const libs = [
                     'typescript'
                     'typescript-feature'
                     'typescript-structure'
+                    'public-template-vue'
                 ]
             }
             {
@@ -415,6 +423,7 @@ const libs = [
                 commons: [
                     'ghoti'
                     'public'
+                    'public-template'
                     'eslint'
                     'tslint'
                     'typescript-config'

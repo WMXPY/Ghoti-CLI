@@ -1,6 +1,7 @@
 require! {
     fs,
     path,
+    './common': { comments }
     '../log/log': { log, logPad }
     '../func/config': { updateConfig }
 }
@@ -26,7 +27,9 @@ require! {
         (log 'ERROR, ghoti have no lambdas configeration')
         (log 'Try to fix it: "ghoti fix"')
         (process.exit!))
-    (re = (ghoti.lambdas.map ((it) ->
+    var re
+    re = comments 'lambdas'
+    (re += (ghoti.lambdas.map ((it) ->
         "import * as " + (ghotiLambdaClassName it) + " from './" + (ghotiLambdaFileName it) + "';")).join("\r\n"))
     (re += "\r\n")
     (re += "export {\r\n" + (ghoti.lambdas.map ((it) ->

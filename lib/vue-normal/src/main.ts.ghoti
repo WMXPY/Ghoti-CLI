@@ -1,10 +1,16 @@
 import Vue, { CreateElement } from 'vue';
-import Component from './component/addon';
 import VueRouter, { RouterOptions } from 'vue-router';
+
+import Component from './component/addon';
+import Func from './func/addon';
+import Lambda from './lambda/addon';
+
 import * as Pages from './page/import';
 
 Vue.use(VueRouter);
 Vue.use(Component);
+Vue.use(Func);
+Vue.use(Lambda);
 
 const routerOptions: RouterOptions = {
     mode: 'history',
@@ -21,9 +27,8 @@ const routerOptions: RouterOptions = {
     ]
 }
 
-const router = new VueRouter(routerOptions);
+const router: VueRouter = new VueRouter(routerOptions);
 
 new Vue({
     router
 }).$mount('#container');
-
