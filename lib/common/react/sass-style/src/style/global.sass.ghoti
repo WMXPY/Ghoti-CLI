@@ -1,0 +1,47 @@
+@import './color.sass'
+
+html, body, #container
+    height: 100%
+    padding: 0
+    margin: 0
+
+.${|title|}-grid-layout
+    height: 100%
+    display: grid
+    grid-template-columns: [left] 200px [center] auto [end]
+    grid-template-rows: [top] 100px [middle] auto [foot]
+    grid-template-areas: "logo content" "nav content"
+    background-color: green
+
+.${|title|}-grid-area-a
+    grid-area: logo
+
+.${|title|}-grid-area-b
+    grid-area: nav
+
+.${|title|}-grid-area-c
+    grid-area: content
+    overflow: hidden
+
+.${|title|}-flex-layout
+    display: flex
+    flex-direction: column
+    flex-wrap: nowrap
+    align-items: flex-start
+
+.${|title|}-flex-element
+    height: 100px
+
+.${|title|}-flex-flow-layout
+    display: flex
+    flex-direction: row
+    flex-wrap: wrap
+    height: auto
+
+.${|title|}-flex-flow-element
+    flex: initial
+    height: 150px
+    width: 50%
+
+.${|title|}-flex-inner
+    padding: 10px

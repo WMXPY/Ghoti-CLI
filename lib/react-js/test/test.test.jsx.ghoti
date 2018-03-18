@@ -19,7 +19,7 @@ configure({
     adapter: new Adapter(),
 });
 
-describe('${|test|}', () => {
+describe('Hello, ${|test|}!', () => {
 
     let ${|test|}
 
@@ -27,7 +27,7 @@ describe('${|test|}', () => {
         ${|test|} = shallow(<div>${|test|}</div>);
     });
 
-    it('${|test|}', () => {
+    it('Initial ${|test|}', () => {
         expect(${|test|}.type()).to.be.equal('div');
     });
 

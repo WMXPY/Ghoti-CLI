@@ -23,15 +23,27 @@ const libs = [
         author: '$ghoti'
         path: 'react-ssr'
         common: [
-            'ghoti'
-            'public'
-            'eslint'
-            'tslint'
-            'typescript'
-            'typescript-config'
-            'typescript-feature'
-            'typescript-structure'
-            'sass-style'
+            {
+                path: 'react'
+                commons: [
+                    'typescript'
+                    'typescript-feature'
+                    'typescript-structure'
+                    'sass-style'
+                    'middle-ssr'
+                ]
+            }
+            {
+                path: 'common'
+                commons: [
+                    'ghoti'
+                    'public'
+                    'public-template'
+                    'eslint'
+                    'tslint'
+                    'typescript-config'
+                ]
+            }
         ]
         postLog: (defaultLogs [
             'npm run feature [feature name]     > create a feature'
@@ -46,6 +58,7 @@ const libs = [
         ])
         whatis: [
             'react single page application'
+            'build with webpack 3'
             'use typescript'
             'test with mocha'
             'support server side render'
@@ -64,15 +77,26 @@ const libs = [
         author: '$ghoti'
         path: 'react-thin-ssr'
         common: [
-            'ghoti'
-            'public'
-            'eslint'
-            'tslint'
-            'typescript'
-            'typescript-config'
-            'typescript-feature'
-            'typescript-structure'
-            'sass-style'
+            {
+                path: 'react'
+                commons: [
+                    'typescript'
+                    'typescript-feature'
+                    'typescript-structure'
+                    'sass-style'
+                ]
+            }
+            {
+                path: 'common'
+                commons: [
+                    'ghoti'
+                    'public'
+                    'public-template'
+                    'eslint'
+                    'tslint'
+                    'typescript-config'
+                ]
+            }
         ]
         postLog: (defaultLogs [
             'npm run feature [feature name]     > create a feature'
@@ -87,89 +111,12 @@ const libs = [
         ])
         whatis: [
             'react single page application'
+            'build with webpack 3'
             'use typescript'
             'test with mocha'
             'support server side render'
             'use sample middleware'
             'not suggested'
-        ]
-    }
-    {
-        name: [
-            'react-parcel-ssr'
-            'react-parcel-server'
-            'react-ssr-parcel'
-            'react-server-parcel'
-        ]
-        common: [
-            'ghoti'
-            'public'
-            'eslint'
-            'tslint'
-            'typescript'
-            'typescript-config'
-            'typescript-feature'
-            'typescript-structure'
-            'sass-style'
-        ]
-        author: '$ghoti'
-        path: 'react-parcel-ssr'
-        postLog: (defaultLogs [
-            'npm run feature [feature name]     > create a feature'
-            'npm run lambda [function name]     > create a lambda function set'
-            'npm run component [function name]  > create a component'
-            'npm run page [page name]           > create a page'
-            'npm run func [function name]       > create a function set'
-            '$empty'
-            'npm run build                      > bundle application for production'
-            'npm start                          > start development with localhost server'
-            'npm test                           > test features by mocha'
-        ])
-        whatis: [
-            'react single page application'
-            'use typescript'
-            'use parcel to pack'
-            'test with mocha'
-            'support server side render'
-        ]
-    }
-    {
-        name: [
-            'react-next-ssr'
-            'react-next-server'
-            'react-ssr-next'
-            'react-server-next'
-        ]
-        common: [
-            'ghoti'
-            'public'
-            'eslint'
-            'tslint'
-            'typescript'
-            'typescript-config'
-            'typescript-feature'
-            'typescript-structure'
-            'sass-style'
-        ]
-        author: '$ghoti'
-        path: 'react-next-ssr'
-        postLog: (defaultLogs [
-            'npm run feature [feature name]     > create a feature'
-            'npm run lambda [function name]     > create a lambda function set'
-            'npm run component [function name]  > create a component'
-            'npm run page [page name]           > create a page'
-            'npm run func [function name]       > create a function set'
-            '$empty'
-            'npm run build                      > bundle application for production'
-            'npm start                          > start development with localhost server'
-            'npm test                           > test features by mocha'
-        ])
-        whatis: [
-            'react single page application'
-            'use typescript'
-            'webpack 4'
-            'test with mocha'
-            'support server side render'
         ]
     }
     {
@@ -184,15 +131,26 @@ const libs = [
             'react-default'
         ]
         common: [
-            'ghoti'
-            'public'
-            'eslint'
-            'tslint'
-            'typescript'
-            'typescript-config'
-            'typescript-feature'
-            'typescript-structure'
-            'sass-style'
+            {
+                path: 'react'
+                commons: [
+                    'typescript'
+                    'typescript-feature'
+                    'typescript-structure'
+                    'sass-style'
+                ]
+            }
+            {
+                path: 'common'
+                commons: [
+                    'ghoti'
+                    'public'
+                    'public-template'
+                    'eslint'
+                    'tslint'
+                    'typescript-config'
+                ]
+            }
         ]
         author: '$ghoti'
         path: 'react-normal'
@@ -209,6 +167,57 @@ const libs = [
         ])
         whatis: [
             'react single page application'
+            'build with webpack 3'
+            'test with mocha'
+            'use typescript'
+        ]
+    }
+    {
+        name: [
+            'react-chrome-extension'
+            'react-chrome'
+            'react-ts-chrome-extension'
+            'react-ts-chrome'
+            'react-chrome-ts'
+            'react-extension-chrome'
+        ]
+        common: [
+            {
+                path: 'react'
+                commons: [
+                    'typescript'
+                    'typescript-feature'
+                    'typescript-structure'
+                    'sass-style'
+                ]
+            }
+            {
+                path: 'common'
+                commons: [
+                    'public-lite'
+                    'public-template-lite'
+                    'eslint'
+                    'tslint'
+                    'typescript-config'
+                ]
+            }
+        ]
+        author: '$ghoti'
+        path: 'react-chrome-extension'
+        postLog: (defaultLogs [
+            'npm run feature [feature name]     > create a feature'
+            'npm run lambda [function name]     > create a lambda function set'
+            'npm run component [function name]  > create a component'
+            'npm run page [page name]           > create a page'
+            'npm run func [function name]       > create a function set'
+            '$empty'
+            'npm run build                      > bundle application for production'
+            'npm start                          > start development with localhost server'
+            'npm test                           > test features by mocha'
+        ])
+        whatis: [
+            'react chrome extension'
+            'build with webpack 3'
             'test with mocha'
             'use typescript'
         ]
@@ -219,13 +228,24 @@ const libs = [
             'react-tiny'
         ]
         common: [
-            'ghoti'
-            'typescript'
-            'public'
-            'typescript-config'
-            'typescript-feature'
-            'typescript-structure'
-            'sass-style'
+            {
+                path: 'react'
+                commons: [
+                    'typescript'
+                    'typescript-feature'
+                    'typescript-structure'
+                    'sass-style'
+                ]
+            }
+            {
+                path: 'common'
+                commons: [
+                    'ghoti'
+                    'public'
+                    'public-template'
+                    'typescript-config'
+                ]
+            }
         ]
         author: '$ghoti'
         path: 'react-lite'
@@ -241,6 +261,7 @@ const libs = [
         ])
         whatis: [
             'react single page application'
+            'build with webpack 3'
             'use typescript'
         ]
     }
@@ -253,11 +274,21 @@ const libs = [
             'react-js-default'
         ]
         common: [
-            'ghoti'
-            'public'
-            'eslint'
-            'ghoti'
-            'sass-style'
+            {
+                path: 'react'
+                commons: [
+                    'sass-style'
+                ]
+            }
+            {
+                path: 'common'
+                commons: [
+                    'ghoti'
+                    'public'
+                    'public-template'
+                    'eslint'
+                ]
+            }
         ]
         author: '$ghoti'
         path: 'react-js'
@@ -274,6 +305,7 @@ const libs = [
         ])
         whatis: [
             'react single page application'
+            'build with webpack 3'
             'in development'
         ]
     }
@@ -283,14 +315,25 @@ const libs = [
             'react-none'
         ]
         common: [
-            'ghoti'
-            'public'
-            'eslint'
-            'tslint'
-            'typescript'
-            'typescript-config'
-            'typescript-feature'
-            'sass-style'
+            {
+                path: 'react'
+                commons: [
+                    'typescript'
+                    'typescript-feature'
+                    'sass-style'
+                ]
+            }
+            {
+                path: 'common'
+                commons: [
+                    'ghoti'
+                    'public'
+                    'public-template'
+                    'eslint'
+                    'tslint'
+                    'typescript-config'
+                ]
+            }
         ]
         author: '$ghoti'
         path: 'react-unstructured'
@@ -306,6 +349,101 @@ const libs = [
         ])
         whatis: [
             'react single page application'
+            'build with webpack 3'
+            'unstructured'
+            'cannot use ghoti extend commands in the repo'
+        ]
+    }
+    {
+        name: [
+            'vue'
+            'vue-normal'
+        ]
+        common: [
+            {
+                path: 'vue'
+                commons: [
+                    'typescript'
+                    'typescript-feature'
+                    'typescript-structure'
+                    'public-template-vue'
+                ]
+            }
+            {
+                path: 'common'
+                commons: [
+                    'ghoti'
+                    'public'
+                    'eslint'
+                    'tslint'
+                    'typescript-config'
+                ]
+            }
+        ]
+        author: '$ghoti'
+        path: 'vue-normal'
+        postLog: (defaultLogs [
+            'Here are some useful shortcuts for your hacking'
+            'You can always enter "npm run hint" for this message again'
+            '$empty'
+            'npm run feature [feature name]     > create a feature'
+            '$empty'
+            'npm run build                      > bundle application for production'
+            'npm start                          > start development with localhost server'
+            'npm test                           > test features by mocha'
+        ])
+        whatis: [
+            'vue.js single page application'
+            'build with webpack 3'
+            'ghoti cli structure'
+        ]
+    }
+    {
+        name: [
+            'react-ghoti-training'
+            'react-training-ghoti'
+            'training-ghoti'
+            'ghoti-training'
+            'example-ghoti'
+            'ghoti-example'
+        ]
+        common: [
+            {
+                path: 'react'
+                commons: [
+                    'typescript'
+                    'typescript-feature'
+                    'typescript-structure'
+                    'sass-style'
+                ]
+            }
+            {
+                path: 'common'
+                commons: [
+                    'ghoti'
+                    'public'
+                    'public-template'
+                    'eslint'
+                    'tslint'
+                    'typescript-config'
+                ]
+            }
+        ]
+        author: '$ghoti'
+        path: 'react-ghoti-train'
+        postLog: [
+            '$empty'
+            'HELLO WORLD!'
+            'This example will help you start use ghoti in your project'
+            '$empty'
+            'TO START'
+            'RUN "npm start" in your terminal'
+            '$empty'
+        ]
+        whatis: [
+            'help you know what ghoti do'
+            'react single page application'
+            'build with webpack 3'
             'unstructured'
             'cannot use ghoti extend commands in the repo'
         ]
@@ -324,8 +462,8 @@ const libs = [
 (const libPath = (folderName, ghoti_root) ->
     (path.join ghoti_root, "lib", folderName))
 
-(const commonPath = (folderName, ghoti_root) ->
-    (path.join ghoti_root, "lib", "common", folderName))
+(const commonPath = (folderName, commonName, ghoti_root) ->
+    (path.join ghoti_root, "lib", "common", folderName, commonName))
 
 (const compareName = (name, name2) ->
     (const splitName = (((name.split '-').join '').toLowerCase!))
@@ -338,12 +476,16 @@ const libs = [
         (for j in i.name
             (if (compareName j, libName)
                 re = {...i})))
+    (if (!(Boolean re))
+    then return null)
     (if ghoti_root
     then 
-        re.path = (libPath re.path, ghoti_root)
-        (for i to re.common.length - 1
-            re.common[i] = commonPath(re.common[i], ghoti_root)))
-
+        (const commonList = [])
+        (re.path = (libPath re.path, ghoti_root))
+        (for i in re.common
+            (for j in i.commons
+                (commonList.push commonPath(i.path, j, ghoti_root))))
+        (re.common = commonList))
     (if re
     then re
     else null))

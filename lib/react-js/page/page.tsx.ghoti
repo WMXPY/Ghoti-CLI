@@ -26,7 +26,7 @@ class ${|page|} extends React.Component <IProps,IState> {
 
     public render() {
         return (<div>
-        
+            <span>Hello, ${|page|}!</span>
         </div>);
     }
 }

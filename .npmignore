@@ -1,12 +1,12 @@
 src
 doc
 tex
+package-lock.json
 .ghoticonfig
 .gitignore
 makefile
 tests
 script
-package-lock.json
 a
 b
 c

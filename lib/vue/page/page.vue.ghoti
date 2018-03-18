@@ -1,0 +1,24 @@
+<style lang="sass">
+</style>
+
+<template>
+  <div>
+      ${|page|}
+  </div>
+</template>
+
+<script lang="ts">
+import Vue from 'vue';
+import Component from 'vue-class-component';
+
+import * as Components from '../component/import';
+import * as Lambda from '../lambda/import';
+import * as Func from '../func/import';
+
+@Component({})
+export default class ${|page|} extends Vue {
+  constructor() {
+    super();
+  }
+}
+</script>

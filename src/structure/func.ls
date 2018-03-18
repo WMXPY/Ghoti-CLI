@@ -1,8 +1,9 @@
 require! {
     fs,
     path,
-    '../log': { log }
-    '../config': { updateConfig }
+    './common': { comments }
+    '../log/log': { log, logPad }
+    '../func/config': { updateConfig }
 }
 
 const ghotiFuncClassName = (name) ->
@@ -25,11 +26,13 @@ const comImport = (ghoti) ->
         (log 'ERROR, ghoti have no functions configeration')
         (log 'Try to fix it: "ghoti fix"')
         (process.exit!)
-    re = ((ghoti.funcs.map ((it) ->
+    var re
+    re = comments 'funcs'
+    re += ((ghoti.funcs.map ((it) ->
         "import * as " + (ghotiFuncClassName it) + " from './" + (ghotiFuncFileName it) + "';")).join("\r\n"))
     re += "\r\n"
     re += "export {\r\n" + (ghoti.funcs.map ((it) ->
-        (ghotiFuncExport it) + ",")).join("\r\n") + "\r\n};"
+        (ghotiFuncExport it) + ",")).join("\r\n") + "\r\n};\r\n"
     re
 
 const func = (root, targetPath, name, ghoti, whenDone, env) ->

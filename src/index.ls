@@ -3,31 +3,34 @@ require! {
     fs
     path
     os
-    './config': config
-    './config': { updateConfig }
-    './log': { log, logHelp, logHelpMore, logInfo, logPostNPMInstall, logAbout, logVersion, logCommand, logUnknown, logStatus, logWhatIs, logUpdate, logList }
-    './argv': { argv, env, ghotiConfig, path_ghoti }
-    './init': { init }
+    './func/config': config
+    './func/config': { updateConfig }
+    './log/log': { log, logHelp, logHelpMore, logInfo, logPostNPMInstall, logAbout, logUnderline, logVersion, logCommand, logSymbol, logUnknown, logStatus, logWhatIs, logUpdate, logList, logGame, logGameCommand }
+    './func/argv': { argv, env, ghotiConfig, path_ghoti }
+    './func/init': { init }
     './structure/component': { component }
     './structure/page': { page }
     './structure/lambda': { lambda }
     './structure/func': { func }
     './structure/feature': { feature }
-    './fix': { fix }
-    './update': { update }
+    './func/fix': { fix }
+    './func/update': { update }
+    './ame/init': { initUnderline }
+    './ame/excute': { checkAme, excuteAme }
+    './game/game': { minigame }
 }
 
-const ghoti = ghotiConfig
+(const ghoti = ghotiConfig)
 
-var ghotiCLIPath
-if os.platform! === 'win32'
+(var ghotiCLIPath)
+(if (os.platform !== 'win32')
 then ghotiCLIPath = (path.join path_ghoti, "..", "..")
-else ghotiCLIPath = (path.join path_ghoti, "..", "..", "lib", "node_modules", "ghoti-cli")
+else ghotiCLIPath = (path.join path_ghoti, "..", "..", "lib", "node_modules", "ghoti-cli"))
 
 (argv!)
 
 const excute = ->
-    var whenDone
+    (var whenDone)
     const mode = (env.mode.toLowerCase!)
     switch(mode)
         case 'about'
@@ -36,17 +39,32 @@ const excute = ->
             (logHelp true, env)
         case 'version'
             (logVersion env)
+        case '?'
+            fallthrough
         case 'help'
             (logHelp false, env)
+        case '?+'
+            fallthrough
         case 'help+'
             (logHelpMore env)
+        case 'stat'
+            fallthrough
         case 'status'
             (logStatus ghoti, env)
+        case 'inf'
+            fallthrough
         case 'info'
             (logInfo env.texture[0], env)
+        case 'create'
+            fallthrough
+        case 'template'
+            fallthrough
         case 'init'
             whenDone = (logCommand!)
             (init ghotiCLIPath, env.texture[0], env.texture[1], whenDone, env)
+        case 'example'
+            whenDone = (logCommand!)
+            (init ghotiCLIPath, 'ghoti-example', env.texture[0], whenDone, env)
         case 'update'
             whenDone = (logUpdate ghoti, env)
             (update whenDone, env)
@@ -56,11 +74,17 @@ const excute = ->
             fallthrough
         case 'whatis'
             (logWhatIs env.texture[0], env)
+        case 'types'
+            fallthrough
         case 'list'
             (logList env)
+        case 'issue'
+            fallthrough
         case 'fix'
             whenDone = (logCommand!)
-            (fix env.texture[0], ghoti, whenDone, env)
+            (fix env.texture, ghoti, whenDone, env)
+        case 'hint'
+            fallthrough
         case 'post'
             (logPostNPMInstall env.texture[0], env)
         case 'lambda'
@@ -87,8 +111,21 @@ const excute = ->
             whenDone = (logCommand!)
             (component ghotiCLIPath, process.cwd!, env.texture[0], ghoti, whenDone, env)
             (whenDone!)
+        case 'underline'
+            whenDone = (logUnderline!)
+            (initUnderline ghoti, whenDone)
+        case 'game'
+            fallthrough
+        case 'minigame'
+            whenDone = (logGame!)
+            minigame ghoti, whenDone
+        case 'frog'
+            whenDone = (logGameCommand!)
         default
-            (logUnknown env)
+            (const ameResult = (checkAme mode))
+            (if ameResult
+            then (excuteAme ameResult, env.texture, ghoti, logSymbol, env, ghotiCLIPath, process.cwd!)
+            else (logUnknown env))
     void
 
 export excute

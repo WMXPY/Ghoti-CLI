@@ -1,0 +1,12 @@
+{
+    "name": "${|title|}",
+    "version": "0.0.0",
+    "description": "${|description|}",
+    "browser_action": {
+        "default_icon": "res/favicon.png"
+    },
+    "permissions": [
+        "storage",
+        "http://lunuh.com/"
+    ]
+}
