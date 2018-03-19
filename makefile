@@ -51,9 +51,9 @@ endif
 
 run:
 ifeq ($(UNAME), win32)
-	lsc .\src\index.ls
+	lsc test.ls
 else
-	lsc ./src/index.ls
+	lsc test.ls
 endif
 
 clean:
