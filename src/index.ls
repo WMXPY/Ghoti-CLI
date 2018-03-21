@@ -23,10 +23,14 @@ require! {
 (const ghoti = ghotiConfig)
 
 (var ghotiCLIPath)
-(if (os.platform !== 'win32')
-then ghotiCLIPath = (path.join path_ghoti, "..", "..")
-else ghotiCLIPath = (path.join path_ghoti, "..", "..", "lib", "node_modules", "ghoti-cli"))
-
+switch os.platform!
+    case 'win32'
+        ghotiCLIPath = (path.join path_ghoti, "..", "..")
+    case 'darwin'
+        ghotiCLIPath = (path.join path_ghoti, "..", "..", "lib", "node_modules", "ghoti-cli")
+    default
+        ghotiCLIPath = (path.join path_ghoti, "..", "..", "lib", "node_modules", "ghoti-cli")
+        
 (argv!)
 
 const excute = ->
