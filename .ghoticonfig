@@ -1,4 +1,5 @@
 {
     "type": "origin",
-    "version": "2.2.1"
+    "version": "2.2.1",
+    "outer": []
 }
