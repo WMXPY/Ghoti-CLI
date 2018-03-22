@@ -1,6 +1,9 @@
 ls := lsc -co
+depdence := log.ls static.ls func.ls structure.ls ame.ls game.ls outer.ls
+sourcePath := src
+distPath := dist
 
-ghoti: log.ls static.ls func.ls structure.ls ame.ls game.ls
+ghoti: $(depdence)
 ifeq ($(UNAME), win32)
 	$(ls) .\dist\ .\src\*.ls
 else
@@ -9,44 +12,51 @@ endif
 
 log.ls:
 ifeq ($(UNAME), win32)
-	$(ls) .\dist\log\ .\src\log\*.ls
+	$(ls) .\$(distPath)\log\ .\$(sourcePath)\log\*.ls
 else
-	$(ls) ./dist/log/ ./src/log/*.ls
+	$(ls) ./$(distPath)/log/ ./$(sourcePath)/log/*.ls
 endif
 
 static.ls:
 ifeq ($(UNAME), win32)
-	$(ls) .\dist\static\ .\src\static\*.ls
+	$(ls) .\$(distPath)\static\ .\$(sourcePath)\static\*.ls
 else
-	$(ls) ./dist/static/ ./src/static/*.ls
+	$(ls) ./$(distPath)/static/ ./$(sourcePath)/static/*.ls
 endif
 
 structure.ls:
 ifeq ($(UNAME), win32)
-	$(ls) .\dist\structure\ .\src\structure\*.ls
+	$(ls) .\$(distPath)\structure\ .\$(sourcePath)\structure\*.ls
 else
-	$(ls) ./dist/structure/ ./src/structure/*.ls
+	$(ls) ./$(distPath)/structure/ ./$(sourcePath)/structure/*.ls
 endif
 
 func.ls:
 ifeq ($(UNAME), win32)
-	$(ls) .\dist\func\ .\src\func\*.ls
+	$(ls) .\$(distPath)\func\ .\$(sourcePath)\func\*.ls
 else
-	$(ls) ./dist/func/ ./src/func/*.ls
+	$(ls) ./$(distPath)/func/ ./$(sourcePath)/func/*.ls
 endif
 
 ame.ls:
 ifeq ($(UNAME), win32)
-	$(ls) .\dist\ame\ .\src\ame\*.ls
+	$(ls) .\$(distPath)\ame\ .\$(sourcePath)\ame\*.ls
 else
-	$(ls) ./dist/ame/ ./src/ame/*.ls
+	$(ls) ./$(distPath)/ame/ ./$(sourcePath)/ame/*.ls
 endif
 
 game.ls:
 ifeq ($(UNAME), win32)
-	$(ls) .\dist\game\ .\src\game\*.ls
+	$(ls) .\$(distPath)\game\ .\$(sourcePath)\game\*.ls
 else
-	$(ls) ./dist/game/ ./src/game/*.ls
+	$(ls) ./$(distPath)/game/ ./$(sourcePath)/game/*.ls
+endif
+
+outer.ls:
+ifeq ($(UNAME), win32)
+	$(ls) .\$(distPath)\outer\ .\$(sourcePath)\outer\*.ls
+else
+	$(ls) ./$(distPath)/outer/ ./$(sourcePath)/outer/*.ls
 endif
 
 run:
@@ -58,9 +68,9 @@ endif
 
 clean:
 ifeq ($(UNAME), win32)
-	del .\dist
+	del .\$(distPath)
 	del *.aux *.dvi *.fdb* *.fls *.log *.gz *.pdf
 else
-	rm -rf ./dist
+	rm -rf ./$(distPath)
 	rm -rf *.aux *.dvi *.fdb* *.fls *.log *.gz *.pdf
 endif

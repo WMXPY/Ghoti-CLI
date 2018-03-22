@@ -1,8 +1,19 @@
 require! {
     fs
     path
+    os
     '../log/log': { log }
+    '../func/argv': { path_ghoti }
 }
+
+(const cliPath = ->
+    (switch os.platform!
+        case 'win32'
+            (path.join path_ghoti, "..", "..")
+        case 'darwin'
+            (path.join path_ghoti, "..", "..", "lib", "node_modules", "ghoti-cli")
+        default
+            (path.join path_ghoti, "..", "..", "lib", "node_modules", "ghoti-cli")))
 
 (const tempConfig = (type) ->
     var config
@@ -45,6 +56,22 @@ require! {
         (fs.writeFileSync (path.join path_current, '.ghoticonfig'), (JSON.stringify config) , 'utf8')
         true))
 
+(const writeCLIConfig = (config) ->
+    (const configExist = (fs.existsSync path.join cliPath!, '.ghoticonfig'))
+
+    (if configExist
+        (fs.writeFileSync (path.join cliPath!, '.ghoticonfig'), (JSON.stringify config) , 'utf8')
+        configExist
+    else 
+        (fs.writeFileSync (path.join cliPath!, '.ghoticonfig'), (JSON.stringify config) , 'utf8')
+        true))
+
+(const readCLIConfig = ->
+    (const configExist = (fs.existsSync path.join cliPath!, '.ghoticonfig'))
+
+    (if configExist
+    then (JSON.parse (fs.readFileSync (path.join cliPath!, '.ghoticonfig'), 'utf8'))
+    else false))
 
 (const initConfig = (type) ->
     (writeConfig (tempConfig type)))
@@ -53,7 +80,10 @@ require! {
     (writeConfig newConfig))
 
 export getConfig
+export cliPath
 export writeConfig
 export initConfig
 export tempConfig
 export updateConfig
+export readCLIConfig
+export writeCLIConfig

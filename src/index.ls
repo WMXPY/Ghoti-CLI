@@ -2,11 +2,10 @@
 require! {
     fs
     path
-    os
     './func/config': config
-    './func/config': { updateConfig }
+    './func/config': { updateConfig, cliPath }
     './log/log': { log, logHelp, logHelpMore, logInfo, logPostNPMInstall, logAbout, logUnderline, logVersion, logCommand, logSymbol, logUnknown, logStatus, logWhatIs, logUpdate, logList, logGame, logGameCommand }
-    './func/argv': { argv, env, ghotiConfig, path_ghoti }
+    './func/argv': { argv, env, ghotiConfig }
     './func/init': { init }
     './structure/component': { component }
     './structure/page': { page }
@@ -22,14 +21,7 @@ require! {
 
 (const ghoti = ghotiConfig)
 
-(var ghotiCLIPath)
-switch os.platform!
-    case 'win32'
-        ghotiCLIPath = (path.join path_ghoti, "..", "..")
-    case 'darwin'
-        ghotiCLIPath = (path.join path_ghoti, "..", "..", "lib", "node_modules", "ghoti-cli")
-    default
-        ghotiCLIPath = (path.join path_ghoti, "..", "..", "lib", "node_modules", "ghoti-cli")
+(const ghotiCLIPath = cliPath!)
         
 (argv!)
 
