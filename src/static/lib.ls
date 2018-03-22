@@ -460,7 +460,7 @@ const libs = [
     re)
 
 (const libPath = (folderName, ghoti_root) ->
-    (path.join ghoti_root, "lib", folderName))
+    (path.join ghoti_root, "lib", "template", folderName))
 
 (const commonPath = (folderName, commonName, ghoti_root) ->
     (path.join ghoti_root, "lib", "common", folderName, commonName))
