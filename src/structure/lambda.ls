@@ -49,7 +49,7 @@ require! {
             (process.exit!))
     (const target = (path.join targetPath, "src", "lambda", name + ".lambda.ts" ))
     (const importTarget = (path.join targetPath, "src", "lambda", "import.ts" ))
-    (const data = (readFile (path.join root, "lib", "react", "lambda", "lambda.ts.ghoti"), name, ghoti))
+    (const data = (readFile (path.join root, "lib", "structure", "lambda", "lambda.ts.ghoti"), name, ghoti))
     (ghoti.lambdas.push name)
     (log '| update .ghoticonfig file')
     (updateConfig ghoti)

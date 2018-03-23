@@ -11,6 +11,12 @@ require! {
 (const ghotiTestFileName = (name) ->
     name + ".test.tsx")
 
+(const ghotiTestVueFileName = (name) ->
+    name + ".vue.ts")
+
+(const ghotiTestNormalFileName = (name) ->
+    name + ".test.ts")
+
 (const ghotiFeatureClassName = (name) ->
     "FeatureGhoti" + (name.substring 0,1).toUpperCase! + (name.substring 1, name.length))
 
@@ -36,10 +42,27 @@ require! {
             (log '| try "ghoti status" to see features list')
             (whenDone!)
             (process.exit!))
-    (const target = (path.join targetPath, "test", (ghotiTestFileName name)))
     (const featureTarget = (path.join targetPath, "feature", (ghotiFeatureFileName name)))
-    (const data = (readFile (path.join root, "lib", "react", "test", "test.test.tsx.ghoti"), name, ghoti))
-    (const featureData = (readFile (path.join root, "lib", "react", "feature", "feature.feature.ghoti"), name, ghoti))
+    (switch ghoti.template
+        case 'react'
+            data = (readFile (path.join root, "lib", "react", "test", "test.test.tsx.ghoti"), name, ghoti)
+            target = (path.join targetPath, "test", (ghotiTestFileName name))
+        case 'react-js'
+            data = (readFile (path.join root, "lib", "react", "test", "test.test.tsx.ghoti"), name, ghoti)
+            target = (path.join targetPath, "test", (ghotiTestFileName name))
+        case 'vue'
+            data = (readFile (path.join root, "lib", "vue", "test", "test.test.vue.ghoti"), name, ghoti)
+            target = (path.join targetPath, "test", (ghotiTestVueFileName name))
+        case 'node'
+            data = (readFile (path.join root, "lib", "node", "test", "test.test.ts.ghoti"), name, ghoti)
+            target = (path.join targetPath, "test", (ghotiTestNormalFileName name))
+        default
+            (log '| ERROR: type "' + ghoti.template + '" is not supported')
+            (log '| Try "ghoti status" to see current type issue')
+            (log '| Try "ghoti whatis ' + ghoti.template + '" is there any known issue')
+            (whenDone!)
+            (process.exit!))
+    (const featureData = (readFile (path.join root, "lib", "structure", "feature", "feature.feature.ghoti"), name, ghoti))
     (ghoti.features.push name)
     (log '| update .ghoticonfig file')
     (updateConfig ghoti)

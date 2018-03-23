@@ -48,7 +48,7 @@ const func = (root, targetPath, name, ghoti, whenDone, env) ->
             (process.exit!)
     const target = (path.join targetPath, "src", "func", name + ".func.ts" )
     const importTarget = (path.join targetPath, "src", "func", "import.ts" )
-    const data = (readFile (path.join root, "lib", "react", "func", "func.ts.ghoti"), name, ghoti)
+    const data = (readFile (path.join root, "lib", "structure", "func", "func.ts.ghoti"), name, ghoti)
     (ghoti.funcs.push name)
     (log '| update .ghoticonfig file')
     (updateConfig ghoti)
