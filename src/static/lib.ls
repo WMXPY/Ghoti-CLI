@@ -400,6 +400,138 @@ const libs = [
     }
     {
         name: [
+            'node'
+            'node-normal'
+        ]
+        common: [
+            {
+                path: 'node'
+                commons: [
+                    'structure-readme'
+                    'typescript'
+                    'typescript-feature'
+                    'typescript-structure'
+                ]
+            }
+            {
+                path: 'common'
+                commons: [
+                    'ghoti'
+                    'eslint'
+                    'tslint'
+                    'typescript-config'
+                ]
+            }
+        ]
+        author: '$ghoti'
+        path: 'node-normal'
+        postLog: (defaultLogs [
+            'Here are some useful shortcuts for your hacking'
+            'You can always enter "npm run hint" for this message again'
+            '$empty'
+            'npm run feature [feature name]     > create a feature'
+            '$empty'
+            'npm run build                      > bundle application for production'
+            'npm start                          > start development with localhost server'
+            'npm test                           > test features by mocha'
+        ])
+        whatis: [
+            'nodeJS application'
+            'use typescript'
+            'ghoti cli structure'
+        ]
+    }
+    {
+        name: [
+            'node-discord'
+            'discord-node'
+        ]
+        common: [
+            {
+                path: 'node'
+                commons: [
+                    'structure-readme'
+                    'typescript'
+                    'typescript-feature'
+                    'typescript-structure'
+                ]
+            }
+            {
+                path: 'common'
+                commons: [
+                    'ghoti'
+                    'eslint'
+                    'tslint'
+                    'typescript-config'
+                ]
+            }
+        ]
+        author: '$ghoti'
+        path: 'node-discord'
+        postLog: (defaultLogs [
+            'Here are some useful shortcuts for your hacking'
+            'You can always enter "npm run hint" for this message again'
+            '$empty'
+            'npm run feature [feature name]     > create a feature'
+            '$empty'
+            'npm run build                      > bundle application for production'
+            'npm start                          > start development with localhost server'
+            'npm test                           > test features by mocha'
+        ])
+        whatis: [
+            'discord application devlopment'
+            'nodeJS application'
+            'use typescript'
+            'ghoti cli structure'
+        ]
+    }
+    {
+        name: [
+            'node-server'
+            'server-node'
+            'node-express'
+        ]
+        common: [
+            {
+                path: 'node'
+                commons: [
+                    'structure-readme'
+                    'typescript'
+                    'typescript-feature'
+                    'typescript-structure'
+                ]
+            }
+            {
+                path: 'common'
+                commons: [
+                    'ghoti'
+                    'eslint'
+                    'tslint'
+                    'typescript-config'
+                ]
+            }
+        ]
+        author: '$ghoti'
+        path: 'node-server'
+        postLog: (defaultLogs [
+            'Here are some useful shortcuts for your hacking'
+            'You can always enter "npm run hint" for this message again'
+            '$empty'
+            'npm run feature [feature name]     > create a feature'
+            '$empty'
+            'npm run build                      > bundle application for production'
+            'npm start                          > start development with localhost server'
+            'npm test                           > test features by mocha'
+        ])
+        whatis: [
+            'express http server application'
+            'nodeJS application'
+            'use typescript'
+            'ghoti cli structure'
+        ]
+    }
+    {
+        name: [
             'react-ghoti-training'
             'react-training-ghoti'
             'training-ghoti'
