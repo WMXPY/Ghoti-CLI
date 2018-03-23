@@ -1,0 +1,34 @@
+{
+    "type": "project",
+    "template": "node",
+    "sub": "discord",
+    "version": "${|version|}",
+    "title": "${|title|}",
+    "description": "${|description|}",
+    "author": "${|author|}",
+    "config": {
+        "server": {
+            "server": "discord",
+            "config": {
+            }
+        }
+    },
+    "underline": {
+        "active": false
+    },
+    "components": [
+        
+    ],
+    "pages": [
+
+    ],
+    "funcs": [
+
+    ],
+    "lambdas": [
+        
+    ],
+    "features": [
+        
+    ]
+}

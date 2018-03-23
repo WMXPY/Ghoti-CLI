@@ -1,0 +1,35 @@
+{
+    "type": "project",
+    "template": "node",
+    "sub": "server",
+    "version": "${|version|}",
+    "title": "${|title|}",
+    "description": "${|description|}",
+    "author": "${|author|}",
+    "config": {
+        "server": {
+            "server": "express",
+            "config": {
+                "use": "body-parser"
+            }
+        }
+    },
+    "underline": {
+        "active": false
+    },
+    "components": [
+        
+    ],
+    "pages": [
+
+    ],
+    "funcs": [
+
+    ],
+    "lambdas": [
+        
+    ],
+    "features": [
+        
+    ]
+}
