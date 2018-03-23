@@ -53,6 +53,8 @@ require! {
     re)
 
 (const page = (root, targetPath, name, ghoti, whenDone, env) ->
+    # [2018-03-23 Update] Add verify name function 
+    (verifyNameValiation name, 'page')
     (if (!(Boolean ghoti.pages))
         (log 'ERROR, ghoti have no pages configeration')
         (log 'Try to fix it: "ghoti fix"')
