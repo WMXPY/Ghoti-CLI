@@ -3,6 +3,7 @@ require! {
     path,
     '../log/log': { log, logPad }
     '../func/config': { updateConfig }
+    './common': { verifyNameValiation }
 }
 
 (const ghotiTestClassName = (name) ->
@@ -32,6 +33,8 @@ require! {
     re)
 
 (const feature = (root, targetPath, name, ghoti, whenDone, env) ->
+    # [2018-03-23 Update] Add verify name function 
+    (verifyNameValiation name, 'feature', whenDone)
     (if (!(Boolean ghoti.features))
         (log 'ERROR, ghoti have no features configeration')
         (log 'Try to fix it: "ghoti fix"')

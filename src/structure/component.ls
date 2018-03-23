@@ -59,7 +59,9 @@ const comVueAddon = (ghoti) ->
     re += "\r\n    },\r\n};\r\n"
     re
 
-(const component = (root, targetPath, name, ghoti, whenDone, env) ->
+(const component = (root, targetPath, name, ghoti, whenDone, env) ->  
+    # [2018-03-23 Update] Add verify name function 
+    (verifyNameValiation name, 'component', whenDone)
     (if (!(Boolean ghoti.components))
         (logPad '| ERROR, ghoti have no components configeration', 1)
         (logPad '| Try to fix it: "ghoti fix"', 1)
