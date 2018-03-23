@@ -38,7 +38,7 @@ require! {
 
 (const lambda = (root, targetPath, name, ghoti, whenDone, env) ->
     # [2018-03-23 Update] Add verify name function 
-    (verifyNameValiation name, 'lambda')
+    (verifyNameValiation name, 'lambda', whenDone)
     (if (!(Boolean ghoti.lambdas))
         (log 'ERROR, ghoti have no lambdas configeration')
         (log 'Try to fix it: "ghoti fix"')

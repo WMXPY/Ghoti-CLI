@@ -1,3 +1,7 @@
+require! {
+    '../log/std': { log }
+}
+
 const comments = (type) ->
     var re
     re = '/**\r\n'
@@ -7,4 +11,19 @@ const comments = (type) ->
     re += '*/\r\n\r\n'
     re
 
+# [2018-03-23 Update] Add verify name function 
+const verifyNameValiation = (name, funcName?, whenDone?) ->
+    if !Boolean name
+    then 
+        log '| You have not entered a part name'
+        if funcName
+        then log 'Correct format is "ghoti ' + funcName +  ' [part name]"'
+        else log 'Correct format is "ghoti [func name] [part name]"'
+        # [2018-03-23 Update] Add process exit support
+        if whenDone
+        then whenDone!
+        process.exit!
+    else true
+
 export comments
+export verifyNameValiation

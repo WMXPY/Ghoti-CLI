@@ -37,7 +37,7 @@ const comImport = (ghoti) ->
 
 const func = (root, targetPath, name, ghoti, whenDone, env) ->
     # [2018-03-23 Update] Add verify name function 
-    (verifyNameValiation name, 'func')
+    (verifyNameValiation name, 'func', whenDone)
     if !Boolean ghoti.funcs
         (log 'ERROR, ghoti have no functions configeration')
         (log 'Try to fix it: "ghoti fix"')
