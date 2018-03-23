@@ -4,8 +4,8 @@
     "description": "${|description|}",
     "private": ${|private|},
     "scripts": {
+        "start": "tsc&&node dist/service.js",
         "build": "tsc",
-        "build": "tsc&&node dist/index.js",
         "feature": "ghoti feature -a",
         "func": "ghoti func -a",
         "hint": "ghoti post -a node-server",
@@ -28,6 +28,7 @@
         "ts-node": "^5.0.0"
     },
     "dependencies": {
+        "body-parser": "^1.18.2",
         "express": "^4.16.3"
     }
 }

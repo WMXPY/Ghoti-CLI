@@ -402,6 +402,7 @@ const libs = [
         name: [
             'node'
             'node-normal'
+            'nodee'
         ]
         common: [
             {
@@ -445,6 +446,7 @@ const libs = [
         name: [
             'node-discord'
             'discord-node'
+            'discord'
         ]
         common: [
             {
@@ -490,6 +492,7 @@ const libs = [
             'node-server'
             'server-node'
             'node-express'
+            'express'
         ]
         common: [
             {

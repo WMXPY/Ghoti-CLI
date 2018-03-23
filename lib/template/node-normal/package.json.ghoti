@@ -5,7 +5,7 @@
     "private": ${|private|},
     "scripts": {
         "build": "tsc",
-        "build": "tsc&&node dist/index.js",
+        "start": "tsc&&node dist/index.js",
         "feature": "ghoti feature -a",
         "func": "ghoti func -a",
         "hint": "ghoti post -a node-normal",

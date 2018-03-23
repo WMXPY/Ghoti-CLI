@@ -3,8 +3,29 @@
  * @fileoverview Entry
  */
 
+import * as Express from 'express';
+import * as BodyParser from 'body-parser';
+
 import * as Func from './func/import';
 import * as Lambda from './lambda/import';
-import * as Config from './config/config';
+import Config from './config/config';
 
-console.log('Hello, ${|title|}!');
+const app: Express.Express = Express();
+
+app.use(BodyParser.json());
+app.use(BodyParser.urlencoded({ extended: true }));
+
+app.get('/', async (req: Express.Request, res: Express.Response): Promise<void> => {
+    try {
+        // You should use function from Func to handle request
+        // console.log(req.body);
+        // console.log(req.query);
+        // console.log(req.params);
+        console.log('responsed by: ' + process.pid);
+        res.send('Hello World!');
+    } catch (err) {
+        throw new Error(err);
+    }
+});
+
+export default app;

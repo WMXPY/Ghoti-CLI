@@ -101,6 +101,7 @@ require! {
         (const common = [...root.common])
         (count = 0)
         (if re.open
+            (common.push (commonPath 'common', 'open-source', ghoti_root))
             (common.push (commonPath 'common', 'license', ghoti_root)))
         (for i in common
             (log ' | @ Common files chunk ' + count++)
