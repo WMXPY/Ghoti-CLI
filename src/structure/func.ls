@@ -1,7 +1,7 @@
 require! {
     fs,
     path,
-    './common': { comments }
+    './common': { comments, verifyNameValiation }
     '../log/log': { log, logPad }
     '../func/config': { updateConfig }
 }
