@@ -7,7 +7,9 @@ import * as React from 'react';
 import * as ReactDOM from 'react-dom';
 import { AppContainer } from 'react-hot-loader';
 import { BrowserRouter } from 'react-router-dom';
+
 import Hello from './hello';
+import Config from './config/config';
 
 import './style/global.sass';
 

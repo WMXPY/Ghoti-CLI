@@ -6,7 +6,9 @@
 import * as React from 'react';
 import * as ReactDOM from 'react-dom';
 import { AppContainer } from 'react-hot-loader';
-import Hello from './root/hello';
+
+import Hello from './hello';
+import Config from './config/config';
 
 import './style/global.sass';
 

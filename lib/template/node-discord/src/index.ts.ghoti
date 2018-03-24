@@ -7,7 +7,7 @@ import * as Discord from 'discord.js';
 
 import * as Func from './func/import';
 import * as Lambda from './lambda/import';
-import * as Config from './config/config';
+import Config from './config/config';
 
 const client: Discord.Client = new Discord.Client();
 const token: string = 'TOKEN';
