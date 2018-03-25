@@ -6,7 +6,7 @@ require! {
     (var re)
     (re = '')
     (for i to length
-        re += '-')
+    then re += '-')
     (log re)
     re)
 
@@ -17,8 +17,8 @@ const logTable = (table, ...title) ->
             length: it.length
         }
     for i in table
-        for j to i.length - 1
-            if i[j].length > title[j].length
+    then for j to i.length - 1
+        then if i[j].length > title[j].length
             then title[j].length = i[j].length
     var titleDisplay
     titleDisplay = ''
@@ -26,7 +26,9 @@ const logTable = (table, ...title) ->
         const minus = i.length - i.text.length
         i.text = ' ' + i.text + ' '
         for space to minus / 2
-            i.text = ' ' + i.text + ' '
+        then i.text = ' ' + i.text + ' '
+        if minus % 2 !== 0
+        then i.text += ' '
         titleDisplay += '|' + i.text
     titleDisplay += '|'
     logSeprate titleDisplay.length - 1
@@ -36,10 +38,11 @@ const logTable = (table, ...title) ->
         var lane
         lane = ''
         for j to i.length - 1
+        then
             lane += '| ' + i[j]
             const cat = title[j].length - i[j].length
             for _ to cat + 2
-                lane += ' '
+            then lane += ' '
         log lane + '|'
     logSeprate titleDisplay.length - 1
 
