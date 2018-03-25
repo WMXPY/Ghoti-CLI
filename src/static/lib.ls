@@ -67,6 +67,61 @@ const libs = [
     }
     {
         name: [
+            'react-pure-static-express'
+            'react-express-static-pure'
+            'react-pure'
+            'react-pure-express'
+            'pure-react'
+            'express-pure-react'
+            'reacr-pure-static'
+        ]
+        author: '$ghoti'
+        path: 'react-pure-static-express'
+        common: [
+            {
+                path: 'react'
+                commons: [
+                    'typescript'
+                    'typescript-feature'
+                    'typescript-structure'
+                    'sass-style'
+                ]
+            }
+            {
+                path: 'common'
+                commons: [
+                    'ghoti'
+                    'public-lite'
+                    'public-template'
+                    'eslint'
+                    'tslint'
+                    'typescript-config-server'
+                ]
+            }
+        ]
+        postLog: (defaultLogs [
+            'npm run feature [feature name]     > create a feature'
+            'npm run lambda [function name]     > create a lambda function set'
+            'npm run component [function name]  > create a component'
+            'npm run page [page name]           > create a page'
+            'npm run func [function name]       > create a function set'
+            '$empty'
+            'npm run build                      > bundle application for production'
+            'npm start                          > start development with localhost server'
+            'npm test                           > test features by mocha'
+            'npm run deploy                     > bundle application and get server ready'
+            'npm run server                     > start muti thread server'
+        ])
+        whatis: [
+            'react pure static application'
+            'build with webpack 3'
+            'use typescript'
+            'test with mocha'
+            'server use express'
+        ]
+    }
+    {
+        name: [
             'react-thin-ssr'
             'react-ssr-thin'
             'react-server-thin'
@@ -510,7 +565,7 @@ const libs = [
                     'ghoti'
                     'eslint'
                     'tslint'
-                    'typescript-config'
+                    'typescript-config-server'
                 ]
             }
         ]
