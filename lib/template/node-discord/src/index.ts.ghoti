@@ -7,6 +7,7 @@ import * as Discord from 'discord.js';
 
 import * as Func from './func/import';
 import * as Lambda from './lambda/import';
+
 import Config from './config/config';
 
 const client: Discord.Client = new Discord.Client();
