@@ -7,8 +7,8 @@ import * as Cluster from 'cluster';
 import * as Http from 'http';
 import { cpus } from 'os';
 
-import Index from './index';
 import Config from '../src/config/config';
+import Index from './index';
 
 const numCPUs: number = cpus().length;
 
@@ -19,7 +19,7 @@ if (Cluster.isMaster) {
     }
 
     Cluster.on('listening', (worker: Cluster.Worker, address: Cluster.Address) => {
-        console.log('worker ' + worker.process.pid + ', listen: ' + address.address + ":" + address.port)
+        console.log('worker ' + worker.process.pid + ', listen: ' + address.address + ":" + address.port);
     });
 
     Cluster.on('exit', (worker: Cluster.Worker, code: number, signal: string) => {

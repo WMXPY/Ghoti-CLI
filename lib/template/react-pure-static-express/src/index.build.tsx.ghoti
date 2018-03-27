@@ -13,5 +13,5 @@ const initialData = JSON.parse(document.getElementById('initial-data').getAttrib
 
 ReactDOM.hydrate(
     (<Hello {...initialData} />),
-    document.getElementById('container')
+    document.getElementById('container'),
 );

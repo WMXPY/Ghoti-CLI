@@ -7,8 +7,8 @@ import * as React from 'react';
 import * as ReactDOM from 'react-dom';
 import { AppContainer } from 'react-hot-loader';
 
-import Hello from './root/hello';
 import Config from './config/config';
+import Hello from './root/hello';
 
 import './style/global.sass';
 

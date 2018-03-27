@@ -19,7 +19,7 @@ let config = {
         'react-hot-loader/patch',
         'webpack-dev-server/client',
         'webpack/hot/only-dev-server',
-        APP_DIR + "/index.tsx"
+        APP_DIR + "/index.dev.tsx"
     ],
     output: {
         filename: "bundle.js",
