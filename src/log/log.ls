@@ -339,7 +339,7 @@ const logHelpMore = (env?) ->
             (logPad '| You will see how to modify, develop, and build your project after install', 1)
             (logPad '| You can also always checkout those information by use following methods', 1)
             (logPad '* run "ghoti post ' + type + '" anywhere', 2)
-            (logPad '* run "npm hint" in your project folder', 2)
+            (logPad '* run "npm run hint" in your project folder', 2)
             (logPad '| TIPS: How to init a git repo, try:', 1)
             (logPad '* ghoti whatis git-init', 2))
     void)

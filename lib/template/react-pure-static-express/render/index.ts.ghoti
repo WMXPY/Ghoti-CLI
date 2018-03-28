@@ -13,34 +13,22 @@ import Middle from './middle';
 
 const app: Express.Express = Express();
 const route = routes({ static: true });
+
+app.use(Express.static(__dirname));
+
 for (let i of route) {
     for (let j of i.routes) {
         const temp: { route: string; html: string; } = {
             route: j.path,
             html: Middle(j.path, { static: true }),
         };
-
-        if (temp.route !== '*') {
-            app.get(temp.route, async (req: Express.Request, res: Express.Response): Promise<void> => {
-                try {
-                    res.send(temp.html);
-                } catch (err) {
-                    throw new Error(err);
-                }
-            });
-        } else {
-            app.get(temp.route, async (req: Express.Request, res: Express.Response): Promise<void> => {
-                try {
-                    if (Fs.existsSync(Path.join(__dirname, '..', req.path))) {
-                        res.sendFile(Path.join(__dirname, '..', req.path));
-                    } else {
-                        res.send(temp.html);
-                    }
-                } catch (err) {
-                    throw new Error(err);
-                }
-            });
-        }
+        app.get(temp.route, async (req: Express.Request, res: Express.Response): Promise<void> => {
+            try {
+                res.send(temp.html);
+            } catch (err) {
+                throw new Error(err);
+            }
+        });
     }
 }
 

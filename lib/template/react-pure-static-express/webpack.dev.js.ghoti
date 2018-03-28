@@ -27,7 +27,7 @@ let config = {
         publicPath: '/'
     },
     resolve: {
-        extensions: [".ts", ".tsx", ".js", ".json", ".css", ".sass"]
+        extensions: [".ts", ".tsx", ".js", ".json", ".css", ".sass", ".png", ".jpg", ".gif", ".webp"],
     },
     module: {
         rules: [{
@@ -38,6 +38,10 @@ let config = {
                         configFileName: './tsconfig.json'
                     }
                 }]
+            },
+            {　　　　　　
+                test: /\.(jpg|png|gif|webp)$/,
+                loader: 'url-loader?limit=8192'　　　　
             },
             {
                 test: /\.sass$/,

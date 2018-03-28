@@ -19,7 +19,7 @@ if (Cluster.isMaster) {
     }
 
     Cluster.on('listening', (worker: Cluster.Worker, address: Cluster.Address) => {
-        console.log('worker ' + worker.process.pid + ', listen: ' + address.address + ":" + address.port);
+        console.log('worker ' + worker.process.pid + ' start listening');
     });
 
     Cluster.on('exit', (worker: Cluster.Worker, code: number, signal: string) => {
