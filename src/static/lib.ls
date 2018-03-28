@@ -106,10 +106,9 @@ const libs = [
             'npm run page [page name]           > create a page'
             'npm run func [function name]       > create a function set'
             '$empty'
-            'npm run build                      > bundle application for production'
             'npm start                          > start development with localhost server'
             'npm test                           > test features by mocha'
-            'npm run deploy                     > bundle application and get server ready'
+            'npm run build                      > bundle application and get server ready'
             'npm run server                     > start muti thread server'
         ])
         whatis: [

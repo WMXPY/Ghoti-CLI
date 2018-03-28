@@ -4,7 +4,7 @@
     "description": "${|description|}",
     "private": ${|private|},
     "scripts": {
-        "build": "webpack --config webpack.config.js",
+        "build": "webpack --config webpack.server.js",
         "component": "ghoti component -a",
         "feature": "ghoti feature -a",
         "func": "ghoti func -a",
@@ -14,7 +14,7 @@
         "postinstall": "ghoti post -a react-pure-static-express",
         "start": "webpack-dev-server --config webpack.dev.js --open",
         "deploy": "webpack --config webpack.server.js",
-        "server": "node dist/server/index.js",
+        "server": "node dist/index.js",
         "test": "mocha"
     },
     "author": "${|author|}",
