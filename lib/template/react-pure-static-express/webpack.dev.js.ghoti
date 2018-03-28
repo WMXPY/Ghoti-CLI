@@ -11,7 +11,7 @@ const CopyWebpackPlugin = require('copy-webpack-plugin');
 const BUILD_DIR = path.resolve(__dirname, 'dist');
 const APP_DIR = path.resolve(__dirname, 'src');
 const PUBLIC_DIR = path.resolve(__dirname, 'public', 'template.html');
-const FAVICON_DIR = path.resolve(__dirname, 'public', 'favicon.ico');
+const FAVICON_DIR = path.resolve(__dirname, 'public', 'favicon.png');
 
 let config = {
     devtool: 'cheap-module-eval-source-map',
