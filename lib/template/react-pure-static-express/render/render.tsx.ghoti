@@ -34,6 +34,7 @@ export default function (route, data): string {
                 </div>
             </body>
             <script id="initial-data" type="text/plain" data-json={JSON.stringify(data)}></script>
+            <script src="lite.js"></script>
         </html>
     );
 

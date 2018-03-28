@@ -92,7 +92,7 @@ const libs = [
                 commons: [
                     'ghoti'
                     'public-lite'
-                    'public-template'
+                    'public-template-outer'
                     'eslint'
                     'tslint'
                     'typescript-config-server'
