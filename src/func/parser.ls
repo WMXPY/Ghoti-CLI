@@ -29,6 +29,12 @@ const commonGather = (list, done, second?) ->
     if !second
     then re = []
     else re = second
+
+    if list.length <= 0
+    then 
+        done []
+        return
+
     (const intf = 
         input: process.stdin
         output: process.stdout
@@ -37,8 +43,9 @@ const commonGather = (list, done, second?) ->
     (const rl = (readline.createInterface intf))
 
     const current = list.shift!
-
-    rl.question current, (answer) ->
+    const question = 'Gathering replace parameter "' + current + '" :\n=>> '
+    
+    rl.question question, (answer) ->
         rl.close!
         re.push {
             name: current

@@ -471,6 +471,50 @@ const list = [
         ]
         more: []
     }
+    {
+        command: [
+            'file'
+            'files'
+        ]
+        arguments: 1
+        info: 'copy target file to current path'
+        plus: [
+            {
+                name: 'example'
+                value: 'ghoti file [some file]'
+            }
+        ]
+        more: [
+            {
+                name: 'some file'
+                value: 'file\'s nick name, see ghoti flist'
+            }
+        ]
+    }
+    {
+        command: [
+            'file'
+            'files'
+        ]
+        arguments: 2
+        info: 'copy target file to target path'
+        plus: [
+            {
+                name: 'example'
+                value: 'ghoti file [some file] [some path]'
+            }
+        ]
+        more: [
+            {
+                name: 'some file'
+                value: 'file\'s nick name, see ghoti flist'
+            }
+            {
+                name: 'some path'
+                value: 'the target path you want the file in'
+            }
+        ]
+    }
 ]
 
 const getCommand = (name) ->

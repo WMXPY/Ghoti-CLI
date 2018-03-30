@@ -37,7 +37,17 @@ const file = (ghoti_root, fileName, targetPathE, whenDone, env) ->
         (process.exit!)
     else 
         commonGather root.replaces, (vars) ->
-            writeFile (path.join targetPath, root.file), (readFile (getFileRoot root.path, root.file,ghoti_root), vars)
-            whenDone!
+            if env.rename
+            then
+                commonGather ['rename'], (rename) ->
+                    const targetName = rename[0].value
+                    writeFile (path.join targetPath, targetName), (readFile (getFileRoot root.path, root.file,ghoti_root), vars)
+                    log '| File copied'
+                    whenDone!
+            else
+                writeFile (path.join targetPath, root.file), (readFile (getFileRoot root.path, root.file,ghoti_root), vars)
+                log '| File copied'
+                whenDone!
+    void
 
 export file

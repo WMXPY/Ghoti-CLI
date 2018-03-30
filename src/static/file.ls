@@ -5,18 +5,35 @@ require! {
 const files = [
     {
         name: [
-            'test'
+            'nginx-conf'
+            'nginx-link'
+            'nginx-config'
         ]
         author: '$ghoti'
-        path: 'test'
-        file: 'test.q'
+        path: 'nginx'
+        file: 'nginx.d.conf.ghoti'
         whatis: [
-            'test file'
+            'nginx sub config file'
+            'support a sublink'
         ]
         replaces: [
-            'title'
-            'joshua'
+            'uniqueName'
+            'port'
+            'url'
         ]
+    }
+    {
+        name: [
+            'nginx'
+        ]
+        author: '$ghoti'
+        path: 'nginx'
+        file: 'nginx.conf.ghoti'
+        whatis: [
+            'nginx main config file'
+            '.conf file'
+        ]
+        replaces: []
     }
 ]
 
