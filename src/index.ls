@@ -17,6 +17,7 @@ require! {
     './ame/init': { initUnderline }
     './ame/excute': { checkAme, excuteAme }
     './game/game': { minigame }
+    './func/file': { file }
 }
 
 const excute = (mucall?) ->
@@ -58,6 +59,9 @@ const excute = (mucall?) ->
         case 'init'
             whenDone = (logCommand!)
             (init ghotiCLIPath, env.texture[0], env.texture[1], whenDone, env)
+        case 'file'
+            whenDone = (logCommand!)
+            file ghotiCLIPath, env.texture[0], env.texture[1], whenDone, env
         case 'example'
             whenDone = (logCommand!)
             (init ghotiCLIPath, 'ghoti-example', env.texture[0], whenDone, env)

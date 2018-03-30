@@ -16,6 +16,39 @@ require! {
     ))
     void)
 
+const commonParse = (content, vars) ->
+    var re
+    re = content
+    for i in vars
+        const reg = new RegExp '\\${\\|' + i.name + '\\|}', 'g'
+        re = re.replace reg, i.value
+    re
+
+const commonGather = (list, done, second?) ->
+    var re
+    if !second
+    then re = []
+    else re = second
+    (const intf = 
+        input: process.stdin
+        output: process.stdout
+        terminal: false)
+
+    (const rl = (readline.createInterface intf))
+
+    const current = list.shift!
+
+    rl.question current, (answer) ->
+        rl.close!
+        re.push {
+            name: current
+            value: answer
+        }
+        if list.length > 0
+        then commonGather list, done, re
+        else done re
+    void
+
 (const parseFile = (filename, text, vars, typescript?) -> 
     (var re)
     (re = text)
@@ -114,5 +147,7 @@ require! {
         void))
 
 export parseFile
+export commonParse
+export commonGather
 export parseAll
 export checkTypescript
