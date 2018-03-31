@@ -1,0 +1,6 @@
+FROM node:${|node-version|}
+COPY . ${|path|}
+WORKDIR ${|path|}
+RUN npm install
+EXPOSE ${|port|}
+CMD node ${|excuteable|}

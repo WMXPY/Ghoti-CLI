@@ -83,14 +83,15 @@ require! {
 (const init = (ghoti_root, type, targetPath, whenDone, env) ->
     (if (!targetPath)
         (log 'init have to use format "ghoti init [type] [path]"')
-        (log 'type could be any typename in list "ghoti list"')
+        (log 'type could be any typename in list "ghoti list" or "ghoti lt"')
         (log 'Try: "ghoti info init"')
+        whenDone!
         (process.exit!))
     (const root = (switchRoot type, ghoti_root))
     (if (!(Boolean root))
     then 
         (log ' | type "' + type + '" is not a valid type of ghoti type')
-        (log ' | Try "ghoti list" for the list of valid types')
+        (log ' | Try "ghoti list" or "ghoti lt" for the list of valid types')
         (whenDone!)
         (process.exit!))
     (parseAll type, targetPath, env, (re, typesciprt) ->

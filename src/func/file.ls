@@ -32,7 +32,7 @@ const file = (ghoti_root, fileName, targetPathE, whenDone, env) ->
     if !Boolean root
     then
         (log ' | file "' + fileName + '" is not a valid file name')
-        (log ' | Try "ghoti files" for the list of valid files')
+        (log ' | Try "ghoti files" or "ghoti lf" for the list of valid files')
         (whenDone!)
         (process.exit!)
     else 

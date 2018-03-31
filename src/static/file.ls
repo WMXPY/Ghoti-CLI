@@ -35,6 +35,23 @@ const files = [
         ]
         replaces: []
     }
+    {
+        name: [
+            'docker-node'
+        ]
+        author: '$ghoti'
+        path: 'docker'
+        file: 'dockerfile-node.ghoti'
+        whatis: [
+            'dockerfile for node'
+        ]
+        replaces: [
+            'node-version'
+            'port'
+            'path'
+            'excuteable'
+        ]
+    }
 ]
 
 (const compareName = (name, name2) ->
@@ -52,4 +69,14 @@ const libFile = (fileName, ghoti_root) ->
     then return null
     else return re
 
+(const libFileList = ->
+    (const re = [])
+    (for i in files
+        (const ea = 
+            name: i.name[0]
+            author: i.author)
+        (re.push ea))
+    re)
+
 export libFile
+export libFileList

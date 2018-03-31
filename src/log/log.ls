@@ -2,6 +2,7 @@ require! {
     '../static/static': { version }
     '../func/whatis': { whatis, postInstall }
     '../static/lib': { lib, libList }
+    '../static/file': { libFileList }
     './logTable': { logTable }
     '../static/commands': { getCommand, allCommands, padRight, getMaxLength_List, getMaxLength_Plus, getMaxLength_Entire }
 }
@@ -316,6 +317,21 @@ const logHelpMore = (env?) ->
     (process.exit!)
     void)
 
+(const logFileList = ->
+    (const re = (libFileList!))
+    (const title = '🐟  > 📇  Ghoti-CLI File List:')
+    (log title)   
+    (log 'You can use "ghoti whatis [name]" for more information!') 
+    (const table = re.map (it) ->
+        ([
+            it.name
+            it.author
+        ]))
+    (logTable table, 'file', 'author')
+    (logFace!)
+    (process.exit!)
+    void)
+
 (const logPostInstall = (targetPath, type, typescript, env?) ->
     (switch type
         case 'feature'
@@ -362,5 +378,6 @@ const logHelpMore = (env?) ->
 (export logWhatIs)
 (export logUpdate)
 (export logList)
+(export logFileList)
 (export logGame)
 (export logGameCommand)
