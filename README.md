@@ -8,6 +8,16 @@
 
 ## Install
 
+### Install script
+
+```bash
+curl -sSL https://raw.githubusercontent.com/WMXPY/Ghoti-CLI/master/bin/install.sh | sudo sh -
+# or
+wget -qO- https://raw.githubusercontent.com/WMXPY/Ghoti-CLI/master/bin/install.sh | sudo sh -
+```
+
+### Install with NPM
+
 ```bash
 npm install -g ghoti-cli
 # or

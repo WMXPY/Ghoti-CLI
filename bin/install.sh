@@ -1,8 +1,20 @@
 #!/bin/sh
 
+# Script to install the NodeSource Node.js 9.x and
+# Ghoti-cli by npm
+#
+# Run as root or insert `sudo` before `sh`:
+#
+# curl -sSL https://raw.githubusercontent.com/WMXPY/Ghoti-CLI/master/bin/install.sh | sh -
+#   or
+# wget -qO- https://raw.githubusercontent.com/WMXPY/Ghoti-CLI/master/bin/install.sh | sh -
+#
+
+# Install NodeJS
+# Determin which os package manager is available, if any of them is available, install node withit
 installNode()
 {
-    if command -v yum >/dev/null 2>&1; then 
+    if command -v yum >/dev/null 2>&1; then
         echo '> Installing Node with yum'
 
         # Fetch source script
@@ -13,7 +25,7 @@ installNode()
         echo '> Installing build tools with yum'
 
         sudo yum install gcc-c++ make
-    elif command -v apt-get >/dev/null 2>&1; then 
+    elif command -v apt-get >/dev/null 2>&1; then
         echo '> Installing Node with apt-get'
 
         # Fetch source script
@@ -24,21 +36,24 @@ installNode()
         echo '> Installing build tools with apt-get'
 
         sudo apt-get install -y build-essential
-    elif command -v pacman >/dev/null 2>&1; then 
+    elif command -v pacman >/dev/null 2>&1; then
         echo '> Installing Node with pacman'
 
         # Install nodeJS
         pacman -S nodejs npm
-    elif command -v pkg >/dev/null 2>&1; then 
+    elif command -v pkg >/dev/null 2>&1; then
         # Install nodeJS
         echo '> Installing Node with pkg'
 
         pkg install nodejs-current
     else 
-        echo '> ! No exists package manager' 
+        echo '> ! No exists package manager'
+        exit 0
     fi
 }
 
+# Install GHoti-cli
+# With npm
 installGhoti()
 {
     echo '> Installing Ghoti-Cli with npm'
@@ -59,3 +74,4 @@ else
     installNode
     installGhoti
 fi
+echo '> Completed'
