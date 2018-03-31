@@ -3,18 +3,53 @@
 installNode()
 {
     if command -v yum >/dev/null 2>&1; then 
-        echo 'yum install node' 
+        echo '> Installing Node with yum'
+
+        # Fetch source script
+        curl --silent --location https://rpm.nodesource.com/setup_9.x | sudo bash -
+        # Install nodeJS
+        sudo yum -y install nodejs
+        # Install install build tools
+        echo '> Installing build tools with yum'
+
+        sudo yum install gcc-c++ make
     elif command -v apt-get >/dev/null 2>&1; then 
-        echo 'apt-get install node'
+        echo '> Installing Node with apt-get'
+
+        # Fetch source script
+        curl -sL https://deb.nodesource.com/setup_9.x | sudo -E bash -
+        # Install nodeJS
+        sudo apt-get install -y nodejs
+        # Install install build tools
+        echo '> Installing build tools with apt-get'
+
+        sudo apt-get install -y build-essential
+    elif command -v pacman >/dev/null 2>&1; then 
+        echo '> Installing Node with pacman'
+
+        # Install nodeJS
+        pacman -S nodejs npm
+    elif command -v pkg >/dev/null 2>&1; then 
+        # Install nodeJS
+        echo '> Installing Node with pkg'
+
+        pkg install nodejs-current
     else 
-        echo 'no exists package manager' 
+        echo '> ! No exists package manager' 
     fi
 }
 
 installGhoti()
 {
-    echo 'install ghoti'
-    #sudo npm install -g ghoti-cli
+    echo '> Installing Ghoti-Cli with npm'
+
+    # Install ghoti-cli
+    sudo npm install -g ghoti-cli
+    if command -v ghoti >/dev/null 2>&1; then 
+        echo '> Installed'
+    else 
+        echo '> Failed' 
+    fi
 }
 
 
@@ -22,5 +57,5 @@ if command -v node >/dev/null 2>&1; then
     installGhoti
 else 
     installNode
+    installGhoti
 fi
-
