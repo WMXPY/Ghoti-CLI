@@ -19,8 +19,10 @@ installNode()
 
         # Fetch source script
         curl --silent --location https://rpm.nodesource.com/setup_9.x | sudo bash -
+
         # Install nodeJS
         sudo yum -y install nodejs
+
         # Install install build tools
         echo '> Installing build tools with yum'
 
@@ -30,8 +32,10 @@ installNode()
 
         # Fetch source script
         curl -sL https://deb.nodesource.com/setup_9.x | sudo -E bash -
+
         # Install nodeJS
         sudo apt-get install -y nodejs
+
         # Install install build tools
         echo '> Installing build tools with apt-get'
 
@@ -41,7 +45,9 @@ installNode()
 
         # Install nodeJS
         pacman -S nodejs npm
+
     elif command -v pkg >/dev/null 2>&1; then
+
         # Install nodeJS
         echo '> Installing Node with pkg'
 
@@ -60,7 +66,8 @@ installGhoti()
 
     # Install ghoti-cli
     sudo npm install -g ghoti-cli
-    if command -v ghoti >/dev/null 2>&1; then 
+
+    if command -v ghoti >/dev/null 2>&1; then
         echo '> Installed'
     else 
         echo '> Failed' 
@@ -68,8 +75,20 @@ installGhoti()
 }
 
 
-if command -v node >/dev/null 2>&1; then 
-    installGhoti
+if command -v node >/dev/null 2>&1; then
+
+    # if node is exist, try if npm is exist
+    if command -v npm >/dev/null 2>&1; then
+
+        # if npm exist, install ghoti-cli
+        installGhoti
+    else 
+
+        # if npm in not exist, node js is not installed successfully
+        installNode
+        
+        installGhoti
+    fi
 else 
     installNode
     installGhoti
