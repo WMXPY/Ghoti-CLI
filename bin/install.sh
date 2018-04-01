@@ -10,6 +10,16 @@
 # wget -qO- https://raw.githubusercontent.com/WMXPY/Ghoti-CLI/master/bin/install.sh | sh -
 #
 
+# Call function when failed
+# Print url of github issue, exit program
+fail()
+{
+    echo '> Go to https://github.com/WMXPY/Ghoti-CLI/issues for more information'
+
+    # Exit program
+    exit 0
+}
+
 # Install NodeJS
 # Determin which os package manager is available, if any of them is available, install node withit
 installNode()
@@ -54,7 +64,7 @@ installNode()
         pkg install nodejs-current
     else 
         echo '> ! No exists package manager'
-        exit 0
+        fail
     fi
 }
 
@@ -68,13 +78,36 @@ installGhoti()
     sudo npm install -g ghoti-cli
 
     if command -v ghoti >/dev/null 2>&1; then
-        echo '> Installed'
+        echo '> Ghoti-cli Installed'
     else 
-        echo '> Failed' 
+        echo '> Ghoti-cli Install Failed'
+        fail
     fi
 }
 
+# Install git
+installGit()
+{
+    if command -v git >/dev/null 2>&1; then
+        echo '> Git is already installed'
+    else
+        echo '> Installing git'
+        apt-get install git
+        sudo apt-get install python-software-properties
+        sudo apt-get install software-properties-common 
 
+        # double check git is installed
+        if command -v git >/dev/null 2>&1; then
+            echo '> Git Installed'
+        else
+            echo '> Git Install Failed'
+            fail
+        fi
+    fi
+}
+
+# Determine if nodeJS and npm enviorment is exist
+# Install ghoti-cli by npm after install or determine
 if command -v node >/dev/null 2>&1; then
 
     # if node is exist, try if npm is exist
