@@ -2,7 +2,8 @@ require! {
     '../log/std': { log, logPad, logReplace }
 }
 
-const minigame = (ghoti, env, whenDone) ->
+const frogGame = (ghoti, env, whenDone) ->
+    log ghoti
     whenDone!
 
-export minigame
+export frogGame

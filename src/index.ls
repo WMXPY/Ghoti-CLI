@@ -16,6 +16,7 @@ require! {
     './ame/init': { initUnderline }
     './ame/excute': { checkAme, excuteAme }
     './game/game': { minigame }
+    './game/frog': { frogGame }
     './func/file': { file }
 }
 
@@ -151,10 +152,10 @@ const excute = (mucall?) ->
             fallthrough
         case 'minigame'
             whenDone = (logGame!)
-            minigame ghoti, whenDone
+            minigame ghoti, env, whenDone
         case 'frog'
             whenDone = (logGameCommand!)
-            whenDone!
+            frogGame ghoti, env, whenDone
         default
             (const ameResult = (checkAme mode))
             (if ameResult

@@ -43,7 +43,7 @@ const logTable = (table, ...title) ->
             const cat = title[j].length - i[j].length
             for _ to cat + 2
             then lane += ' '
-        log lane + '|'
-    logSeprate titleDisplay.length - 1
+        (log lane + '|')
+    (logSeprate titleDisplay.length - 1)
 
 export logTable
