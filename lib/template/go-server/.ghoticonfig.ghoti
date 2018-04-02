@@ -1,0 +1,30 @@
+{
+    "type": "project",
+    "template": "go",
+    "sub": "server",
+    "version": "${|version|}",
+    "title": "${|title|}",
+    "description": "${|description|}",
+    "author": "${|author|}",
+    "config": {
+        
+    },
+    "underline": {
+        "active": false
+    },
+    "components": [
+        
+    ],
+    "pages": [
+
+    ],
+    "funcs": [
+
+    ],
+    "lambdas": [
+        
+    ],
+    "features": [
+        
+    ]
+}

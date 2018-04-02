@@ -589,6 +589,31 @@ const libs = [
     }
     {
         name: [
+            'go-server'
+            'server-go'
+            'go-normal'
+            'normal-go'
+        ]
+        common: []
+        author: '$ghoti'
+        path: 'go-server'
+        postLog: (defaultLogs [
+            'Here are some useful shortcuts for your hacking'
+            'You can always enter "npm run hint" for this message again'
+            '$empty'
+            'make feature [feature name]        > create a feature'
+            '$empty'
+            'make                               > bundle application for production'
+            'make run                           > start server'
+        ])
+        whatis: [
+            'golang serverside sample code'
+            'build managed by makefile'
+            'ghoti cli structure'
+        ]
+    }
+    {
+        name: [
             'react-ghoti-training'
             'react-training-ghoti'
             'training-ghoti'
