@@ -4,7 +4,7 @@ require! {
     './func/config': config
     './func/config': { updateConfig, cliPath }
     './log/log': { log, logHelp, logHelpMore, logInfo, logPostNPMInstall, logAbout, logUnderline, logVersion, logCommand, logSymbol, logUnknown, logStatus, logWhatIs, logUpdate, logList, logFileList, logGame, logGameCommand }
-    './func/argv': { argv, env, ghotiConfig }
+    './func/argv': { argv, ghotiConfig }
     './func/init': { init }
     './structure/component': { component }
     './structure/page': { page }
@@ -22,11 +22,10 @@ require! {
 }
 
 const excute = (...mucall?) ->
-    log mucall
+    (var whenDone, env)
     (const ghoti = ghotiConfig)
     (const ghotiCLIPath = cliPath!)  
-    (argv!)
-    (var whenDone)
+    (env = argv!)
     if env
     # Update 2018-04-02
     # Fix length determin issue

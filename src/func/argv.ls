@@ -13,15 +13,6 @@ require! {
 then ghotiConfig = (JSON.parse (fs.readFileSync (path.join path_path, '.ghoticonfig')).toString!)
 else ghotiConfig = {})
 
-(const env =
-    mode: mode ? 'empty'
-    auto: false
-    test: false
-    output: false
-    debug: false
-    rename: false
-    texture: [])
-
 (const command = (command) ->
     (switch(command)
         case '-t'
@@ -37,24 +28,31 @@ else ghotiConfig = {})
         default
             'debug'))
 
-(const texture = (texture) ->
+(const texture = (env, texture) ->
     (env.texture.push texture)
     texture)
 
 (const argv = ->
+    (const env =
+        mode: mode ? 'empty'
+        auto: false
+        test: false
+        output: false
+        debug: false
+        rename: false
+        texture: [])
     (path_argv.map (it) ->
         (switch(it.substring 0 1)
             case '-'
                 env[command it] = true 
                 (it.substring 1 it.length)
             default
-                texture it))
+                texture env, it))
     env)
 
 (if (fs.existsSync (path.join path_path, '.ghoticonfig'))
 then ghotiConfig = (JSON.parse (fs.readFileSync (path.join path_path, '.ghoticonfig')).toString!))
 
-export env
 export argv
 export path_argv
 export path_ghoti
