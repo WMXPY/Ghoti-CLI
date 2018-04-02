@@ -154,6 +154,7 @@ const excute = (mucall?) ->
             minigame ghoti, whenDone
         case 'frog'
             whenDone = (logGameCommand!)
+            whenDone!
         default
             (const ameResult = (checkAme mode))
             (if ameResult
