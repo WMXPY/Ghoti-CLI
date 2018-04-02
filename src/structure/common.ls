@@ -17,8 +17,8 @@ const verifyNameValiation = (name, funcName?, whenDone?) ->
     then 
         log '| You have not entered a part name'
         if funcName
-        then log 'Correct format is "ghoti ' + funcName +  ' [part name]"'
-        else log 'Correct format is "ghoti [func name] [part name]"'
+        then log '| Correct format is "ghoti ' + funcName +  ' [part name]"'
+        else log '| Correct format is "ghoti [func name] [part name]"'
         # [2018-03-23 Update] Add process exit support
         if whenDone
         then whenDone!

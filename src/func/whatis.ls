@@ -1,5 +1,6 @@
 require! {
     '../static/lib': { lib }
+    '../static/file': { libFile }
 }
 
 (const postInstall = (type) ->
@@ -16,6 +17,10 @@ const parseKeyword = (keyword) ->
     (re = (lib keyword))
     (if re
     then return re.whatis)
+
+    re = libFile keyword
+    if re
+    then return re.whatis
 
     (re = {
         'git-init': [

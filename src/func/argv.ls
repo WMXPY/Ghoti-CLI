@@ -19,6 +19,7 @@ else ghotiConfig = {})
     test: false
     output: false
     debug: false
+    rename: false
     texture: [])
 
 (const command = (command) ->
@@ -29,6 +30,8 @@ else ghotiConfig = {})
             'output'
         case '-a'
             'auto'
+        case '-r'
+            'rename'
         case '-d'
             fallthrough
         default

@@ -2,6 +2,7 @@ require! {
     path
     '../log/std': { log, logPad, logHalfPad }
     '../func/config': { getConfig, writeConfig }
+    '../func/deepclone': { deepClone }
 }
 
 const underline = (ghoti) ->
@@ -14,8 +15,8 @@ const minus = (name) ->
     name
 
 const mergeGhoti = (ghoti, pathE, re) ->
-    const path = JSON.parse JSON.stringify pathE
-    const newGhoti = JSON.parse JSON.stringify ghoti
+    const path = deepClone pathE
+    const newGhoti = deepClone ghoti
     var subPath
     subPath = newGhoti.underline.path
     const endPath = path.pop!
@@ -74,7 +75,7 @@ const checkAvailbility = (current, context) ->
     true
 
 const calculateNewUpdate = (currentE, progress, comment, whenDone) ->
-    const current = JSON.parse JSON.stringify currentE
+    const current =  deepClone currentE
     if current.type !== 'task'
     then 
         logPad '| You are trying to update a "' + whatIsCurrent(current) + '"', 1
@@ -98,7 +99,7 @@ const calculateNewUpdate = (currentE, progress, comment, whenDone) ->
     current
 
 const calculateNewMinus = (currentE, comment, whenDone) ->
-    const current = JSON.parse JSON.stringify currentE
+    const current = deepClone currentE
     if current.type !== 'task'
     then 
         logPad '| You are trying to complete a "' + whatIsCurrent(current) + '"', 1
@@ -117,7 +118,7 @@ const calculateNewMinus = (currentE, comment, whenDone) ->
     current
 
 const calculateNewUnderlinePlus = (currentE, name, whenDone) ->
-    const current = JSON.parse JSON.stringify currentE
+    const current = deepClone currentE
     if current.type === 'task'
     then 
         logPad '| You are trying to create task in a "' + whatIsCurrent(current) + '"', 1
@@ -147,7 +148,7 @@ const calculateNewUnderlinePlus = (currentE, name, whenDone) ->
     current
 
 const calculateNewUnderlineSet = (currentE, name, whenDone) ->
-    const current = JSON.parse JSON.stringify currentE
+    const current =  deepClone currentE
     if current.type === 'task'
     then 
         logPad '| You are trying to create set in a "' + whatIsCurrent(current) + '"', 1

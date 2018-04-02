@@ -2,6 +2,7 @@ require! {
     '../log/std': { log, logPad }
     './underline': { mergeGhoti, checkAvailbility, calculateNewUpdate, calculateProgress, calculateNewMinus, calculateNewUnderlineSet, calculateNewUnderlinePlus }
     '../func/config': { getConfig, writeConfig }
+    '../func/deepclone': { deepClone }
 }
 
 const stopImmediatly = (whenDone) ->
@@ -16,7 +17,7 @@ const checkAme = (command) ->
     else null
 
 const amePath = (other) ->
-    other = JSON.parse JSON.stringify other
+    other = deepClone other
     var command
     if other[other.length - 1] === '+'
     || other[other.length - 1] === '#'
@@ -52,7 +53,7 @@ const ameActive = (logSymbol) ->
 
 const accessPath = (path, ame, whenDone) ->
     var re, stat
-    re = JSON.parse JSON.stringify ame
+    re = deepClone ame
     stat = false
     for i in path
         if re.child
@@ -87,7 +88,7 @@ const ameStatus = (path, context, ghoti, whenDone, isEdit?) ->
     void
     
 const ameUpdate = (path, contexts, ghoti, whenDone) ->
-    contexts = JSON.parse JSON.stringify contexts
+    contexts = deepClone contexts
     const setting = contexts.shift!
     const context = contexts.join ' '
     const ame = ghoti.underline.path

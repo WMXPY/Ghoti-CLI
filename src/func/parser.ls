@@ -3,9 +3,20 @@ require! {
     path
     '../log/log': { log, logInline }
     '../static/static': { version }
+    '../func/deepclone': { deepClone }
     'child_process': { exec }
     readline
 }
+
+const processMucall = (env, mucall) ->
+    env = deepClone env
+    const mode = mucall.shift!
+    env.mode = mode
+    for i of mucall
+        if i.substring 0, 1 !== '-'
+        then env.texture.push i
+        else log i
+    env
 
 (const checkTypescript = (callback) ->
     (const child = (exec 'tsc -v', (err, stdout, stderr) ->
@@ -16,16 +27,57 @@ require! {
     ))
     void)
 
+const commonParse = (content, vars) ->
+    var re
+    re = content
+    for i in vars
+        const reg = new RegExp '\\${\\|' + i.name + '\\|}', 'g'
+        re = re.replace reg, i.value
+    re
+
+const commonGather = (list, done, second?) ->
+    var re
+    if !second
+    then re = []
+    else re = second
+
+    if list.length <= 0
+    then 
+        done []
+        return
+
+    (const intf = 
+        input: process.stdin
+        output: process.stdout
+        terminal: false)
+
+    (const rl = (readline.createInterface intf))
+
+    const current = list.shift!
+    const question = 'Gathering replace parameter "' + current + '" :\n=>> '
+    
+    rl.question question, (answer) ->
+        rl.close!
+        re.push {
+            name: current
+            value: answer
+        }
+        if list.length > 0
+        then commonGather list, done, re
+        else done re
+    void
+
 (const parseFile = (filename, text, vars, typescript?) -> 
     (var re)
     (re = text)
     (re = (re.replace /\${\|version\|}/g, version))
-    (if typescript
-    then re = (re.replace /\${\|typescript\|}/g, '"typescript": "^2.7.2",')
-    else re = (re.replace /\${\|typescript\|}/g, ''))
     (if (filename === 'package.json.ghoti')
     || (filename === 'README.md.ghoti')
-        (if(vars.open)
+        (if typescript
+        then re = (re.replace /\${\|typescript\|}/g, '"typescript": "^2.7.2",')
+        else re = (re.replace /\${\|typescript\|}/g, ''))
+        (if vars.open
+        then
             re = (re.replace /\${\|private\|}/g, 'false')
             re = (re.replace /\${\|readme\|}/g, '\n<a rel="license" href="http://creativecommons.org/licenses/by-sa/4.0/"><img alt="Creative Commons License" style="border-width:0" src="https://i.creativecommons.org/l/by-sa/4.0/88x31.png" /></a><br />This work is licensed under a <a rel="license" href="http://creativecommons.org/licenses/by-sa/4.0/">Creative Commons Attribution-ShareAlike 4.0 International License</a>.\n')
             re = (re.replace /\${\|license\|}/g, 'SEE LICENSE IN LICENSE')
@@ -112,6 +164,9 @@ require! {
             void)
         void))
 
+export processMucall
 export parseFile
+export commonParse
+export commonGather
 export parseAll
 export checkTypescript

@@ -1,0 +1,33 @@
+{
+    "name": "${|title|}",
+    "version": "0.0.0",
+    "description": "${|description|}",
+    "private": ${|private|},
+    "scripts": {
+        "build": "tsc",
+        "start": "tsc&&node dist/index.js",
+        "feature": "ghoti feature -a",
+        "func": "ghoti func -a",
+        "hint": "ghoti post -a node-discord",
+        "lambda": "ghoti lambda -a",
+        "postinstall": "ghoti post -a node-discord",
+        "test": "mocha"
+    },
+    "author": "${|author|}",
+    "license": "${|license|}",
+    "devDependencies": {
+        "@types/code": "^4.0.4",
+        "@types/mocha": "^2.2.48",
+        "@types/node": "^8.10.0",
+        "code": "^5.2.0",
+        "discord.js": "^11.3.2",
+        "ghoti-cli": "^${|version|}",
+        "mocha": "^5.0.1",
+        ${|typescript|}
+        "tslint": "^5.9.1",
+        "ts-node": "^5.0.0"
+    },
+    "dependencies": {
+        "axios": "0.18.0"
+    }
+}

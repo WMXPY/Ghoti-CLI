@@ -1,0 +1,25 @@
+{
+    "compileOnSave": false,
+    "compilerOptions": {
+        "outDir": "dist",
+        "sourceMap": true,
+        "strict": true,
+        "noImplicitReturns": true,
+        "noImplicitAny": true,
+        "module": "commonjs",
+        "experimentalDecorators": true,
+        "emitDecoratorMetadata": true,
+        "moduleResolution": "node",
+        "target": "es5",
+        "lib": [
+            "es2016",
+            "dom"
+        ]
+    },
+    "exclude": [
+        "node_modules"
+    ],
+    "include": [
+        "src/**/*"
+    ]
+}

@@ -1,0 +1,32 @@
+{
+	"name": "${|title|}",
+	"version": "0.0.0",
+	"description": "${|description|}",
+	"main": "dist/bundle.js",
+	"private": ${|private|},
+	"scripts": {
+		"start": "webpack-dev-server --config webpack.dev.js --inline --open",
+		"build": "webpack --config webpack.config.js"
+	},
+	"author": "${|author|}",
+	"license": "${|license|}",
+	"devDependencies": {
+		"copy-webpack-plugin": "^4.5.1",
+		"css-loader": "^0.28.11",
+		"file-loader": "^1.1.11",
+		"html-webpack-plugin": "^3.0.6",
+		"node-sass": "^4.7.2",
+		"sass-loader": "^6.0.7",
+		"ts-loader": "^3.5.0",
+		"vue-loader": "^14.2.1",
+		"vue-template-compiler": "^2.5.16",
+		"webpack": "3.10.0",
+		"webpack-dev-server": "^2.11.1"
+	},
+	"dependencies": {
+		"axios": "0.18.0",
+		"vue": "^2.5.16",
+		"vue-class-component": "^6.2.0",
+		"vue-router": "^3.0.1"
+	}
+}

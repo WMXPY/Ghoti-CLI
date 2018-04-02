@@ -75,6 +75,7 @@ const list = [
         command: [
             'game'
             'minigame'
+            'g'
         ]
         arguments: 0
         info: 'show what is GHOTI GAME'
@@ -89,6 +90,7 @@ const list = [
     {
         command: [
             'about'
+            'a'
         ]
         arguments: 0
         info: 'show about message'
@@ -103,6 +105,7 @@ const list = [
     {
         command: [
             'version'
+            'v'
         ]
         arguments: 0
         info: 'show current version'
@@ -134,6 +137,8 @@ const list = [
             'whatis'
             'what'
             'whatIs'
+            '='
+            'w'
         ]
         arguments: 0
         info: 'show info of a keyword'
@@ -158,6 +163,7 @@ const list = [
         command: [
             'fix'
             'issue'
+            '~'
         ]
         arguments: 0
         info: 'try to auto fix issue'
@@ -172,6 +178,7 @@ const list = [
         command: [
             'fix'
             'issue'
+            '~'
         ]
         arguments: 1
         info: 'show error message if it is knowned'
@@ -196,6 +203,7 @@ const list = [
         command: [
             'post'
             'hint'
+            'h'
         ]
         arguments: 1
         info: 'show post install information'
@@ -248,6 +256,7 @@ const list = [
         command: [
             'list'
             'types'
+            'lt'
         ]
         arguments: 0
         info: 'show list of available init type'
@@ -261,9 +270,26 @@ const list = [
     }
     {
         command: [
+            'listFile'
+            'files'
+            'lf'
+        ]
+        arguments: 0
+        info: 'show list of available file type'
+        plus: [
+            {
+                name: 'example'
+                value: 'ghoti files'
+            }
+        ]
+        more: []
+    }
+    {
+        command: [
             'init'
             'create'
             'template'
+            'i'
         ]
         arguments: 2
         info: 'init a project'
@@ -328,6 +354,7 @@ const list = [
     {
         command: [
             'page'
+            '+p'
         ]
         arguments: 1
         info: 'create a ghoti structure page'
@@ -352,6 +379,7 @@ const list = [
         command: [
             'function'
             'func'
+            '+f'
         ]
         arguments: 1
         info: 'create a ghoti structure function'
@@ -375,6 +403,7 @@ const list = [
     {
         command: [
             'lambda'
+            '+l'
         ]
         arguments: 1
         info: 'create a ghoti structure lambda'
@@ -398,6 +427,7 @@ const list = [
     {
         command: [
             'component'
+            '+c'
         ]
         arguments: 1
         info: 'create a ghoti structure component'
@@ -421,6 +451,7 @@ const list = [
     {
         command: [
             'feature'
+            '+t'
         ]
         arguments: 1
         info: 'create a ghoti structure feature'
@@ -470,6 +501,52 @@ const list = [
             }
         ]
         more: []
+    }
+    {
+        command: [
+            'file'
+            'files'
+            'f'
+        ]
+        arguments: 1
+        info: 'copy target file to current path'
+        plus: [
+            {
+                name: 'example'
+                value: 'ghoti file [some file]'
+            }
+        ]
+        more: [
+            {
+                name: 'some file'
+                value: 'file\'s nick name, see ghoti flist'
+            }
+        ]
+    }
+    {
+        command: [
+            'file'
+            'files'
+            'f'
+        ]
+        arguments: 2
+        info: 'copy target file to target path'
+        plus: [
+            {
+                name: 'example'
+                value: 'ghoti file [some file] [some path]'
+            }
+        ]
+        more: [
+            {
+                name: 'some file'
+                value: 'file\'s nick name, see ghoti files'
+            }
+            {
+                name: 'some path'
+                value: 'the target path you want the file in'
+            }
+        ]
     }
 ]
 

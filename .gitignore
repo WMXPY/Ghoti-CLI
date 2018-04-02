@@ -7,6 +7,8 @@
 *.pdf
 dist
 !lib/**/dist
+package-lock.json
+test.ls
 a
 b
 c

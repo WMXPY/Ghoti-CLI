@@ -67,6 +67,60 @@ const libs = [
     }
     {
         name: [
+            'react-pure-static-express'
+            'react-express-static-pure'
+            'react-pure'
+            'react-pure-express'
+            'pure-react'
+            'express-pure-react'
+            'reacr-pure-static'
+        ]
+        author: '$ghoti'
+        path: 'react-pure-static-express'
+        common: [
+            {
+                path: 'react'
+                commons: [
+                    'typescript'
+                    'typescript-feature'
+                    'typescript-structure'
+                    'sass-style'
+                ]
+            }
+            {
+                path: 'common'
+                commons: [
+                    'ghoti'
+                    'public-lite'
+                    'public-template-outer'
+                    'eslint'
+                    'tslint'
+                    'typescript-config-server'
+                ]
+            }
+        ]
+        postLog: (defaultLogs [
+            'npm run feature [feature name]     > create a feature'
+            'npm run lambda [function name]     > create a lambda function set'
+            'npm run component [function name]  > create a component'
+            'npm run page [page name]           > create a page'
+            'npm run func [function name]       > create a function set'
+            '$empty'
+            'npm start                          > start development with localhost server'
+            'npm test                           > test features by mocha'
+            'npm run build                      > bundle application and get server ready'
+            'npm run server                     > start muti thread server'
+        ])
+        whatis: [
+            'react pure static application'
+            'build with webpack 3'
+            'use typescript'
+            'test with mocha'
+            'server use express'
+        ]
+    }
+    {
+        name: [
             'react-thin-ssr'
             'react-ssr-thin'
             'react-server-thin'
@@ -400,6 +454,166 @@ const libs = [
     }
     {
         name: [
+            'node'
+            'node-normal'
+            'nodee'
+        ]
+        common: [
+            {
+                path: 'node'
+                commons: [
+                    'structure-readme'
+                    'typescript'
+                    'typescript-feature'
+                    'typescript-structure'
+                ]
+            }
+            {
+                path: 'common'
+                commons: [
+                    'ghoti'
+                    'eslint'
+                    'tslint'
+                    'typescript-config'
+                ]
+            }
+        ]
+        author: '$ghoti'
+        path: 'node-normal'
+        postLog: (defaultLogs [
+            'Here are some useful shortcuts for your hacking'
+            'You can always enter "npm run hint" for this message again'
+            '$empty'
+            'npm run feature [feature name]     > create a feature'
+            '$empty'
+            'npm run build                      > bundle application for production'
+            'npm start                          > start development with localhost server'
+            'npm test                           > test features by mocha'
+        ])
+        whatis: [
+            'nodeJS application'
+            'use typescript'
+            'ghoti cli structure'
+        ]
+    }
+    {
+        name: [
+            'node-discord'
+            'discord-node'
+            'discord'
+        ]
+        common: [
+            {
+                path: 'node'
+                commons: [
+                    'structure-readme'
+                    'typescript'
+                    'typescript-feature'
+                    'typescript-structure'
+                ]
+            }
+            {
+                path: 'common'
+                commons: [
+                    'ghoti'
+                    'eslint'
+                    'tslint'
+                    'typescript-config'
+                ]
+            }
+        ]
+        author: '$ghoti'
+        path: 'node-discord'
+        postLog: (defaultLogs [
+            'Here are some useful shortcuts for your hacking'
+            'You can always enter "npm run hint" for this message again'
+            '$empty'
+            'npm run feature [feature name]     > create a feature'
+            '$empty'
+            'npm run build                      > bundle application for production'
+            'npm start                          > start development with localhost server'
+            'npm test                           > test features by mocha'
+        ])
+        whatis: [
+            'discord application devlopment'
+            'nodeJS application'
+            'use typescript'
+            'ghoti cli structure'
+        ]
+    }
+    {
+        name: [
+            'node-server'
+            'server-node'
+            'node-express'
+            'express'
+        ]
+        common: [
+            {
+                path: 'node'
+                commons: [
+                    'structure-readme'
+                    'typescript'
+                    'typescript-feature'
+                    'typescript-structure'
+                ]
+            }
+            {
+                path: 'common'
+                commons: [
+                    'ghoti'
+                    'eslint'
+                    'tslint'
+                    'typescript-config-server'
+                ]
+            }
+        ]
+        author: '$ghoti'
+        path: 'node-server'
+        postLog: (defaultLogs [
+            'Here are some useful shortcuts for your hacking'
+            'You can always enter "npm run hint" for this message again'
+            '$empty'
+            'npm run feature [feature name]     > create a feature'
+            '$empty'
+            'npm run build                      > bundle application for production'
+            'npm start                          > start development with localhost server'
+            'npm test                           > test features by mocha'
+        ])
+        whatis: [
+            'express http server application'
+            'nodeJS application'
+            'use typescript'
+            'ghoti cli structure'
+        ]
+    }
+    {
+        name: [
+            'go-server'
+            'server-go'
+            'go-normal'
+            'normal-go'
+        ]
+        common: []
+        author: '$ghoti'
+        path: 'go-server'
+        postLog: (defaultLogs [
+            'Here are some useful shortcuts for your hacking'
+            'You can always enter "npm run hint" for this message again'
+            '$empty'
+            'make feature [feature name]        > create a feature'
+            '$empty'
+            'make                               > bundle application for production'
+            'make run                           > start server'
+        ])
+        whatis: [
+            'golang serverside sample code'
+            'build managed by makefile'
+            'ghoti cli structure'
+        ]
+    }
+    {
+        name: [
             'react-ghoti-training'
             'react-training-ghoti'
             'training-ghoti'
@@ -460,7 +674,7 @@ const libs = [
     re)
 
 (const libPath = (folderName, ghoti_root) ->
-    (path.join ghoti_root, "lib", folderName))
+    (path.join ghoti_root, "lib", "template", folderName))
 
 (const commonPath = (folderName, commonName, ghoti_root) ->
     (path.join ghoti_root, "lib", "common", folderName, commonName))

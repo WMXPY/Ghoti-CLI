@@ -3,6 +3,7 @@ require! {
     './underline': { mergeGhoti, calculateNewUpdate, calculateProgress, calculateNewMinus, calculateNewUnderlineSet, calculateNewUnderlinePlus }
     '../func/config': { getConfig, writeConfig }
     './checkGhoti': { checkGhoti }
+    '../func/deepclone': { deepClone }
     readline
 }
 
@@ -27,7 +28,7 @@ require! {
 
     (rl.question question, (answer) ->
         (rl.close!)
-        (if defaultText === true || defaultText === false
+        (if typeof defaultText === 'boolean'
         then 
             (if answer === ''
             then answer = defaultText
@@ -35,6 +36,8 @@ require! {
                 (if answer === 'Y'
                 then answer = true
                 else if answer === 'N'
+                then answer = false
+                else
                 then answer = false))
         else
             (if answer === ''
@@ -45,7 +48,7 @@ require! {
     void)
 
 const initUnderline = (ghoti, whenDone) ->
-    const newGhoti = JSON.parse JSON.stringify ghoti
+    const newGhoti = deepClone ghoti
     if !(checkGhoti newGhoti)
     then 
         log '| Current enviorment is not a ghoti project'
@@ -64,6 +67,13 @@ const initUnderline = (ghoti, whenDone) ->
     log '| you need use like "ghoti "_my sentence set+" some task"'
     log '| that quoted command name to modifiy it during usage'
     log ''
+    if !newGhoti.underline
+    then 
+        log '| This folder is not a valid ghoti project'
+        log '| If you think this is not your issue'
+        log '| Try "ghoti fix" to fix this'
+        whenDone!
+        process.exit!
     if !newGhoti.underline.active
     then
         getInput 'Do you want to init GHOTI UNDERLINE in your project?', false, (wantToInit) ->
@@ -72,16 +82,16 @@ const initUnderline = (ghoti, whenDone) ->
                 newGhoti.underline.active = true
                 newGhoti.underline.path = []
                 writeConfig newGhoti
-                log '| ghoti underline is not setted up, have fun'
+                log '| ghoti underline is now setted up, have fun'
                 log '| You can always use "ghoti _" to see overall progress'
                 log '| To start your first step, Try "ghoti _# fisrt-step"'
                 log '| Add a task is as easy as, Try "ghoti _fisrt-step+ my awesome fisrt task" as your command'
             else
                 log '| thanks for concidering ghoti underline'
                 log '| You can always use "ghoti underline" to active it in the future'
+            whenDone!
     else
         log '| Have fun!'
-    whenDone!
     void
 
 export initUnderline

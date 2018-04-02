@@ -1,6 +1,6 @@
 @import './color.sass'
 
-html, body, #container
+html, body, #container, .ghoti-contain
     height: 100%
     padding: 0
     margin: 0
