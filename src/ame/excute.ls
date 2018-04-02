@@ -2,6 +2,7 @@ require! {
     '../log/std': { log, logPad }
     './underline': { mergeGhoti, checkAvailbility, calculateNewUpdate, calculateProgress, calculateNewMinus, calculateNewUnderlineSet, calculateNewUnderlinePlus }
     '../func/config': { getConfig, writeConfig }
+    '../func/deepclone': { deepClone }
 }
 
 const stopImmediatly = (whenDone) ->

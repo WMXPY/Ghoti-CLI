@@ -7,6 +7,11 @@ require! {
     readline
 }
 
+const processMucall = (env, mucall) ->
+    const mode = mucall.shift!
+    env.mode = mode
+    for i of mucall
+
 (const checkTypescript = (callback) ->
     (const child = (exec 'tsc -v', (err, stdout, stderr) ->
         (if err
@@ -153,6 +158,7 @@ const commonGather = (list, done, second?) ->
             void)
         void))
 
+export processMucall
 export parseFile
 export commonParse
 export commonGather

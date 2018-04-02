@@ -11,6 +11,7 @@ require! {
     './structure/lambda': { lambda }
     './structure/func': { func }
     './structure/feature': { feature }
+    './func/parser': { processMucall }
     './func/fix': { fix }
     './func/update': { update }
     './ame/init': { initUnderline }
@@ -27,9 +28,15 @@ const excute = (...mucall?) ->
     (argv!)
     (var whenDone)
     if env
-    then for i of mucall 
-    then env[i] = mucall[i]
-    log env
+    then 
+        if mucall.length >= 1
+        then processMucall env, mucall
+        else if mucall == 0
+        then throw new Error 'Calling ghoti with inside argument wrong'
+    else 
+        log '| Enviorment process Error'
+        log '| Try "ghoti fix"'
+        process.exit!
     const mode = (env.mode.toLowerCase!)
     switch(mode)
         case 'a'
