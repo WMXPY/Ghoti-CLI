@@ -28,9 +28,10 @@ const excute = (...mucall?) ->
     (argv!)
     (var whenDone)
     if env
+    # TODO
     then 
         if mucall.length >= 1
-        then processMucall env, mucall
+        then env = processMucall env, mucall
         else if mucall == 0
         then throw new Error 'Calling ghoti with inside argument wrong'
     else 

@@ -3,14 +3,20 @@ require! {
     path
     '../log/log': { log, logInline }
     '../static/static': { version }
+    '../func/deepclone': { deepClone }
     'child_process': { exec }
     readline
 }
 
 const processMucall = (env, mucall) ->
+    env = deepClone env
     const mode = mucall.shift!
     env.mode = mode
     for i of mucall
+        if i.substring 0, 1 !== '-'
+        then env.texture.push i
+        else log i
+    env
 
 (const checkTypescript = (callback) ->
     (const child = (exec 'tsc -v', (err, stdout, stderr) ->

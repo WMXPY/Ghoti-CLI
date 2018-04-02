@@ -3,6 +3,7 @@ require! {
     './underline': { mergeGhoti, calculateNewUpdate, calculateProgress, calculateNewMinus, calculateNewUnderlineSet, calculateNewUnderlinePlus }
     '../func/config': { getConfig, writeConfig }
     './checkGhoti': { checkGhoti }
+    '../func/deepclone': { deepClone }
     readline
 }
 
@@ -47,7 +48,7 @@ require! {
     void)
 
 const initUnderline = (ghoti, whenDone) ->
-    const newGhoti = JSON.parse JSON.stringify ghoti
+    const newGhoti = deepClone ghoti
     if !(checkGhoti newGhoti)
     then 
         log '| Current enviorment is not a ghoti project'
