@@ -10,6 +10,9 @@ require! {
 
 const processMucall = (env, mucall) ->
     env = deepClone env
+    # Update 2018-04-02
+    # deepclone array object before shift it
+    mucall = deepClone mucall
     const mode = mucall.shift!
     env.mode = mode
     for i of mucall
