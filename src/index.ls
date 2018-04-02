@@ -20,7 +20,8 @@ require! {
     './func/file': { file }
 }
 
-const excute = (mucall?) ->
+const excute = (...mucall?) ->
+    log mucall
     (const ghoti = ghotiConfig)
     (const ghotiCLIPath = cliPath!)  
     (argv!)
@@ -28,6 +29,7 @@ const excute = (mucall?) ->
     if env
     then for i of mucall 
     then env[i] = mucall[i]
+    log env
     const mode = (env.mode.toLowerCase!)
     switch(mode)
         case 'a'
