@@ -3,7 +3,7 @@ require! {
     path
     './func/config': config
     './func/config': { updateConfig, cliPath }
-    './log/log': { log, logHelp, logHelpMore, logInfo, logPostNPMInstall, logAbout, logUnderline, logVersion, logCommand, logSymbol, logUnknown, logStatus, logWhatIs, logUpdate, logList, logFileList, logGame, logGameCommand }
+    './log/log': { log, logHelp, logHelpMore, logInfo, logPostNPMInstall, logAbout, logUnderline, logVersion, logCommand, logSymbol, logUnknown, logStatus, logWhatIs, logUpdate, logList, logFileList, logGame, logGameCommand, logDeprecated }
     './func/argv': { argv, ghotiConfig }
     './func/init': { init }
     './structure/component': { component }
@@ -89,8 +89,10 @@ const excute = (...mucall?) ->
             fallthrough
         case 'info'
             (logInfo env.texture[0], env)
+        case 'install'
+            log 'install'
         case 'i'
-            fallthrough
+            logDeprecated 'i', ['Confusing between "init" and "install"']
         case 'create'
             fallthrough
         case 'template'

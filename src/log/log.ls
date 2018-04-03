@@ -360,6 +360,11 @@ const logHelpMore = (env?) ->
             (logPad '* ghoti whatis git-init', 2))
     void)
 
+const logDeprecated = (command, due) ->
+    log '| Command "' + command + '" is no longer suppored due to:'
+    due.forEach (it) ->
+        logPad ('| ' + it), 1
+
 (export log)
 (export logInline)
 (export logPad)
@@ -381,3 +386,4 @@ const logHelpMore = (env?) ->
 (export logFileList)
 (export logGame)
 (export logGameCommand)
+export logDeprecated
