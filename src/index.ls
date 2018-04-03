@@ -32,6 +32,7 @@ const runPrefixCommand = (command, ghoti, ghotiCLIPath, env) ->
     then notValid <| env
     if command.length < 1
     then notValid <| env
+    var whenDone
     const prefix = command.substring 0, 1
     switch prefix
         case '_'
@@ -40,7 +41,8 @@ const runPrefixCommand = (command, ghoti, ghotiCLIPath, env) ->
             then (excuteAme ameResult, env.texture, ghoti, logSymbol, env, ghotiCLIPath, process.cwd!)
             else notValid <| env
         case '@'
-            log 'game'
+            whenDone = (logGameCommand!)
+            frogGame ghoti, env, whenDone
         default
             notValid <| env
 
@@ -183,10 +185,7 @@ const excute = (...mucall?) ->
             fallthrough
         case 'minigame'
             whenDone = (logGame!)
-            minigame ghoti, env, whenDone
-        case 'frog'
-            whenDone = (logGameCommand!)
-            frogGame ghoti, env, whenDone
+            minigame ghoti, env, whenDone            
         default
             runPrefixCommand mode, ghoti, ghotiCLIPath, env
     void
