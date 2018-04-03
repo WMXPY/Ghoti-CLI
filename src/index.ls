@@ -21,6 +21,29 @@ require! {
     './func/file': { file }
 }
 
+const notValid = (env) ->
+    logUnknown env
+    process.exit!
+
+const runPrefixCommand = (command, ghoti, ghotiCLIPath, env) ->
+    if !Boolean command
+    then notValid <| env
+    if typeof command !== 'string'
+    then notValid <| env
+    if command.length < 1
+    then notValid <| env
+    const prefix = command.substring 0, 1
+    switch prefix
+        case '_'
+            const ameResult = checkAme command
+            if ameResult
+            then (excuteAme ameResult, env.texture, ghoti, logSymbol, env, ghotiCLIPath, process.cwd!)
+            else notValid <| env
+        case '@'
+            log 'game'
+        default
+            notValid <| env
+
 const excute = (...mucall?) ->
     (var whenDone, env)
     (const ghoti = ghotiConfig)
@@ -32,8 +55,6 @@ const excute = (...mucall?) ->
     then 
         if mucall.length >= 1
         then env = processMucall env, mucall
-        else if mucall.length === 0
-        then throw new Error 'Calling ghoti with inside argument wrong'
     else 
         log '| Enviorment process Error'
         log '| Try "ghoti fix"'
@@ -167,10 +188,7 @@ const excute = (...mucall?) ->
             whenDone = (logGameCommand!)
             frogGame ghoti, env, whenDone
         default
-            (const ameResult = (checkAme mode))
-            (if ameResult
-            then (excuteAme ameResult, env.texture, ghoti, logSymbol, env, ghotiCLIPath, process.cwd!)
-            else (logUnknown env))
+            runPrefixCommand mode, ghoti, ghotiCLIPath, env
     void
 
 export excute

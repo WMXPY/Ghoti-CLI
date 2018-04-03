@@ -1,5 +1,6 @@
 require! {
     path
+    '../log/std': { log }
 }
 
 const files = [
@@ -55,6 +56,11 @@ const files = [
 ]
 
 (const compareName = (name, name2) ->
+    if (!Boolean name) || (!Boolean name2)
+    then 
+        log '| Name is not issued'
+        log '| Try "ghoti flist" for file list'
+        process.exit!
     (const splitName = (((name.split '-').join '').toLowerCase!))
     (const splitName2 = (((name2.split '-').join '').toLowerCase!))
     splitName === splitName2)
