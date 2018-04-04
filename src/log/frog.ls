@@ -4,16 +4,21 @@ require! {
 
 const prog = (current, last) ->
     const pr = (str) ->
+        str = str.toString!
+        if str.length === 1
+        then str = '00' + str
+        if str.length === 2
+        then str = '0' + str
         str + '%'
     const bar = (str, percent) ->
         var re
         re = str
-        const ll = percent / 10
+        const ll = Math.floor (percent / 4)
         re += ' |'
-        for i to ll
+        for i to (ll - 1)
+        then re += '#'
+        for i to ((25 - ll) - 1)
         then re += '='
-        for i to (10 - ll)
-        then re += '-'
         re += '|'
         re
     const printable = bar (current |> pr), current

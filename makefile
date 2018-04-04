@@ -1,6 +1,6 @@
 ls := lsc -co
 ts := tsc
-depdence := log.ls static.ls func.ls structure.ls ame.ls outer.ls eng.ts
+depdence := log.ls static.ls func.ls structure.ls ame.ls eng.ts
 sourcePath := src
 distPath := dist
 
@@ -21,8 +21,10 @@ endif
 static.ls:
 ifeq ($(UNAME), win32)
 	$(ls) .\$(distPath)\static\ .\$(sourcePath)\static\*.ls
+	$(ls) .\$(distPath)\static\outer .\$(sourcePath)\static\outer\*.ls
 else
 	$(ls) ./$(distPath)/static/ ./$(sourcePath)/static/*.ls
+	$(ls) ./$(distPath)/static/outer ./$(sourcePath)/static/outer/*.ls
 endif
 
 structure.ls:
@@ -44,13 +46,6 @@ ifeq ($(UNAME), win32)
 	$(ls) .\$(distPath)\ame\ .\$(sourcePath)\ame\*.ls
 else
 	$(ls) ./$(distPath)/ame/ ./$(sourcePath)/ame/*.ls
-endif
-
-outer.ls:
-ifeq ($(UNAME), win32)
-	$(ls) .\$(distPath)\outer\ .\$(sourcePath)\outer\*.ls
-else
-	$(ls) ./$(distPath)/outer/ ./$(sourcePath)/outer/*.ls
 endif
 
 eng.ts:

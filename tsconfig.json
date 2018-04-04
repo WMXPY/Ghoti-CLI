@@ -1,14 +1,14 @@
 {
     "compileOnSave": false,
     "compilerOptions": {
-        "outDir": "dist",
-        "sourceMap": true,
+        "inlineSourceMap": true,
         "strict": true,
         "noImplicitReturns": true,
         "noImplicitAny": true,
-        "module": "commonjs",
         "experimentalDecorators": true,
         "emitDecoratorMetadata": true,
+        "outDir": "dist/eng",
+        "module": "commonjs",
         "moduleResolution": "node",
         "target": "es5",
         "lib": [
@@ -16,9 +16,12 @@
         ]
     },
     "exclude": [
-        "node_modules"
+        "node_modules",
+        "lib",
+        "bin",
+        "dist"
     ],
     "include": [
-        "src/**/*"
+        "src/eng/**/*"
     ]
 }
