@@ -1,5 +1,6 @@
 require! {
     '../log/std': { log, logPad, logReplace, forceEnter }
+    '../eng/eng': { frog }
 }
 
 const prog = (current, last) ->
@@ -24,8 +25,9 @@ const prog = (current, last) ->
     const printable = bar (current |> pr), current
     logReplace printable, last
     printable
-
+        
 const frogGame = (ghoti, env, whenDone) ->
+    const a = new frog ghoti
     const rec = (count, last) ->
         setTimeout (->
             if count > 100
