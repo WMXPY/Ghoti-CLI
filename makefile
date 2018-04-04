@@ -1,5 +1,6 @@
 ls := lsc -co
-depdence := log.ls static.ls func.ls structure.ls ame.ls game.ls outer.ls
+ts := tsc
+depdence := log.ls static.ls func.ls structure.ls ame.ls outer.ls eng.ts
 sourcePath := src
 distPath := dist
 
@@ -45,19 +46,15 @@ else
 	$(ls) ./$(distPath)/ame/ ./$(sourcePath)/ame/*.ls
 endif
 
-game.ls:
-ifeq ($(UNAME), win32)
-	$(ls) .\$(distPath)\game\ .\$(sourcePath)\game\*.ls
-else
-	$(ls) ./$(distPath)/game/ ./$(sourcePath)/game/*.ls
-endif
-
 outer.ls:
 ifeq ($(UNAME), win32)
 	$(ls) .\$(distPath)\outer\ .\$(sourcePath)\outer\*.ls
 else
 	$(ls) ./$(distPath)/outer/ ./$(sourcePath)/outer/*.ls
 endif
+
+eng.ts:
+	$(ts)
 
 run:
 ifeq ($(UNAME), win32)
