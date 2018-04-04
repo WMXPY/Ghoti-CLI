@@ -50,11 +50,15 @@ const getStrOccRowColumns = (str) ->
     (log text)
     text)
 
+const forceEnter = ->
+    outputStream.write '\n'
+    void
+
 const logReplace = (content, lastContent?) ->
-    var dxinfo
+    var dxInfo
     if lastContent
-    then dxinfo = getStrOccRowColumns <| lastContent
-    else dxinfo = {
+    then dxInfo = getStrOccRowColumns <| lastContent.toString!
+    else dxInfo = {
         columns: 0
         rows: 0
     }
@@ -71,3 +75,4 @@ export logPad
 export logHalfPad
 export logInline
 export logReplace
+export forceEnter

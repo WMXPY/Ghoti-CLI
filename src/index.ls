@@ -40,7 +40,7 @@ const runPrefixCommand = (command, ghoti, ghotiCLIPath, env) ->
             if ameResult
             then (excuteAme ameResult, env.texture, ghoti, logSymbol, env, ghotiCLIPath, process.cwd!)
             else notValid <| env
-        case '@'
+        case '!'
             whenDone = (logGameCommand!)
             frogGame ghoti, env, whenDone
         default
