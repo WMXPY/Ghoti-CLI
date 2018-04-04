@@ -27,7 +27,11 @@ const prog = (current, last) ->
     printable
         
 const frogGame = (ghoti, env, whenDone) ->
-    const a = new frog ghoti
+    if !Boolean ghoti.game
+    then
+        log '| Ghoti Game is not actived, try "Ghoti game"'
+        whenDone!
+        process.exit!
     const rec = (count, last) ->
         setTimeout (->
             if count > 100

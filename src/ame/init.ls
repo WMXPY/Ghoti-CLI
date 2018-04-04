@@ -2,50 +2,10 @@ require! {
     '../log/std': { log, logPad }
     './underline': { mergeGhoti, calculateNewUpdate, calculateProgress, calculateNewMinus, calculateNewUnderlineSet, calculateNewUnderlinePlus }
     '../func/config': { getConfig, writeConfig }
+    '../log/getInput': { getInput }
     './checkGhoti': { checkGhoti }
     '../func/deepclone': { deepClone }
-    readline
 }
-
-(const getInput = (question, defaultText, callback) ->
-    (const intf = 
-        input: process.stdin
-        output: process.stdout
-        terminal: false)
-
-    (const rl = (readline.createInterface intf))
-
-    (if ((defaultText === true) || (defaultText === false))
-    then
-        (if defaultText
-        then (question += ' (Y/N, default: Y)')
-        else (question += ' (Y/N, default: N)'))
-    else
-        (if defaultText
-        then (question += ' (default: ' + defaultText + ')')))
-    
-    (question += ' :\n=>> ')
-
-    (rl.question question, (answer) ->
-        (rl.close!)
-        (if typeof defaultText === 'boolean'
-        then 
-            (if answer === ''
-            then answer = defaultText
-            else
-                (if answer === 'Y'
-                then answer = true
-                else if answer === 'N'
-                then answer = false
-                else
-                then answer = false))
-        else
-            (if answer === ''
-            then 
-                (answer = defaultText)))
-        (callback answer)
-        void)
-    void)
 
 const initUnderline = (ghoti, whenDone) ->
     const newGhoti = deepClone ghoti
@@ -58,10 +18,11 @@ const initUnderline = (ghoti, whenDone) ->
     log '| Ghoit Underline is a awesome, light, sample progress tracking system'
     log '| here is some awesome example to use Ghoit Underline'
     log ' | "ghoti _"             for overall progress'
+    log ' | "ghoti _[any]?"       for target status'
     log ' | "ghoti _#"            for new task set'
     log ' | "ghoti _[set name]+"  for new task'
     log ' | "ghoti _[task]-"      for complete a task'
-    log ' | "ghoti _[task]_"      for update task status'
+    log ' | "ghoti _[task]!"      for update task status'
     log ''
     log '| Use a sentence as set or task name is welcome, but:'
     log '| you need use like "ghoti "_my sentence set+" some task"'
