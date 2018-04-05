@@ -1,23 +1,40 @@
-import controller from './eng';
 import item from './item';
+import IStatus from './status.interface';
+import { deepClone } from '../func/deepclone';
 
 export default class pack {
-    private _controller: controller;
     private _itemList: item[];
     private size: number;
 
-    public constructor(controller: controller, size: number) {
-        this._controller = controller;
+    public constructor(size: number) {
         this._itemList = [];
         this.size = size;
     }
 
-    public get controller(): controller {
-        return this._controller;
+    public _start(statE: IStatus): IStatus {
+        let stat = deepClone(statE);
+        for (let i of this._itemList) {
+            stat = i.start(stat);
+        }
+        stat = this.start(stat);
+        return stat;
     }
 
-    public get itemList(): item[] {
-        return this._itemList;
+    public start(statE: IStatus): IStatus {
+        return statE;
+    }
+
+    public _move(statE: IStatus): IStatus {
+        let stat = deepClone(statE);
+        for (let i of this._itemList) {
+            stat = i.move(stat);
+        }
+        stat = this.move(stat);
+        return stat;
+    }
+
+    public move(statE: IStatus): IStatus {
+        return statE;
     }
 
     public addItem(item: item) {

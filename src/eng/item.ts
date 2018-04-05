@@ -1,20 +1,14 @@
-import pack from './pack';
-import controller from './eng';
+import IStatus from './status.interface';
 
 export default class item {
-    private _pack: pack;
-    private _controller: controller;
-
-    public constructor(pack: pack) {
-        this._pack = pack;
-        this._controller = pack.controller;
+    public constructor() {
     }
 
-    public get controller(): controller {
-        return this._controller;
+    public start(statE: IStatus): IStatus {
+        return statE;
     }
 
-    public get pack(): pack {
-        return this._pack;
+    public move(statE: IStatus): IStatus {
+        return statE;
     }
 }

@@ -1,5 +1,7 @@
 import { IGameConfig } from '../func/config';
+import IStatus from './status.interface';
 import pack from './pack';
+import { deepClone } from '../func/deepclone';
 
 export default class controller {
     private ghoti: IGameConfig;
@@ -24,5 +26,21 @@ export default class controller {
 
     public simulate() {
 
+    }
+
+    protected start(statE: IStatus): IStatus {
+        let stat = deepClone(statE);
+        for (let i of this._packList) {
+            stat = i._start(stat);
+        }
+        return stat;
+    }
+
+    protected move(statE: IStatus): IStatus {
+        let stat = deepClone(statE);
+        for (let i of this._packList) {
+            stat = i._move(stat);
+        }
+        return stat;
     }
 };
