@@ -1,7 +1,6 @@
-import { IGameConfig } from '../func/config';
-import IStatus from './status.interface';
+import { IStatus, IGameConfig, IMap } from './interface';
 import pack from './pack';
-import Map, { IMap } from './map';
+import Map from './map';
 import { deepClone } from '../func/deepclone';
 
 export default class controller {

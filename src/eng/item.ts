@@ -1,4 +1,4 @@
-import IStatus from './status.interface';
+import { IStatus } from './interface';
 
 export default class item {
     public constructor() {

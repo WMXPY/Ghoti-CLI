@@ -1,5 +1,5 @@
 import Pack from '../pack';
-import IStatus from '../status.interface';
+import { IStatus } from '../interface';
 import { deepClone } from '../../func/deepclone';
 
 export default class simplePack extends Pack {
