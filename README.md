@@ -1,7 +1,7 @@
 # Ghoti-CLI
 
 [![npm version](https://badge.fury.io/js/ghoti-cli.svg)](https://badge.fury.io/js/ghoti-cli)
-[![Gitter](https://badges.gitter.im/WMXPY/ghoti-cli.svg)](https://gitter.im/WMXPY/ghoti-cli?utm_source=badge&utm_medium=badge&utm_campaign=pr-badge)
+[![Gitter](https://badges.gitter.im/WMXPY/ghoti-cli.svg)](https://gitter.im/ghoti-cli?utm_source=badge&utm_medium=badge&utm_campaign=pr-badge)
 ![downloads](https://img.shields.io/npm/dm/ghoti-cli.svg)
 
 :fish: A CLI tool that helps you start developing your new project within 60 seconds
