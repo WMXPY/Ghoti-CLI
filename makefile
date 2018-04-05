@@ -1,6 +1,6 @@
 ls := lsc -co
 ts := tsc --p
-depdence := log.ls static.ls func.ls structure.ls ame.ls eng.ts
+depdence := log.ls static.ls func.ls structure.ls ame.ls eng.ls eng.ts
 sourcePath := src
 distPath := dist
 
@@ -46,6 +46,13 @@ ifeq ($(UNAME), win32)
 	$(ls) .\$(distPath)\ame\ .\$(sourcePath)\ame\*.ls
 else
 	$(ls) ./$(distPath)/ame/ ./$(sourcePath)/ame/*.ls
+endif
+
+eng.ls:
+ifeq ($(UNAME), win32)
+	$(ls) .\$(distPath)\eng\ .\$(sourcePath)\eng\*.ls
+else
+	$(ls) ./$(distPath)/eng/ ./$(sourcePath)/eng/*.ls
 endif
 
 eng.ts:

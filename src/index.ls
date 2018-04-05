@@ -16,8 +16,8 @@ require! {
     './func/update': { update }
     './ame/init': { initUnderline }
     './ame/excute': { checkAme, excuteAme }
-    './log/game': { minigame }
-    './log/frog': { frogGame }
+    './eng/init': { minigame }
+    './eng/frog': { frogGame }
     './func/file': { file }
 }
 

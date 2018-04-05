@@ -2,7 +2,7 @@ require! {
     '../log/std': { log, logPad, logReplace }
     '../func/deepclone': { deepClone }
     '../ame/checkGhoti': { checkGhoti }
-    './getInput': { getInput }
+    '../log/getInput': { getInput }
 }
 
 const minigame = (ghotiE, env, whenDone) ->
