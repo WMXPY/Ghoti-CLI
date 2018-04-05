@@ -1,5 +1,5 @@
 ls := lsc -co
-ts := tsc
+ts := tsc --p
 depdence := log.ls static.ls func.ls structure.ls ame.ls eng.ts
 sourcePath := src
 distPath := dist
@@ -49,7 +49,11 @@ else
 endif
 
 eng.ts:
-	$(ts)
+ifeq ($(UNAME), win32)
+	$(ts) .\$(sourcePath)\eng\tsconfig.json
+else
+	$(ts) ./$(sourcePath)/eng/tsconfig.json
+endif
 
 run:
 ifeq ($(UNAME), win32)

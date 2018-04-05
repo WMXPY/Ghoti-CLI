@@ -7,7 +7,7 @@
         "noImplicitAny": true,
         "experimentalDecorators": true,
         "emitDecoratorMetadata": true,
-        "outDir": "dist/eng",
+        "outDir": "../../dist/eng",
         "module": "commonjs",
         "moduleResolution": "node",
         "target": "es5",
@@ -15,13 +15,7 @@
             "es2016"
         ]
     },
-    "exclude": [
-        "node_modules",
-        "lib",
-        "bin",
-        "dist"
-    ],
     "include": [
-        "src/eng/**/*"
+        "./**/*"
     ]
 }
