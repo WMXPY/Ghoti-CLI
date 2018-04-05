@@ -1,8 +1,9 @@
+export type TType = 'root' | 'node' | 'end';
+
 export interface IMap {
-    type: 'root' | 'node' | 'end';
+    type: TType;
     next?: IMap;
     second?: IMap;
-    third?: IMap;
     length: number;
     cost: number;
     fulidCost?: number;
@@ -13,7 +14,6 @@ export interface IMap {
 
 export interface IMapConfig {
     splitPercentage: number;
-    triSplitPercentage: number;
     lengthLimit: number;
     endPercentage: number;
     costLimit: number;

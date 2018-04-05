@@ -33,8 +33,9 @@ export default class controller {
 
     public simulate(statE: IStatus): void {
         let map: IMap = Map.generate(this.mapConfig);
-        let stat: IStatus = deepClone(statE);
-        stat = this.start(stat);
+        console.log(map);
+        // let stat: IStatus = deepClone(statE);
+        // stat = this.start(stat);
     }
 
     protected readFromConfig(ghoti: IGameConfig): IStatus {
