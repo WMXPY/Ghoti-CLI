@@ -7,5 +7,5 @@ import controller from './eng';
 import item from './item';
 
 export default function () {
-    return getGameConfig();
+    // return getGameConfig();
 }

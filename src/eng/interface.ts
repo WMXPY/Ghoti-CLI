@@ -1,5 +1,28 @@
 export interface IMap {
+    type: 'root' | 'node' | 'end';
+    next?: IMap;
+    second?: IMap;
+    third?: IMap;
+    length: number;
+    cost: number;
+    fulidCost?: number;
+    mudCost?: number;
+    loot: number;
+    reward: number;
+}
 
+export interface IMapConfig {
+    splitPercentage: number;
+    triSplitPercentage: number;
+    lengthLimit: number;
+    endPercentage: number;
+    costLimit: number;
+    fulidPercentage: number;
+    fulidLimit: number;
+    mudPercentage: number;
+    mudLimit: number;
+    lootLimit: number;
+    rewardLimit: number;
 }
 
 export interface IStatus {

@@ -1,14 +1,15 @@
-import { IStatus, IGameConfig, IMap } from './interface';
+import { IStatus, IGameConfig, IMap, IMapConfig } from './interface';
 import pack from './pack';
 import Map from './map';
 import { deepClone } from '../func/deepclone';
 
 export default class controller {
     private ghoti: IGameConfig;
+    private mapConfig: IMapConfig;
     private stat: IStatus;
     private _packList: pack[];
 
-    public constructor(ghoti?: IGameConfig) {
+    public constructor(mapConfig: IMapConfig, ghoti?: IGameConfig) {
         if (ghoti) {
             this.ghoti = ghoti;
             this.stat = this.readFromConfig(ghoti);
@@ -17,6 +18,7 @@ export default class controller {
             this.ghoti = ghoti;
             this.stat = stat;
         }
+        this.mapConfig = mapConfig;
         this._packList = [];
     }
 
@@ -30,7 +32,7 @@ export default class controller {
     }
 
     public simulate(statE: IStatus): void {
-        let map: IMap = Map.generate();
+        let map: IMap = Map.generate(this.mapConfig);
         let stat: IStatus = deepClone(statE);
         stat = this.start(stat);
     }

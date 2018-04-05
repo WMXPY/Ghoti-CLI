@@ -1,7 +1,10 @@
 require! {
     '../log/std': { log, logPad, logReplace, forceEnter }
-    '../eng/eng': { frog }
+    '../eng/eng': { controller }
+    './game': gameImport
 }
+
+const game = gameImport.default
 
 const prog = (current, last) ->
     const pr = (str) ->
@@ -27,6 +30,7 @@ const prog = (current, last) ->
     printable
         
 const frogGame = (ghoti, env, whenDone) ->
+    game!
     if !Boolean ghoti.game
     then
         log '| Ghoti Game is not actived, try "Ghoti game"'
