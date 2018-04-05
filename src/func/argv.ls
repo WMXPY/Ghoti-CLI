@@ -23,6 +23,8 @@ else ghotiConfig = {})
             'auto'
         case '-r'
             'rename'
+        case '-y'
+            'yes'
         case '-d'
             fallthrough
         default
@@ -40,6 +42,7 @@ else ghotiConfig = {})
         output: false
         debug: false
         rename: false
+        yes: false
         texture: [])
     (path_argv.map (it) ->
         (switch(it.substring 0 1)

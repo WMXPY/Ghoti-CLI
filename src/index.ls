@@ -180,7 +180,7 @@ const excute = (...mucall?) ->
             (whenDone!)
         case 'underline'
             whenDone = (logUnderline!)
-            (initUnderline ghoti, whenDone)
+            (initUnderline ghoti, whenDone, env)
         case 'g'
             fallthrough
         case 'game'

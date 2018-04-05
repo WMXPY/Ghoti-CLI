@@ -7,7 +7,7 @@ require! {
     '../func/deepclone': { deepClone }
 }
 
-const initUnderline = (ghoti, whenDone) ->
+const initUnderline = (ghoti, whenDone, env) ->
     const newGhoti = deepClone ghoti
     if !(checkGhoti newGhoti)
     then 
@@ -37,20 +37,28 @@ const initUnderline = (ghoti, whenDone) ->
         process.exit!
     if !newGhoti.underline.active
     then
-        getInput 'Do you want to init GHOTI UNDERLINE in your project?', false, (wantToInit) ->
-            if wantToInit
-            then
-                newGhoti.underline.active = true
-                newGhoti.underline.path = []
-                writeConfig newGhoti
-                log '| ghoti underline is now setted up, have fun'
-                log '| You can always use "ghoti _" to see overall progress'
-                log '| To start your first step, Try "ghoti _# fisrt-step"'
-                log '| Add a task is as easy as, Try "ghoti _fisrt-step+ my awesome fisrt task" as your command'
-            else
-                log '| thanks for concidering ghoti underline'
-                log '| You can always use "ghoti underline" to active it in the future'
-            whenDone!
+        const fin = ->
+            newGhoti.underline.active = true
+            newGhoti.underline.path = []
+            writeConfig newGhoti
+            log '| ghoti underline is now setted up, have fun'
+            log '| You can always use "ghoti _" to see overall progress'
+            log '| To start your first step, Try "ghoti _# fisrt-step"'
+            log '| Add a task is as easy as, Try "ghoti _fisrt-step+ my awesome fisrt task" as your command'
+        if env.yes
+        then
+            log '| -y argument is actived, skipping question.'
+            log ''
+            fin!
+        else
+            getInput 'Do you want to init GHOTI UNDERLINE in your project?', false, (wantToInit) ->
+                if wantToInit
+                then
+                    fin!
+                else
+                    log '| thanks for concidering ghoti underline'
+                    log '| You can always use "ghoti underline" to active it in the future'
+                whenDone!
     else
         log '| Have fun!'
     void

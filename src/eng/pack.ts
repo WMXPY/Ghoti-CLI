@@ -12,7 +12,7 @@ export default class pack {
     }
 
     public _start(statE: IStatus): IStatus {
-        let stat = deepClone(statE);
+        let stat: IStatus = deepClone(statE);
         for (let i of this._itemList) {
             stat = i.start(stat);
         }
@@ -25,7 +25,7 @@ export default class pack {
     }
 
     public _move(statE: IStatus): IStatus {
-        let stat = deepClone(statE);
+        let stat: IStatus = deepClone(statE);
         for (let i of this._itemList) {
             stat = i.move(stat);
         }
@@ -37,7 +37,8 @@ export default class pack {
         return statE;
     }
 
-    public addItem(item: item) {
+    public addItem(item: item): pack {
         this._itemList.push(item);
+        return this;
     }
 }
