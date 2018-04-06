@@ -33,7 +33,7 @@ export default class controller {
 
     public simulate(statE: IStatus): void {
         let map: IMap = Map.generate(this.mapConfig);
-        console.log(map);
+        Map.logMap(map);
         // let stat: IStatus = deepClone(statE);
         // stat = this.start(stat);
     }

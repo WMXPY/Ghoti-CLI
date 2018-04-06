@@ -3,11 +3,66 @@ import {
     IMapConfig,
     TType,
 } from './interface';
+import {
+    log,
+} from '../log/std';
+
 export default class Map {
     public static generate(config: IMapConfig): IMap {
         const end: IMap = this.generateEnd(config);
         const root: IMap = this.generateRoot(config, end);
         return root;
+    }
+
+    public static logMap(map: IMap): void {
+        const renderList: IMap[][] = [[]];
+        this.renderNode(map, renderList, renderList[0], true);
+        let print = '';
+        for (let i = 0; i < renderList.length; i++) {
+            for (let j = 0; j < renderList[i].length; j++) {
+                print += this.getSignal(renderList[i][j]);
+            }
+            print += '\n';
+        }
+        log(print);
+    }
+
+    protected static renderNode(map: IMap | undefined, renderList: IMap[][], currentList: IMap[], position: boolean): void {
+        if (!map) {
+            return;
+        } else {
+            if (map.second) {
+                let nextList;
+                let emptyArr = new Array(currentList.length).fill(undefined);
+                if (position) {
+                    renderList.push(emptyArr);
+                    nextList = renderList[renderList.length - 1];
+                } else {
+                    renderList.unshift(emptyArr);
+                    nextList = renderList[0];
+                }
+                this.renderNode(map.second, renderList, nextList, !position);
+            }
+            currentList.push(map);
+            this.renderNode(map.next, renderList, currentList, position);
+        }
+    }
+
+    protected static getSignal(map: IMap): string {
+        if (map) {
+            switch (map.type) {
+                case 'root':
+                    return ' @-';
+                case 'node':
+                    return '---';
+                case 'end':
+                    return '-|#';
+                default:
+                    return '   ';
+            }
+        } else {
+            return '   ';
+        }
     }
 
     protected static generateRoot(config: IMapConfig, end: IMap): IMap {
@@ -51,15 +106,24 @@ export default class Map {
     }
 
     protected static generateNode(config: IMapConfig, end: IMap): IMap {
+        config.nodeLimit -= 1;
         const type: TType = 'node';
         let next: IMap
         let second: IMap | undefined;
         let fulidCost: number | undefined;
         let mudCost: number | undefined;
         if (this.random(100) > config.endPercentage) {
-            next = this.generateNode(config, end);
+            if (config.nodeLimit <= 0) {
+                next = end;
+            } else {
+                next = this.generateNode(config, end);
+            }
             if (this.random(100) < config.splitPercentage) {
-                second = this.generateNode(config, end);
+                if (config.nodeLimit <= 0) {
+                    second = end;
+                } else {
+                    second = this.generateNode(config, end);
+                }
             }
         } else {
             next = end;

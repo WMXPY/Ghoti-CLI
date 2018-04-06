@@ -62,12 +62,8 @@ else
 	$(ts) ./$(sourcePath)/eng/tsconfig.json
 endif
 
-run:
-ifeq ($(UNAME), win32)
-	lsc test.ls
-else
-	lsc test.ls
-endif
+run: eng.ts
+	ghoti !
 
 clean:
 ifeq ($(UNAME), win32)

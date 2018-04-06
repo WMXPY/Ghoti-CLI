@@ -1,4 +1,4 @@
-export type TType = 'root' | 'node' | 'end';
+export type TType = 'root' | 'node' | 'end' | 'empty';
 
 export interface IMap {
     type: TType;
@@ -23,6 +23,7 @@ export interface IMapConfig {
     mudLimit: number;
     lootLimit: number;
     rewardLimit: number;
+    nodeLimit: number;
 }
 
 export interface IStatus {

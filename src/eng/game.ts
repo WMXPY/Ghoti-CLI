@@ -8,9 +8,9 @@ import item from './item';
 
 export default function () {
     const cont = new controller({
-        splitPercentage: 20,
+        splitPercentage: 30,
         lengthLimit: 45,
-        endPercentage: 30,
+        endPercentage: 20,
         costLimit: 7,
         fulidLimit: 15,
         fulidPercentage: 15,
@@ -18,6 +18,7 @@ export default function () {
         mudPercentage: 23,
         lootLimit: 150,
         rewardLimit: 135,
+        nodeLimit: 100,
     });
     const stat = {};
     cont.simulate(stat);
