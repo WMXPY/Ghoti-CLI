@@ -1,6 +1,6 @@
 {
   "name": "ghoti-cli",
-  "version": "2.4.0-alpha.0",
+  "version": "2.4.0-alpha.1",
   "description": ":fish: A CLI tool that helps you start developing your new project within 60 seconds",
   "main": "bin/import",
   "directories": {
