@@ -1,4 +1,4 @@
-export type TType = 'root' | 'node' | 'end' | 'empty';
+export type TType = 'root' | 'node' | 'end' | 'empty' | 'stoped';
 
 export interface IMap {
     type: TType;

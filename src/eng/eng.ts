@@ -33,7 +33,13 @@ export default class controller {
 
     public simulate(statE: IStatus): void {
         let map: IMap = Map.generate(this.mapConfig);
+        if (map.next) {
+            if (map.next.next) {
+                map.next.next.type = 'stoped';
+            }
+        }
         Map.logMap(map);
+        Map.logMap(map, true);
         // let stat: IStatus = deepClone(statE);
         // stat = this.start(stat);
     }

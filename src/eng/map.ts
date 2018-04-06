@@ -14,15 +14,21 @@ export default class Map {
         return root;
     }
 
-    public static logMap(map: IMap): void {
+    public static logMap(map: IMap, full?: boolean): void {
         const renderList: IMap[][] = [[]];
         this.renderNode(map, renderList, renderList[0], true);
         let print = '';
         for (let i = 0; i < renderList.length; i++) {
             for (let j = 0; j < renderList[i].length; j++) {
-                print += this.getSignal(renderList[i][j]);
+                if (full) {
+                    print += this.getSignal(renderList[i][j]);
+                } else if (renderList[i][0] && renderList[i][0].type === 'root') {
+                    print += this.getSignal(renderList[i][j]);
+                }
             }
-            print += '\n';
+            if (full && i < renderList.length - 1) {
+                print += '\n';
+            }
         }
         log(print);
     }
@@ -57,6 +63,8 @@ export default class Map {
                     return '---';
                 case 'end':
                     return '-|#';
+                case 'stoped':
+                    return '|!|';
                 default:
                     return '   ';
             }
