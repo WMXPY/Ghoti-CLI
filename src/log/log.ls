@@ -302,6 +302,23 @@ const logHelpMore = (env?) ->
         (logFace!)
         void))
 
+(const logListPlus = ->
+    (const re = (libList!))
+    (const title = '🐟  > 📇  Ghoti-CLI List:')
+    (log title)   
+    (log 'You can use "ghoti whatis [name]" for more information!') 
+    (const table = re.map (it) ->
+        ([
+            it.name
+            it.language
+            it.framework
+            it.author
+        ]))
+    (logTable table, 'type', 'language', 'framework', 'author')
+    (logFace!)
+    (process.exit!)
+    void)
+
 (const logList = ->
     (const re = (libList!))
     (const title = '🐟  > 📇  Ghoti-CLI List:')
@@ -310,10 +327,9 @@ const logHelpMore = (env?) ->
     (const table = re.map (it) ->
         ([
             it.name
-            'math'
             it.author
         ]))
-    (logTable table, 'type', 'language', 'author')
+    (logTable table, 'type', 'author')
     (logFace!)
     (process.exit!)
     void)
@@ -384,7 +400,8 @@ const logDeprecated = (command, due) ->
 (export logWhatIs)
 (export logUpdate)
 (export logList)
+(export logListPlus)
 (export logFileList)
 (export logGame)
 (export logGameCommand)
-export logDeprecated
+(export logDeprecated)

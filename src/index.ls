@@ -3,7 +3,7 @@ require! {
     path
     './func/config': config
     './func/config': { updateConfig, cliPath }
-    './log/log': { log, logHelp, logHelpMore, logInfo, logPostNPMInstall, logAbout, logUnderline, logVersion, logCommand, logSymbol, logUnknown, logStatus, logWhatIs, logUpdate, logList, logFileList, logGame, logGameCommand, logDeprecated }
+    './log/log': { log, logHelp, logHelpMore, logInfo, logPostNPMInstall, logAbout, logUnderline, logVersion, logCommand, logSymbol, logUnknown, logStatus, logWhatIs, logUpdate, logList, logListPlus, logFileList, logGame, logGameCommand, logDeprecated }
     './func/argv': { argv, ghotiConfig }
     './func/init': { init }
     './structure/component': { component }
@@ -127,6 +127,14 @@ const excute = (...mucall?) ->
             fallthrough
         case 'list'
             (logList env)
+        case 'lt+'
+            fallthrough
+        case 'types+'
+            fallthrough
+        case 'listPlus'
+            fallthrough
+        case 'list+'
+            (logListPlus env)
         case 'lf'
             fallthrough
         case 'files'

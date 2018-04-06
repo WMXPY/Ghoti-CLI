@@ -22,6 +22,8 @@ const libs = [
         ]
         author: '$ghoti'
         path: 'react-ssr'
+        language: 'TypeScript'
+        framework: 'React'
         common: [
             {
                 path: 'react'
@@ -77,6 +79,8 @@ const libs = [
         ]
         author: '$ghoti'
         path: 'react-pure-static-express'
+        language: 'TypeScript'
+        framework: 'React'
         common: [
             {
                 path: 'react'
@@ -130,6 +134,8 @@ const libs = [
         ]
         author: '$ghoti'
         path: 'react-thin-ssr'
+        language: 'TypeScript'
+        framework: 'React'
         common: [
             {
                 path: 'react'
@@ -208,6 +214,8 @@ const libs = [
         ]
         author: '$ghoti'
         path: 'react-normal'
+        language: 'TypeScript'
+        framework: 'React'
         postLog: (defaultLogs [
             'npm run feature [feature name]     > create a feature'
             'npm run lambda [function name]     > create a lambda function set'
@@ -258,6 +266,8 @@ const libs = [
         ]
         author: '$ghoti'
         path: 'react-chrome-extension'
+        language: 'TypeScript'
+        framework: 'React'
         postLog: (defaultLogs [
             'npm run feature [feature name]     > create a feature'
             'npm run lambda [function name]     > create a lambda function set'
@@ -303,6 +313,8 @@ const libs = [
         ]
         author: '$ghoti'
         path: 'react-lite'
+        language: 'TypeScript'
+        framework: 'React'
         postLog: (defaultLogs [
             'npm run feature [feature name]     > create a feature'
             'npm run lambda [function name]     > create a lambda function set'
@@ -346,6 +358,8 @@ const libs = [
         ]
         author: '$ghoti'
         path: 'react-js'
+        language: 'JavaScript'
+        framework: 'React'
         postLog: (defaultLogs [
             'npm run feature [feature name]     > create a feature'
             'npm run lambda [function name]     > create a lambda function set'
@@ -391,6 +405,8 @@ const libs = [
         ]
         author: '$ghoti'
         path: 'react-unstructured'
+        language: 'TypeScript'
+        framework: 'React'
         postLog: (defaultLogs [
             'Here are some useful shortcuts for your hacking'
             'You can always enter "npm run hint" for this message again'
@@ -436,6 +452,8 @@ const libs = [
         ]
         author: '$ghoti'
         path: 'vue-normal'
+        language: 'TypeScript'
+        framework: 'VueJS'
         postLog: (defaultLogs [
             'Here are some useful shortcuts for your hacking'
             'You can always enter "npm run hint" for this message again'
@@ -480,6 +498,8 @@ const libs = [
         ]
         author: '$ghoti'
         path: 'node-normal'
+        language: 'TypeScript'
+        framework: 'None'
         postLog: (defaultLogs [
             'Here are some useful shortcuts for your hacking'
             'You can always enter "npm run hint" for this message again'
@@ -524,6 +544,8 @@ const libs = [
         ]
         author: '$ghoti'
         path: 'node-discord'
+        language: 'TypeScript'
+        framework: 'Discord.js'
         postLog: (defaultLogs [
             'Here are some useful shortcuts for your hacking'
             'You can always enter "npm run hint" for this message again'
@@ -570,6 +592,8 @@ const libs = [
         ]
         author: '$ghoti'
         path: 'node-server'
+        language: 'TypeScript'
+        framework: 'Express'
         postLog: (defaultLogs [
             'Here are some useful shortcuts for your hacking'
             'You can always enter "npm run hint" for this message again'
@@ -597,6 +621,8 @@ const libs = [
         common: []
         author: '$ghoti'
         path: 'go-server'
+        language: 'Go'
+        framework: 'None'
         postLog: (defaultLogs [
             'Here are some useful shortcuts for your hacking'
             'You can always enter "npm run hint" for this message again'
@@ -645,6 +671,8 @@ const libs = [
         ]
         author: '$ghoti'
         path: 'react-ghoti-train'
+        language: 'TypeScript'
+        framework: 'React'
         postLog: [
             '$empty'
             'HELLO WORLD!'
@@ -669,7 +697,10 @@ const libs = [
     (for i in libs
         (const ea = 
             name: i.name[0]
-            author: i.author)
+            language: i.language
+            framework: i.framework
+            author: i.author
+            )
         (re.push ea))
     re)
 

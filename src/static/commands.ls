@@ -270,6 +270,23 @@ const list = [
     }
     {
         command: [
+            'list+'
+            'types+'
+            'listPlus'
+            'lt+'
+        ]
+        arguments: 0
+        info: 'show list of available init type, with more detail'
+        plus: [
+            {
+                name: 'example'
+                value: 'ghoti list+'
+            }
+        ]
+        more: []
+    }
+    {
+        command: [
             'listFile'
             'files'
             'lf'
