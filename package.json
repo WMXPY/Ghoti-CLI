@@ -26,5 +26,11 @@
   "devEngines": {
     "node": ">=7.x",
     "npm": ">=4.x"
+  },
+  "devDependencies": {
+    "@types/node": "^9.6.2"
+  },
+  "dependencies": {
+    "request": "^2.85.0"
   }
 }

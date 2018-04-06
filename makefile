@@ -62,8 +62,8 @@ else
 	$(ts) ./$(sourcePath)/eng/tsconfig.json
 endif
 
-run: eng.ts
-	ghoti !
+run: static.ls
+	ghoti init github://Whatever-If-It-Is-Cool/test/master/b.zip -f a
 
 clean:
 ifeq ($(UNAME), win32)

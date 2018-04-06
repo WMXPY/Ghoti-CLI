@@ -715,6 +715,13 @@ const libs = [
     (const splitName2 = (((name2.split '-').join '').toLowerCase!))
     splitName === splitName2)
 
+const libCommons = (common, ghoti_root) ->
+    const commonList = []
+    for i in common
+        for j in i.commons
+            commonList.push commonPath(i.path, j, ghoti_root)
+    commonList
+
 (const lib = (libName, ghoti_root?) ->
     (var re)
     (for i in libs
@@ -738,3 +745,4 @@ const libs = [
 (export lib)
 (export libList)
 (export commonPath)
+export libCommons

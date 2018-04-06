@@ -3,8 +3,8 @@ require! {
     path
     '../log/log': { log, logPostInstall }
     './parser': { parseAll, parseFile }
-    '../static/lib': { lib, commonPath }
-    '../static/outer/achive': { expendPack }
+    '../static/lib': { lib, commonPath, libCommons }
+    '../static/outer/achive': { excuteExternal }
 }
 
 (const switchRoot = (type, ghoti_root) ->
@@ -37,7 +37,9 @@ require! {
         (process.exit!))
     void)
 
-(const copyToPath = (root, data) -> 
+(const copyToPath = (root, data, filename?) -> 
+    if filename === '.ghotiinstall'
+    then return
     (if (root.substring root.length - 6, root.length) === '.ghoti'
     then (fs.writeFileSync (root.substring 0, root.length - 6), data, 'utf8')
     else (fs.writeFileSync root, data, 'utf8')))
@@ -73,7 +75,7 @@ require! {
                 copyToPathBinary (path.join targetPath, floatRoot, file), pathname, whenDone
             else 
                 (logPath '* ' + (removeTail file), level)
-                (copyToPath (path.join targetPath, floatRoot, file), (readFile file, pathname, vars))))
+                (copyToPath (path.join targetPath, floatRoot, file), (readFile file, pathname, vars), file)))
     (files.forEach eachFile))
 
 (const copyInit = (type, targetPath, vars, root, whenDone) ->
@@ -82,24 +84,23 @@ require! {
     (copyInitReacursion root, 0, (path.join path_current, targetPath), root.length, vars, whenDone))
 
 const initFromAchrive = (ghoti_root, type, targetPath, whenDone, env) ->
-    expendPack type, targetPath, whenDone, env
-    whenDone!
-    # (parseAll type, targetPath, env, (re, typesciprt) ->
-    #     (log ' | @ Copying lib files')
-    #     (copyInit type, targetPath, re, root.path)
-    #     (log ' | @ Copying common files')
-    #     (var count)
-    #     (const common = [...root.common])
-    #     (count = 0)
-    #     (if re.open
-    #         (common.push (commonPath 'common', 'open-source', ghoti_root))
-    #         (common.push (commonPath 'common', 'license', ghoti_root)))
-    #     (for i in common
-    #         (log ' | @ Common files chunk ' + count++)
-    #         (copyInit type, targetPath, re, i))
-    #     (logPostInstall targetPath, type, typesciprt)
-    #     (whenDone!)
-    #     void))
+    excuteExternal ghoti_root, type, targetPath, whenDone, env, (externalPath, ghotiinstall) ->
+        log externalPath, ghotiinstall
+        parseAll type, targetPath, env, (re, typesciprt) ->
+            (log ' | @ Copying lib files')
+            (copyInit type, targetPath, re, externalPath)
+            (log ' | @ Copying common files')
+            (var count)
+            (const common = libCommons ghotiinstall.common, ghoti_root)
+            log common
+            (count = 0)
+            (if re.open
+                (common.push (commonPath 'common', 'open-source', ghoti_root))
+                (common.push (commonPath 'common', 'license', ghoti_root)))
+            (for i in common
+                (log ' | @ Common files chunk ' + count++)
+                (copyInit type, targetPath, re, i))
+            (whenDone!)
 
 (const init = (ghoti_root, type, targetPath, whenDone, env) ->
     (if (!targetPath)

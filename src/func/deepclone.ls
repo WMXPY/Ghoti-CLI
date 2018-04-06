@@ -6,4 +6,8 @@ const deepClone = (thing) ->
     |> JSON.stringify
     |> JSON.parse
 
+const uniqueId = ->
+    '_' + Math.random().toString(36).substr(2, 9);
+
 export deepClone
+export uniqueId

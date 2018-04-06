@@ -1,0 +1,16 @@
+{
+    "name": "",
+    "common": [{
+        "path": "",
+        "commons": []
+    }],
+    "author": "",
+    "language": "",
+    "framework": "",
+    "postLog": [
+        "$empty",
+        "HELLO WORLD!",
+        "$empty"
+    ],
+    "whatis": []
+}
