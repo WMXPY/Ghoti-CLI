@@ -23,6 +23,7 @@ export interface IMapConfig {
     mudLimit: number;
     lootLimit: number;
     rewardLimit: number;
+    nodeMinum: number;
     nodeLimit: number;
 }
 

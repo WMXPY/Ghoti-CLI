@@ -6,6 +6,9 @@ import {
 import {
     log,
 } from '../log/std';
+import {
+    deepClone,
+} from '../func/deepclone';
 
 export default class Map {
     public static generate(config: IMapConfig): IMap {
@@ -73,7 +76,8 @@ export default class Map {
         }
     }
 
-    protected static generateRoot(config: IMapConfig, end: IMap): IMap {
+    protected static generateRoot(configE: IMapConfig, end: IMap): IMap {
+        const config = deepClone(configE);
         const type: TType = 'root';
         const next: IMap = this.generateNode(config, end);
         const root: IMap = {
@@ -115,6 +119,7 @@ export default class Map {
 
     protected static generateNode(config: IMapConfig, end: IMap): IMap {
         config.nodeLimit -= 1;
+        config.nodeMinum -= 1;
         const type: TType = 'node';
         let next: IMap
         let second: IMap | undefined;
@@ -134,7 +139,11 @@ export default class Map {
                 }
             }
         } else {
-            next = end;
+            if (config.nodeMinum >= 0) {
+                next = this.generateNode(config, end);
+            } else {
+                next = end;
+            }
         }
         const length: number = this.random(config.lengthLimit);
         const cost: number = this.random(config.costLimit);

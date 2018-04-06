@@ -18,6 +18,7 @@ export default function () {
         mudPercentage: 23,
         lootLimit: 150,
         rewardLimit: 135,
+        nodeMinum: 10,
         nodeLimit: 100,
     });
     const stat = {};
