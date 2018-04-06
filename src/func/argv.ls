@@ -23,6 +23,8 @@ else ghotiConfig = {})
             'auto'
         case '-r'
             'rename'
+        case '-f'
+            'fetch'
         case '-y'
             'yes'
         case '-d'
@@ -39,6 +41,7 @@ else ghotiConfig = {})
         mode: mode ? 'empty'
         auto: false
         test: false
+        fetch: false
         output: false
         debug: false
         rename: false

@@ -4,6 +4,7 @@ require! {
     '../log/log': { log, logPostInstall }
     './parser': { parseAll, parseFile }
     '../static/lib': { lib, commonPath }
+    '../static/outer/achive': { expendPack }
 }
 
 (const switchRoot = (type, ghoti_root) ->
@@ -80,6 +81,26 @@ require! {
     (makeDir (path.join path_current, targetPath))
     (copyInitReacursion root, 0, (path.join path_current, targetPath), root.length, vars, whenDone))
 
+const initFromAchrive = (ghoti_root, type, targetPath, whenDone, env) ->
+    expendPack type, targetPath, whenDone, env
+    whenDone!
+    # (parseAll type, targetPath, env, (re, typesciprt) ->
+    #     (log ' | @ Copying lib files')
+    #     (copyInit type, targetPath, re, root.path)
+    #     (log ' | @ Copying common files')
+    #     (var count)
+    #     (const common = [...root.common])
+    #     (count = 0)
+    #     (if re.open
+    #         (common.push (commonPath 'common', 'open-source', ghoti_root))
+    #         (common.push (commonPath 'common', 'license', ghoti_root)))
+    #     (for i in common
+    #         (log ' | @ Common files chunk ' + count++)
+    #         (copyInit type, targetPath, re, i))
+    #     (logPostInstall targetPath, type, typesciprt)
+    #     (whenDone!)
+    #     void))
+
 (const init = (ghoti_root, type, targetPath, whenDone, env) ->
     (if (!targetPath)
         (log 'init have to use format "ghoti init [type] [path]"')
@@ -87,28 +108,33 @@ require! {
         (log 'Try: "ghoti info init"')
         whenDone!
         (process.exit!))
-    (const root = (switchRoot type, ghoti_root))
-    (if (!(Boolean root))
+    if env.fetch
     then 
-        (log ' | type "' + type + '" is not a valid type of ghoti type')
-        (log ' | Try "ghoti list" or "ghoti lt" for the list of valid types')
-        (whenDone!)
-        (process.exit!))
-    (parseAll type, targetPath, env, (re, typesciprt) ->
-        (log ' | @ Copying lib files')
-        (copyInit type, targetPath, re, root.path)
-        (log ' | @ Copying common files')
-        (var count)
-        (const common = [...root.common])
-        (count = 0)
-        (if re.open
-            (common.push (commonPath 'common', 'open-source', ghoti_root))
-            (common.push (commonPath 'common', 'license', ghoti_root)))
-        (for i in common
-            (log ' | @ Common files chunk ' + count++)
-            (copyInit type, targetPath, re, i))
-        (logPostInstall targetPath, type, typesciprt)
-        (whenDone!)
-        void))
+        initFromAchrive ghoti_root, type, targetPath, whenDone, env
+    else
+        (const root = (switchRoot type, ghoti_root))
+        (if (!(Boolean root))
+        then 
+            (log ' | type "' + type + '" is not a valid type of ghoti type')
+            (log ' | Try "ghoti list" or "ghoti lt" for the list of valid types')
+            (whenDone!)
+            (process.exit!))
+        (parseAll type, targetPath, env, (re, typesciprt) ->
+            (log ' | @ Copying lib files')
+            (copyInit type, targetPath, re, root.path)
+            (log ' | @ Copying common files')
+            (var count)
+            (const common = [...root.common])
+            (count = 0)
+            (if re.open
+                (common.push (commonPath 'common', 'open-source', ghoti_root))
+                (common.push (commonPath 'common', 'license', ghoti_root)))
+            (for i in common
+                (log ' | @ Common files chunk ' + count++)
+                (copyInit type, targetPath, re, i))
+            (logPostInstall targetPath, type, typesciprt)
+            (whenDone!)
+            void)
+        void)
 
 (export init)
