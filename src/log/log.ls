@@ -199,8 +199,11 @@ const logHelpMore = (env?) ->
     (const len = (getMaxLength_List commands))
     (commands.forEach (it) ->
         (logPad '| ' + (padRight it.command[0], len) + ': ' + it.info, 1)
+        (for i in it.command
+            if i !== it.command[0]
+            then (logPad '* nickname - ' + i, 2))
         (for i in it.plus
-            (logPad '* ' + i.name + ' - ' + i.value, 2)))
+            (logPad '* ' + i.name + '  - ' + i.value, 2)))
     (logSeprate title.length)
     (logFace!)
     (process.exit!)
