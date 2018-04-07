@@ -1,17 +1,5 @@
 {
     "type": "origin",
-    "version": "2.4.0-alpha.1",
-    "external": [{
-        "name": "external-react",
-        "common": [{
-            "path": "common",
-            "commons": ["eslint"]
-        }],
-        "author": "joshua",
-        "language": "TypeScript",
-        "framework": "React",
-        "postLog": ["$empty", "HELLO WORLD!", "$empty"],
-        "whatis": [],
-        "path": "C:\\Users\\Meng Wang\\AppData\\Roaming\\npm\\node_modules\\ghoti-cli\\external\\_5gbu4tisu"
-    }]
+    "version": "3.0.0-alpha.0",
+    "external": []
 }

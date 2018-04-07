@@ -87,14 +87,12 @@ require! {
 
 const initFromAchrive = (ghoti_root, type, targetPath, whenDone, env) ->
     excuteExternal ghoti_root, type, targetPath, whenDone, env, (externalPath, ghotiinstall) ->
-        log externalPath, ghotiinstall
         parseAll type, targetPath, env, (re, typesciprt) ->
             (log ' | @ Copying lib files')
             (copyInit type, targetPath, re, externalPath)
             (log ' | @ Copying common files')
             (var count)
             (const common = libCommons ghotiinstall.common, ghoti_root)
-            log common
             (count = 0)
             (if re.open
                 (common.push (commonPath 'common', 'open-source', ghoti_root))

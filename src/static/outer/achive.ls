@@ -1,17 +1,21 @@
 require! {
     path
     fs
-    request
     os
     'child_process': { spawn }
     '../../func/config': { writeCLIConfig, readCLIConfig }
     '../../log/std': { log, logPad }
     '../../func/deepclone': { deepClone, uniqueId }
+    './download': { downloadFile }
 }
 
 const downloadPack = (uri, filename, callback) ->
-    const stream = fs.createWriteStream filename
-    ((request uri).pipe stream).on 'close', callback
+    downloadFile uri, filename, (err) ->
+        if err
+        then 
+            log '| Err ' + err.toString!
+            process.exit!
+        else callback!
     void
 
 const parseLink = (linkE, whenDone) ->
@@ -48,8 +52,23 @@ const expendPack = (filePath, targetPath, whenDone, callback) ->
         default
             command = 1
 
-const addExternal = (cliConfigE, ghotiinstallE, expackPath) ->
+const addExternal = (cliConfigE, ghotiinstallE, expackPath, whenDone) ->
     cliConfig = deepClone cliConfigE
+    if cliConfig.external
+    then 
+        if cliConfig.external.length
+        then 
+            for i in cliConfig.external
+            then 
+                if i.name === ghotiinstallE.name
+                then 
+                    log '| ghotiinstall name alreay exist'
+                    whenDone!
+                    process.exit!
+    else 
+        log '| CLI config file is not valid'
+        whenDone!
+        process.exit!
     ghotiinstall = deepClone ghotiinstallE
     ghotiinstall.path = expackPath
     cliConfig.external.push ghotiinstall
@@ -80,27 +99,29 @@ const excuteExternal = (ghoti_path, type, targetPath, whenDone, env, callback) -
             case 'download'
                 # FOR PRODUCTION
                 
-                # const id = uniqueId!
+                const id = uniqueId!
 
                 # FOR TESTING
 
-                const id = '_5gbu4tisu'
+                # const id = '_5gbu4tisu'
                 const downloadPath = path.join ghoti_path, 'external', (id + '.zip')
                 const expendPath = path.join ghoti_path, 'external', id
 
                 # FOR PRODUCTION
 
-                # downloadPack link, downloadPath, ->
-                #     log '--- DOWNLOAD COMPLETED ---'
-                #     expendPack downloadPath, expendPath, whenDone, (ghotiinstall) ->
-                #         addExternal cliConfig, ghotiinstall, expendPath
-                #         callback expendPath, ghotiinstall
-                #     whenDone!
+                downloadPack link, downloadPath, ->
+                    log '--- DOWNLOAD COMPLETED ---'
+                    log '| PACKAGE UNIQUEID: ' + id
+                    expendPack downloadPath, expendPath, whenDone, (ghotiinstall) ->
+                        addExternal cliConfig, ghotiinstall, expendPath, whenDone
+                        callback expendPath, ghotiinstall
 
                 # FOR TESTING
 
-                expendPack downloadPath, expendPath, whenDone, (ghotiinstall) ->
-                    addExternal cliConfig, ghotiinstall, expendPath
+                # expendPack downloadPath, expendPath, whenDone, (ghotiinstall) ->
+                #     addExternal cliConfig, ghotiinstall, expendPath
+                #     callback expendPath, ghotiinstall
+                
             case 'file'
                 log next
             default
@@ -120,7 +141,13 @@ const archiveWin32 = (filePath, targetPath, whenDone, callback) ->
         if code === 0
         then 
             log '---  UNPACK COMPLETED  ---'
-            (callback (JSON.parse (fs.readFileSync (path.join targetPath, '.ghotiinstall'), 'utf8')))
+            const tempFilePath = path.join targetPath, '.ghotiinstall'
+            if fs.existsSync tempFilePath
+            then (callback (JSON.parse (fs.readFileSync tempFilePath, 'utf8')))
+            else 
+                log '| Target pack have no .ghotiinstall file'
+                whenDone!
+                process.exit!
         else
             log '| Unzip failed'
             whenDone!

@@ -1,6 +1,6 @@
 {
   "name": "ghoti-cli",
-  "version": "2.4.0-alpha.1",
+  "version": "3.0.0-alpha.0",
   "description": ":fish: A CLI tool that helps you start developing your new project within 60 seconds",
   "main": "bin/import",
   "directories": {
@@ -30,7 +30,5 @@
   "devDependencies": {
     "@types/node": "^9.6.2"
   },
-  "dependencies": {
-    "request": "^2.85.0"
-  }
+  "dependencies": {}
 }
