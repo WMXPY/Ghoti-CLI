@@ -315,9 +315,10 @@ const logHelpMore = (env?) ->
             it.name
             it.language
             it.framework
+            it.location
             it.author
         ]))
-    (logTable table, 'type', 'language', 'framework', 'author')
+    (logTable table, 'type', 'language', 'framework', 'location', 'author')
     (logFace!)
     (process.exit!)
     void)
@@ -330,9 +331,10 @@ const logHelpMore = (env?) ->
     (const table = re.map (it) ->
         ([
             it.name
+            it.location
             it.author
         ]))
-    (logTable table, 'type', 'author')
+    (logTable table, 'type', 'location', 'author')
     (logFace!)
     (process.exit!)
     void)

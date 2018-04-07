@@ -10,7 +10,9 @@ require! {
 (const switchRoot = (type, ghoti_root) ->
     (const re = (lib type, ghoti_root))
     (if re
-    then re
+    then 
+        log '| "' type + '" is a ' + re.location + ' ghoti-cli template.'
+        re
     else null))
 
 (const removeTail = (filename) ->
