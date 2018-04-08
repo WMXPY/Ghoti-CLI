@@ -303,10 +303,33 @@ const list = [
     }
     {
         command: [
+            'download'
+            'd'
+        ]
+        arguments: 1
+        info: 'download achive from external source'
+        plus: [
+            {
+                name: 'example'
+                value: 'ghoti download github://xxx/xxx/a.zip'
+            }
+        ]
+        more: [
+            {
+                name: 'arguments'
+                value: 'ghoti init [source]'
+            }
+            {
+                name: 'source'
+                value: 'could be "http", "https", "file", "github"'
+            }
+        ]
+    }
+    {
+        command: [
             'init'
             'create'
             'template'
-            'i'
         ]
         arguments: 2
         info: 'init a project'

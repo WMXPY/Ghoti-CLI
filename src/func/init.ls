@@ -85,6 +85,14 @@ require! {
     (makeDir (path.join path_current, targetPath))
     (copyInitReacursion root, 0, (path.join path_current, targetPath), root.length, vars, whenDone))
 
+const downloadArchirve = (ghoti_root, type, targetPath, whenDone, env) ->
+    excuteExternal ghoti_root, type, targetPath, whenDone, env, (externalPath, ghotiinstall) ->
+        log '| Finished.'
+        log '| see "ghoti lt" for new avaiable init list'
+        whenDone!
+        void
+    void
+
 const initFromAchrive = (ghoti_root, type, targetPath, whenDone, env) ->
     excuteExternal ghoti_root, type, targetPath, whenDone, env, (externalPath, ghotiinstall) ->
         parseAll type, targetPath, env, (re, typesciprt) ->
@@ -101,6 +109,9 @@ const initFromAchrive = (ghoti_root, type, targetPath, whenDone, env) ->
                 (log ' | @ Common files chunk ' + count++)
                 (copyInit type, targetPath, re, i))
             (whenDone!)
+            void
+        void
+    void
 
 (const init = (ghoti_root, type, targetPath, whenDone, env) ->
     (if (!targetPath)
@@ -139,3 +150,4 @@ const initFromAchrive = (ghoti_root, type, targetPath, whenDone, env) ->
         void)
 
 (export init)
+export downloadArchirve

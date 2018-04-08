@@ -31,6 +31,11 @@ const parseLink = (linkE, whenDone) ->
         case 'github'
             next = 'download'
             link = 'https://raw.githubusercontent.com/' + (splited.join '/')
+        case 'http'
+            fallthrough
+        case 'https'
+            next = 'download'
+            link = linkE
         case 'file'
             next = 'file'
             link = linkE
@@ -48,9 +53,9 @@ const expendPack = (filePath, targetPath, whenDone, callback) ->
         case 'win32'
             archiveWin32 filePath, targetPath, whenDone, callback
         case 'darwin'
-            command = 1
+            archiveDarwin filePath, targetPath, whenDone, callback
         default
-            command = 1
+            archiveLinux filePath, targetPath, whenDone, callback
 
 const addExternal = (cliConfigE, ghotiinstallE, expackPath, whenDone) ->
     cliConfig = deepClone cliConfigE
@@ -129,6 +134,52 @@ const excuteExternal = (ghoti_path, type, targetPath, whenDone, env, callback) -
                 whenDone!
                 process.exit!
     void
+
+const archiveLinux = (filePath, targetPath, whenDone, callback) ->
+    const unzip = spawn 'unzip', [
+        '-o'
+        filePath
+        '-d'
+        targetPath
+    ]
+    unzip.on 'exit', (code) ->
+        if code === 0
+        then 
+            log '---  UNPACK COMPLETED  ---'
+            const tempFilePath = path.join targetPath, '.ghotiinstall'
+            if fs.existsSync tempFilePath
+            then (callback (JSON.parse (fs.readFileSync tempFilePath, 'utf8')))
+            else 
+                log '| Target pack have no .ghotiinstall file'
+                whenDone!
+                process.exit!
+        else
+            log '| Unzip failed'
+            whenDone!
+            process.exit!
+
+const archiveDarwin = (filePath, targetPath, whenDone, callback) ->
+    const unzip = spawn 'unzip', [
+        '-o'
+        filePath
+        '-d'
+        targetPath
+    ]
+    unzip.on 'exit', (code) ->
+        if code === 0
+        then 
+            log '---  UNPACK COMPLETED  ---'
+            const tempFilePath = path.join targetPath, '.ghotiinstall'
+            if fs.existsSync tempFilePath
+            then (callback (JSON.parse (fs.readFileSync tempFilePath, 'utf8')))
+            else 
+                log '| Target pack have no .ghotiinstall file'
+                whenDone!
+                process.exit!
+        else
+            log '| Unzip failed'
+            whenDone!
+            process.exit!
 
 const archiveWin32 = (filePath, targetPath, whenDone, callback) ->
     const unzip = spawn 'unzip', [

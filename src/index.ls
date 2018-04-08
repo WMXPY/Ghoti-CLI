@@ -14,7 +14,7 @@ require! {
     './func/parser': { processMucall }
     './func/fix': { fix }
     './func/update': { update }
-    './ame/init': { initUnderline }
+    './ame/init': { initUnderline, downloadArchirve }
     './ame/excute': { checkAme, excuteAme }
     './eng/init': { minigame }
     './eng/frog': { frogGame }
@@ -85,6 +85,11 @@ const excute = (...mucall?) ->
             fallthrough
         case 'status'
             (logStatus ghoti, env)
+        case 'd'
+            fallthrough
+        case 'download'
+            whenDone = (logCommand!)
+            downloadArchirve ghotiCLIPath, env.texture[0], env.texture[1], whenDone, env
         case 'inf'
             fallthrough
         case 'info'
