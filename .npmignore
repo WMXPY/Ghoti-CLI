@@ -8,6 +8,7 @@ makefile
 tests
 script
 node_modules
+bin/*.sh
 a
 b
 c
