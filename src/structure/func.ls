@@ -2,6 +2,7 @@ require! {
     fs,
     path,
     './common': { comments, verifyNameValiation }
+    './lib/lib': { libFunc, pathBuilder }
     '../log/log': { log, logPad }
     '../func/config': { updateConfig }
 }
@@ -50,7 +51,7 @@ const func = (root, targetPath, name, ghoti, whenDone, env) ->
             (process.exit!)
     const target = (path.join targetPath, "src", "func", name + ".func.ts" )
     const importTarget = (path.join targetPath, "src", "func", "import.ts" )
-    const data = (readFile (path.join root, "lib", "structure", "func", "func.ts.ghoti"), name, ghoti)
+    const data = (readFile (pathBuilder root, (libFunc 'ts')), name, ghoti)
     (ghoti.funcs.push name)
     (log '| update .ghoticonfig file')
     (updateConfig ghoti)

@@ -55,7 +55,6 @@ require! {
 
 (const page = (root, targetPath, name, ghoti, whenDone, env) ->
     # [2018-03-23 Update] Add verify name function 
-    process.exit!
     (verifyNameValiation name, 'page', whenDone)
     (if (!(Boolean ghoti.pages))
         (log 'ERROR, ghoti have no pages configeration')
@@ -72,15 +71,15 @@ require! {
         case 'react'
 
             # Update, libPage and path builder
-            data = (readFile (pathBuilder root, (libPage 'react-page-tsx')), name, ghoti)
+            data = (readFile (pathBuilder root, (libPage 'react-tsx')), name, ghoti)
             target = (path.join targetPath, "src", "page", name + ".page.tsx" )
             importTarget = (path.join targetPath, "src", "page", "import.ts" )
         case 'react-js'
-            data = (readFile (pathBuilder root, (libPage 'react-page-jsx')), name, ghoti)
+            data = (readFile (pathBuilder root, (libPage 'react-jsx')), name, ghoti)
             target = (path.join targetPath, "src", "page", name + ".page.jsx" )
             importTarget = (path.join targetPath, "src", "page", "import.js" )
         case 'vue'
-            data = (readFile (pathBuilder root, (libPage 'vue-page')), name, ghoti)
+            data = (readFile (pathBuilder root, (libPage 'vue')), name, ghoti)
             target = (path.join targetPath, "src", "page", name + ".page.vue" )
             importTarget = (path.join targetPath, "src", "page", "import.ts" )
         default

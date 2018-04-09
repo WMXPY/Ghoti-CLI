@@ -6,7 +6,7 @@
 
 import Config from '../config/config';
 
-const ${|func|} = (): void => {
+const ${|func|} = () => {
     // Hello, ${|func|}!
 };
 
