@@ -5,9 +5,9 @@
 #
 # Run as root or insert `sudo` before `sh`:
 #
-# curl -sSL https://raw.githubusercontent.com/WMXPY/Ghoti-CLI/master/bin/install.sh | sh -
+# curl -sSL https://raw.githubusercontent.com/WMXPY/Ghoti-CLI/master/bin/install.sh | sudo sh -
 #   or
-# wget -qO- https://raw.githubusercontent.com/WMXPY/Ghoti-CLI/master/bin/install.sh | sh -
+# wget -qO- https://raw.githubusercontent.com/WMXPY/Ghoti-CLI/master/bin/install.sh | sudo sh -
 #
 
 # Call function when failed
@@ -58,12 +58,15 @@ installNode()
 
     elif command -v pkg >/dev/null 2>&1; then
 
-        # Install nodeJS
         echo '> Installing Node with pkg'
 
+        # Install nodeJS 
         pkg install nodejs-current
     else 
+
         echo '> ! No exists package manager'
+
+        # Echo failed message and quit
         fail
     fi
 }
@@ -81,6 +84,8 @@ installGhoti()
         echo '> Ghoti-cli Installed'
     else 
         echo '> Ghoti-cli Install Failed'
+
+        # Echo failed message and quit
         fail
     fi
 }
@@ -101,6 +106,8 @@ installGit()
             echo '> Git Installed'
         else
             echo '> Git Install Failed'
+
+            # Echo failed message and quit
             fail
         fi
     fi
@@ -126,4 +133,5 @@ else
     installNode
     installGhoti
 fi
+
 echo '> Completed'
