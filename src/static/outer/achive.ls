@@ -155,6 +155,7 @@ const archiveLinux = (filePath, targetPath, whenDone, callback) ->
                 process.exit!
         else
             log '| Unzip failed'
+            log '--- Cleaning ---'
             whenDone!
             process.exit!
 
@@ -203,5 +204,8 @@ const archiveWin32 = (filePath, targetPath, whenDone, callback) ->
             log '| Unzip failed'
             whenDone!
             process.exit!
+
+const unlinkFile = (filePath, whenDone) ->
+    fs.unlinkSync filePath
 
 export excuteExternal

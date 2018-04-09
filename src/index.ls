@@ -5,7 +5,7 @@ require! {
     './func/config': { updateConfig, cliPath }
     './log/log': { log, logHelp, logHelpMore, logInfo, logPostNPMInstall, logAbout, logUnderline, logVersion, logCommand, logSymbol, logUnknown, logStatus, logWhatIs, logUpdate, logList, logListPlus, logFileList, logGame, logGameCommand, logDeprecated }
     './func/argv': { argv, ghotiConfig }
-    './func/init': { init }
+    './func/init': { init, downloadArchirve }
     './structure/component': { component }
     './structure/page': { page }
     './structure/lambda': { lambda }
@@ -14,7 +14,7 @@ require! {
     './func/parser': { processMucall }
     './func/fix': { fix }
     './func/update': { update }
-    './ame/init': { initUnderline, downloadArchirve }
+    './ame/init': { initUnderline }
     './ame/excute': { checkAme, excuteAme }
     './eng/init': { minigame }
     './eng/frog': { frogGame }
@@ -87,6 +87,8 @@ const excute = (...mucall?) ->
             (logStatus ghoti, env)
         case 'd'
             fallthrough
+        case 'install'
+            fallthrough
         case 'download'
             whenDone = (logCommand!)
             downloadArchirve ghotiCLIPath, env.texture[0], env.texture[1], whenDone, env
@@ -94,8 +96,6 @@ const excute = (...mucall?) ->
             fallthrough
         case 'info'
             (logInfo env.texture[0], env)
-        case 'install'
-            log 'install'
         case 'i'
             logDeprecated 'i', ['Confusing between "init" and "install"']
         case 'create'
