@@ -2,6 +2,7 @@ require! {
     fs,
     path,
     './common': { comments, verifyNameValiation }
+    './lib/lib': { libPage, pathBuilder }
     '../log/log': { log, logPad }
     '../func/config': { updateConfig }
 }
@@ -68,15 +69,17 @@ require! {
     (var data, target, importTarget)
     (switch ghoti.template
         case 'react'
-            data = (readFile (path.join root, "lib", "react", "page", "page.tsx.ghoti"), name, ghoti)
+
+            # Update, libPage and path builder
+            data = (readFile (pathBuilder root, (libPage 'react-tsx')), name, ghoti)
             target = (path.join targetPath, "src", "page", name + ".page.tsx" )
             importTarget = (path.join targetPath, "src", "page", "import.ts" )
         case 'react-js'
-            data = (readFile (path.join root, "lib", "react-js", "page", "page.jsx.ghoti"), name, ghoti)
+            data = (readFile (pathBuilder root, (libPage 'react-jsx')), name, ghoti)
             target = (path.join targetPath, "src", "page", name + ".page.jsx" )
             importTarget = (path.join targetPath, "src", "page", "import.js" )
         case 'vue'
-            data = (readFile (path.join root, "lib", "vue", "page", "page.vue.ghoti"), name, ghoti)
+            data = (readFile (pathBuilder root, (libPage 'vue')), name, ghoti)
             target = (path.join targetPath, "src", "page", name + ".page.vue" )
             importTarget = (path.join targetPath, "src", "page", "import.ts" )
         default

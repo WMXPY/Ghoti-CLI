@@ -2,6 +2,7 @@ require! {
     fs,
     path,
     './common': { comments, verifyNameValiation }
+    './lib/lib': { libComponent, pathBuilder }
     '../log/log': { log, logPad }
     '../func/config': { updateConfig }
 }
@@ -76,15 +77,15 @@ const comVueAddon = (ghoti) ->
     (var data, target, importTarget)
     (switch ghoti.template
         case 'react'
-            data = (readFile (path.join root, "lib", "react", "component", "component.tsx.ghoti"), name, ghoti)
+            data = (readFile (pathBuilder root, (libComponent 'react-tsx')), name, ghoti)
             target = (path.join targetPath, "src", "component", name + ".component.tsx" )
             importTarget = (path.join targetPath, "src", "component", "import.ts" )
         case 'react-js'
-            data = (readFile (path.join root, "lib", "react-js", "component", "component.jsx.ghoti"), name, ghoti)
+            data = (readFile (pathBuilder root, (libComponent 'react-jsx')), name, ghoti)
             target = (path.join targetPath, "src", "component", name + ".component.jsx" )
             importTarget = (path.join targetPath, "src", "component", "import.js" )
         case 'vue'
-            data = (readFile (path.join root, "lib", "vue", "component", "component.vue.ghoti"), name, ghoti)
+            data = (readFile (pathBuilder root, (libComponent 'vue')), name, ghoti)
             target = (path.join targetPath, "src", "component", name + ".component.vue" )
             importTarget = (path.join targetPath, "src", "component", "addon.ts" )
         default

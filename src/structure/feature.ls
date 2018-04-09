@@ -2,6 +2,7 @@ require! {
     fs,
     path,
     '../log/log': { log, logPad }
+    './lib/lib': { libFeature, libTest, pathBuilder }
     '../func/config': { updateConfig }
     './common': { verifyNameValiation }
 }
@@ -48,16 +49,16 @@ require! {
     (const featureTarget = (path.join targetPath, "feature", (ghotiFeatureFileName name)))
     (switch ghoti.template
         case 'react'
-            data = (readFile (path.join root, "lib", "react", "test", "test.test.tsx.ghoti"), name, ghoti)
+            data = (readFile (pathBuilder root, (libTest 'react')), name, ghoti)
             target = (path.join targetPath, "test", (ghotiTestFileName name))
         case 'react-js'
-            data = (readFile (path.join root, "lib", "react", "test", "test.test.tsx.ghoti"), name, ghoti)
+            data = (readFile (pathBuilder root, (libTest 'react-js')), name, ghoti)
             target = (path.join targetPath, "test", (ghotiTestFileName name))
         case 'vue'
-            data = (readFile (path.join root, "lib", "vue", "test", "test.test.vue.ghoti"), name, ghoti)
+            data = (readFile (pathBuilder root, (libTest 'vue')), name, ghoti)
             target = (path.join targetPath, "test", (ghotiTestVueFileName name))
         case 'node'
-            data = (readFile (path.join root, "lib", "node", "test", "test.test.ts.ghoti"), name, ghoti)
+            data = (readFile (pathBuilder root, (libTest 'node')), name, ghoti)
             target = (path.join targetPath, "test", (ghotiTestNormalFileName name))
         default
             (log '| ERROR: type "' + ghoti.template + '" is not supported')
@@ -65,7 +66,7 @@ require! {
             (log '| Try "ghoti whatis ' + ghoti.template + '" is there any known issue')
             (whenDone!)
             (process.exit!))
-    (const featureData = (readFile (path.join root, "lib", "structure", "feature", "feature.feature.ghoti"), name, ghoti))
+    (const featureData = (readFile (pathBuilder root, (libFeature 'default')), name, ghoti))
     (ghoti.features.push name)
     (log '| update .ghoticonfig file')
     (updateConfig ghoti)
