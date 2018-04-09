@@ -30,8 +30,10 @@ endif
 structure.ls:
 ifeq ($(UNAME), win32)
 	$(ls) .\$(distPath)\structure\ .\$(sourcePath)\structure\*.ls
+	$(ls) .\$(distPath)\structure\lib .\$(sourcePath)\structure\lib\*.ls
 else
 	$(ls) ./$(distPath)/structure/ ./$(sourcePath)/structure/*.ls
+	$(ls) ./$(distPath)/structure/lib ./$(sourcePath)/structure/lib/*.ls
 endif
 
 func.ls:
