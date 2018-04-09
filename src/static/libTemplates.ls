@@ -43,6 +43,8 @@ const libs = [
                 ]
             }
         ]
+        replaces: [
+        ]
         postLog: (defaultLogs [
             'npm run feature [feature name]     > create a feature'
             'npm run lambda [function name]     > create a lambda function set'
@@ -99,6 +101,8 @@ const libs = [
                 ]
             }
         ]
+        replaces: [
+        ]
         postLog: (defaultLogs [
             'npm run feature [feature name]     > create a feature'
             'npm run lambda [function name]     > create a lambda function set'
@@ -153,6 +157,8 @@ const libs = [
                     'typescript-config'
                 ]
             }
+        ]
+        replaces: [
         ]
         postLog: (defaultLogs [
             'npm run feature [feature name]     > create a feature'
@@ -212,6 +218,8 @@ const libs = [
         path: 'react-normal'
         language: 'TypeScript'
         framework: 'React'
+        replaces: [
+        ]
         postLog: (defaultLogs [
             'npm run feature [feature name]     > create a feature'
             'npm run lambda [function name]     > create a lambda function set'
@@ -264,6 +272,8 @@ const libs = [
         path: 'react-chrome-extension'
         language: 'TypeScript'
         framework: 'React'
+        replaces: [
+        ]
         postLog: (defaultLogs [
             'npm run feature [feature name]     > create a feature'
             'npm run lambda [function name]     > create a lambda function set'
@@ -311,6 +321,8 @@ const libs = [
         path: 'react-lite'
         language: 'TypeScript'
         framework: 'React'
+        replaces: [
+        ]
         postLog: (defaultLogs [
             'npm run feature [feature name]     > create a feature'
             'npm run lambda [function name]     > create a lambda function set'
@@ -356,6 +368,8 @@ const libs = [
         path: 'react-js'
         language: 'JavaScript'
         framework: 'React'
+        replaces: [
+        ]
         postLog: (defaultLogs [
             'npm run feature [feature name]     > create a feature'
             'npm run lambda [function name]     > create a lambda function set'
@@ -403,6 +417,8 @@ const libs = [
         path: 'react-unstructured'
         language: 'TypeScript'
         framework: 'React'
+        replaces: [
+        ]
         postLog: (defaultLogs [
             'Here are some useful shortcuts for your hacking'
             'You can always enter "npm run hint" for this message again'
@@ -450,6 +466,8 @@ const libs = [
         path: 'vue-normal'
         language: 'TypeScript'
         framework: 'VueJS'
+        replaces: [
+        ]
         postLog: (defaultLogs [
             'Here are some useful shortcuts for your hacking'
             'You can always enter "npm run hint" for this message again'
@@ -496,6 +514,8 @@ const libs = [
         path: 'node-normal'
         language: 'TypeScript'
         framework: 'None'
+        replaces: [
+        ]
         postLog: (defaultLogs [
             'Here are some useful shortcuts for your hacking'
             'You can always enter "npm run hint" for this message again'
@@ -542,6 +562,8 @@ const libs = [
         path: 'node-discord'
         language: 'TypeScript'
         framework: 'Discord.js'
+        replaces: [
+        ]
         postLog: (defaultLogs [
             'Here are some useful shortcuts for your hacking'
             'You can always enter "npm run hint" for this message again'
@@ -590,6 +612,8 @@ const libs = [
         path: 'node-server'
         language: 'TypeScript'
         framework: 'Express'
+        replaces: [
+        ]
         postLog: (defaultLogs [
             'Here are some useful shortcuts for your hacking'
             'You can always enter "npm run hint" for this message again'
@@ -619,6 +643,8 @@ const libs = [
         path: 'go-server'
         language: 'Go'
         framework: 'None'
+        replaces: [
+        ]
         postLog: (defaultLogs [
             'Here are some useful shortcuts for your hacking'
             'You can always enter "npm run hint" for this message again'
@@ -669,6 +695,8 @@ const libs = [
         path: 'react-ghoti-train'
         language: 'TypeScript'
         framework: 'React'
+        replaces: [
+        ]
         postLog: [
             '$empty'
             'HELLO WORLD!'

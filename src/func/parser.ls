@@ -39,6 +39,14 @@ const commonParse = (content, vars) ->
         re = re.replace reg, i.value
     re
 
+const commonParseArray = (content, vars) ->
+    var re
+    re = content
+    for i in vars
+        const reg = new RegExp '\\${\\|' + i.name + '\\|}', 'g'
+        re = re.replace reg, i.value
+    re
+
 const commonGather = (list, done, second?) ->
     var re
     if !second
@@ -58,20 +66,60 @@ const commonGather = (list, done, second?) ->
     (const rl = (readline.createInterface intf))
 
     const current = list.shift!
-    const question = 'Gathering replace parameter "' + current + '" :\n=>> '
-    
+    var currentName, question, type, defaultValue, defaultStr
+    if typeof current === 'string'
+    then 
+        currentName = current
+        type = 'string'
+        defaultValue = ''
+    else 
+        currentName = current.name
+        type = current.type
+        defaultValue = current.default
+
+    switch type
+        case 'boolean'
+            if defaultValue
+            then defaultStr = 'default: Y'
+            else defaultStr = 'default: N'
+            question = 'Gathering replace parameter "' + currentName + '" (Y/N, ' + defaultStr + ') :\n=>> '
+        case 'string'
+            fallthrough
+        default
+            if defaultValue
+            then question = 'Gathering replace parameter "' + currentName + '" (default: ' + defaultValue + ') :\n=>> '
+            else question = 'Gathering replace parameter "' + currentName + '" :\n=>> '
+
     rl.question question, (answer) ->
         rl.close!
+        var result
+
+        switch type
+        case 'boolean'
+            if answer === ''
+            then result = defaultValue
+            else if answer === 'Y'
+            then result = true
+            else result = false
+        case 'string'
+            fallthrough
+        default
+            if answer === ''
+            then result = defaultValue
+            else result = answer
+
         re.push {
-            name: current
-            value: answer
+            name: currentName
+            value: result
         }
         if list.length > 0
         then commonGather list, done, re
         else done re
+        void
+
     void
 
-(const parseFile = (filename, text, vars, typescript?) -> 
+(const parseFile = (filename, text, vars, specVars, typescript?) -> 
     (var re)
     (re = text)
     (re = (re.replace /\${\|version\|}/g, version))
@@ -97,6 +145,7 @@ const commonGather = (list, done, second?) ->
                 re = (re.replace /\${\|description\|}/g, vars.description)
             case 'author'
                 re = (re.replace /\${\|author\|}/g, vars.author)))
+    re = commonParse re, specVars
     re)
 
 (const parseAllIn = (textList, vars) ->

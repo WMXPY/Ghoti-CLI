@@ -2,7 +2,7 @@ require! {
     fs
     path
     '../log/log': { log, logPostInstall }
-    './parser': { parseAll, parseFile }
+    './parser': { parseAll, parseFile, commonGather }
     '../static/lib': { lib, commonPath, libCommons }
     '../static/outer/achive': { excuteExternal }
 }
@@ -46,8 +46,8 @@ require! {
     then (fs.writeFileSync (root.substring 0, root.length - 6), data, 'utf8')
     else (fs.writeFileSync root, data, 'utf8')))
     
-(const readFile = (filename, root, vars) ->
-    (parseFile filename, (fs.readFileSync root, 'utf8'), vars))
+(const readFile = (filename, root, vars, specVars) ->
+    (parseFile filename, (fs.readFileSync root, 'utf8'), vars, specVars))
 
 (const makeDir = (root) ->
     (if (!(fs.existsSync root))
@@ -60,7 +60,7 @@ require! {
         space += ' |')
     (log space + text))
 
-(const copyInitReacursion = (root, level, targetPath, beforeLength, vars, whenDone) ->
+(const copyInitReacursion = (root, level, targetPath, beforeLength, vars, specVars, whenDone) ->
     (const files = (fs.readdirSync(root)))
     (const eachFile = (file) ->
         (const pathname = (path.join root, file))
@@ -69,7 +69,7 @@ require! {
         (if ((stat.isDirectory)!)
             (logPath '- ' + (removeTail file), level)
             (makeDir (path.join targetPath, floatRoot, file))
-            (copyInitReacursion pathname, level + 1, targetPath, beforeLength, vars, whenDone)
+            (copyInitReacursion pathname, level + 1, targetPath, beforeLength, vars, specVars, whenDone)
         else
             if (file.substring file.length - 6, file.length) === '.ghotb'
             then 
@@ -77,13 +77,13 @@ require! {
                 copyToPathBinary (path.join targetPath, floatRoot, file), pathname, whenDone
             else 
                 (logPath '* ' + (removeTail file), level)
-                (copyToPath (path.join targetPath, floatRoot, file), (readFile file, pathname, vars), file)))
+                (copyToPath (path.join targetPath, floatRoot, file), (readFile file, pathname, vars, specVars), file)))
     (files.forEach eachFile))
 
-(const copyInit = (type, targetPath, vars, root, whenDone) ->
+(const copyInit = (type, targetPath, vars, specVars, root, whenDone) ->
     (const path_current = (process.cwd!))
     (makeDir (path.join path_current, targetPath))
-    (copyInitReacursion root, 0, (path.join path_current, targetPath), root.length, vars, whenDone))
+    (copyInitReacursion root, 0, (path.join path_current, targetPath), root.length, vars, specVars, whenDone))
 
 const downloadArchirve = (ghoti_root, type, targetPath, whenDone, env) ->
     excuteExternal ghoti_root, type, targetPath, whenDone, env, (externalPath, ghotiinstall) ->
@@ -93,11 +93,26 @@ const downloadArchirve = (ghoti_root, type, targetPath, whenDone, env) ->
         void
     void
 
+const readSpecialReplaces = (root, callback) ->
+    commonGather root.replaces, (vars) ->
+        callback vars
+
+const readParseAll = (textList, targetPath, env, root, callback) ->
+    log '| @ Reading project information'
+    parseAll textList, targetPath, env, (re, typesciprt) ->
+        if root.replaces
+        then 
+            log '| @ Reading special information'
+            readSpecialReplaces root, (newRe) ->
+                callback re, newRe, typesciprt
+        else
+            log '| @ No special information'
+
 const initFromAchrive = (ghoti_root, type, targetPath, whenDone, env) ->
     excuteExternal ghoti_root, type, targetPath, whenDone, env, (externalPath, ghotiinstall) ->
-        parseAll type, targetPath, env, (re, typesciprt) ->
+        readParseAll type, targetPath, env, root, (re, newRe, typesciprt) ->
             (log ' | @ Copying lib files')
-            (copyInit type, targetPath, re, externalPath)
+            (copyInit type, targetPath, re, newRe, externalPath)
             (log ' | @ Copying common files')
             (var count)
             (const common = libCommons ghotiinstall.common, ghoti_root)
@@ -107,7 +122,7 @@ const initFromAchrive = (ghoti_root, type, targetPath, whenDone, env) ->
                 (common.push (commonPath 'common', 'license', ghoti_root)))
             (for i in common
                 (log ' | @ Common files chunk ' + count++)
-                (copyInit type, targetPath, re, i))
+                (copyInit type, targetPath, re, newRe, i))
             (whenDone!)
             void
         void
@@ -131,9 +146,9 @@ const initFromAchrive = (ghoti_root, type, targetPath, whenDone, env) ->
             (log ' | Try "ghoti list" or "ghoti lt" for the list of valid types')
             (whenDone!)
             (process.exit!))
-        (parseAll type, targetPath, env, (re, typesciprt) ->
+        (readParseAll type, targetPath, env, root, (re, newRe, typesciprt) ->
             (log ' | @ Copying lib files')
-            (copyInit type, targetPath, re, root.path)
+            (copyInit type, targetPath, re, newRe, root.path)
             (log ' | @ Copying common files')
             (var count)
             (const common = [...root.common])
@@ -143,7 +158,7 @@ const initFromAchrive = (ghoti_root, type, targetPath, whenDone, env) ->
                 (common.push (commonPath 'common', 'license', ghoti_root)))
             (for i in common
                 (log ' | @ Common files chunk ' + count++)
-                (copyInit type, targetPath, re, i))
+                (copyInit type, targetPath, re, newRe, i))
             (logPostInstall targetPath, type, typesciprt)
             (whenDone!)
             void)
