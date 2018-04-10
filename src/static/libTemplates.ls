@@ -11,6 +11,32 @@
 const libs = [
     {
         name: [
+            'ghoti-installable'
+            'ghoti-install'
+            'ghoti'
+        ]
+        author: '$ghoti'
+        path: 'ghoti-installable'
+        language: 'Any'
+        framework: 'None'
+        common: [
+        ]
+        replaces: [
+            'language'
+            'framework'
+        ]
+        postLog: (defaultLogs [
+            'Start to work on your ghoti package and pack it to zip before upload'
+            '$empty'
+            'ghoti-cli support .zip file download, and .zip from github'
+            'see Readme for more information'
+        ])
+        whatis: [
+            'ghoti-cli package template'
+        ]
+    }
+    {
+        name: [
             'react-ssr'
             'react-server'
             'react-server-side-render'

@@ -1,12 +1,12 @@
 {
-    "name": "",
+    "name": "${|title|}",
     "common": [{
         "path": "",
         "commons": []
     }],
-    "author": "",
-    "language": "",
-    "framework": "",
+    "author": "${|author|}",
+    "language": "${|language|}",
+    "framework": "${|framework|}",
     "replaces": [],
     "postLog": [
         "$empty",
