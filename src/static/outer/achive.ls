@@ -146,13 +146,18 @@ const archiveLinux = (filePath, targetPath, whenDone, callback) ->
         if code === 0
         then 
             log '---  UNPACK COMPLETED  ---'
-            const tempFilePath = path.join targetPath, '.ghotiinstall'
+            var tempFilePath
+            tempFilePath = path.join targetPath, '.ghotiinstall'
             if fs.existsSync tempFilePath
             then (callback (JSON.parse (fs.readFileSync tempFilePath, 'utf8')))
             else 
-                log '| Target pack have no .ghotiinstall file'
-                whenDone!
-                process.exit!
+                tempFilePath = path.join targetPath, '.ghotiinstall.ghoti'
+                if fs.existsSync tempFilePath
+                then (callback (JSON.parse (fs.readFileSync tempFilePath, 'utf8')))
+                else
+                    log '| Target pack have no .ghotiinstall file'
+                    whenDone!
+                    process.exit!
         else
             log '| Unzip failed'
             log '--- Cleaning ---'
@@ -170,13 +175,18 @@ const archiveDarwin = (filePath, targetPath, whenDone, callback) ->
         if code === 0
         then 
             log '---  UNPACK COMPLETED  ---'
-            const tempFilePath = path.join targetPath, '.ghotiinstall'
+            var tempFilePath
+            tempFilePath = path.join targetPath, '.ghotiinstall'
             if fs.existsSync tempFilePath
             then (callback (JSON.parse (fs.readFileSync tempFilePath, 'utf8')))
             else 
-                log '| Target pack have no .ghotiinstall file'
-                whenDone!
-                process.exit!
+                tempFilePath = path.join targetPath, '.ghotiinstall.ghoti'
+                if fs.existsSync tempFilePath
+                then (callback (JSON.parse (fs.readFileSync tempFilePath, 'utf8')))
+                else
+                    log '| Target pack have no .ghotiinstall file'
+                    whenDone!
+                    process.exit!
         else
             log '| Unzip failed'
             whenDone!
@@ -193,13 +203,18 @@ const archiveWin32 = (filePath, targetPath, whenDone, callback) ->
         if code === 0
         then 
             log '---  UNPACK COMPLETED  ---'
-            const tempFilePath = path.join targetPath, '.ghotiinstall'
+            var tempFilePath
+            tempFilePath = path.join targetPath, '.ghotiinstall'
             if fs.existsSync tempFilePath
             then (callback (JSON.parse (fs.readFileSync tempFilePath, 'utf8')))
             else 
-                log '| Target pack have no .ghotiinstall file'
-                whenDone!
-                process.exit!
+                tempFilePath = path.join targetPath, '.ghotiinstall.ghoti'
+                if fs.existsSync tempFilePath
+                then (callback (JSON.parse (fs.readFileSync tempFilePath, 'utf8')))
+                else
+                    log '| Target pack have no .ghotiinstall file'
+                    whenDone!
+                    process.exit!
         else
             log '| Unzip failed'
             whenDone!

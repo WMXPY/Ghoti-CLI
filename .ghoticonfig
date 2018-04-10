@@ -1,5 +1,1 @@
-{
-    "type": "origin",
-    "version": "3.0.2",
-    "external": []
-}
+{"type":"origin","version":"3.0.2","external":[{"name":"node-discord","common":[{"path":"node","commons":["structure-readme","typescript","typescript-feature","typescript-structure"]},{"path":"common","commons":["ghoti","eslint","tslint","typescript-config"]}],"author":"WMXPY","language":"TypeScript","framework":"Discord.js","replaces":[],"postLog":["$empty","Here are some useful shortcuts for your hacking","You can always enter \"npm run hint\" for this message again","$empty","npm run feature [feature name]     > create a feature","$empty","npm run build                      > bundle application for production","npm start                          > start development with localhost server","npm test                           > test features by mocha","$empty"],"whatis":["discord application devlopment","nodeJS application","use typescript","ghoti cli structure"],"path":"C:\\Users\\Meng Wang\\AppData\\Roaming\\npm\\node_modules\\ghoti-cli\\external\\_55y805vya"}]}

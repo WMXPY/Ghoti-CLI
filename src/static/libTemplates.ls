@@ -266,60 +266,6 @@ const libs = [
     }
     {
         name: [
-            'react-chrome-extension'
-            'react-chrome'
-            'react-ts-chrome-extension'
-            'react-ts-chrome'
-            'react-chrome-ts'
-            'react-extension-chrome'
-        ]
-        common: [
-            {
-                path: 'react'
-                commons: [
-                    'typescript'
-                    'typescript-feature'
-                    'typescript-structure'
-                    'sass-style'
-                ]
-            }
-            {
-                path: 'common'
-                commons: [
-                    'public-lite'
-                    'public-template-lite'
-                    'eslint'
-                    'tslint'
-                    'typescript-config'
-                ]
-            }
-        ]
-        author: '$ghoti'
-        path: 'react-chrome-extension'
-        language: 'TypeScript'
-        framework: 'React'
-        replaces: [
-        ]
-        postLog: (defaultLogs [
-            'npm run feature [feature name]     > create a feature'
-            'npm run lambda [function name]     > create a lambda function set'
-            'npm run component [function name]  > create a component'
-            'npm run page [page name]           > create a page'
-            'npm run func [function name]       > create a function set'
-            '$empty'
-            'npm run build                      > bundle application for production'
-            'npm start                          > start development with localhost server'
-            'npm test                           > test features by mocha'
-        ])
-        whatis: [
-            'react chrome extension'
-            'build with webpack 3'
-            'test with mocha'
-            'use typescript'
-        ]
-    }
-    {
-        name: [
             'react-lite'
             'react-tiny'
         ]
@@ -553,55 +499,6 @@ const libs = [
             'npm test                           > test features by mocha'
         ])
         whatis: [
-            'nodeJS application'
-            'use typescript'
-            'ghoti cli structure'
-        ]
-    }
-    {
-        name: [
-            'node-discord'
-            'discord-node'
-            'discord'
-        ]
-        common: [
-            {
-                path: 'node'
-                commons: [
-                    'structure-readme'
-                    'typescript'
-                    'typescript-feature'
-                    'typescript-structure'
-                ]
-            }
-            {
-                path: 'common'
-                commons: [
-                    'ghoti'
-                    'eslint'
-                    'tslint'
-                    'typescript-config'
-                ]
-            }
-        ]
-        author: '$ghoti'
-        path: 'node-discord'
-        language: 'TypeScript'
-        framework: 'Discord.js'
-        replaces: [
-        ]
-        postLog: (defaultLogs [
-            'Here are some useful shortcuts for your hacking'
-            'You can always enter "npm run hint" for this message again'
-            '$empty'
-            'npm run feature [feature name]     > create a feature'
-            '$empty'
-            'npm run build                      > bundle application for production'
-            'npm start                          > start development with localhost server'
-            'npm test                           > test features by mocha'
-        ])
-        whatis: [
-            'discord application devlopment'
             'nodeJS application'
             'use typescript'
             'ghoti cli structure'

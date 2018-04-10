@@ -97,20 +97,22 @@ const readSpecialReplaces = (root, callback) ->
     commonGather root.replaces, (vars) ->
         callback vars
 
-const readParseAll = (textList, targetPath, env, root, callback) ->
+const readParseAll = (textList, targetPath, env, conff, callback) ->
     log '| @ Reading project information'
     parseAll textList, targetPath, env, (re, typesciprt) ->
-        if root.replaces
+        if conff.replaces
         then 
             log '| @ Reading special information'
-            readSpecialReplaces root, (newRe) ->
+            readSpecialReplaces conff, (newRe) ->
                 callback re, newRe, typesciprt
         else
             log '| @ No special information'
+            callback re, [], typesciprt
 
 const initFromAchrive = (ghoti_root, type, targetPath, whenDone, env) ->
     excuteExternal ghoti_root, type, targetPath, whenDone, env, (externalPath, ghotiinstall) ->
         readParseAll type, targetPath, env, root, (re, newRe, typesciprt) ->
+            log re, newRe, typesciprt
             (log ' | @ Copying lib files')
             (copyInit type, targetPath, re, newRe, externalPath)
             (log ' | @ Copying common files')
