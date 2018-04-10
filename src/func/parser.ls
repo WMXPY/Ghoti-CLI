@@ -23,9 +23,7 @@ const processMucall = (env, mucall) ->
     env
 
 (const checkTypescript = (callback) ->
-    log 1
     (const child = (exec 'tsc -v', (err, stdout, stderr) ->
-        log err, stdout, stderr
         (if err
         then callback false
         else callback true)

@@ -4,23 +4,9 @@ require! {
     '../static/lib': { lib, libList }
     '../static/file': { libFileList }
     './logTable': { logTable }
+    './std': { log, logPad, logInline }
     '../static/commands': { getCommand, allCommands, padRight, getMaxLength_List, getMaxLength_Plus, getMaxLength_Entire }
 }
-
-(const log = (...text) -> 
-    (console.log ...text)
-    text)
-
-(const logInline = (text) ->
-    (process.stdout.write text)
-    text)
-
-(const logPad = (text, pad?) ->
-    (if pad
-        (for i to pad
-            text = '  ' + text))
-    (log text)
-    text)
 
 (const logSeprate = (length) ->
     (var re)

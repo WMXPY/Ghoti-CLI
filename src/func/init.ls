@@ -112,7 +112,6 @@ const readParseAll = (textList, targetPath, env, conff, callback) ->
 const initFromAchrive = (ghoti_root, type, targetPath, whenDone, env) ->
     excuteExternal ghoti_root, type, targetPath, whenDone, env, (externalPath, ghotiinstall) ->
         readParseAll type, targetPath, env, root, (re, newRe, typesciprt) ->
-            log re, newRe, typesciprt
             (log ' | @ Copying lib files')
             (copyInit type, targetPath, re, newRe, externalPath)
             (log ' | @ Copying common files')
