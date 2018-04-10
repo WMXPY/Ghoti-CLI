@@ -58,6 +58,20 @@ ghoti init [template] [project path]
 
 Find available template with `ghoti list`, for each template, you can use `ghoti whatis [template]` to know more about it.
 
+### External projects
+
+```bash
+ghoti init -f [template link] [project path]
+```
+
+Use above command to install and init external template, you can also install it without init it
+
+```bash
+ghoti install [template link]
+```
+
+Check out some external templates ->[HERE](https://github.com/WMXPY/Ghoti-CLI-templates)<-
+
 ### Extend project
 
 ```bash
