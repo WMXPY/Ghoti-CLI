@@ -207,7 +207,7 @@ const excute = (...mucall?) ->
             fallthrough
         case 's'
             whenDone = (logCommand!)
-            suffix env.texture[0], ghoti, whenDone, env
+            suffix env.texture[0], env.texture[1], ghoti, whenDone, env
 
         # pack
         case 'pack'

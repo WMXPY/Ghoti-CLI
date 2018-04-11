@@ -596,18 +596,22 @@ const list = [
             'suf'
             's'
         ]
-        arguments: 1
+        arguments: 2
         info: 'suffix all file in target path to make it installable'
         plus: [
             {
                 name: 'example'
-                value: 'ghoti suffix [some path]'
+                value: 'ghoti suffix [some path] [dist path]'
             }
         ]
         more: [
             {
                 name: 'some path'
                 value: 'the path you want to suffix'
+            }
+            {
+                name: 'dist path'
+                value: 'path to output files in'
             }
         ]
     }
