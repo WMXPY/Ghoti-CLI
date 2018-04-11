@@ -5,6 +5,7 @@ package-lock.json
 .ghoticonfig
 .gitignore
 makefile
+test
 tests
 script
 node_modules

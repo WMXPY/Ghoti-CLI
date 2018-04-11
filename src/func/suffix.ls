@@ -5,7 +5,7 @@ require! {
     './folder': { eachFolder, makeDir }
 }
 
-const changeSuffix = (path) ->
+const changeSuffix = (filePath) ->
     const splited = filePath.split /\\|\//g
     const lastS = splited[splited.length - 1].split '.'
     if lastS.length <= 1
@@ -33,3 +33,4 @@ const suffix = (targetPath, distPath, ghoti, whenDone, env) ->
     eachFolder tPath, folderHandler, fileHandler
 
 export suffix
+export changeSuffix

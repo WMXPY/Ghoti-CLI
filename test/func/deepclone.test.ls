@@ -1,13 +1,14 @@
 require! {
     'chai': { expect, assert }
+    '../../src/func/deepclone': { deepClone }
 }
 
 describe 'test deepclone', ->
 
-    var before
+    const test = {}
 
     beforeEach ->
-        before = 
+        test.before = 
             aBoolean: true
             aNumber: 16
             aString: 'hello'
@@ -15,7 +16,8 @@ describe 'test deepclone', ->
                 'whooo'
                 45
             ]
+        void
 
     specify 'deepclone will not change element of object', ->
-        const clonedBefore = before
-        (expect <| before) .to.be.deep.equal clonedBefore
+        const clonedBefore = deepClone test.before
+        (expect <| test.before) .to.be.deep.equal clonedBefore
