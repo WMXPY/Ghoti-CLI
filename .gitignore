@@ -9,7 +9,6 @@ dist
 !lib/**/dist
 package-lock.json
 node_modules
-test.ls
 external
 a
 b
