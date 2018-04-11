@@ -93,64 +93,6 @@ const libs = [
     }
     {
         name: [
-            'react-pure-static-express'
-            'react-express-static-pure'
-            'react-pure'
-            'react-pure-express'
-            'pure-react'
-            'express-pure-react'
-            'reacr-pure-static'
-        ]
-        author: '$ghoti'
-        path: 'react-pure-static-express'
-        language: 'TypeScript'
-        framework: 'React'
-        common: [
-            {
-                path: 'react'
-                commons: [
-                    'typescript'
-                    'typescript-feature'
-                    'typescript-structure'
-                    'sass-style'
-                ]
-            }
-            {
-                path: 'common'
-                commons: [
-                    'ghoti'
-                    'public-lite'
-                    'public-template-outer'
-                    'eslint'
-                    'tslint'
-                    'typescript-config-server'
-                ]
-            }
-        ]
-        replaces: [
-        ]
-        postLog: (defaultLogs [
-            'npm run feature [feature name]     > create a feature'
-            'npm run lambda [function name]     > create a lambda function set'
-            'npm run component [function name]  > create a component'
-            'npm run page [page name]           > create a page'
-            'npm run func [function name]       > create a function set'
-            '$empty'
-            'npm start                          > start development with localhost server'
-            'npm test                           > test features by mocha'
-            'npm run build                      > bundle application and get server ready'
-            'npm run server                     > start muti thread server'
-        ])
-        whatis: [
-            'react pure static application'
-            'build with webpack 3'
-            'use typescript'
-            'test with mocha'
-            'server use express'
-        ]
-    }
-    {
-        name: [
             'react'
             'react-typescript'
             'react-ts'
@@ -204,55 +146,6 @@ const libs = [
             'build with webpack 3'
             'test with mocha'
             'use typescript'
-        ]
-    }
-    {
-        name: [
-            'react-unstructured'
-            'react-none'
-        ]
-        common: [
-            {
-                path: 'react'
-                commons: [
-                    'typescript'
-                    'typescript-feature'
-                    'sass-style'
-                ]
-            }
-            {
-                path: 'common'
-                commons: [
-                    'ghoti'
-                    'public'
-                    'public-template'
-                    'eslint'
-                    'tslint'
-                    'typescript-config'
-                ]
-            }
-        ]
-        author: '$ghoti'
-        path: 'react-unstructured'
-        language: 'TypeScript'
-        framework: 'React'
-        replaces: [
-        ]
-        postLog: (defaultLogs [
-            'Here are some useful shortcuts for your hacking'
-            'You can always enter "npm run hint" for this message again'
-            '$empty'
-            'npm run feature [feature name]     > create a feature'
-            '$empty'
-            'npm run build                      > bundle application for production'
-            'npm start                          > start development with localhost server'
-            'npm test                           > test features by mocha'
-        ])
-        whatis: [
-            'react single page application'
-            'build with webpack 3'
-            'unstructured'
-            'cannot use ghoti extend commands in the repo'
         ]
     }
     {
