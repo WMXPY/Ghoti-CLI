@@ -589,6 +589,52 @@ const list = [
             }
         ]
     }
+    {
+        command: [
+            'suffix'
+            'suff'
+            'suf'
+            's'
+        ]
+        arguments: 1
+        info: 'suffix all file in target path to make it installable'
+        plus: [
+            {
+                name: 'example'
+                value: 'ghoti suffix [some path]'
+            }
+        ]
+        more: [
+            {
+                name: 'some path'
+                value: 'the path you want to suffix'
+            }
+        ]
+    }
+    {
+        command: [
+            'pack'
+            'p'
+        ]
+        arguments: 2
+        info: 'make all files in target path in to a installble package'
+        plus: [
+            {
+                name: 'example'
+                value: 'ghoti pack [some path] [package name]'
+            }
+        ]
+        more: [
+            {
+                name: 'some path'
+                value: 'the path you want to pack up'
+            }
+            {
+                name: 'package name'
+                value: 'name of builded .zip file'
+            }
+        ]
+    }
 ]
 
 export list

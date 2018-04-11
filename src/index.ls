@@ -19,6 +19,8 @@ require! {
     './eng/init': { minigame }
     './eng/frog': { frogGame }
     './func/file': { file }
+    './func/suffix': { suffix }
+    './func/pack': { pack }
 }
 
 const notValid = (env) ->
@@ -63,28 +65,42 @@ const excute = (...mucall?) ->
         process.exit!
     const mode = (env.mode.toLowerCase!)
     switch(mode)
+
+        # about
         case 'a'
             fallthrough
         case 'about'
             (logAbout env)
+
+        # empty
         case 'empty'
             (logHelp true, env)
+
+        # version
         case 'v'
             fallthrough
         case 'version'
             (logVersion env)
+
+        # help
         case '?'
             fallthrough
         case 'help'
             (logHelp false, env)
+
+        # help plus
         case '?+'
             fallthrough
         case 'help+'
             (logHelpMore env)
+
+        # status
         case 'stat'
             fallthrough
         case 'status'
             (logStatus ghoti, env)
+
+        # download
         case 'd'
             fallthrough
         case 'install'
@@ -92,12 +108,18 @@ const excute = (...mucall?) ->
         case 'download'
             whenDone = (logCommand!)
             downloadArchirve ghotiCLIPath, env.texture[0], env.texture[1], whenDone, env
+
+        # info
         case 'inf'
             fallthrough
         case 'info'
             (logInfo env.texture[0], env)
+
+        # i
         case 'i'
             logDeprecated 'i', ['Confusing between "init" and "install"']
+
+        # init
         case 'create'
             fallthrough
         case 'template'
@@ -105,17 +127,25 @@ const excute = (...mucall?) ->
         case 'init'
             whenDone = (logCommand!)
             (init ghotiCLIPath, env.texture[0], env.texture[1], whenDone, env)
+
+        # file
         case 'f'
             fallthrough
         case 'file'
             whenDone = (logCommand!)
             file ghotiCLIPath, env.texture[0], env.texture[1], whenDone, env
+
+        # example
         case 'example'
             whenDone = (logCommand!)
             (init ghotiCLIPath, 'ghoti-example', env.texture[0], whenDone, env)
+        
+        # update
         case 'update'
             whenDone = (logUpdate ghoti, env)
             (update whenDone, env)
+
+        # whatis
         case 'w'
             fallthrough
         case '='
@@ -126,12 +156,16 @@ const excute = (...mucall?) ->
             fallthrough
         case 'whatis'
             (logWhatIs env.texture[0], env)
+
+        # list
         case 'lt'
             fallthrough
         case 'types'
             fallthrough
         case 'list'
             (logList env)
+        
+        # list plus
         case 'lt+'
             fallthrough
         case 'types+'
@@ -140,12 +174,16 @@ const excute = (...mucall?) ->
             fallthrough
         case 'list+'
             (logListPlus env)
+
+        # listFile
         case 'lf'
             fallthrough
         case 'files'
             fallthrough
         case 'listFile'
             (logFileList env)
+
+        # fix
         case '~'
             fallthrough
         case 'issue'
@@ -153,22 +191,48 @@ const excute = (...mucall?) ->
         case 'fix'
             whenDone = (logCommand!)
             (fix env.texture, ghoti, whenDone, env)
+
+        # hint
         case 'hint'
             fallthrough
         case 'post'
             (logPostNPMInstall env.texture[0], env)
+
+        # suffix
+        case 'suffix'
+            fallthrough
+        case 'suff'
+            fallthrough
+        case 'suf'
+            fallthrough
+        case 's'
+            whenDone = (logCommand!)
+            suffix env.texture[0], ghoti, whenDone, env
+
+        # pack
+        case 'pack'
+            fallthrough
+        case 'p'
+            whenDone = (logCommand!)
+            pack env.texture[0], env.texture[1], ghoti, whenDone, env
+
+        # lambda
         case '+l'
             fallthrough
         case 'lambda'
             whenDone = (logCommand!)
             (lambda ghotiCLIPath, process.cwd!, env.texture[0], ghoti, whenDone, env)
             (whenDone!)
+
+        # feature
         case '+t'
             fallthrough
         case 'feature'
             whenDone = (logCommand!)
             (feature ghotiCLIPath, process.cwd!, env.texture[0], ghoti, whenDone, env)
             (whenDone!)
+            
+        # function
         case '+f'
             fallthrough
         case 'func'
@@ -179,21 +243,29 @@ const excute = (...mucall?) ->
             whenDone = (logCommand 'function', 'func')
             (func ghotiCLIPath, process.cwd!, env.texture[0], ghoti, whenDone, env)
             (whenDone!)
+
+        # page
         case '+p'
             fallthrough
         case 'page'
             whenDone = (logCommand!)
             (page ghotiCLIPath, process.cwd!, env.texture[0], ghoti, whenDone, env)
             (whenDone!)
+
+        # component
         case '+c'
             fallthrough
         case 'component'
             whenDone = (logCommand!)
             (component ghotiCLIPath, process.cwd!, env.texture[0], ghoti, whenDone, env)
             (whenDone!)
+
+        # underline
         case 'underline'
             whenDone = (logUnderline!)
             (initUnderline ghoti, whenDone, env)
+
+        # game
         case 'g'
             fallthrough
         case 'game'
