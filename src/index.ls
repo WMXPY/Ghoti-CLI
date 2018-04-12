@@ -216,6 +216,14 @@ const excute = (...mucall?) ->
             whenDone = (logCommand!)
             pack env.texture[0], env.texture[1], ghoti, whenDone, env
 
+        # deploy and pack
+        case 'deploy'
+            fallthrough
+        case 's&p'
+            whenDone = (logCommand!)
+            suffix env.texture[0], env.texture[1], ghoti, (->
+                pack env.texture[0], env.texture[1], ghoti, whenDone, env), env
+
         # lambda
         case '+l'
             fallthrough
