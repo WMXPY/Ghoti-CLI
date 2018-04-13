@@ -305,6 +305,7 @@ const logHelpMore = (env?) ->
             it.author
         ]))
     (logTable table, 'type', 'language', 'framework', 'location', 'author')
+    log '| For external packages, view https://github.com/WMXPY/Ghoti-CLI/blob/master/doc/ghoti/list.md'
     (logFace!)
     (process.exit!)
     void)
@@ -321,6 +322,7 @@ const logHelpMore = (env?) ->
             it.author
         ]))
     (logTable table, 'type', 'location', 'author')
+    log '| For external packages, view https://github.com/WMXPY/Ghoti-CLI/blob/master/doc/ghoti/list.md'
     (logFace!)
     (process.exit!)
     void)
