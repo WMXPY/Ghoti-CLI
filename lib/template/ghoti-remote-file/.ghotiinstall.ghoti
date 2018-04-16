@@ -1,13 +1,12 @@
 {
     "name": "${|title|}",
-    "type": "template",
+    "type": "file",
     "common": [{
         "path": "",
         "commons": []
     }],
     "author": "${|author|}",
     "language": "${|language|}",
-    "framework": "${|framework|}",
     "replaces": [],
     "postLog": [
         "$empty",

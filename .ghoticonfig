@@ -1,5 +1,6 @@
 {
     "type": "origin",
     "version": "3.1.0",
-    "external": []
+    "external": [],
+    "remote": []
 }

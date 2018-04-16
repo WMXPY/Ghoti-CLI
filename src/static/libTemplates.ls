@@ -26,7 +26,34 @@ const libs = [
             'framework'
         ]
         postLog: (defaultLogs [
-            'Start to work on your ghoti package and pack it to zip before upload'
+            'Start to work on a ghoti package and pack it to zip before upload'
+            '$empty'
+            'ghoti-cli support .zip file download, and .zip from github'
+            'see Readme for more information'
+        ])
+        whatis: [
+            'ghoti-cli package template'
+        ]
+    }
+    {
+        name: [
+            'ghoti-remote-file'
+            'ghoti-file-remote'
+            'ghoti-file'
+            'ghoti-remote'
+            'ghotif'
+        ]
+        author: '$ghoti'
+        path: 'ghoti-remote-file'
+        language: 'Any'
+        framework: 'None'
+        common: [
+        ]
+        replaces: [
+            'language'
+        ]
+        postLog: (defaultLogs [
+            'Start to work on a ghoti remtoe file and pack it to zip before upload'
             '$empty'
             'ghoti-cli support .zip file download, and .zip from github'
             'see Readme for more information'
