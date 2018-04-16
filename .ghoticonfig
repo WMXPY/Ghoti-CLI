@@ -1,6 +1,1 @@
-{
-    "type": "origin",
-    "version": "3.1.0",
-    "external": [],
-    "remote": []
-}
+{"type":"origin","version":"3.1.0","external":[],"remote":[{"name":"a","type":"file","common":[{"path":"","commons":[]}],"main":"a.js","author":"","language":"","replaces":["oppppp"],"postLog":["$empty","HELLO WORLD!","$empty"],"whatis":[],"path":"C:\\Users\\Meng Wang\\AppData\\Roaming\\npm\\node_modules\\ghoti-cli\\external\\remote\\_eytijn3rn"}]}

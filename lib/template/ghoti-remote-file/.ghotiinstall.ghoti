@@ -5,6 +5,7 @@
         "path": "",
         "commons": []
     }],
+    "main": "${|filePath|}",
     "author": "${|author|}",
     "language": "${|language|}",
     "replaces": [],

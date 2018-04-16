@@ -7,6 +7,10 @@ require! {
     '../static/outer/achive': { excuteExternalFile }
 }
 
+(const makeDir = (root) ->
+    (if (!(fs.existsSync root))
+        (fs.mkdirSync root)))
+
 (const switchRoot = (type, ghoti_root) ->
     (const re = (libFile type, ghoti_root))
     (if re
@@ -24,18 +28,20 @@ const readFile = (root, vars) ->
 const getFileRoot = (filePath, fileName, ghoti_root) ->
     path.join ghoti_root, 'lib', 'files', filePath, fileName
 
-const fileFromAchrive = (ghoti_root, fileName, targetPathE, whenDone, env) ->
+const fileFromAchrive = (ghoti_root, fileName, targetPath, whenDone, env) ->
     excuteExternalFile ghoti_root, fileName, targetPath, whenDone, env, (externalPath, ghotiinstall) ->
+        const filePath = path.join externalPath, ghotiinstall.main
         commonGather ghotiinstall.replaces, (vars) ->
             if env.rename
                 then
                     commonGather ['rename'], (rename) ->
                         const targetName = rename[0].value
-                        writeFile (path.join targetPath, targetName), (readFile (getFileRoot ghotiinstall.path, ghotiinstall.file,ghoti_root), vars)
+                        writeFile (path.join targetPath, targetName), (readFile filePath, vars)
                         log '| File copied'
                         whenDone!
                 else
-                    writeFile (path.join targetPath, ghotiinstall.file), (readFile (getFileRoot ghotiinstall.path, ghotiinstall.file, ghoti_root), vars)
+                    makeDir targetPath
+                    writeFile (path.join targetPath, ghotiinstall.main), (readFile filePath, vars)
                     log '| File copied'
                     whenDone!
 

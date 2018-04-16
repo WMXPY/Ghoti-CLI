@@ -123,7 +123,7 @@ const checkGhotiFile = (whenDone) ->
 
 const excuteExternalFile = (ghoti_path, fileName, targetPath, whenDone, env, callback) ->
     const cliConfig = checkGhotiFile whenDone
-    const { link, next } = parseLink type, whenDone
+    const { link, next } = parseLink fileName, whenDone
     switch next
         case 'download'
             # FOR PRODUCTION
@@ -142,6 +142,11 @@ const excuteExternalFile = (ghoti_path, fileName, targetPath, whenDone, env, cal
                 log '--- DOWNLOAD COMPLETED ---'
                 log '| PACKAGE UNIQUEID: ' + id
                 expendPack downloadPath, expendPath, whenDone, (ghotiinstall) ->
+                    if ghotiinstall.type !== 'file'
+                    then
+                        log '| Expended Package is not a Ghoti Remote File'
+                        whenDone!
+                        process.exit!
                     addRemote cliConfig, ghotiinstall, expendPath, whenDone
                     callback expendPath, ghotiinstall
 
@@ -180,6 +185,14 @@ const excuteExternal = (ghoti_path, type, targetPath, whenDone, env, callback) -
                 log '--- DOWNLOAD COMPLETED ---'
                 log '| PACKAGE UNIQUEID: ' + id
                 expendPack downloadPath, expendPath, whenDone, (ghotiinstall) ->
+                    if !ghotiinstall.type
+                    then
+                        log '| External package is too old, this may not supported in future version'
+                    else if ghotiinstall.type !== 'template'
+                    then
+                        log '| Expended Package is not a Ghoti External Package'
+                        whenDone!
+                        process.exit!
                     addExternal cliConfig, ghotiinstall, expendPath, whenDone
                     callback expendPath, ghotiinstall
 
@@ -286,3 +299,4 @@ const unlinkFile = (filePath, whenDone) ->
     fs.unlinkSync filePath
 
 export excuteExternal
+export excuteExternalFile

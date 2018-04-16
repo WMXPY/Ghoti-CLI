@@ -51,6 +51,7 @@ const libs = [
         ]
         replaces: [
             'language'
+            'filePath'
         ]
         postLog: (defaultLogs [
             'Start to work on a ghoti remtoe file and pack it to zip before upload'
