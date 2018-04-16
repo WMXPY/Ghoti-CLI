@@ -86,7 +86,7 @@ require! {
     (copyInitReacursion root, 0, (path.join path_current, targetPath), root.length, vars, specVars, whenDone))
 
 const downloadArchirve = (ghoti_root, type, targetPath, whenDone, env) ->
-    excuteSwitch ghoti_root, type, whenDone, env, (externalPath, ghotiinstall) ->
+    excuteSwitch ghoti_root, type, targetPath, whenDone, env, (externalPath, ghotiinstall) ->
         log '| Finished.'
         log '| see "ghoti lt" & "ghoti lf" for new avaiable list'
         whenDone!

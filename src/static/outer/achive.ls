@@ -121,22 +121,15 @@ const checkGhotiFile = (whenDone) ->
         void
     cliConfig
 
-const excuteSwitch = (ghoti_path, opit, whenDone, env, callback) ->
+const excuteSwitch = (ghoti_path, opit, targetPath, whenDone, env, callback) ->
     const cliConfig = checkGhotiFile whenDone
-    const { link, next } = parseLink fileName, whenDone
+    const { link, next } = parseLink opit, whenDone
     switch next
         case 'download'
-            # FOR PRODUCTION
             
             const id = uniqueId!
-
-            # FOR TESTING
-
-            # const id = '_5gbu4tisu'
             const downloadPath = path.join ghoti_path, 'external', 'cache', (id + '.zip')
-            const expendPath = path.join ghoti_path, 'external', 'remote', id
-
-            # FOR PRODUCTION
+            const expendPath = path.join ghoti_path, 'external', 'external', id
 
             downloadPack link, downloadPath, ->
                 log '--- DOWNLOAD COMPLETED ---'
@@ -173,7 +166,7 @@ const excuteExternalFile = (ghoti_path, fileName, targetPath, whenDone, env, cal
 
             # const id = '_5gbu4tisu'
             const downloadPath = path.join ghoti_path, 'external', 'cache', (id + '.zip')
-            const expendPath = path.join ghoti_path, 'external', 'remote', id
+            const expendPath = path.join ghoti_path, 'external', 'external', id
 
             # FOR PRODUCTION
 
