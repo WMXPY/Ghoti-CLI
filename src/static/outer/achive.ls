@@ -79,60 +79,100 @@ const addExternal = (cliConfigE, ghotiinstallE, expackPath, whenDone) ->
     cliConfig.external.push ghotiinstall
     writeCLIConfig cliConfig
 
-const excuteExternal = (ghoti_path, type, targetPath, whenDone, env, callback) ->
+const checkGhotiFile = (whenDone) ->
     const cliConfig = readCLIConfig!
     var external
-    if cliConfig.external
-    then 
-        for i in cliConfig.external
-        then 
-            if i.name === type
-            then 
-                external = i
-                log i
+    if cliConfig.external 
+    && cliConfig.remote
+    then
+        # for i in cliConfig.external
+        # then 
+        #     if i.name === type
+        #     then 
+        #         external = i
+        #         log i
     else
         log '| ghoti config file is not exist in storage list'
         log '| Try to reinstall ghoti-cli by "sudo npm -g install ghoti-cli"'
         whenDone!
         process.exit!
-    if external
-    then
-        log external
-    else
-        const { link, next } = parseLink type, whenDone
-        switch next
-            case 'download'
-                # FOR PRODUCTION
+        void
+    void
+
+const excuteExternalFile = (ghoti_path, fileName, targetPath, whenDone, env, callback) ->
+    checkGhotiFile whenDone
+    const { link, next } = parseLink type, whenDone
+    switch next
+        case 'download'
+            # FOR PRODUCTION
+            
+            const id = uniqueId!
+
+            # FOR TESTING
+
+            # const id = '_5gbu4tisu'
+            const downloadPath = path.join ghoti_path, 'external', 'remote', (id + '.zip')
+            const expendPath = path.join ghoti_path, 'external', 'remote', id
+
+            # FOR PRODUCTION
+
+            downloadPack link, downloadPath, ->
+                log '--- DOWNLOAD COMPLETED ---'
+                log '| PACKAGE UNIQUEID: ' + id
+                expendPack downloadPath, expendPath, whenDone, (ghotiinstall) ->
+                    addExternal cliConfig, ghotiinstall, expendPath, whenDone
+                    callback expendPath, ghotiinstall
+
+            # FOR TESTING
+
+            # expendPack downloadPath, expendPath, whenDone, (ghotiinstall) ->
+            #     addExternal cliConfig, ghotiinstall, expendPath
+            #     callback expendPath, ghotiinstall
                 
-                const id = uniqueId!
+        case 'file'
+            log next
+        default
+            log '| Not a vaild link'
+            whenDone!
+            process.exit!
+    void
 
-                # FOR TESTING
+const excuteExternal = (ghoti_path, type, targetPath, whenDone, env, callback) ->
+    checkGhotiFile whenDone
+    const { link, next } = parseLink type, whenDone
+    switch next
+        case 'download'
+            # FOR PRODUCTION
+            
+            const id = uniqueId!
 
-                # const id = '_5gbu4tisu'
-                const downloadPath = path.join ghoti_path, 'external', (id + '.zip')
-                const expendPath = path.join ghoti_path, 'external', id
+            # FOR TESTING
 
-                # FOR PRODUCTION
+            # const id = '_5gbu4tisu'
+            const downloadPath = path.join ghoti_path, 'external', 'external', (id + '.zip')
+            const expendPath = path.join ghoti_path, 'external', 'external', id
 
-                downloadPack link, downloadPath, ->
-                    log '--- DOWNLOAD COMPLETED ---'
-                    log '| PACKAGE UNIQUEID: ' + id
-                    expendPack downloadPath, expendPath, whenDone, (ghotiinstall) ->
-                        addExternal cliConfig, ghotiinstall, expendPath, whenDone
-                        callback expendPath, ghotiinstall
+            # FOR PRODUCTION
 
-                # FOR TESTING
+            downloadPack link, downloadPath, ->
+                log '--- DOWNLOAD COMPLETED ---'
+                log '| PACKAGE UNIQUEID: ' + id
+                expendPack downloadPath, expendPath, whenDone, (ghotiinstall) ->
+                    addExternal cliConfig, ghotiinstall, expendPath, whenDone
+                    callback expendPath, ghotiinstall
 
-                # expendPack downloadPath, expendPath, whenDone, (ghotiinstall) ->
-                #     addExternal cliConfig, ghotiinstall, expendPath
-                #     callback expendPath, ghotiinstall
+            # FOR TESTING
+
+            # expendPack downloadPath, expendPath, whenDone, (ghotiinstall) ->
+            #     addExternal cliConfig, ghotiinstall, expendPath
+            #     callback expendPath, ghotiinstall
                 
-            case 'file'
-                log next
-            default
-                log '| Not a vaild link'
-                whenDone!
-                process.exit!
+        case 'file'
+            log next
+        default
+            log '| Not a vaild link'
+            whenDone!
+            process.exit!
     void
 
 const archiveLinux = (filePath, targetPath, whenDone, callback) ->

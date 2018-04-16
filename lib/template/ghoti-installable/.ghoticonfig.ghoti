@@ -6,25 +6,9 @@
     "title": "$ {|title|}",
     "description": "$ {|description|}",
     "author": "$ {|author|}",
-    "config": {
-        
+    "config": { 
     },
     "underline": {
         "active": false
-    },
-    "components": [
-        
-    ],
-    "pages": [
-
-    ],
-    "funcs": [
-
-    ],
-    "lambdas": [
-        
-    ],
-    "features": [
-        
-    ]
+    }
 }
