@@ -79,6 +79,28 @@ const addExternal = (cliConfigE, ghotiinstallE, expackPath, whenDone) ->
     cliConfig.external.push ghotiinstall
     writeCLIConfig cliConfig
 
+const addRemote = (cliConfigE, ghotiinstallE, expackPath, whenDone) ->
+    cliConfig = deepClone cliConfigE
+    if cliConfig.remote
+    then 
+        if cliConfig.remote.length
+        then 
+            for i in cliConfig.remote
+            then 
+                if i.name === ghotiinstallE.name
+                then 
+                    log '| ghotiinstall name alreay exist'
+                    whenDone!
+                    process.exit!
+    else 
+        log '| CLI config file is not valid'
+        whenDone!
+        process.exit!
+    ghotiinstall = deepClone ghotiinstallE
+    ghotiinstall.path = expackPath
+    cliConfig.remote.push ghotiinstall
+    writeCLIConfig cliConfig
+
 const checkGhotiFile = (whenDone) ->
     const cliConfig = readCLIConfig!
     var external
@@ -97,10 +119,10 @@ const checkGhotiFile = (whenDone) ->
         whenDone!
         process.exit!
         void
-    void
+    cliConfig
 
 const excuteExternalFile = (ghoti_path, fileName, targetPath, whenDone, env, callback) ->
-    checkGhotiFile whenDone
+    const cliConfig = checkGhotiFile whenDone
     const { link, next } = parseLink type, whenDone
     switch next
         case 'download'
@@ -120,7 +142,7 @@ const excuteExternalFile = (ghoti_path, fileName, targetPath, whenDone, env, cal
                 log '--- DOWNLOAD COMPLETED ---'
                 log '| PACKAGE UNIQUEID: ' + id
                 expendPack downloadPath, expendPath, whenDone, (ghotiinstall) ->
-                    addExternal cliConfig, ghotiinstall, expendPath, whenDone
+                    addRemote cliConfig, ghotiinstall, expendPath, whenDone
                     callback expendPath, ghotiinstall
 
             # FOR TESTING
@@ -138,7 +160,7 @@ const excuteExternalFile = (ghoti_path, fileName, targetPath, whenDone, env, cal
     void
 
 const excuteExternal = (ghoti_path, type, targetPath, whenDone, env, callback) ->
-    checkGhotiFile whenDone
+    const cliConfig = checkGhotiFile whenDone
     const { link, next } = parseLink type, whenDone
     switch next
         case 'download'

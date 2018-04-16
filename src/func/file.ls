@@ -24,23 +24,30 @@ const readFile = (root, vars) ->
 const getFileRoot = (filePath, fileName, ghoti_root) ->
     path.join ghoti_root, 'lib', 'files', filePath, fileName
 
-const fileFromAchrive = (ghoti_root, fileName, targetPath, whenDone, env) ->
-    1
+const fileFromAchrive = (ghoti_root, fileName, targetPathE, whenDone, env) ->
+    excuteExternalFile ghoti_root, fileName, targetPath, whenDone, env, (externalPath, ghotiinstall) ->
+        commonGather ghotiinstall.replaces, (vars) ->
+            if env.rename
+                then
+                    commonGather ['rename'], (rename) ->
+                        const targetName = rename[0].value
+                        writeFile (path.join targetPath, targetName), (readFile (getFileRoot ghotiinstall.path, ghotiinstall.file,ghoti_root), vars)
+                        log '| File copied'
+                        whenDone!
+                else
+                    writeFile (path.join targetPath, ghotiinstall.file), (readFile (getFileRoot ghotiinstall.path, ghotiinstall.file, ghoti_root), vars)
+                    log '| File copied'
+                    whenDone!
 
 const file = (ghoti_root, fileName, targetPathE, whenDone, env) ->
-    (if (!targetPath)
-        (log 'init have to use format "ghoti file [type] [path]"')
-        (log 'type could be any typename in list "ghoti listFile" or "ghoti lf"')
-        (log 'Try: "ghoti info init"')
-        whenDone!
-        (process.exit!))
+    var targetPath
+    if !targetPathE
+    then targetPath = process.cwd!
+    else targetPath = targetPathE
+
     if env.fetch
     then fileFromAchrive ghoti_root, fileName, targetPath, whenDone, env
     else
-        var targetPath
-        if !targetPathE
-        then targetPath = process.cwd!
-        else targetPath = targetPathE
         const root = (switchRoot fileName, ghoti_root)
         if !Boolean root
         then
