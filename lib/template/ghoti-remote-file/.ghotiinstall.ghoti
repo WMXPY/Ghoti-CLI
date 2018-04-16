@@ -1,10 +1,6 @@
 {
     "name": "${|title|}",
     "type": "file",
-    "common": [{
-        "path": "",
-        "commons": []
-    }],
     "main": "${|filePath|}",
     "author": "${|author|}",
     "language": "${|language|}",

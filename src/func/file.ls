@@ -25,8 +25,10 @@ const readFile = (root, vars) ->
     then (fs.writeFileSync (root.substring 0, root.length - 6), data, 'utf8')
     else (fs.writeFileSync root, data, 'utf8')))
 
-const getFileRoot = (filePath, fileName, ghoti_root) ->
-    path.join ghoti_root, 'lib', 'files', filePath, fileName
+const getFileRoot = (location, filePath, fileName, ghoti_root) ->
+    if location === 'built-in'
+    then path.join ghoti_root, 'lib', 'files', filePath, fileName
+    else filePath
 
 const fileFromAchrive = (ghoti_root, fileName, targetPath, whenDone, env) ->
     excuteExternalFile ghoti_root, fileName, targetPath, whenDone, env, (externalPath, ghotiinstall) ->
@@ -55,6 +57,7 @@ const file = (ghoti_root, fileName, targetPathE, whenDone, env) ->
     then fileFromAchrive ghoti_root, fileName, targetPath, whenDone, env
     else
         const root = (switchRoot fileName, ghoti_root)
+        log root
         if !Boolean root
         then
             (log ' | file "' + fileName + '" is not a valid file name')
@@ -67,11 +70,12 @@ const file = (ghoti_root, fileName, targetPathE, whenDone, env) ->
                 then
                     commonGather ['rename'], (rename) ->
                         const targetName = rename[0].value
-                        writeFile (path.join targetPath, targetName), (readFile (getFileRoot root.path, root.file,ghoti_root), vars)
+                        writeFile (path.join targetPath, targetName), (readFile (getFileRoot root.location, root.path, root.file,ghoti_root), vars)
                         log '| File copied'
                         whenDone!
                 else
-                    writeFile (path.join targetPath, root.file), (readFile (getFileRoot root.path, root.file,ghoti_root), vars)
+                    makeDir targetPath
+                    writeFile (path.join targetPath, root.file), (readFile (getFileRoot root.location, root.path, root.file,ghoti_root), vars)
                     log '| File copied'
                     whenDone!
     void

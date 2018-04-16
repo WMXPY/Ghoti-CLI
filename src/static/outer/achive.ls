@@ -298,5 +298,6 @@ const archiveWin32 = (filePath, targetPath, whenDone, callback) ->
 const unlinkFile = (filePath, whenDone) ->
     fs.unlinkSync filePath
 
+export parseLink
 export excuteExternal
 export excuteExternalFile
