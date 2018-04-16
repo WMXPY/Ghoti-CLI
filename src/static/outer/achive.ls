@@ -121,6 +121,45 @@ const checkGhotiFile = (whenDone) ->
         void
     cliConfig
 
+const excuteSwitch = (ghoti_path, opit, whenDone, env, callback) ->
+    const cliConfig = checkGhotiFile whenDone
+    const { link, next } = parseLink fileName, whenDone
+    switch next
+        case 'download'
+            # FOR PRODUCTION
+            
+            const id = uniqueId!
+
+            # FOR TESTING
+
+            # const id = '_5gbu4tisu'
+            const downloadPath = path.join ghoti_path, 'external', 'cache', (id + '.zip')
+            const expendPath = path.join ghoti_path, 'external', 'remote', id
+
+            # FOR PRODUCTION
+
+            downloadPack link, downloadPath, ->
+                log '--- DOWNLOAD COMPLETED ---'
+                log '| PACKAGE UNIQUEID: ' + id
+                expendPack downloadPath, expendPath, whenDone, (ghotiinstall) ->
+                    if ghotiinstall.type === 'file'
+                        addRemote cliConfig, ghotiinstall, expendPath, whenDone
+                        callback expendPath, ghotiinstall
+                    else if ghotiinstall.type === 'template'
+                        addExternal cliConfig, ghotiinstall, expendPath, whenDone
+                        callback expendPath, ghotiinstall
+                    else
+                        log '| External package is too old, this may not supported in future version'
+                        addExternal cliConfig, ghotiinstall, expendPath, whenDone
+                        callback expendPath, ghotiinstall
+        case 'file'
+            log next
+        default
+            log '| Not a vaild link'
+            whenDone!
+            process.exit!
+    void
+
 const excuteExternalFile = (ghoti_path, fileName, targetPath, whenDone, env, callback) ->
     const cliConfig = checkGhotiFile whenDone
     const { link, next } = parseLink fileName, whenDone
@@ -133,7 +172,7 @@ const excuteExternalFile = (ghoti_path, fileName, targetPath, whenDone, env, cal
             # FOR TESTING
 
             # const id = '_5gbu4tisu'
-            const downloadPath = path.join ghoti_path, 'external', 'remote', (id + '.zip')
+            const downloadPath = path.join ghoti_path, 'external', 'cache', (id + '.zip')
             const expendPath = path.join ghoti_path, 'external', 'remote', id
 
             # FOR PRODUCTION
@@ -176,7 +215,7 @@ const excuteExternal = (ghoti_path, type, targetPath, whenDone, env, callback) -
             # FOR TESTING
 
             # const id = '_5gbu4tisu'
-            const downloadPath = path.join ghoti_path, 'external', 'external', (id + '.zip')
+            const downloadPath = path.join ghoti_path, 'external', 'cache', (id + '.zip')
             const expendPath = path.join ghoti_path, 'external', 'external', id
 
             # FOR PRODUCTION
@@ -299,5 +338,6 @@ const unlinkFile = (filePath, whenDone) ->
     fs.unlinkSync filePath
 
 export parseLink
+export excuteSwitch
 export excuteExternal
 export excuteExternalFile
