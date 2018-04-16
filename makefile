@@ -21,26 +21,28 @@ endif
 static.ls:
 ifeq ($(UNAME), win32)
 	$(ls) .\$(distPath)\static\ .\$(sourcePath)\static\*.ls
-	$(ls) .\$(distPath)\static\outer .\$(sourcePath)\static\outer\*.ls
+	$(ls) .\$(distPath)\static\outer\ .\$(sourcePath)\static\outer\*.ls
 else
 	$(ls) ./$(distPath)/static/ ./$(sourcePath)/static/*.ls
-	$(ls) ./$(distPath)/static/outer ./$(sourcePath)/static/outer/*.ls
+	$(ls) ./$(distPath)/static/outer/ ./$(sourcePath)/static/outer/*.ls
 endif
 
 structure.ls:
 ifeq ($(UNAME), win32)
 	$(ls) .\$(distPath)\structure\ .\$(sourcePath)\structure\*.ls
-	$(ls) .\$(distPath)\structure\lib .\$(sourcePath)\structure\lib\*.ls
+	$(ls) .\$(distPath)\structure\lib\ .\$(sourcePath)\structure\lib\*.ls
 else
 	$(ls) ./$(distPath)/structure/ ./$(sourcePath)/structure/*.ls
-	$(ls) ./$(distPath)/structure/lib ./$(sourcePath)/structure/lib/*.ls
+	$(ls) ./$(distPath)/structure/lib/ ./$(sourcePath)/structure/lib/*.ls
 endif
 
 func.ls:
 ifeq ($(UNAME), win32)
 	$(ls) .\$(distPath)\func\ .\$(sourcePath)\func\*.ls
+	$(ls) .\$(distPath)\func\parser\ .\$(sourcePath)\func\parser\*.ls
 else
 	$(ls) ./$(distPath)/func/ ./$(sourcePath)/func/*.ls
+	$(ls) ./$(distPath)/func/parser/ ./$(sourcePath)/func/parser/*.ls
 endif
 
 ame.ls:

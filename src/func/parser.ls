@@ -6,6 +6,7 @@ require! {
     '../func/deepclone': { deepClone }
     '../log/getInput': { getInput }
     'child_process': { exec }
+    './parser/comments': { parseComments }
     readline
 }
 
@@ -122,6 +123,7 @@ const commonGather = (list, done, second?) ->
 (const parseFile = (filename, text, vars, specVars, typescript?) -> 
     (var re)
     (re = text)
+    re = parseComments filename, text, vars
     (re = (re.replace /\${\|version\|}/g, version))
     (if (filename === 'package.json.ghoti')
     || (filename === 'README.md.ghoti')
