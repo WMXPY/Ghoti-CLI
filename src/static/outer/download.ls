@@ -20,7 +20,6 @@ const downloadFile = (url, targetPath, callback) ->
         void
     const request = httpClient.get url, (response) ->
         response.pipe writeStream
-        
         void
     request.on 'error', (err) ->
         fs.unlink targetPath
