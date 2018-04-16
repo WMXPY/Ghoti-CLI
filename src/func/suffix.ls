@@ -11,7 +11,7 @@ const changeSuffix = (filePath) ->
     if lastS.length <= 1
     then splited[splited.length - 1] = lastS.join '.'
     else 
-        lastS[lastS.length - 1] = 'ghoti'
+        lastS[lastS.length - 1] = lastS[lastS.length - 1] + '.ghoti'
         splited[splited.length - 1] = lastS.join '.'
     splited
 

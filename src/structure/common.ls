@@ -2,6 +2,9 @@ require! {
     '../log/std': { log }
 }
 
+const commonAdd = (name) ->
+    name + '.ghoti'
+
 const comments = (type) ->
     var re
     re = '/**\r\n'
@@ -25,5 +28,6 @@ const verifyNameValiation = (name, funcName?, whenDone?) ->
         process.exit!
     else true
 
+export commonAdd
 export comments
 export verifyNameValiation

@@ -23,7 +23,6 @@ const eachFolderReacursion = (root, level, folder, formula) ->
             formula pathname, level
     files.forEach eachFile
 
-
 const eachFolder = (root, folder, formula) ->
     makeDir path.join root
     eachFolderReacursion root, 0, folder, formula

@@ -108,3 +108,6 @@ const comVueAddon = (ghoti) ->
     (fs.writeFileSync target, data, 'utf8'))
 
 export component
+
+# for testing
+export ghotiComponentFileName
