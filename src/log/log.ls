@@ -245,17 +245,17 @@ const logHelpMore = (env?) ->
     void)
 
 const logWhatIs = (keyword, env?) ->
-    (const title = '🐟  > 🏇🏼  Ghoti-CLI what is "' + keyword + '":')
-    (log title)
-    (logSeprate title.length)
-    const whatisK = (whatis keyword)
+    const title = '🐟  > 🏇🏼  Ghoti-CLI what is "' + keyword + '":'
+    log title
+    logSeprate title.length
+    const whatisK = whatis keyword
     if whatisK
     then 
-        (logPad '| "' + keyword + '" is: ', 1)
-        (log '')
-        (whatisK.map (it) ->
-            (logPad '| ' + it, 1))
-    else (logPad '| "' + keyword + '" is not in ghoti database', 1)
+        logPad '| "' + keyword + '" is: ', 1
+        log ''
+        whatisK.map (it) ->
+            logPad '| ' + it, 1
+    else logPad '| "' + keyword + '" is not in ghoti database', 1
     logSeprate title.length
     logFace!
     process.exit!

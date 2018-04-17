@@ -3,7 +3,7 @@ require! {
     '../../src/func/deepclone': { deepClone }
 }
 
-describe 'test deepclone', ->
+describe 'test deepclone (only livescript)', ->
 
     const test = {}
 
@@ -21,3 +21,7 @@ describe 'test deepclone', ->
     specify 'deepclone will not change element of object', ->
         const clonedBefore = deepClone test.before
         (expect <| test.before) .to.be.deep.equal clonedBefore
+
+    specify 'deepclone will change element pointer', ->
+        const clonedBefore = deepClone test.before
+        (expect <| test.before) .to.be.not.equal clonedBefore

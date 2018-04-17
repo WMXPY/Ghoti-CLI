@@ -1,6 +1,6 @@
 const list = [
     {
-        command: ['_']
+        command: ['_[#?]']
         arguments: 0
         info: 'Check "ghoti underline"'
         plus: [
@@ -29,13 +29,17 @@ const list = [
         ]
     }
     {
-        command: ['_']
+        command: ['_[#]']
         arguments: 1
         info: 'Check "ghoti underline"'
         plus: [
             {
                 name: 'example'
                 value: 'ghoti _+ component-devlopment'
+            }
+            {
+                name: 'example'
+                value: 'ghoti _[path] component-devlopment'
             }
         ]
         more: [
@@ -174,10 +178,9 @@ const list = [
             'whatis'
             'what'
             'whatIs'
-            '='
             'w'
         ]
-        arguments: 0
+        arguments: 1
         info: 'show info of a keyword'
         plus: [
             {
@@ -189,6 +192,52 @@ const list = [
             {
                 name: 'arguments'
                 value: 'ghoti whatis [keyword]'
+            }
+            {
+                name: 'keyword'
+                value: 'keyword could be any thing, you will know if it is not in the database of ghoti'
+            }
+        ]
+    }
+    {
+        command: [
+            '='
+        ]
+        arguments: 1
+        info: 'show info of a keyword (also "whatis")'
+        plus: [
+            {
+                name: 'example'
+                value: 'ghoti = react-ssr'
+            }
+        ]
+        more: [
+            {
+                name: 'arguments'
+                value: 'ghoti = [keyword]'
+            }
+            {
+                name: 'keyword'
+                value: 'keyword could be any thing, you will know if it is not in the database of ghoti'
+            }
+        ]
+    }
+    {
+        command: [
+            '=[#]'
+        ]
+        arguments: 0
+        info: 'short version of show info of a keyword (also "whatis")'
+        plus: [
+            {
+                name: 'example'
+                value: 'ghoti =react-ssr'
+            }
+        ]
+        more: [
+            {
+                name: 'arguments'
+                value: 'ghoti =[keyword]'
             }
             {
                 name: 'keyword'

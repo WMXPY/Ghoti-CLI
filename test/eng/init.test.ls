@@ -5,7 +5,7 @@ require! {
 
 describe 'test eng init', ->
 
-    specify 'deepclone will not change element of object', ->
+    specify 'inited setting should be same as default setting', ->
         const defaultSetting = 
             splitPercentage: 30
             lengthLimit: 45

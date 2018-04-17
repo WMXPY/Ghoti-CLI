@@ -36,6 +36,7 @@ const runPrefixCommand = (command, ghoti, ghotiCLIPath, env) ->
     then notValid <| env
     var whenDone
     const prefix = command.substring 0, 1
+    const suffix = command.substring 1, command.length
     switch prefix
         case '_'
             const ameResult = checkAme command
@@ -45,6 +46,8 @@ const runPrefixCommand = (command, ghoti, ghotiCLIPath, env) ->
         case '!'
             whenDone = (logGameCommand!)
             frogGame ghoti, env, whenDone
+        case '='
+            logWhatIs suffix, env
         default
             notValid <| env
 
