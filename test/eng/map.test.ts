@@ -9,17 +9,20 @@ describe('test map generator', (): void => {
     });
 
     it('test random number of map generator (range)', (): void => {
-        expect(Map.random(15)).to.be.lessThan(15);
-        expect(Map.random(15)).to.be.greaterThan(0);
+        expect(Map.random(15)).to.be.lessThan(16);
+        expect(Map.random(15)).to.be.greaterThan(-1);
     });
 
     it('test random number of map generator (random)', (): void => {
-        expect(Map.random(15)).to.be.not.equal(Map.random(15));
+        let same = 0
+        for (let i = 0; i < 10; i++) {
+            if (Map.random(15) === Map.random(15)) same++;
+        }
+        expect(same).to.be.lessThan(6);
     });
 
     it('test generate map', (): void => {
         const map = Map.generate(defaultSetting);
-        console.log(map)
         expect(map).to.be.contain({
             type: 'root'
         });

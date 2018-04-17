@@ -3,6 +3,7 @@ require! {
     '../func/config': config
     '../log/std': { log }
     './libTemplates': { libs }
+    './compare': { compareName }
 }
 
 const getOuter = ->
@@ -45,11 +46,6 @@ const getOuter = ->
 
 (const commonPath = (folderName, commonName, ghoti_root) ->
     (path.join ghoti_root, "lib", "common", folderName, commonName))
-
-(const compareName = (name, name2) ->
-    (const splitName = (((name.split '-').join '').toLowerCase!))
-    (const splitName2 = (((name2.split '-').join '').toLowerCase!))
-    splitName === splitName2)
 
 const libCommons = (common, ghoti_root) ->
     const commonList = []
