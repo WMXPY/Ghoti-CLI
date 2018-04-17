@@ -5,14 +5,16 @@ require! {
 const qeustionCreater = (questionE, defaultText?) ->
     var question, undef
     question = questionE
-    (if ((defaultText === true) || (defaultText === false))
+    if ((defaultText === true) || (defaultText === false))
     then
-        (if defaultText
-        then (question += ' (Y/N, default: Y)')
-        else (question += ' (Y/N, default: N)'))
+        if defaultText
+        then question += ' (Y/N, default: Y)'
+        else question += ' (Y/N, default: N)'
     else
-        (if defaultText
-        then (question += ' (default: ' + defaultText + ')')))
+        if typeof defaultText === 'string'
+        then question += ' (default: "' + defaultText + '")'
+        else if typeof defaultText === 'number'
+        then question += ' (default: ' + defaultText + ')'
     
     (question += ' :\n=>> ')
     question
