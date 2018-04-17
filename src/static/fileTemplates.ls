@@ -48,6 +48,20 @@ const files = [
             'excuteable'
         ]
     }
+    {
+        name: [
+            'polymer-element'
+        ]
+        author: '$ghoti'
+        path: 'polymer'
+        file: 'component.html.ghoti'
+        whatis: [
+            'polymer 2.0 element file'
+        ]
+        replaces: [
+            'title'
+        ]
+    }
 ]
 
 export files
