@@ -1,28 +1,33 @@
 require! {
     '../static/lib': { lib }
     '../static/file': { libFile }
+    '../static/whatis': { libWhatis }
 }
 
-(const postInstall = (type) ->
-    (re = lib(type))
-    (if re
+const postInstall = (type) ->
+    re = lib type
+    if re
     then re.postLog
-    else null))
+    else null
 
 const parseKeyword = (keyword) ->
     keyword
 
-(const whatis = (keyword) ->
-    (var re)
-    (re = (lib keyword))
-    (if re
-    then return re.whatis)
+const whatis = (keyword) ->
+    var re
+    re = lib keyword
+    if re
+    then return re.whatis
 
     re = libFile keyword
     if re
     then return re.whatis
 
-    (re = {
+    re = libWhatis keyword
+    if re
+    then return re.value
+
+    re = {
         'git-init': [
             'git init'
             'git add .'
@@ -33,11 +38,11 @@ const parseKeyword = (keyword) ->
         '.ghoticonfig': [
             'configeration of ghoti project'
         ]
-    })
+    }
 
-    (if re[keyword]
+    if re[keyword]
     then re[keyword]
-    else null))
+    else null
 
 export whatis
 export postInstall
