@@ -73,6 +73,43 @@ const list = [
     }
     {
         command: [
+            '!'
+        ]
+        arguments: 0
+        info: 'enter ghoti game interface'
+        plus: [
+            {
+                name: 'example'
+                value: 'ghoti !'
+            }
+        ]
+        more: []
+    }
+    {
+        command: [
+            '!'
+        ]
+        arguments: 1
+        info: 'command ghoti game'
+        plus: [
+            {
+                name: 'example'
+                value: 'ghoti ! ?'
+            }
+            {
+                name: 'example'
+                value: 'ghoti ! [commands]'
+            }
+        ]
+        more: [
+            {
+                name: 'more'
+                value: 'to get all ghoti ! commands, try ghoti ! ?'
+            }
+        ]
+    }
+    {
+        command: [
             'game'
             'minigame'
             'g'

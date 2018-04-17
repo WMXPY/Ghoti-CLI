@@ -36,7 +36,7 @@ export default class Map {
         log(print);
     }
 
-    protected static renderNode(map: IMap | undefined, renderList: IMap[][], currentList: IMap[], position: boolean): void {
+    public static renderNode(map: IMap | undefined, renderList: IMap[][], currentList: IMap[], position: boolean): void {
         if (!map) {
             return;
         } else {
@@ -57,7 +57,7 @@ export default class Map {
         }
     }
 
-    protected static getSignal(map: IMap): string {
+    public static getSignal(map: IMap): string {
         if (map) {
             switch (map.type) {
                 case 'root':
@@ -76,7 +76,7 @@ export default class Map {
         }
     }
 
-    protected static generateRoot(configE: IMapConfig, end: IMap): IMap {
+    public static generateRoot(configE: IMapConfig, end: IMap): IMap {
         const config = deepClone(configE);
         const type: TType = 'root';
         const next: IMap = this.generateNode(config, end);
@@ -91,7 +91,7 @@ export default class Map {
         return root;
     }
 
-    protected static generateEnd(config: IMapConfig): IMap {
+    public static generateEnd(config: IMapConfig): IMap {
         const type: TType = 'end';
         const length: number = this.random(config.lengthLimit);
         const cost: number = this.random(config.costLimit);
@@ -117,7 +117,7 @@ export default class Map {
         return node;
     }
 
-    protected static generateNode(config: IMapConfig, end: IMap): IMap {
+    public static generateNode(config: IMapConfig, end: IMap): IMap {
         config.nodeLimit -= 1;
         config.nodeMinum -= 1;
         const type: TType = 'node';
@@ -169,7 +169,7 @@ export default class Map {
         return node;
     }
 
-    protected static random(limit: number): number {
+    public static random(limit: number): number {
         return Math.round((Math.random() * 1000) % limit);
     }
 }
