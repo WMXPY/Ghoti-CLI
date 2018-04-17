@@ -42,7 +42,7 @@ export default class Map {
         } else {
             if (map.second) {
                 let nextList;
-                let emptyArr = new Array(currentList.length).fill(undefined);
+                let emptyArr: any = new Array(currentList.length).fill(undefined);
                 if (position) {
                     renderList.push(emptyArr);
                     nextList = renderList[renderList.length - 1];
