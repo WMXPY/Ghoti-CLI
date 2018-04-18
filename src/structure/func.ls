@@ -5,6 +5,7 @@ require! {
     './lib/lib': { libFunc, pathBuilder }
     '../log/log': { log, logPad }
     '../func/config': { updateConfig }
+    '../func/fs/fileController': { readFileC }
 }
 
 const ghotiFuncClassName = (name) ->
@@ -17,7 +18,7 @@ const ghotiFuncExport = (name) ->
     "    " + (ghotiFuncClassName name) + " as " + name
 
 const readFile = (root, name, ghoti) ->
-    re = ((fs.readFileSync root, 'utf8').toString!)
+    re = ((readFileC root, 'utf8').toString!)
     re = (re.replace /\${\|func\|}/g, (ghotiFuncClassName name))
     re = (re.replace /\${\|author\|}/g, ghoti.author || "unknown")
     re

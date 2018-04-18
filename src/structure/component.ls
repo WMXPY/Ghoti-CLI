@@ -5,6 +5,7 @@ require! {
     './lib/lib': { libComponent, pathBuilder }
     '../log/log': { log, logPad }
     '../func/config': { updateConfig }
+    '../func/fs/fileController': { readFileC }
 }
 
 (const ghotiComponentClassName = (name) ->
@@ -23,7 +24,7 @@ const ghotiComponentExportVue = (name) ->
 
 (const readFile = (root, name, ghoti) ->
     (var re)
-    (re = ((fs.readFileSync root, 'utf8').toString!))
+    (re = ((readFileC root, 'utf8').toString!))
     (re = (re.replace /\${\|component\|}/g, (ghotiComponentClassName name)))
     (re = (re.replace /\${\|author\|}/g, ghoti.author || "unknown"))
     re)

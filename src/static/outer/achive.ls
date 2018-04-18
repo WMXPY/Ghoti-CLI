@@ -7,6 +7,7 @@ require! {
     '../../log/std': { log, logPad }
     '../../func/deepclone': { deepClone, uniqueId }
     './download': { downloadFile }
+    '../../func/fs/fileController': { readFileC }
 }
 
 const downloadPack = (uri, filename, callback) ->
@@ -256,11 +257,11 @@ const archiveLinux = (filePath, targetPath, whenDone, callback) ->
             var tempFilePath
             tempFilePath = path.join targetPath, '.ghotiinstall'
             if fs.existsSync tempFilePath
-            then (callback (JSON.parse (fs.readFileSync tempFilePath, 'utf8')))
+            then (callback (JSON.parse (readFileC tempFilePath, 'utf8')))
             else 
                 tempFilePath = path.join targetPath, '.ghotiinstall.ghoti'
                 if fs.existsSync tempFilePath
-                then (callback (JSON.parse (fs.readFileSync tempFilePath, 'utf8')))
+                then (callback (JSON.parse (readFileC tempFilePath, 'utf8')))
                 else
                     log '| Target pack have no .ghotiinstall file'
                     whenDone!
@@ -285,11 +286,11 @@ const archiveDarwin = (filePath, targetPath, whenDone, callback) ->
             var tempFilePath
             tempFilePath = path.join targetPath, '.ghotiinstall'
             if fs.existsSync tempFilePath
-            then (callback (JSON.parse (fs.readFileSync tempFilePath, 'utf8')))
+            then (callback (JSON.parse (readFileC tempFilePath, 'utf8')))
             else 
                 tempFilePath = path.join targetPath, '.ghotiinstall.ghoti'
                 if fs.existsSync tempFilePath
-                then (callback (JSON.parse (fs.readFileSync tempFilePath, 'utf8')))
+                then (callback (JSON.parse (readFileC tempFilePath, 'utf8')))
                 else
                     log '| Target pack have no .ghotiinstall file'
                     whenDone!
@@ -313,11 +314,11 @@ const archiveWin32 = (filePath, targetPath, whenDone, callback) ->
             var tempFilePath
             tempFilePath = path.join targetPath, '.ghotiinstall'
             if fs.existsSync tempFilePath
-            then (callback (JSON.parse (fs.readFileSync tempFilePath, 'utf8')))
+            then (callback (JSON.parse (readFileC tempFilePath, 'utf8')))
             else 
                 tempFilePath = path.join targetPath, '.ghotiinstall.ghoti'
                 if fs.existsSync tempFilePath
-                then (callback (JSON.parse (fs.readFileSync tempFilePath, 'utf8')))
+                then (callback (JSON.parse (readFileC tempFilePath, 'utf8')))
                 else
                     log '| Target pack have no .ghotiinstall file'
                     whenDone!

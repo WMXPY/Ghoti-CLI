@@ -40,9 +40,11 @@ func.ls:
 ifeq ($(UNAME), win32)
 	$(ls) .\$(distPath)\func\ .\$(sourcePath)\func\*.ls
 	$(ls) .\$(distPath)\func\parser\ .\$(sourcePath)\func\parser\*.ls
+	$(ls) .\$(distPath)\func\fs\ .\$(sourcePath)\func\fs\*.ls
 else
 	$(ls) ./$(distPath)/func/ ./$(sourcePath)/func/*.ls
 	$(ls) ./$(distPath)/func/parser/ ./$(sourcePath)/func/parser/*.ls
+	$(ls) ./$(distPath)/func/fs/ ./$(sourcePath)/func/fs/*.ls
 endif
 
 ame.ls:

@@ -5,6 +5,7 @@ require! {
     './parser/parser': { parseAll, parseFile, commonGather }
     '../static/lib': { lib, commonPath, libCommons }
     '../static/outer/achive': { excuteExternal, excuteSwitch }
+    './fs/fileController': { readFileC }
 }
 
 (const switchRoot = (type, ghoti_root) ->
@@ -47,7 +48,7 @@ require! {
     else (fs.writeFileSync root, data, 'utf8')))
     
 (const readFile = (filename, root, vars, specVars) ->
-    (parseFile filename, (fs.readFileSync root, 'utf8'), vars, specVars))
+    (parseFile filename, (readFileC root, 'utf8'), vars, specVars))
 
 (const makeDir = (root) ->
     (if (!(fs.existsSync root))

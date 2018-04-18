@@ -5,6 +5,7 @@ require! {
     '../static/file': { libFile }
     './parser/parser': { commonParse, commonGather }
     '../static/outer/achive': { excuteExternalFile }
+    './fs/fileController': { readFileC }
 }
 
 (const makeDir = (root) ->
@@ -18,7 +19,7 @@ require! {
     else null))
 
 const readFile = (root, vars) ->
-    commonParse (fs.readFileSync root, 'utf8'), vars
+    commonParse (readFileC root, 'utf8'), vars
 
 (const writeFile = (root, data) -> 
     (if (root.substring root.length - 6, root.length) === '.ghoti'

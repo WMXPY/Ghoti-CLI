@@ -5,6 +5,7 @@ require! {
     './lib/lib': { libPage, pathBuilder }
     '../log/log': { log, logPad }
     '../func/config': { updateConfig }
+    '../func/fs/fileController': { readFileC }
 }
 
 (const ghotiPageClassName = (name) ->
@@ -20,7 +21,7 @@ require! {
 
 (const readFile = (root, name, ghoti) ->
     (var re)
-    (re = ((fs.readFileSync root, 'utf8').toString!))
+    (re = ((readFileC root, 'utf8').toString!))
     (re = (re.replace /\${\|page\|}/g, (ghotiPageClassName name)))
     (re = (re.replace /\${\|author\|}/g, ghoti.author || "unknown"))
     re)

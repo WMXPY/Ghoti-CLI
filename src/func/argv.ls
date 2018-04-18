@@ -2,6 +2,7 @@ require! {
     fs
     path
     '../log/log': { log }
+    './fs/fileController': { readFileC }
 }
 (const path_argv = (process.argv))
 (const path_node = (path_argv.shift!))
@@ -10,7 +11,7 @@ require! {
 (const path_path = (process.cwd!))
 (var ghotiConfig)
 (if (fs.existsSync (path.join path_path, '.ghoticonfig'))
-then ghotiConfig = (JSON.parse (fs.readFileSync (path.join path_path, '.ghoticonfig')).toString!)
+then ghotiConfig = (JSON.parse (readFileC (path.join path_path, '.ghoticonfig')).toString!)
 else ghotiConfig = {})
 
 (const command = (command) ->
@@ -57,7 +58,7 @@ else ghotiConfig = {})
     env)
 
 (if (fs.existsSync (path.join path_path, '.ghoticonfig'))
-then ghotiConfig = (JSON.parse (fs.readFileSync (path.join path_path, '.ghoticonfig')).toString!))
+then ghotiConfig = (JSON.parse (readFileC (path.join path_path, '.ghoticonfig')).toString!))
 
 export argv
 export path_argv

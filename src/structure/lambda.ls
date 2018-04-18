@@ -5,6 +5,7 @@ require! {
     './lib/lib': { libLambda, pathBuilder }
     '../log/log': { log, logPad }
     '../func/config': { updateConfig }
+    '../func/fs/fileController': { readFileC }
 }
 
 (const ghotiLambdaClassName = (name) ->
@@ -18,7 +19,7 @@ require! {
 
 (const readFile = (root, name, ghoti) ->
     (var re)
-    (re = ((fs.readFileSync root, 'utf8').toString!))
+    (re = ((readFileC root, 'utf8').toString!))
     (re = (re.replace /\${\|lambda\|}/g, (ghotiLambdaClassName name)))
     (re = (re.replace /\${\|author\|}/g, ghoti.author || "unknown"))
     re)

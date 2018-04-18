@@ -5,6 +5,7 @@ require! {
     './lib/lib': { libFeature, libTest, pathBuilder }
     '../func/config': { updateConfig }
     './common': { verifyNameValiation }
+    '../func/fs/fileController': { readFileC }
 }
 
 (const ghotiTestClassName = (name) ->
@@ -27,7 +28,7 @@ require! {
 
 (const readFile = (root, name, ghoti) ->
     (var re)
-    (re = ((fs.readFileSync root, 'utf8').toString!))
+    (re = ((readFileC root, 'utf8').toString!))
     (re = (re.replace /\${\|test\|}/g, (ghotiTestClassName name)))
     (re = (re.replace /\${\|feature\|}/g, (ghotiFeatureClassName name)))
     (re = (re.replace /\${\|author\|}/g, ghoti.author || "unknown"))

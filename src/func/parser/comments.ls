@@ -83,6 +83,8 @@ const addComments = (filename, context, vars) ->
     else context
 
 const parseComments = (filename, content, vars) ->
+    if !Boolean content.split
+    then return content
     if vars && (!Boolean vars.length) && (!Boolean vars.push)
     then vars = mapVars vars
     const splited = content.split('\n')

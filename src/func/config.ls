@@ -4,6 +4,7 @@ require! {
     os
     '../log/log': { log }
     '../func/argv': { path_ghoti }
+    './fs/fileController': { readFileC }
 }
 
 (const cliPath = ->
@@ -40,7 +41,7 @@ require! {
     (const configExist = (fs.existsSync (path.join path_current, '.ghoticonfig')))
 
     (if configExist
-    then config = (JSON.parse (fs.readFileSync (path.join path_current, '.ghoticonfig'), 'utf8'))
+    then config = (JSON.parse (readFileC (path.join path_current, '.ghoticonfig'), 'utf8'))
     else config = null)
 
     config)
@@ -50,7 +51,7 @@ require! {
     (const path_current = (process.cwd!))
     (const configExist = (fs.existsSync (path.join path_current, '.ghotigameconfig')))
     (if configExist
-    then config = (JSON.parse (fs.readFileSync (path.join path_current, '.ghotigameconfig'), 'utf8'))
+    then config = (JSON.parse (readFileC (path.join path_current, '.ghotigameconfig'), 'utf8'))
     else config = null)
     config)
 
@@ -89,7 +90,7 @@ require! {
     (const configExist = (fs.existsSync path.join cliPath!, '.ghoticonfig'))
 
     (if configExist
-    then (JSON.parse (fs.readFileSync (path.join cliPath!, '.ghoticonfig'), 'utf8'))
+    then (JSON.parse (readFileC (path.join cliPath!, '.ghoticonfig'), 'utf8'))
     else false))
 
 (const initConfig = (type) ->
