@@ -11,7 +11,7 @@ require! {
     './structure/lambda': { lambda }
     './structure/func': { func }
     './structure/feature': { feature }
-    './func/parser': { processMucall }
+    './func/parser/parser': { processMucall }
     './func/fix': { fix }
     './func/update': { update }
     './ame/init': { initUnderline }

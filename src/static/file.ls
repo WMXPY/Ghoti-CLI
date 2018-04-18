@@ -2,6 +2,7 @@ require! {
     path
     '../func/config': config
     './fileTemplates': { files }
+    './compare': { compareName }
     '../log/std': { log }
 }
 
@@ -12,16 +13,6 @@ const getOuter = ->
     then if outer.remote.length
     then outer
     else null
-
-(const compareName = (name, name2) ->
-    if (!Boolean name) || (!Boolean name2)
-    then 
-        log '| Name is not issued'
-        log '| Try "ghoti flist" for file list'
-        process.exit!
-    (const splitName = (((name.split '-').join '').toLowerCase!))
-    (const splitName2 = (((name2.split '-').join '').toLowerCase!))
-    splitName === splitName2)
 
 const libFile = (fileName, ghoti_root) ->
     var re

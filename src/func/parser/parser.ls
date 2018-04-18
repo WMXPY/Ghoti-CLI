@@ -1,12 +1,12 @@
 require! {
     fs
     path
-    '../log/log': { log, logInline }
-    '../static/static': { version }
-    '../func/deepclone': { deepClone }
-    '../log/getInput': { getInput }
+    '../../log/log': { log, logInline }
+    '../../static/static': { version }
+    '../../func/deepclone': { deepClone }
+    '../../log/getInput': { getInput }
     'child_process': { exec }
-    './parser/comments': { parseComments }
+    './comments': { parseComments }
     readline
 }
 

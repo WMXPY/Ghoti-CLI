@@ -3,7 +3,7 @@ require! {
     path
     '../log/std': { log }
     '../static/file': { libFile }
-    './parser': { commonParse, commonGather }
+    './parser/parser': { commonParse, commonGather }
     '../static/outer/achive': { excuteExternalFile }
 }
 
@@ -48,6 +48,13 @@ const fileFromAchrive = (ghoti_root, fileName, targetPath, whenDone, env) ->
                     whenDone!
 
 const file = (ghoti_root, fileName, targetPathE, whenDone, env) ->
+    if !(Boolean fileName)
+    then 
+        log '| File format: "ghoti file [type] [path?]", add -f for external file'
+        log '| See all available file types: "ghoti lf"'
+        log '| Try: "ghoti info file"'
+        whenDone!
+        process.exit!
     var targetPath
     if !targetPathE
     then targetPath = process.cwd!

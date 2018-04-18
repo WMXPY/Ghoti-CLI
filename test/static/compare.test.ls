@@ -27,6 +27,14 @@ describe 'test name comparing', ->
         const test2 = '--'
         const com2 = '-'
         (expect <| (compareName test2, com2)) .to.be.equal true
+    
+    specify 'test name compare (empty)', ->
+        const test1 = ''
+        const com1 = ''
+        (expect <| (compareName test1, com1)) .to.be.equal false
+        const test2 = ''
+        const com2 = '-'
+        (expect <| (compareName test2, com2)) .to.be.equal false
 
     specify 'test name compare (dash and string)', ->
         const test1 = 'happy-tree'

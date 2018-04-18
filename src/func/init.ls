@@ -2,7 +2,7 @@ require! {
     fs
     path
     '../log/log': { log, logPostInstall }
-    './parser': { parseAll, parseFile, commonGather }
+    './parser/parser': { parseAll, parseFile, commonGather }
     '../static/lib': { lib, commonPath, libCommons }
     '../static/outer/achive': { excuteExternal, excuteSwitch }
 }
