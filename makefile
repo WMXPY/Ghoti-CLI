@@ -5,21 +5,21 @@ sourcePath := src
 distPath := dist
 
 ghoti: $(depdence)
-ifeq ($(UNAME), win32)
+ifeq ($(OS), Windows_NT)
 	$(ls) .\dist\ .\src\*.ls
 else
 	$(ls) ./dist/ ./src/*.ls
 endif
 
 log.ls:
-ifeq ($(UNAME), win32)
+ifeq ($(OS), Windows_NT)
 	$(ls) .\$(distPath)\log\ .\$(sourcePath)\log\*.ls
 else
 	$(ls) ./$(distPath)/log/ ./$(sourcePath)/log/*.ls
 endif
 
 static.ls:
-ifeq ($(UNAME), win32)
+ifeq ($(OS), Windows_NT)
 	$(ls) .\$(distPath)\static\ .\$(sourcePath)\static\*.ls
 	$(ls) .\$(distPath)\static\outer\ .\$(sourcePath)\static\outer\*.ls
 else
@@ -28,7 +28,7 @@ else
 endif
 
 structure.ls:
-ifeq ($(UNAME), win32)
+ifeq ($(OS), Windows_NT)
 	$(ls) .\$(distPath)\structure\ .\$(sourcePath)\structure\*.ls
 	$(ls) .\$(distPath)\structure\lib\ .\$(sourcePath)\structure\lib\*.ls
 else
@@ -37,7 +37,7 @@ else
 endif
 
 func.ls:
-ifeq ($(UNAME), win32)
+ifeq ($(OS), Windows_NT)
 	$(ls) .\$(distPath)\func\ .\$(sourcePath)\func\*.ls
 	$(ls) .\$(distPath)\func\parser\ .\$(sourcePath)\func\parser\*.ls
 	$(ls) .\$(distPath)\func\fs\ .\$(sourcePath)\func\fs\*.ls
@@ -48,31 +48,39 @@ else
 endif
 
 ame.ls:
-ifeq ($(UNAME), win32)
+ifeq ($(OS), Windows_NT)
 	$(ls) .\$(distPath)\ame\ .\$(sourcePath)\ame\*.ls
 else
 	$(ls) ./$(distPath)/ame/ ./$(sourcePath)/ame/*.ls
 endif
 
 eng.ls:
-ifeq ($(UNAME), win32)
+ifeq ($(OS), Windows_NT)
 	$(ls) .\$(distPath)\eng\ .\$(sourcePath)\eng\*.ls
 else
 	$(ls) ./$(distPath)/eng/ ./$(sourcePath)/eng/*.ls
 endif
 
 eng.ts:
-ifeq ($(UNAME), win32)
+ifeq ($(OS), Windows_NT)
 	$(ts) .\$(sourcePath)\eng\tsconfig.json
 else
 	$(ts) ./$(sourcePath)/eng/tsconfig.json
 endif
 
 clean:
-ifeq ($(UNAME), win32)
-	del .\$(distPath)
-	del *.aux *.dvi *.fdb* *.fls *.log *.gz *.pdf
+ifeq ($(OS), Windows_NT)
+	cmd //C del .\$(distPath)
+	cmd //C del *.aux *.dvi *.fdb* *.fls *.log *.gz *.pdf
+	cmd //C del .\src\eng\*.js
+	cmd //C del .\src\eng\*.js.map
+	cmd //C del .\test\eng\*.js
+	cmd //C del .\test\eng\*.js.map
 else
 	rm -rf ./$(distPath)
 	rm -rf *.aux *.dvi *.fdb* *.fls *.log *.gz *.pdf
+	rm -rf ./src/eng/*.js
+	rm -rf ./src/eng/*.js.map
+	rm -rf ./test/eng/*.js
+	rm -rf ./test/eng/*.js.map
 endif
