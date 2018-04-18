@@ -3,7 +3,7 @@ import { deepClone } from '../../src/func/deepclone';
 
 describe('test deepclone (typescript / livescript)', (): void => {
 
-    let before;
+    let before: any;
 
     beforeEach((): void => {
         before = {

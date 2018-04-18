@@ -5,8 +5,11 @@ package-lock.json
 .ghoticonfig
 .gitignore
 makefile
+
 test
 tests
+distTest
+
 script
 node_modules
 bin/*.sh

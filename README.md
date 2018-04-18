@@ -2,7 +2,6 @@
 
 [![npm version](https://badge.fury.io/js/ghoti-cli.svg)](https://badge.fury.io/js/ghoti-cli)
 [![Build Status](https://travis-ci.org/WMXPY/Ghoti-CLI.svg?branch=master)](https://travis-ci.org/WMXPY/Ghoti-CLI)
-[![codecov](https://codecov.io/gh/WMXPY/Ghoti-CLI/branch/master/graph/badge.svg)](https://codecov.io/gh/WMXPY/Ghoti-CLI)
 [![Gitter](https://badges.gitter.im/WMXPY/ghoti-cli.svg)](https://gitter.im/ghoti-cli?utm_source=badge&utm_medium=badge&utm_campaign=pr-badge)
 [![downloads](https://img.shields.io/npm/dm/ghoti-cli.svg)](https://www.npmjs.com/package/ghoti-cli)
 
