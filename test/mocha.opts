@@ -1,4 +1,10 @@
+--reporter spec
+--ui bdd
+
 --require ts-node/register
 --require livescript
+
+--recursive
+
 **/*.test.ts
 **/*.test.ls

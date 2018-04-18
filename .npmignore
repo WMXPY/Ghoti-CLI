@@ -10,6 +10,11 @@ tests
 script
 node_modules
 bin/*.sh
+.nyc_output
+coverage
+
+# testing files
+
 a
 b
 c

@@ -10,6 +10,11 @@ dist
 package-lock.json
 node_modules
 external
+.nyc_output
+coverage
+
+# testing files
+
 a
 b
 c
