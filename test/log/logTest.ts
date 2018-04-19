@@ -1,14 +1,12 @@
-export default function (f: Function, message: string) {
-    const oldLog = console.log;
+export default function (fun: Function): string {
+    const logTemp = console.log;
     let logText: string = '';
 
-    console.log = function (s: string) {
-        logText += s;
+    console.log = function (...s: string[]) {
+        if (logText.length > 0) logText += '\n';
+        logText += s.join(' ');
     };
-
-    f();
-
-    console.log = oldLog;
-
-    return message === logText;
+    fun();
+    console.log = logTemp;
+    return logText;
 }
