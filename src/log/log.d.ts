@@ -11,7 +11,7 @@ export interface IEnv {
 }
 
 export declare const logSeprate: (length: number) => string;
-export declare const logAlias: (length: number) => string;
+export declare const logAlias: (command: string, original: string) => string;
 export declare const br: () => string;
 export declare const logHelp: (isEmpty?: boolean, env?: IEnv) => void;
 export declare const logHelpMore: (env?: IEnv) => void;

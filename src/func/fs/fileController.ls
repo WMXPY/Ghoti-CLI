@@ -11,5 +11,6 @@ const readFileC = (filePath, whenDone?) ->
         then whenDone!
         else log '! File Read Error while reading "' + filePath + '"'
         process.exit!
+    null
 
 export readFileC

@@ -11,7 +11,10 @@ require! {
 (const logSeprate = (length) ->
     (var re)
     (re = '')
-    (for i to length
+
+    # FIX 2018-04-20
+    # was for i to length, due to ls feature, change to i to length - 1
+    (for i to length - 1
         re += '-')
     (log re)
     re)
