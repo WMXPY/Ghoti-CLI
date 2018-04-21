@@ -377,6 +377,9 @@ const logDeprecated = (command, due) ->
         logPad ('| ' + it), 1
 
 (export log)
+export br
+export logAlias
+export logSeprate
 (export logInline)
 (export logPad)
 (export logHelp)
