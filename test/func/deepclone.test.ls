@@ -34,11 +34,18 @@ describe 'test deepclone (only livescript)', ->
             const resultq = uniqueId 10
             (expect <| testq.length) .to.be.equal resultq.length
 
+    specify 'unique id should generate id with specific same length (long)', ->
+        for i to 10
+        then
+            const testq = uniqueId 16
+            const resultq = uniqueId 16
+            (expect <| testq.length) .to.be.equal resultq.length
+
     specify 'defatult uniqueid should be corrent length', ->
         const test1 = uniqueId!
         (expect <| test1.length) .to.be.equal 8
 
-    specify 'deepclone will change element pointer', ->
+    specify 'deepclone will not change element pointer', ->
         const before = 
             aBoolean: true
             aNumber: 16

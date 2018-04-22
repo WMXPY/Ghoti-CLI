@@ -15,7 +15,9 @@ const uniqueId = (len?) ->
     if len > 12 || len <= 0
     then return uniqueIdSmall!
     else 
-        const re = '_' + ((Math.random!.toString 36).substring 2, (2 + len))
+        const left = Math.random!.toString 36
+        const right = Math.random!.toString 36
+        const re = '_' + ((left + right).substring 2, (2 + len))
 
 export deepClone
 export uniqueId
