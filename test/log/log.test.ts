@@ -11,7 +11,7 @@ import {
 import monk_log from './monk_log';
 
 const stringBilder = (str: string[]): string => {
-    return str.join('\n');
+    return str.join('\r\n');
 }
 
 describe('test common logging functions from log/log.ls', (): void => {
@@ -48,7 +48,7 @@ describe('test common logging functions from log/log.ls', (): void => {
         }
         const re = monk_log(func);
         expect(re).to.be.deep.equal([
-            '\r\n',
+            '\r\r\n',
         ]);
     });
 

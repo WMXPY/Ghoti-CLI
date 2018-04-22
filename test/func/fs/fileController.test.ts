@@ -3,7 +3,7 @@ import { readFileC } from '../../../src/func/fs/fileController';
 import monk_read from '../monk_read';
 
 const stringBilder = (str: string[]): string => {
-    return str.join('\n');
+    return str.join('\r\n');
 }
 
 describe('test read file c from fs/ func', (): void => {

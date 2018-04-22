@@ -34,7 +34,7 @@ describe 'test comments adding', ->
             ' */'
             ''
             'console.log(1)'
-        ].join '\n'
+        ].join '\r\n'
         const test1 = addComments 'test.js', 'console.log(1)'
         (expect <| test1) .to.be.equal result1
     
@@ -46,7 +46,7 @@ describe 'test comments adding', ->
             ' */'
             ''
             'console.log(1)'
-        ].join '\n'
+        ].join '\r\n'
         const test1 = addComments 'test.js', 'console.log(1)', [
             {
                 name: 'overview'
@@ -61,7 +61,7 @@ describe 'test comments adding', ->
             ' */'
             ''
             'console.log(2)'
-        ].join '\n'
+        ].join '\r\n'
         const test2 = addComments 'test.js', 'console.log(2)', [
             {
                 name: 'overview'

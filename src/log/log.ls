@@ -28,7 +28,7 @@ require! {
     len)
 
 (const br = ->
-    (log '\r\n'))
+    (log '\r\r\n'))
 
 (const logFace = ->
     (const faces = [

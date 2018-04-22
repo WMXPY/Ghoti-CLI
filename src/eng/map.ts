@@ -30,7 +30,7 @@ export default class Map {
                 }
             }
             if (full && i < renderList.length - 1) {
-                print += '\n';
+                print += '\r\n';
             }
         }
         log(print);

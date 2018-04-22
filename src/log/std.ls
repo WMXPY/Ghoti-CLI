@@ -51,7 +51,7 @@ const getStrOccRowColumns = (str) ->
     text)
 
 const forceEnter = ->
-    outputStream.write '\n'
+    outputStream.write '\r\n'
     void
 
 const logReplace = (content, lastContent?) ->

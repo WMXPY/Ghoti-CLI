@@ -39,7 +39,7 @@ const libComments = (type, vars?) ->
         if i.name === type
         then re = deepClone i.content
     if re
-    then (replaceVars re, vars).join '\n'
+    then (replaceVars re, vars).join '\r\n'
     else null
 
 const libLanguages = (language) ->
@@ -79,7 +79,7 @@ const getComments = (filename, vars) ->
 const addComments = (filename, context, vars) ->
     const adding = getComments filename, vars
     if adding
-    then adding + '\n\n' + context
+    then adding + '\r\n\r\n' + context
     else context
 
 const parseComments = (filename, content, vars) ->
@@ -87,7 +87,7 @@ const parseComments = (filename, content, vars) ->
     then return content
     if vars && (!Boolean vars.length) && (!Boolean vars.push)
     then vars = mapVars vars
-    const splited = content.split('\n')
+    const splited = content.split('\r\n')
     if (splited[0].substring 0, 5) === '// G!'
     then
         const overview = splited[0].substring 5, splited[0].length
@@ -95,8 +95,8 @@ const parseComments = (filename, content, vars) ->
             name: 'overview'
             value: overview
         }
-        splited[0] = (getComments filename, vars) + '\n'
-    splited.join '\n'
+        splited[0] = (getComments filename, vars) + '\r\n'
+    splited.join '\r\n'
 
 export determinLanguage
 export addComments

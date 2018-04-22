@@ -16,7 +16,7 @@ const qeustionCreater = (questionE, defaultText?) ->
         else if typeof defaultText === 'number'
         then question += ' (default: ' + defaultText + ')'
     
-    (question += ' :\n=>> ')
+    (question += ' :\r\n=>> ')
     question
 
 (const getInput = (question, defaultText, callback) ->
