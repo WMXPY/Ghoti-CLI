@@ -31,10 +31,10 @@ const comImport = (ghoti) ->
     var re
     re = comments 'funcs'
     re += ((ghoti.funcs.map ((it) ->
-        "import * as " + (ghotiFuncClassName it) + " from './" + (ghotiFuncFileName it) + "';")).join("\r\r\n"))
-    re += "\r\r\n"
-    re += "export {\r\r\n" + (ghoti.funcs.map ((it) ->
-        (ghotiFuncExport it) + ",")).join("\r\r\n") + "\r\r\n};\r\r\n"
+        "import * as " + (ghotiFuncClassName it) + " from './" + (ghotiFuncFileName it) + "';")).join("\r\n"))
+    re += "\r\n"
+    re += "export {\r\n" + (ghoti.funcs.map ((it) ->
+        (ghotiFuncExport it) + ",")).join("\r\n") + "\r\n};\r\n"
     re
 
 const func = (root, targetPath, name, ghoti, whenDone, env) ->

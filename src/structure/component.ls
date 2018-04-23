@@ -37,10 +37,10 @@ const ghotiComponentExportVue = (name) ->
     var re
     re = comments 'components'
     (re += (ghoti.components.map ((it) ->
-        "import " + (ghotiComponentClassName it) + " from './" + (ghotiComponentFileName it) + "';")).join("\r\r\n"))
-    (re += "\r\r\n")
-    (re += "export {\r\r\n" + (ghoti.components.map ((it) ->
-        (ghotiComponentExport it) + ",")).join("\r\r\n") + "\r\r\n};\r\r\n")
+        "import " + (ghotiComponentClassName it) + " from './" + (ghotiComponentFileName it) + "';")).join("\r\n"))
+    (re += "\r\n")
+    (re += "export {\r\n" + (ghoti.components.map ((it) ->
+        (ghotiComponentExport it) + ",")).join("\r\n") + "\r\n};\r\n")
     re)
 
 const comVueAddon = (ghoti) ->
@@ -50,15 +50,15 @@ const comVueAddon = (ghoti) ->
         (process.exit!))
     var re
     re = comments 'components'
-    re += 'import Vue, { VueConstructor } from \'vue\';\r\r\n\r\r\n'
+    re += 'import Vue, { VueConstructor } from \'vue\';\r\n\r\n'
     (re += (ghoti.components.map ((it) ->
-        "import " + (ghotiComponentClassName it) + " from './" + (ghotiComponentFileName it, true) + "';")).join("\r\r\n"))
-    (re += "\r\r\n\r\r\n")
-    re += "export default {\r\r\n"
-    re += "    install: (Vue: VueConstructor, options?: any) => {\r\r\n"
+        "import " + (ghotiComponentClassName it) + " from './" + (ghotiComponentFileName it, true) + "';")).join("\r\n"))
+    (re += "\r\n\r\n")
+    re += "export default {\r\n"
+    re += "    install: (Vue: VueConstructor, options?: any) => {\r\n"
     re += (ghoti.components.map ((it) ->
-        (ghotiComponentExportVue it))).join("\r\r\n")
-    re += "\r\r\n    },\r\r\n};\r\r\n"
+        (ghotiComponentExportVue it))).join("\r\n")
+    re += "\r\n    },\r\n};\r\n"
     re
 
 (const component = (root, targetPath, name, ghoti, whenDone, env) ->  

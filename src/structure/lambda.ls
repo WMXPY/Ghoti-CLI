@@ -32,10 +32,10 @@ require! {
     var re
     re = comments 'lambdas'
     (re += (ghoti.lambdas.map ((it) ->
-        "import * as " + (ghotiLambdaClassName it) + " from './" + (ghotiLambdaFileName it) + "';")).join("\r\r\n"))
-    (re += "\r\r\n")
-    (re += "export {\r\r\n" + (ghoti.lambdas.map ((it) ->
-        (ghotiLambdaExport it) + ",")).join("\r\r\n") + "\r\r\n};\r\r\n")
+        "import * as " + (ghotiLambdaClassName it) + " from './" + (ghotiLambdaFileName it) + "';")).join("\r\n"))
+    (re += "\r\n")
+    (re += "export {\r\n" + (ghoti.lambdas.map ((it) ->
+        (ghotiLambdaExport it) + ",")).join("\r\n") + "\r\n};\r\n")
     re)
 
 (const lambda = (root, targetPath, name, ghoti, whenDone, env) ->

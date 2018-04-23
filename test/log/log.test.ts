@@ -48,7 +48,7 @@ describe('test common logging functions from log/log.ls', (): void => {
         }
         const re = monk_log(func);
         expect(re).to.be.deep.equal([
-            '\r\r\n',
+            '\r\n',
         ]);
     });
 

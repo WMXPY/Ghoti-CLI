@@ -34,10 +34,10 @@ require! {
     (var re)
     re = comments 'page'
     (re += (ghoti.pages.map ((it) ->
-        "import " + (ghotiPageClassName it) + " from './" + (ghotiPageFileName it) + "';")).join("\r\r\n"))
-    (re += "\r\r\n")
-    (re += "export {\r\r\n" + (ghoti.pages.map ((it) ->
-        (ghotiPageExport it) + ",")).join("\r\r\n") + "\r\r\n};\r\r\n")
+        "import " + (ghotiPageClassName it) + " from './" + (ghotiPageFileName it) + "';")).join("\r\n"))
+    (re += "\r\n")
+    (re += "export {\r\n" + (ghoti.pages.map ((it) ->
+        (ghotiPageExport it) + ",")).join("\r\n") + "\r\n};\r\n")
     re)
 
 (const comImportVue = (ghoti) ->
@@ -48,10 +48,10 @@ require! {
     (var re)
     re = comments 'pages'
     (re += (ghoti.pages.map ((it) ->
-        "import " + (ghotiPageClassName it) + " from './" + (ghotiPageFileName it, true) + "';")).join("\r\r\n"))
-    (re += "\r\r\n")
-    (re += "export {\r\r\n" + (ghoti.pages.map ((it) ->
-        (ghotiPageExport it) + ",")).join("\r\r\n") + "\r\r\n};\r\r\n")
+        "import " + (ghotiPageClassName it) + " from './" + (ghotiPageFileName it, true) + "';")).join("\r\n"))
+    (re += "\r\n")
+    (re += "export {\r\n" + (ghoti.pages.map ((it) ->
+        (ghotiPageExport it) + ",")).join("\r\n") + "\r\n};\r\n")
     re)
 
 (const page = (root, targetPath, name, ghoti, whenDone, env) ->
