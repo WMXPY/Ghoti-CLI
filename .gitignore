@@ -10,7 +10,6 @@ dist
 !lib/**/dist
 distTest
 
-package-lock.json
 node_modules
 external
 .nyc_output
