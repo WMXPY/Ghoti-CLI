@@ -7,3 +7,7 @@ describe 'test static version', ->
 
     specify 'test static version', ->
         (expect <| typeof version) .to.be.equal 'string'
+
+    specify 'test static version format', ->
+        const test1 = version.split ' ' 
+        (expect <| test1.length) .to.be.equal 1

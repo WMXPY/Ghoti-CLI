@@ -1,3 +1,4 @@
+// G!Global Styles
 @import './color.sass'
 
 html, body, #container, .ghoti-contain
