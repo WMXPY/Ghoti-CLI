@@ -2,6 +2,6 @@ require!{
     
 }
 
-(const version = "3.2.2-fix.2")
+(const version = "3.2.3")
 
 (export version)
