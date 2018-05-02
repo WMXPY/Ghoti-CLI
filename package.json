@@ -12,6 +12,7 @@
   },
   "scripts": {
     "test": "mocha",
+    "build": "make",
     "tsTest": "tsc --p ./test/tsconfig.json",
     "cov": "codecov -f ./coverage/coverage-final.json -t [key]"
   },
@@ -26,17 +27,17 @@
   },
   "homepage": "https://github.com/WMXPY/Ghoti-CLI#readme",
   "devEngines": {
-    "node": ">=7.x",
+    "node": ">=5.x",
     "npm": ">=4.x"
   },
   "devDependencies": {
     "@types/chai": "^4.1.3",
     "@types/mocha": "^5.2.0",
-    "@types/node": "^10.0.0",
+    "@types/node": "^10.0.2",
     "chai": "^4.1.2",
     "livescript": "1.5.0",
     "mocha": "^5.1.1",
-    "ts-node": "^6.0.0",
+    "ts-node": "^6.0.2",
     "typescript": "^2.8.3"
   },
   "dependencies": {}
