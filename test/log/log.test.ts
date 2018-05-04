@@ -76,4 +76,18 @@ describe('test common logging functions from log/log.ls', (): void => {
         ]);
     });
 
+    it('test log seprate function multiple times', (): void => {
+        const func = () => {
+            logSeprate(3);
+            logSeprate(3);
+            logSeprate(1);
+        }
+        const re = monk_log(func);
+        expect(re).to.be.deep.equal([
+            '---',
+            '---',
+            '-',
+        ]);
+    });
+
 });
