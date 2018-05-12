@@ -37,6 +37,25 @@ const libs = [
     }
     {
         name: [
+            'duo-electron'
+            'electron'
+        ]
+        author: '$ghoti'
+        path: 'duo-electron'
+        language: 'TypeScript'
+        framework: 'Electron'
+        common: [
+        ]
+        replaces: [
+        ]
+        postLog: (defaultLogs [
+        ])
+        whatis: [
+            'electron duo package.json template'
+        ]
+    }
+    {
+        name: [
             'ghoti-remote-file'
             'ghoti-file-remote'
             'ghoti-file'
@@ -60,7 +79,7 @@ const libs = [
             'see Readme for more information'
         ])
         whatis: [
-            'ghoti-cli package template'
+            'ghoti-cli remote file'
         ]
     }
     {
