@@ -417,6 +417,7 @@ const list = [
             'init'
             'create'
             'template'
+            'new'
         ]
         arguments: 2
         info: 'init a project'
@@ -442,6 +443,31 @@ const list = [
             {
                 name: 'name'
                 value: 'name could be anything you want for your project'
+            }
+        ]
+    }
+    {
+        command: [
+            'merge'
+            'mer'
+            'm'
+        ]
+        arguments: 1
+        info: 'merge a project template to current folder'
+        plus: [
+            {
+                name: 'example'
+                value: 'ghoti merge react'
+            }
+        ]
+        more: [
+            {
+                name: 'arguments'
+                value: 'ghoti merge [project type]'
+            }
+            {
+                name: 'type'
+                value: 'type could be any typename in list "ghoti list"'
             }
         ]
     }

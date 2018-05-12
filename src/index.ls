@@ -125,11 +125,22 @@ const excute = (...mucall?) ->
         # init
         case 'create'
             fallthrough
+        case 'new'
+            fallthrough
         case 'template'
             fallthrough
         case 'init'
             whenDone = (logCommand!)
             (init ghotiCLIPath, env.texture[0], env.texture[1], whenDone, env)
+
+        case 'merge'
+            fallthrough
+        case 'mer'
+            fallthrough
+        case 'm'
+            whenDone = (logCommand!)
+            log 'Not a finished feature, check update'
+            whenDone!
 
         # file
         case 'f'
