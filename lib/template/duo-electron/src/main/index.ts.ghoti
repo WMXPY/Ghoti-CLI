@@ -1,6 +1,6 @@
 // G!Electron Entry
-import Config from "../config/config";
 import { app, BrowserWindow, Event, ipcMain } from "electron";
+import Config from "../config/config";
 
 let win: BrowserWindow;
 

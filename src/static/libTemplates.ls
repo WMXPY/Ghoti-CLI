@@ -49,6 +49,7 @@ const libs = [
                 path: 'common'
                 commons: [
                     'tslint'
+                    'eslint'
                 ]
             }
         ]
