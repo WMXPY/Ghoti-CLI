@@ -11,7 +11,7 @@
     "scripts": {
         "start": "webpack-dev-server --config webpack/webpack.dev.js",
         "build": "webpack --config webpack/webpack.config.js && webpack --config webpack/webpack.main.js && cd app && electron-builder",
-        "electron": "webpack --config webpack/webpack.main.js && electron app",
+        "electron": "webpack --config webpack/webpack.main.dev.js && electron app",
         "test": "mocha"
     },
     "devDependencies": {

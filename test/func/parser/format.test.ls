@@ -36,3 +36,10 @@ describe 'test format identifier', ->
         const test2 = enterType '\n'
         (expect <| test2) .to.be.equal 'LF'
         void
+
+    specify 'test enterType finder (Mulitple)', ->
+        const test1 = enterType 'test\ndas\n\dsa\r'
+        (expect <| test1) .to.be.equal 'LF'
+        const test2 = enterType '\n'
+        (expect <| test2) .to.be.equal 'LF'
+        void
