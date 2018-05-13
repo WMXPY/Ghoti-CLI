@@ -9,9 +9,9 @@
     "main": "dist/main/index.js",
     "private": true,
     "scripts": {
-        "start": "webpack-dev-server --config webpack.dev.js",
-        "build": "webpack --config webpack.config.js && webpack --config webpack.main.js && cd app && electron-builder",
-        "electron": "webpack --config webpack.main.js && electron app",
+        "start": "webpack-dev-server --config webpack/webpack.dev.js",
+        "build": "webpack --config webpack/webpack.config.js && webpack --config webpack/webpack.main.js && cd app && electron-builder",
+        "electron": "webpack --config webpack/webpack.main.js && electron app",
         "test": "mocha"
     },
     "devDependencies": {

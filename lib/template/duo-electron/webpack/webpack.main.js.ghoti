@@ -2,8 +2,9 @@
 const path = require('path');
 const webpack = require('webpack');
 
-const BUILD_DIR = path.resolve(__dirname, 'app', 'main');
-const APP_DIR = path.resolve(__dirname, 'src', 'main');
+const BUILD_DIR = path.resolve(__dirname, '..', 'app', 'main');
+const APP_DIR = path.resolve(__dirname, '..', 'src', 'main');
+const TSCONFIG_DIR = path.resolve(__dirname, 'tsconfig.json');
 
 let config = {
     entry: APP_DIR + "/index.ts",
@@ -27,7 +28,7 @@ let config = {
                 use: [{
                     loader: 'awesome-typescript-loader',
                     options: {
-                        configFileName: './tsconfig.json'
+                        configFileName: TSCONFIG_DIR
                     }
                 }]
             }
