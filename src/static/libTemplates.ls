@@ -47,8 +47,12 @@ const libs = [
         common: [
         ]
         replaces: [
+            'git-id'
+            'git-repo-name'
+            'appid'
         ]
         postLog: (defaultLogs [
+            'Start to work on a elctron project with react and typescript'
         ])
         whatis: [
             'electron duo package.json template'

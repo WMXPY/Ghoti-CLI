@@ -1,0 +1,6 @@
+// G!Sample Import
+import Root from "./root";
+
+export {
+    Root,
+};

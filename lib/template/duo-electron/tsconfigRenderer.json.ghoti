@@ -1,0 +1,25 @@
+{
+    "compileOnSave": false,
+    "compilerOptions": {
+        "target": "es2015",
+        "module": "commonjs",
+        "noImplicitAny": false,
+        "strict": true,
+        "removeComments": true,
+        "strictNullChecks": false,
+        "noImplicitThis": false,
+        "sourceMap": true,
+        "jsx": "react",
+        "lib": [
+            "dom",
+            "es5",
+            "es2015",
+            "es2016",
+            "es2017"
+        ]
+    },
+    "include": [
+        "src/renderer/**/*",
+        "src/config/**/*"
+    ]
+}

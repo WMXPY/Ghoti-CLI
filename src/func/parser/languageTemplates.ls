@@ -32,6 +32,10 @@ const languages = [
         name: 'livescript'
     }
     {
+        ext: 'sass'
+        name: 'sass'
+    }
+    {
         ext: 'go'
         name: 'golang'
     }

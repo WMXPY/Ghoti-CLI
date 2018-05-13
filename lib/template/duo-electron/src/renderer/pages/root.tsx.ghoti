@@ -1,0 +1,26 @@
+// G!Root Route
+import * as React from "react";
+
+import Config from "../../config/config";
+
+export interface IProps {
+
+}
+
+export interface IState {
+
+}
+
+class Root extends React.Component<IProps, IState> {
+    public constructor(props: IProps) {
+        super(props);
+    }
+
+    public render(): any {
+        return (<div>
+            <span>Hello, Root!</span>
+        </div>);
+    }
+}
+
+export default Root;

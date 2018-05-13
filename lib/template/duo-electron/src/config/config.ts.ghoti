@@ -1,0 +1,5 @@
+// G!Config
+export default {
+    isDebug: false,
+    backgroundColor: "#01FF70",
+};
