@@ -55,9 +55,7 @@ const determinLanguage = (filename) ->
     ext = path.extname filename
     if ext === '.ghoti'
     then ext = path.extname (filename.substring 0, filename.length - 6)
-    log ext
     const lan = libLanguages ext
-    log lan
     if lan
     then lan.name
     else null
