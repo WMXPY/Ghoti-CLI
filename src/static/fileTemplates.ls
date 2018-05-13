@@ -62,6 +62,49 @@ const files = [
             'title'
         ]
     }
+    {
+        name: [
+            'travis'
+        ]
+        author: '$ghoti'
+        path: 'ci'
+        file: '.travis.yml.ghoti'
+        whatis: [
+            'travis ci yml config file'
+        ]
+        replaces: [
+        ]
+    }
+    {
+        name: [
+            'react-page'
+        ]
+        author: '$ghoti'
+        path: 'react'
+        file: 'page.tsx.ghoti'
+        whatis: [
+            'react page file'
+        ]
+        replaces: [
+            'author'
+            'page'
+        ]
+    }
+    {
+        name: [
+            'react-component'
+        ]
+        author: '$ghoti'
+        path: 'react'
+        file: 'component.tsx.ghoti'
+        whatis: [
+            'react component file'
+        ]
+        replaces: [
+            'author'
+            'component'
+        ]
+    }
 ]
 
 export files
