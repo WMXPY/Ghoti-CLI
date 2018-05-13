@@ -1,6 +1,6 @@
 {
     "name": "${|title|}",
-    "version": "1.0.0",
+    "version": "0.0.1",
     "description": "${|description|}",
     "main": "main/bundle.js",
     "private": true,
@@ -10,6 +10,7 @@
     },
     "keywords": [
     ],
+    "license": "PRIVATE",
     "author": "${|author|}",
     "bugs": {
         "url": "https://github.com/${|git-id|}/${|git-repo-name|}/issues"

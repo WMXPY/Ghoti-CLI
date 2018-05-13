@@ -1,10 +1,18 @@
 {
     "name": "${|title|}",
+    "description": "${|description|}",
+    "repository": {
+        "type": "git",
+        "url": "git+https://github.com/${|git-id|}/${|git-repo-name|}.git"
+    },
+    "license": "PRIVATE",
     "main": "dist/main/index.js",
     "private": true,
     "scripts": {
-        "start": "webpack",
-        "test": "echo \"Error: no test specified\" && exit 1"
+        "start": "webpack-dev-server --config webpack.dev.js",
+        "build": "webpack --config webpack.config.js && webpack --config webpack.main.js && cd app && electron-builder",
+        "electron": "webpack --config webpack.main.js && electron app",
+        "test": "mocha"
     },
     "devDependencies": {
         "@types/chai": "^4.1.3",
@@ -14,6 +22,7 @@
         "@types/react-router-dom": "^4.2.6",
         "awesome-typescript-loader": "^3.4.1",
         "chai": "^4.1.2",
+        "code": "^5.2.0",
         "css-loader": "^0.28.11",
         "electron": "2.0.0",
         "electron-builder": "^20.13.3",
@@ -24,6 +33,7 @@
         "sass-loader": "^6.0.6",
         "source-map-loader": "^0.2.3",
         "style-loader": "^0.21.0",
+        "ts-node": "^6.0.3",
         "tslint": "^5.10.0",
         "typescript": "^2.8.3",
         "uglifyjs-webpack-plugin": "^1.2.5",
@@ -33,10 +43,11 @@
     },
     "dependencies": {
         "electron-json-storage": "^4.1.0",
-        "ghoti-cli": "^3.2.3-fix.1",
+        "ghoti-cli": "^${|version|}",
         "react": "^16.3.2",
         "react-dom": "^16.3.2",
         "react-router-dom": "^4.2.2",
         "sparidae": "^1.2.4"
-    }
+    },
+    "homepage": "https://github.com/${|git-id|}/${|git-repo-name|}#readme"
 }

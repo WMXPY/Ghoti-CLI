@@ -1,5 +1,5 @@
 // G!Config
 export default {
     isDebug: false,
-    backgroundColor: "#01FF70",
+    backgroundColor: ${|theme-color|},
 };

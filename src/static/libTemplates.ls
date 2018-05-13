@@ -45,11 +45,18 @@ const libs = [
         language: 'TypeScript'
         framework: 'Electron'
         common: [
+            {
+                path: 'common'
+                commons: [
+                    'tslint'
+                ]
+            }
         ]
         replaces: [
             'git-id'
             'git-repo-name'
             'appid'
+            'theme-color'
         ]
         postLog: (defaultLogs [
             'Start to work on a elctron project with react and typescript'
