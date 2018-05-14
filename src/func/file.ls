@@ -65,7 +65,10 @@ const file = (ghoti_root, fileName, targetPathE, whenDone, env) ->
     then fileFromAchrive ghoti_root, fileName, targetPath, whenDone, env
     else
         const root = (switchRoot fileName, ghoti_root)
-        log root
+
+        # Update 2018-5-14
+        # Remove useless log, going to seprate debug log and print
+        # log root, 1
         if !Boolean root
         then
             (log ' | file "' + fileName + '" is not a valid file name')

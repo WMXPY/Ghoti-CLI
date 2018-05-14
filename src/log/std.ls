@@ -32,6 +32,14 @@ const getStrOccRowColumns = (str) ->
     (console.log ...text)
     text)
 
+const dlog = (env, ...text) ->
+    if typeof env === 'string'
+    then log '| Error usage of dlog'
+
+    if Boolean env
+    then if env.debug
+        then log text
+
 (const logInline = (text) ->
     (process.stdout.write text)
     text)
@@ -71,6 +79,7 @@ const logReplace = (content, lastContent?) ->
     void
 
 export log
+export dlog
 export logPad
 export logHalfPad
 export logInline
