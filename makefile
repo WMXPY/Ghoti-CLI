@@ -5,6 +5,10 @@ sourcePath := src
 testPath := test
 distPath := dist
 
+install:
+	npm install
+	npm install --only=dev
+
 ghoti: $(depdence)
 	$(ls) ./dist/ ./src/*.ls
 

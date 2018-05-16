@@ -1,8 +1,7 @@
 language: node_js
 
 install:
- - npm install
- - npm install --only=dev
+ - make install
  - make
 
 node_js:
