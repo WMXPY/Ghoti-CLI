@@ -5,12 +5,12 @@ sourcePath := src
 testPath := test
 distPath := dist
 
+ghoti: $(depdence)
+	$(ls) ./dist/ ./src/*.ls
+
 install:
 	npm install
 	npm install --only=dev
-
-ghoti: $(depdence)
-	$(ls) ./dist/ ./src/*.ls
 
 log.ls:
 	$(ls) ./$(distPath)/log/ ./$(sourcePath)/log/*.ls
