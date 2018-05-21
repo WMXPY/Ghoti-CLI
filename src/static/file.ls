@@ -41,7 +41,6 @@ const libFile = (fileName, ghoti_root) ->
                     re.path = path.join i.path, i.main
                     re.file = i.main
                     re.location = 'external'
-                    log re
             if !Boolean re
             then return null
             else return re
