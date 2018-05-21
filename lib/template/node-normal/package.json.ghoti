@@ -22,9 +22,9 @@
         "code": "^5.2.0",
         "ghoti-cli": "^${|version|}",
         "mocha": "^5.2.0",
-        ${|typescript|}
         "tslint": "^5.10.0",
-        "ts-node": "^6.0.3"
+        "ts-node": "^6.0.3",
+        "typescript": "^2.8.3"
     },
     "dependencies": {
     }
