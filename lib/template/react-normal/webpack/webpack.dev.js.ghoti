@@ -8,18 +8,19 @@ const webpack = require('webpack');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const CopyWebpackPlugin = require('copy-webpack-plugin');
 
-const BUILD_DIR = path.resolve(__dirname, 'dist');
-const APP_DIR = path.resolve(__dirname, 'src');
-const PUBLIC_DIR = path.resolve(__dirname, 'public', 'template.html');
-const FAVICON_DIR = path.resolve(__dirname, 'public', 'favicon.png');
-const MANIFEST_DIR = path.resolve(__dirname, 'public', 'manifest.json');
+const BUILD_DIR = path.resolve(__dirname, '..', 'dist');
+const APP_DIR = path.resolve(__dirname, '..', 'src');
+const PUBLIC_DIR = path.resolve(__dirname, '..', 'public', 'template.html');
+const FAVICON_DIR = path.resolve(__dirname, '..', 'public', 'favicon.png');
+const MANIFEST_DIR = path.resolve(__dirname, '..', 'public', 'manifest.json');
 
 let config = {
     devtool: 'cheap-module-eval-source-map',
     entry: [
-        'webpack-dev-server/client?http://localhost:8080',
+        'react-hot-loader/patch',
+        'webpack-dev-server/client',
         'webpack/hot/only-dev-server',
-        APP_DIR + "/main.ts"
+        APP_DIR + "/index.tsx"
     ],
     output: {
         filename: "bundle.js",
@@ -27,36 +28,30 @@ let config = {
         publicPath: '/'
     },
     resolve: {
-        extensions: ['.ts', '.js', '.vue', '.json'],
-        alias: {
-            vue$: 'vue/dist/vue.esm.js'
-        }
+        extensions: [".ts", ".tsx", ".js", ".json", ".css", ".sass"]
     },
     module: {
         rules: [{
-                test: /\.vue$/,
-                loader: 'vue-loader',
-                options: {
-                    loaders: {
-                        sass: 'vue-style-loader!css-loader!sass-loader?indentedSyntax',
-                        hotReload: true
-                    }
-                }
-            },
-            {
                 test: /\.tsx?$/,
-                loader: 'ts-loader',
-                exclude: /node_modules/,
-                options: {
-                    appendTsSuffixTo: [/\.vue$/],
-                }
+                use: [{
+                    loader: 'awesome-typescript-loader',
+                    options: {
+                        configFileName: './tsconfig.json'
+                    }
+                }]
             },
             {
-                test: /\.(png|jpg|gif|svg)$/,
-                loader: 'file-loader',
-                options: {
-                    name: '[name].[ext]?[hash]'
-                }
+                test: /\.sass$/,
+                use: [
+                    'style-loader',
+                    'css-loader',
+                    'sass-loader'
+                ]
+            },
+            {
+                enforce: "pre",
+                test: /\.(t|j)sx?$/,
+                loader: "source-map-loader",
             }
         ]
     },
@@ -78,12 +73,12 @@ let config = {
         new webpack.LoaderOptionsPlugin({
             debug: true
         }),
-        new webpack.NamedModulesPlugin(),
-        new webpack.HotModuleReplacementPlugin()
+        new webpack.HotModuleReplacementPlugin(),
+        new webpack.NamedModulesPlugin()
     ],
     devServer: {
-        contentBase: path.resolve(__dirname, 'dist'),
         hot: true,
+        contentBase: path.resolve(__dirname, 'dist'),
         publicPath: '/',
         port: 8080,
         inline: true,

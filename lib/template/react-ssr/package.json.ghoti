@@ -4,7 +4,7 @@
     "description": "${|description|}",
     "private": ${|private|},
     "scripts": {
-        "build": "webpack --config webpack.config.js",
+        "build": "webpack --config webpack/webpack.config.js",
         "component": "ghoti component -a",
         "feature": "ghoti feature -a",
         "func": "ghoti func -a",
@@ -12,7 +12,7 @@
         "lambda": "ghoti lambda -a",
         "page": "ghoti page -a",
         "postinstall": "ghoti post -a react-ssr",
-        "start": "webpack-dev-server --config webpack.dev.js --open",
+        "start": "webpack-dev-server --config webpack/webpack.dev.js --open",
         "test": "mocha"
     },
     "author": "${|author|}",
@@ -40,9 +40,9 @@
         "sass-loader": "^6.0.6",
         "source-map-loader": "^0.2.3",
         "style-loader": "^0.20.2",
-        "tslint": "^5.9.1",
         "ts-node": "^5.0.0",
-        ${|typescript|}
+        "tslint": "^5.9.1",
+        "typescript": "^2.8.3",
         "uglifyjs-webpack-plugin": "^1.2.2",
         "url-loader": "^1.0.1",
         "webpack": "^3.10.0",

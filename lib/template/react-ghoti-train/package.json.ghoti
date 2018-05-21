@@ -11,7 +11,7 @@
         "lambda": "ghoti lambda -a",
         "page": "ghoti page -a",
         "postinstall": "ghoti post -a ghoti-example",
-        "start": "webpack-dev-server --config webpack.dev.js --open",
+        "start": "webpack-dev-server --config webpack/webpack.dev.js --open",
         "test": "mocha"
     },
     "author": "ghoti-cli",
@@ -37,9 +37,9 @@
         "sass-loader": "^6.0.6",
         "source-map-loader": "^0.2.3",
         "style-loader": "^0.20.2",
-        "tslint": "^5.9.1",
         "ts-node": "^5.0.0",
-        ${|typescript|}
+        "tslint": "^5.9.1",
+        "typescript": "^2.8.3",
         "webpack": "^3.10.0",
         "webpack-dev-server": "^2.11.1"
     },

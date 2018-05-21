@@ -8,50 +8,55 @@ const webpack = require('webpack');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const CopyWebpackPlugin = require('copy-webpack-plugin');
 
-const BUILD_DIR = path.resolve(__dirname, 'dist');
-const APP_DIR = path.resolve(__dirname, 'src');
-const PUBLIC_DIR = path.resolve(__dirname, 'public', 'template.html');
-const FAVICON_DIR = path.resolve(__dirname, 'public', 'favicon.png');
-const MANIFEST_DIR = path.resolve(__dirname, 'public', 'manifest.json');
+const BUILD_DIR = path.resolve(__dirname, '..', 'dist');
+const APP_DIR = path.resolve(__dirname, '..', 'src');
+const PUBLIC_DIR = path.resolve(__dirname, '..', 'public', 'template.html');
+const FAVICON_DIR = path.resolve(__dirname, '..', 'public', 'favicon.png');
+const MANIFEST_DIR = path.resolve(__dirname, '..', 'public', 'manifest.json');
 
 let config = {
     devtool: 'cheap-module-eval-source-map',
     entry: [
-        'react-hot-loader/patch',
-        'webpack-dev-server/client',
+        'webpack-dev-server/client?http://localhost:8080',
         'webpack/hot/only-dev-server',
-        APP_DIR + '/index.tsx'
+        APP_DIR + "/main.ts"
     ],
     output: {
-        filename: 'bundle.js',
+        filename: "bundle.js",
         path: BUILD_DIR,
         publicPath: '/'
     },
     resolve: {
-        extensions: ['.ts', '.tsx', '.js', '.json', '.css', '.sass']
+        extensions: ['.ts', '.js', '.vue', '.json'],
+        alias: {
+            vue$: 'vue/dist/vue.esm.js'
+        }
     },
     module: {
         rules: [{
-                test: /\.tsx?$/,
-                use: [{
-                    loader: 'awesome-typescript-loader',
-                    options: {
-                        configFileName: './tsconfig.json'
+                test: /\.vue$/,
+                loader: 'vue-loader',
+                options: {
+                    loaders: {
+                        sass: 'vue-style-loader!css-loader!sass-loader?indentedSyntax',
+                        hotReload: true
                     }
-                }]
+                }
             },
             {
-                test: /\.sass$/,
-                use: [
-                    'style-loader',
-                    'css-loader',
-                    'sass-loader'
-                ]
+                test: /\.tsx?$/,
+                loader: 'ts-loader',
+                exclude: /node_modules/,
+                options: {
+                    appendTsSuffixTo: [/\.vue$/],
+                }
             },
             {
-                enforce: 'pre',
-                test: /\.(t|j)sx?$/,
-                loader: 'source-map-loader',
+                test: /\.(png|jpg|gif|svg)$/,
+                loader: 'file-loader',
+                options: {
+                    name: '[name].[ext]?[hash]'
+                }
             }
         ]
     },
@@ -73,12 +78,12 @@ let config = {
         new webpack.LoaderOptionsPlugin({
             debug: true
         }),
-        new webpack.HotModuleReplacementPlugin(),
-        new webpack.NamedModulesPlugin()
+        new webpack.NamedModulesPlugin(),
+        new webpack.HotModuleReplacementPlugin()
     ],
     devServer: {
-        hot: true,
         contentBase: path.resolve(__dirname, 'dist'),
+        hot: true,
         publicPath: '/',
         port: 8080,
         inline: true,

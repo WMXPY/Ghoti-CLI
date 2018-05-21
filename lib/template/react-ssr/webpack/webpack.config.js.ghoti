@@ -5,28 +5,25 @@
 
 const path = require('path');
 const webpack = require('webpack');
-const HtmlWebpackPlugin = require('html-webpack-plugin');
 const UglifyJSPlugin = require('uglifyjs-webpack-plugin');
 const CopyWebpackPlugin = require('copy-webpack-plugin');
 
-const BUILD_DIR = path.resolve(__dirname, 'dist');
-const APP_DIR = path.resolve(__dirname, 'src');
-const PUBLIC_DIR = path.resolve(__dirname, 'public', 'template.html');
-const FAVICON_DIR = path.resolve(__dirname, 'public', 'favicon.png');
-const MANIFEST_DIR = path.resolve(__dirname, 'public', 'manifest.json');
+const BUILD_DIR = path.resolve(__dirname, '..', 'dist');
+const APP_DIR = path.resolve(__dirname, '..', 'src');
+const FAVICON_DIR = path.resolve(__dirname, '..', 'public', 'favicon.png');
+const MANIFEST_DIR = path.resolve(__dirname, '..', 'public', 'manifest.json');
 
 let config = {
-    entry: APP_DIR + "/index.tsx",
+    entry: APP_DIR + "/index.build.tsx",
     output: {
         filename: "bundle.js",
         path: BUILD_DIR
     },
     resolve: {
-        extensions: [".ts", ".tsx", ".js", ".json", ".css", ".sass"]
+        extensions: [".ts", ".tsx", ".js", ".json", ".css", ".sass", ".png", ".jpg", ".gif", ".webp"],
     },
     module: {
-        rules: [
-            {
+        rules: [{
                 test: /\.tsx?$/,
                 use: [{
                     loader: 'awesome-typescript-loader',
@@ -34,6 +31,10 @@ let config = {
                         configFileName: './tsconfig.json'
                     }
                 }]
+            },
+            {　　　　　　
+                test: /\.(jpg|png|gif|webp)$/,
+                loader: 'url-loader?limit=8192'　　　　
             },
             {
                 test: /\.sass$/,
@@ -51,9 +52,8 @@ let config = {
         ]
     },
     plugins: [
-        new HtmlWebpackPlugin({
-            title: '${|title|}',
-            template: PUBLIC_DIR
+        new webpack.DefinePlugin({
+            'process.env.NODE_ENV': JSON.stringify(process.env.NODE_ENV || 'production')
         }),
         new CopyWebpackPlugin([{
             from: FAVICON_DIR,
@@ -62,9 +62,6 @@ let config = {
             from: MANIFEST_DIR,
             to: BUILD_DIR,
         }], {}),
-        new webpack.DefinePlugin({
-            'process.env.NODE_ENV': JSON.stringify(process.env.NODE_ENV || 'production')
-        }),
         new UglifyJSPlugin()
     ]
 };
