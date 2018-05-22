@@ -61,6 +61,7 @@ const libs = [
         ]
         postLog: (defaultLogs [
             'Start to work on a elctron project with react and typescript'
+            'use -npm run ins- instead of -npm install-'
         ])
         whatis: [
             'electron duo package.json template'
