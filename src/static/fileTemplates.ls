@@ -105,6 +105,23 @@ const files = [
             'component'
         ]
     }
+    {
+        name: [
+            'electron-browserwindow'
+            'electron-bw'
+            'ebw'
+        ]
+        author: '$ghoti'
+        path: 'electron'
+        file: 'browserwindow.ts.ghoti'
+        whatis: [
+            'browserwindow file of electron'
+            'use typescript'
+        ]
+        replaces: [
+            'name'
+        ]
+    }
 ]
 
 export files

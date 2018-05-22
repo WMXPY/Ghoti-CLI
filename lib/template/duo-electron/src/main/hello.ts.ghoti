@@ -1,0 +1,59 @@
+// G!Electron BrowserWindow Hello
+import { BrowserWindow, ipcMain, Menu, webContents } from "electron";
+import Config from "../config/config";
+
+import template from './menu';
+
+let helloWindow: BrowserWindow;
+let helloEvent: webContents;
+
+const registerHello: (event: { sender: webContents }, arg: string) => void = (event: { sender: webContents }, arg: string) => {
+    helloEvent = event.sender;
+};
+
+export const createHello: () => void = () => {
+    if (Config.isDebug) {
+        helloWindow = new BrowserWindow({
+            width: 1200,
+            height: 1020,
+            show: false,
+            backgroundColor: Config.backgroundColor,
+        });
+        helloWindow.loadURL("http://localhost:8080");
+        helloWindow.webContents.openDevTools();
+    } else {
+        helloWindow = new BrowserWindow({
+            width: 765,
+            height: 1020,
+            show: false,
+            backgroundColor: Config.backgroundColor,
+        });
+        helloWindow.loadURL(`file://${__dirname}/../renderer/index.html`);
+        const menu = Menu.buildFromTemplate(template);
+        Menu.setApplicationMenu(menu);
+    }
+
+    ipcMain.on('register-hello', registerHello);
+
+    helloWindow.on("closed", (): void => {
+        helloWindow = null;
+        ipcMain.removeListener('register-hello', registerHello);
+    });
+
+    helloWindow.on("ready-to-show", (): void => {
+        helloWindow.show();
+        helloWindow.focus();
+    });
+};
+
+export const destroyHello: () => void = () => {
+    helloWindow.close();
+};
+
+export const getHello: () => BrowserWindow = () => {
+    return helloWindow;
+};
+
+export const getWebContentHello: () => webContents = () => {
+    return helloEvent;
+};
