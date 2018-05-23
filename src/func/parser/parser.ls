@@ -7,6 +7,7 @@ require! {
     '../../log/getInput': { getInput }
     'child_process': { exec }
     './comments': { parseComments }
+    '../../ame/osDiff': { getSeprate }
     readline
 }
 
@@ -83,13 +84,13 @@ const commonGather = (list, done, second?) ->
             if defaultValue
             then defaultStr = 'default: Y'
             else defaultStr = 'default: N'
-            question = 'Gathering replace parameter "' + currentName + '" (Y/N, ' + defaultStr + ') :\r\n=>> '
+            question = 'Gathering replace parameter "' + currentName + '" (Y/N, ' + defaultStr + ') :'+ getSeprate! +'=>> '
         case 'string'
             fallthrough
         default
             if defaultValue
-            then question = 'Gathering replace parameter "' + currentName + '" (default: ' + defaultValue + ') :\r\n=>> '
-            else question = 'Gathering replace parameter "' + currentName + '" :\r\n=>> '
+            then question = 'Gathering replace parameter "' + currentName + '" (default: ' + defaultValue + ') :' + getSeprate! + '=>> '
+            else question = 'Gathering replace parameter "' + currentName + '" :' + getSeprate! + '=>> '
 
     rl.question question, (answer) ->
         rl.close!
@@ -133,7 +134,7 @@ const commonGather = (list, done, second?) ->
         (if vars.open
         then
             re = (re.replace /\${\|private\|}/g, 'false')
-            re = (re.replace /\${\|readme\|}/g, '\r\n<a rel="license" href="http://creativecommons.org/licenses/by-sa/4.0/"><img alt="Creative Commons License" style="border-width:0" src="https://i.creativecommons.org/l/by-sa/4.0/88x31.png" /></a><br />This work is licensed under a <a rel="license" href="http://creativecommons.org/licenses/by-sa/4.0/">Creative Commons Attribution-ShareAlike 4.0 International License</a>.\r\n')
+            re = (re.replace /\${\|readme\|}/g, getSeprate! + '<a rel="license" href="http://creativecommons.org/licenses/by-sa/4.0/"><img alt="Creative Commons License" style="border-width:0" src="https://i.creativecommons.org/l/by-sa/4.0/88x31.png" /></a><br />This work is licensed under a <a rel="license" href="http://creativecommons.org/licenses/by-sa/4.0/">Creative Commons Attribution-ShareAlike 4.0 International License</a>.' + getSeprate!)
             re = (re.replace /\${\|license\|}/g, 'SEE LICENSE IN LICENSE')
         else
             re = (re.replace /\${\|private\|}/g, 'true')

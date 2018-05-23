@@ -10,6 +10,10 @@ import {
     deepClone,
 } from '../func/deepclone';
 
+import {
+    getSeprate,
+} from '../ame/osDiff';
+
 export default class Map {
     public static generate(config: IMapConfig): IMap {
         const end: IMap = this.generateEnd(config);
@@ -30,7 +34,7 @@ export default class Map {
                 }
             }
             if (full && i < renderList.length - 1) {
-                print += '\r\n';
+                print += getSeprate();
             }
         }
         log(print);
