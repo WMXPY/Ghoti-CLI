@@ -410,6 +410,7 @@ const libs = [
     }
     {
         name: [
+            'golang'
             'go-server'
             'server-go'
             'go-normal'
