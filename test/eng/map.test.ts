@@ -2,6 +2,8 @@ import { expect } from 'chai';
 import Map from '../../src/eng/map';
 import { defaultSetting } from './init';
 
+import { } from 'mocha';
+
 describe('test map generator', (): void => {
 
     it('test random number of map generator (type)', (): void => {
