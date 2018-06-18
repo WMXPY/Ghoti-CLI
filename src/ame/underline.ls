@@ -11,6 +11,9 @@ const underline = (ghoti) ->
 const puls = (name) ->
     name
 
+const plus = (name) ->
+    name
+
 const minus = (name) ->
     name
 

@@ -9,6 +9,6 @@ const getSeprate = ->
         case 'darwin'
             return '\n'
         default
-            return '\r\n'
+            return '\n'
 
 export getSeprate
