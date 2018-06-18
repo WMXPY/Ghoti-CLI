@@ -3,12 +3,14 @@ require! {
 }
 
 const getSeprate = ->
-    switch os.platform!
-        case 'win32'
-            return '\r\n'
+    const platform = os.platform!
+
+    switch platform
         case 'darwin'
             return '\n'
+        case 'win32'
+            fallthrough
         default
-            return '\n'
+            return '\r\n'
 
 export getSeprate
