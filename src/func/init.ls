@@ -110,6 +110,12 @@ const readParseAll = (textList, targetPath, env, conff, callback) ->
             log '| @ No special information'
             callback re, [], typesciprt
 
+const identifyIsJavaScript = (language) ->
+    if language === 'TypeScript' ||
+    language === 'JavaScript'
+    then true
+    else false
+
 const initFromAchrive = (ghoti_root, type, targetPath, whenDone, env) ->
     excuteExternal ghoti_root, type, targetPath, whenDone, env, (externalPath, ghotiinstall) ->
         readParseAll type, targetPath, env, ghotiinstall, (re, newRe, typesciprt) ->
@@ -120,6 +126,9 @@ const initFromAchrive = (ghoti_root, type, targetPath, whenDone, env) ->
             (const common = libCommons ghotiinstall.common, ghoti_root)
             (count = 0)
             (if re.open
+
+                # TODO
+                # Add is Javascript identifier to init from achive
                 (common.push (commonPath 'common', 'open-source', ghoti_root))
                 (common.push (commonPath 'common', 'license', ghoti_root)))
             (for i in common
@@ -156,7 +165,8 @@ const initFromAchrive = (ghoti_root, type, targetPath, whenDone, env) ->
             (const common = [...root.common])
             (count = 0)
             (if re.open
-                (common.push (commonPath 'common', 'open-source', ghoti_root))
+                if identifyIsJavaScript root.language
+                then (common.push (commonPath 'common', 'open-source', ghoti_root))
                 (common.push (commonPath 'common', 'license', ghoti_root)))
             (for i in common
                 (log ' | @ Common files chunk ' + count++)
