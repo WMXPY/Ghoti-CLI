@@ -8,6 +8,24 @@ require! {
     '../static/commands': { getCommand, allCommands, padRight, getMaxLength_List, getMaxLength_Plus, getMaxLength_Entire }
 }
 
+const faces = [
+    '( ͡° ͜ʖ ͡°)'
+    '(੭ु≧▽≦)੭ु'
+    '╰( ᐖ╰)≡(╯ᐛ )╯'
+    '.(｡￫‿￩｡)'
+    'ఠ_ఠ'
+    'ಸ_ಸ'
+    '눈_눈'
+    '(๑>◡<๑)'
+    '┌(ㆆ㉨ㆆ)ʃ'
+    '(´≖◞౪◟≖)'
+    '(ಥ_ಥ)'
+    '(❁´▽`❁)'
+    '(ง •̀_•́)ง┻━┻'
+    '┬─┬ノ(\'-\'ノ)'
+    ' (´・ω・｀)'
+]
+
 (const logSeprate = (length) ->
     (var re)
     (re = '')
@@ -31,23 +49,6 @@ require! {
     (log '\r\n'))
 
 (const logFace = ->
-    (const faces = [
-        '( ͡° ͜ʖ ͡°)'
-        '(੭ु≧▽≦)੭ु'
-        '╰( ᐖ╰)≡(╯ᐛ )╯'
-        '.(｡￫‿￩｡)'
-        'ఠ_ఠ'
-        'ಸ_ಸ'
-        '눈_눈'
-        '(๑>◡<๑)'
-        '┌(ㆆ㉨ㆆ)ʃ'
-        '(´≖◞౪◟≖)'
-        '(ಥ_ಥ)'
-        '(❁´▽`❁)'
-        '(ง •̀_•́)ง┻━┻'
-        '┬─┬ノ(\'-\'ノ)'
-        ' (´・ω・｀)'
-    ])
     (const ran = Math.floor ((Math.random! * (faces.length * 500)) % faces.length))
     (log faces[ran])
     faces[ran])
@@ -383,6 +384,9 @@ const logDeprecated = (command, due) ->
 export br
 export logAlias
 export logSeprate
+export getMaxLength
+export logFace
+export faces
 (export logInline)
 (export logPad)
 (export logHelp)
