@@ -14,13 +14,13 @@
 	"description": ":fish: A CLI tool that helps you start developing your new project within 60 seconds",
 	"devDependencies": {
 		"@types/chai": "^4.1.4",
-		"@types/mocha": "^5.2.2",
-		"@types/node": "^10.3.3",
+		"@types/mocha": "^5.2.3",
+		"@types/node": "^10.3.4",
 		"chai": "^4.1.2",
 		"livescript": "1.5.0",
 		"mocha": "^5.2.0",
-		"ts-node": "^6.1.1",
-		"typescript": "^2.9.1"
+		"ts-node": "^7.0.0",
+		"typescript": "^2.9.2"
 	},
 	"devEngines": {
 		"npm": ">=4.x",
