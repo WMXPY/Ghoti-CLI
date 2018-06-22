@@ -11,8 +11,10 @@ import {
     logSymbol,
     logFace,
     logVersion,
+    logCommand,
+    logStatus,
 } from '../../src/log/log';
-import monk_log, { isAnyOfFace } from './monk_log';
+import monk_log, { isAnyOfFace, ghotiConfig } from './monk_log';
 
 const stringBilder = (str: string[]): string => {
     return str.join('\r\n');
@@ -147,6 +149,84 @@ describe('test simple long log functions', (): void => {
             "      * try to update > npm install -g ghoti-cli",
             "    | info    : for more info, try \"ghoti help\"",
             "----------------------------",
+        ]);
+        expect(isAnyOfFace(face)).to.be.true;
+    });
+
+    it('test log command', (): void => {
+        let callback: () => void;
+        const func = () => {
+            callback = logCommand();
+        }
+        const re = monk_log(func);
+        expect(re).to.be.deep.equal([
+            "🐟  > 👟  Ghoti-CLI:",
+            "--------------------",
+        ]);
+
+        const func2 = () => {
+            callback()
+        }
+        const re2 = monk_log(func2);
+        expect(isAnyOfFace(re2[1])).to.be.true;
+    });
+
+    it('test log command - 2', (): void => {
+        let callback: () => void;
+        const func = () => {
+            callback = logCommand('hello');
+        }
+        const re = monk_log(func);
+        expect(re).to.be.deep.equal([
+            "🐟  > 👟  Ghoti-CLI:",
+            "--------------------",
+        ]);
+
+        const func2 = () => {
+            callback()
+        }
+        const re2 = monk_log(func2);
+        expect(isAnyOfFace(re2[1])).to.be.true;
+    });
+
+    it('test log command - 3', (): void => {
+        let callback: () => void;
+        const func = () => {
+            callback = logCommand('hello', 'world');
+        }
+        const re = monk_log(func);
+        expect(re).to.be.deep.equal([
+            "🐟  > 👟  Ghoti-CLI:",
+            "Tips: \"ghoti hello\" is an alia of \"ghoti world\"",
+            "--------------------",
+        ]);
+        const func2 = () => {
+            callback()
+        }
+        const re2 = monk_log(func2);
+        expect(isAnyOfFace(re2[1])).to.be.true;
+    });
+
+    it('test log status', (): void => {
+        const func = () => {
+            logStatus(ghotiConfig);
+        }
+        const re = monk_log(func);
+        const face: string = (re.pop() as string);
+        expect(re).to.be.deep.equal([
+            "🐟  > 📇  Ghoti-CLI Status:",
+            "---------------------------",
+            "    | Info        : status is came from .ghoticonfig file",
+            "    | Template    : test",
+            "    | Author      : test",
+            "    | Descript    : test",
+            "    | CLI Version : 1.0.0",
+            "    | Title       : test",
+            "    | Components  : availble count - 0",
+            "    | Pages       : availble count - 0",
+            "    | Functions   : availble count - 0",
+            "    | Lambdas     : availble count - 0",
+            "---------------------------",
         ]);
         expect(isAnyOfFace(face)).to.be.true;
     });

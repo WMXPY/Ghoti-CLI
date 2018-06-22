@@ -1,3 +1,5 @@
+import { IGhotiConfig } from "../eng/interface";
+
 export interface IEnv {
     mode: string;
     auto: boolean;
@@ -24,3 +26,5 @@ export declare const logPostNPMInstall: (type: string, env?: IEnv) => void;
 export declare const logSymbol: (mark: string, path: string) => () => void;
 export declare const logFace: () => void;
 export declare const logVersion: (env?: IEnv) => void;
+export declare const logCommand: (command?: string, origin?: string) => () => void;
+export declare const logStatus: (ghoti: IGhotiConfig, env?: IEnv) => void;
