@@ -6,17 +6,18 @@ require! {
 }
 
 const underline = (ghoti) ->
-    ghoti
+    return ghoti
 
 const puls = (name) ->
-    name
+    return name
 
 const plus = (name) ->
-    name
+    return name
 
 const minus = (name) ->
-    name
+    return name
 
+# Merge underline together
 const mergeGhoti = (ghoti, pathE, re) ->
     const path = deepClone pathE
     const newGhoti = deepClone ghoti
@@ -46,7 +47,7 @@ const mergeGhoti = (ghoti, pathE, re) ->
     else for i to subPath.length - 1
         if subPath[i].name === endPath
         then subPath[i] = re
-    newGhoti
+    return newGhoti
 
 const whatIsCurrent = (current) ->
     switch current.type
@@ -216,6 +217,7 @@ export puls
 export plus
 export minus
 export mergeGhoti
+export whatIsCurrent
 export checkAvailbility
 export calculateProgress
 export calculateNewMinus
