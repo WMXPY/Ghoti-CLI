@@ -37,7 +37,8 @@
 		],
 		"include": [
 			"src/**/*.ts",
-			"src/**/*.ls"
+			"src/**/*.ls",
+			"src/*.ls"
 		],
 		"instrument": true,
 		"reporter": [
