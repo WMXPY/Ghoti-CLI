@@ -99,6 +99,7 @@ const libCommons = (common, ghoti_root) ->
     then re
     else null))
 
+export getOuter
 (export lib)
 (export libList)
 (export commonPath)
