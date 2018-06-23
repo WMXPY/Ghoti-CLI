@@ -4,15 +4,14 @@
         "node": true
     },
     "extends": "eslint:recommended",
+    "parser": "typescript-eslint-parser",
     "parserOptions": {
         "sourceType": "module"
     },
-    "parser": "typescript-eslint-parser",
     "plugins": [
         "typescript"
     ],
     "rules": {
-        "typescript/rule-name": "error",
         "indent": [
             "error",
             4
@@ -28,6 +27,7 @@
         "semi": [
             "error",
             "always"
-        ]
+        ],
+        "typescript/rule-name": "error"
     }
 }

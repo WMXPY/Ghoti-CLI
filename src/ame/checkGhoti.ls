@@ -3,13 +3,13 @@
     then
         (if (ghoti.type === 'origin')
         then return true
-        else if (ghoti.template)
-        && (ghoti.sub)
-        && (ghoti.version)
-        && (ghoti.title)
-        && (ghoti.config)
-        && (ghoti.underline)
-        && (ghoti.features)
+        else if ((Boolean ghoti.template)
+        && (Boolean ghoti.sub)
+        && (Boolean ghoti.version)
+        && (Boolean ghoti.title)
+        && (Boolean ghoti.config)
+        && (Boolean ghoti.underline)
+        && (Boolean ghoti.features))
         then return true))
     return false)
 
@@ -21,12 +21,12 @@
     false)
 
 (const checkStructure = (ghoti) ->
-    (if (ghoti.components)
-    && (ghoti.pages)
-    && (ghoti.funcs)
-    && (ghoti.lambdas)
-    && (ghoti.features)
-        true)
+    (if ((Boolean ghoti.components)
+    && (Boolean ghoti.pages)
+    && (Boolean ghoti.funcs)
+    && (Boolean ghoti.lambdas)
+    && (Boolean ghoti.features))
+    then return true)
     false)
 
 (export checkGhoti)
