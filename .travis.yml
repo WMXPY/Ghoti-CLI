@@ -2,8 +2,8 @@ language: node_js
 
 install:
  - make install
- - npm install codecov nyc -g
  - make
+ - npm install codecov nyc -g
 
 node_js:
  - '7'
