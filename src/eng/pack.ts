@@ -1,8 +1,8 @@
-import item from './item';
-import { IStatus } from './interface';
 import { deepClone } from '../func/deepclone';
+import { IStatus } from './interface';
+import item from './item';
 
-export default class pack {
+export default class Pack {
     private _itemList: item[];
     private size: number;
 
@@ -37,8 +37,8 @@ export default class pack {
         return statE;
     }
 
-    public addItem(item: item): pack {
-        this._itemList.push(item);
+    public addItem(itemE: item): Pack {
+        this._itemList.push(itemE);
         return this;
     }
 }

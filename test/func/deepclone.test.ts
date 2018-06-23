@@ -1,4 +1,4 @@
-import { expect, assert } from 'chai';
+import { expect } from 'chai';
 import { deepClone } from '../../src/func/deepclone';
 
 describe('test deepclone (typescript / livescript)', (): void => {
@@ -12,10 +12,10 @@ describe('test deepclone (typescript / livescript)', (): void => {
             aString: 'hello',
             anArray: [
                 'whooo',
-                45
+                45,
             ],
         };
-    })
+    });
 
     it('deep cloned object should be deep equal to before', (): void => {
         const clonedBefore = deepClone(before);

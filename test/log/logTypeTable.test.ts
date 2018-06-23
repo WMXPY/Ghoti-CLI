@@ -1,7 +1,8 @@
-import { expect, assert } from 'chai';
-import monk_log from './monk_log';
-import { } from '../../src/log/log';
+import { expect } from 'chai';
 
 describe('test log type tables', (): void => {
 
+    it('space put', (): void => {
+        expect('a').to.be.equal('a');
+    });
 });

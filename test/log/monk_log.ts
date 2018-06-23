@@ -1,16 +1,20 @@
-import { faces } from "../../src/log/log";
 import { IGhotiConfig } from "../../src/eng/interface";
+import { faces } from "../../src/log/log";
 
-export default function (fun: Function): string[] {
+export const monk_log = (fun: () => any): string[] => {
     const logTemp = console.log;
     const exitTemp = process.exit;
     const logHistory: string[] = [];
 
-    console.log = function (...s: Array<any>) {
+    console.log = (...s: any[]) => {
         const content = s.join(' ');
         logHistory.push(content);
     };
-    (process.exit as any) = () => { };
+
+    (process.exit as any) = (): void => {
+        return void 0;
+    };
+
     try {
         fun();
     } catch (err) {
@@ -19,7 +23,7 @@ export default function (fun: Function): string[] {
     console.log = logTemp;
     process.exit = exitTemp;
     return logHistory;
-}
+};
 
 export const ghotiConfig: IGhotiConfig = {
     type: 'project',
@@ -44,3 +48,5 @@ export const ghotiConfig: IGhotiConfig = {
 export const isAnyOfFace = (face: string): boolean => {
     return faces.indexOf(face) !== -1;
 };
+
+export default monk_log;

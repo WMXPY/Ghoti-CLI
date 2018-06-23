@@ -1,14 +1,14 @@
 import {
-    IMap,
-    IMapConfig,
-    TType,
-} from './interface';
+    deepClone,
+} from '../func/deepclone';
 import {
     log,
 } from '../log/std';
 import {
-    deepClone,
-} from '../func/deepclone';
+    IMap,
+    IMapConfig,
+    TType,
+} from './interface';
 
 import {
     getSeprate,
@@ -26,11 +26,11 @@ export default class Map {
         this.renderNode(map, renderList, renderList[0], true);
         let print = '';
         for (let i = 0; i < renderList.length; i++) {
-            for (let j = 0; j < renderList[i].length; j++) {
+            for (let j of renderList[i]) {
                 if (full) {
-                    print += this.getSignal(renderList[i][j]);
+                    print += this.getSignal(j);
                 } else if (renderList[i][0] && renderList[i][0].type === 'root') {
-                    print += this.getSignal(renderList[i][j]);
+                    print += this.getSignal(j);
                 }
             }
             if (full && i < renderList.length - 1) {
@@ -118,7 +118,7 @@ export default class Map {
             mudCost,
             loot,
             reward,
-        }
+        };
         return node;
     }
 
@@ -126,7 +126,7 @@ export default class Map {
         config.nodeLimit -= 1;
         config.nodeMinum -= 1;
         const type: TType = 'node';
-        let next: IMap
+        let next: IMap;
         let second: IMap | undefined;
         let fulidCost: number | undefined;
         let mudCost: number | undefined;
@@ -170,7 +170,7 @@ export default class Map {
             mudCost,
             loot,
             reward,
-        }
+        };
         return node;
     }
 

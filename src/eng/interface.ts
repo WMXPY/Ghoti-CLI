@@ -28,7 +28,7 @@ export interface IMapConfig {
 }
 
 export interface IStatus {
-
+    status?: boolean;
 }
 
 export interface IGhotiConfig {
@@ -60,5 +60,5 @@ export interface IGhotiConfig {
 }
 
 export interface IGameConfig {
-
+    game?: boolean;
 }

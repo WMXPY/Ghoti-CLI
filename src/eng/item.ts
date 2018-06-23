@@ -1,9 +1,6 @@
 import { IStatus } from './interface';
 
-export default class item {
-    public constructor() {
-    }
-
+export default class Item {
     public start(statE: IStatus): IStatus {
         return statE;
     }

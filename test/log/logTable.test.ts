@@ -1,13 +1,13 @@
-import { expect, assert } from 'chai';
-import monk_log from './monk_log';
+import { expect } from 'chai';
 import { logTable } from '../../src/log/logTable';
+import monk_log from './monk_log';
 
 describe('test table output displaying function', (): void => {
 
     it('test single row table', (): void => {
         const fun = () => {
             logTable([['a'], ['b']], 'title');
-        }
+        };
         const re = monk_log(fun);
         expect(re).to.be.deep.equal([
             "-----------",
@@ -22,7 +22,7 @@ describe('test table output displaying function', (): void => {
     it('test double row table', (): void => {
         const fun = () => {
             logTable([['a', 35], ['b', 35]], 'title', 'length');
-        }
+        };
         const re = monk_log(fun);
         expect(re).to.be.deep.equal([
             "----------------------",
@@ -37,7 +37,7 @@ describe('test table output displaying function', (): void => {
     it('test dumb input', (): void => {
         const fun = () => {
             logTable([['a'], ['b', 35]], 'title', 'length');
-        }
+        };
         const re = monk_log(fun);
         expect(re).to.be.deep.equal([
             "----------------------",
