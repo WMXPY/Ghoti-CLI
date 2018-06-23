@@ -213,6 +213,7 @@ const calculateProgress = (current, whenDone, doLog? = false, logLevel? = 1) ->
 
 export underline
 export puls
+export plus
 export minus
 export mergeGhoti
 export checkAvailbility
