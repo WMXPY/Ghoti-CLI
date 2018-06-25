@@ -17,7 +17,9 @@ const whatis = (keyword) ->
     var re
     re = lib keyword
     if re
-    then return re.whatis
+    then
+        const result = [].concat re.whatis, ['', '-alias'], re.name 
+        return result 
 
     re = libFile keyword
     if re
