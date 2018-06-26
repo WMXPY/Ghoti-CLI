@@ -1,0 +1,23 @@
+// G!Router
+import * as React from 'react';
+
+import { renderRoutes } from 'react-router-config';
+import { BrowserRouter } from 'react-router-dom';
+import Config from '../config/config';
+import routes from './routes';
+
+class Hello extends React.Component<{}, {}> {
+    public constructor(props) {
+        super(props);
+    }
+
+    public render() {
+        return (
+            <BrowserRouter>
+                {renderRoutes(routes(this.props))}
+            </BrowserRouter>
+        );
+    }
+}
+
+export default Hello;

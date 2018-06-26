@@ -1,0 +1,19 @@
+// G!Project root
+import * as React from 'react';
+
+import { renderRoutes } from 'react-router-config';
+
+export interface IProps {
+    match: any;
+    history: any;
+    location: any;
+    route: any;
+}
+
+class AppRoot extends React.Component<IProps, {}> {
+    public render() {
+        return renderRoutes(this.props.route.routes);
+    }
+}
+
+export default AppRoot;
