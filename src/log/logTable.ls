@@ -10,7 +10,7 @@ const logSeprate = (length) ->
     log re
     re
 
-const logTable = (table, ...title) ->
+const logTable = (table, ...title) !->
     title = title.map (it) ->
         {
             text: it
@@ -54,6 +54,5 @@ const logTable = (table, ...title) ->
             then lane += ' '
         (log lane + '|')
     logSeprate titleDisplay.length - 1
-    void
 
 export logTable

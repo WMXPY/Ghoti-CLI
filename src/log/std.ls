@@ -28,9 +28,9 @@ const getStrOccRowColumns = (str) ->
         columns: columns
     }
 
-(const log = (...text) -> 
+const log = (...text) -> 
     (console.log ...text)
-    text)
+    text
 
 const dlog = (env, ...text) ->
     if typeof env === 'string'
@@ -40,29 +40,28 @@ const dlog = (env, ...text) ->
     then if env.debug
         then log text
 
-(const logInline = (text) ->
+const logInline = (text) ->
     (process.stdout.write text)
-    text)
+    text
 
-(const logPad = (text, pad?) ->
+const logPad = (text, pad?) ->
     (if pad
         (for i to pad
             text = '  ' + text))
     (log text)
-    text)
+    text
 
-(const logHalfPad = (text, pad?) ->
+const logHalfPad = (text, pad?) ->
     (if pad
         (for i to pad
             text = ' ' + text))
     (log text)
-    text)
+    text
 
-const forceEnter = ->
+const forceEnter = !->
     outputStream.write '\r\n'
-    void
 
-const logReplace = (content, lastContent?) ->
+const logReplace = (content, lastContent?) !->
     var dxInfo
     if lastContent
     then dxInfo = getStrOccRowColumns <| lastContent.toString!
@@ -76,7 +75,6 @@ const logReplace = (content, lastContent?) ->
     readline.moveCursor outputStream, cursorDx * -1, cursorDy * -1
     readline.clearScreenDown outputStream
     outputStream.write output
-    void
 
 export log
 export dlog

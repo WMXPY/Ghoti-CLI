@@ -1,4 +1,4 @@
-(const checkGhoti = (ghoti) ->
+const checkGhoti = (ghoti) ->
     (if ghoti.type
     then
         (if (ghoti.type === 'origin')
@@ -11,24 +11,24 @@
         && (Boolean ghoti.underline)
         && (Boolean ghoti.features))
         then return true))
-    return false)
+    return false
 
-(const checkUnderline = (ghoti) ->
+const checkUnderline = (ghoti) ->
     (if ghoti.underline.active
     then 
         (if ghoti.underline.path
         then true))
-    false)
+    false
 
-(const checkStructure = (ghoti) ->
+const checkStructure = (ghoti) ->
     (if ((Boolean ghoti.components)
     && (Boolean ghoti.pages)
     && (Boolean ghoti.funcs)
     && (Boolean ghoti.lambdas)
     && (Boolean ghoti.features))
     then return true)
-    false)
+    false
 
-(export checkGhoti)
-(export checkUnderline)
-(export checkStructure)
+export checkGhoti
+export checkUnderline
+export checkStructure

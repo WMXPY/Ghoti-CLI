@@ -184,7 +184,7 @@ const calculateProgress = (current, whenDone, doLog? = false, logLevel? = 1) ->
     var total, amount
     total = 0
     amount = 0
-    const calculateProgressRecursion = (Rcurrent, level) ->
+    const calculateProgressRecursion = (Rcurrent, level) !->
         if !Boolean Rcurrent.type
         then
             for i in Rcurrent
@@ -205,7 +205,6 @@ const calculateProgress = (current, whenDone, doLog? = false, logLevel? = 1) ->
                     then logHalfPad '- ' + Rcurrent.name + ' > Size: ' + Rcurrent.child.length, level
                 for i in Rcurrent.child
                     calculateProgressRecursion i, level + 1
-        void
     calculateProgressRecursion current, 0
     {
         total

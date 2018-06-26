@@ -45,42 +45,39 @@ const faces = [
         then len = i.length))
     len)
 
-(const br = ->
-    (log '\r\n'))
+const br = !->
+    (log '\r\n')
 
 (const logFace = ->
     (const ran = Math.floor ((Math.random! * (faces.length * 500)) % faces.length))
     (log faces[ran])
     faces[ran])
 
-(const logAlias = (command, original) ->
+const logAlias = (command, original) !->
     (log 'Tips: "ghoti ' + command + '" is an alia of "ghoti ' + original + '"')
-    void)
 
-(const logCommand = (command?, original?) ->
+const logCommand = (command?, original?) ->
     (const title = '🐟  > 👟  Ghoti-CLI:')
     (log title)
     (if ((Boolean command) && (Boolean original))
     then (logAlias command, original))
     (logSeprate title.length) 
-    (->
+    !->
         (logSeprate title.length)
         (logFace!)
-        void))
 
-(const logSymbol = (mark, path?) ->
+const logSymbol = (mark, path?) ->
     var title
     if path
     then (title = '🐟  > 💫  Ghoti-CLI SYMBOL ' + mark + ' of "' + path + '":')
     else (title = '🐟  > 💫  Ghoti-CLI SYMBOL ' + mark + ':')
     (log title)
     (logSeprate title.length) 
-    (->
+    !->
         (logSeprate title.length)
         (logFace!)
-        void))
 
-(const logVersion = (env?) ->
+const logVersion = (env?) !->
     (const title = '🐟  > 📜  Ghoti-CLI Version:')
     (log title)
     (logSeprate title.length)
@@ -90,9 +87,8 @@ const faces = [
     (logSeprate title.length)
     (logFace!)
     (process.exit!)
-    void)
 
-(const logStatus = (ghoti, env?) ->
+const logStatus = (ghoti, env?) !->
     (const title = '🐟  > 📇  Ghoti-CLI Status:')
     (log title)
     (logSeprate title.length)
@@ -132,9 +128,8 @@ const faces = [
     (logSeprate title.length)
     (logFace!)
     (process.exit!)
-    void)
 
-(const logAbout = (env?) ->
+const logAbout = (env?) !->
     (const title = '🐟  > 📖  Ghoti-CLI About:')
     (log title)
     (logSeprate title.length)
@@ -147,38 +142,35 @@ const faces = [
     (logSeprate title.length)
     (logFace!)
     (process.exit!)
-    void)
+    void
 
 const logUnderline = ->
     (const title = '🐟  > 🎆  Ghoti-CLI GHOTI UNDERLINE:')
     (log title)
     (logSeprate title.length)
-    (->
+    !->
         (logSeprate title.length)
         (logFace!)
         (process.exit!)
-        void)
 
 const logGame = ->
     (const title = '🐟  > 🎲  Ghoti-CLI Minigame:')
     (log title)
     (logSeprate title.length)
-    (->
+    !->
         (logSeprate title.length)
         (logFace!)
         (process.exit!)
-        void)
 
-(const logGameCommand = ->
+const logGameCommand = ->
     (const title = '🐟  > 🎮  Ghoti-CLI Minigame:')
     (log title)
     (logSeprate title.length) 
-    (->
+    !->
         (logSeprate title.length)
         (logFace!)
-        void))
 
-const logHelpMore = (env?) ->
+const logHelpMore = (env?) !->
     (const title ='🐟  > ⭐  Ghoti-CLI Available commands:')
     (log title)
     (logSeprate title.length)
@@ -197,9 +189,8 @@ const logHelpMore = (env?) ->
     (logSeprate title.length)
     (logFace!)
     (process.exit!)
-    void
 
-(const logHelp = (isEmpty?, env?) ->
+const logHelp = (isEmpty?, env?) !->
     (var title)
     (if isEmpty
     then (title = '🐟  > 🏠  Ghoti-CLI Available commands:')
@@ -216,9 +207,8 @@ const logHelpMore = (env?) ->
     (logSeprate title.length)
     (logFace!)
     (process.exit!)
-    void)
 
-(const logUnknown = (env?) ->
+const logUnknown = (env?) !->
     (const title = '🐟  > 🙋  Ghoti-CLI Unknown command:')
     (log title)
     (logSeprate title.length)
@@ -226,9 +216,8 @@ const logHelpMore = (env?) ->
     (logSeprate title.length)
     (logFace!)
     (process.exit!)
-    void)
 
-(const logInfo = (command, env?) ->
+const logInfo = (command, env?) !->
     (var title)
     (if (Boolean command)
     then title = '🐟  > 📺  Ghoti-CLI Command information ' + command + ':'
@@ -246,9 +235,8 @@ const logHelpMore = (env?) ->
     (logSeprate title.length)
     (logFace!)
     (process.exit!)
-    void)
 
-const logWhatIs = (keyword, env?) ->
+const logWhatIs = (keyword, env?) !->
     const title = '🐟  > 🏇🏼  Ghoti-CLI what is "' + keyword + '":'
     log title
     logSeprate title.length
@@ -263,9 +251,8 @@ const logWhatIs = (keyword, env?) ->
     logSeprate title.length
     logFace!
     process.exit!
-    void
 
-(const logPostNPMInstall = (type, env?) ->
+const logPostNPMInstall = (type, env?) !->
     (const title = '🐟  > 🦉  Ghoti-CLI information "' + type + '":')
     (log title)
     (logSeprate title.length)
@@ -281,21 +268,19 @@ const logWhatIs = (keyword, env?) ->
     (logSeprate title.length)
     (logFace!)
     (process.exit!)
-    void)
 
-(const logUpdate = (ghoti, env?) ->
+const logUpdate = (ghoti, env?) ->
     (const title = '🐟  > 🦉  Ghoti-CLI update:')
     (log title)
     (logSeprate title.length)
     (logPad '| Auto update fature is indevlopment', 1)
     (logPad '| To update ghoti version manually, follow the document on Github', 1)
     (logPad '| Try: "ghoti about"', 1)
-    (->
+    !->
         (logSeprate title.length)
         (logFace!)
-        void))
 
-(const logListPlus = ->
+const logListPlus = !->
     (const re = (libList!))
     (const title = '🐟  > 📇  Ghoti-CLI List:')
     (log title)   
@@ -312,9 +297,8 @@ const logWhatIs = (keyword, env?) ->
     log '| For external packages, view https://github.com/WMXPY/Ghoti-CLI/blob/master/doc/ghoti/list.md'
     (logFace!)
     (process.exit!)
-    void)
 
-(const logList = ->
+const logList = !->
     (const re = (libList!))
     (const title = '🐟  > 📇  Ghoti-CLI List:')
     (log title)   
@@ -329,9 +313,8 @@ const logWhatIs = (keyword, env?) ->
     log '| For external packages, view https://github.com/WMXPY/Ghoti-CLI/blob/master/doc/ghoti/list.md'
     (logFace!)
     (process.exit!)
-    void)
 
-(const logFileList = ->
+const logFileList = !->
     (const re = (libFileList!))
     (const title = '🐟  > 📇  Ghoti-CLI File List:')
     (log title)   
@@ -345,10 +328,9 @@ const logWhatIs = (keyword, env?) ->
     (logTable table, 'file', 'location', 'author')
     (logFace!)
     (process.exit!)
-    void)
 
-(const logPostInstall = (targetPath, type, typescript, env?) ->
-    (switch type
+const logPostInstall = (targetPath, type, typescript, env?) !->
+    switch type
         case 'feature'
             (log '')
             (logPad 'Congratulations!!! 😎', 1)
@@ -372,40 +354,39 @@ const logWhatIs = (keyword, env?) ->
             (logPad '* run "ghoti post ' + type + '" anywhere', 2)
             (logPad '* run "npm run hint" in your project folder', 2)
             (logPad '| TIPS: How to init a git repo, try:', 1)
-            (logPad '* ghoti whatis git-init', 2))
-    void)
+            (logPad '* ghoti whatis git-init', 2)
 
 const logDeprecated = (command, due) ->
     log '| Command "' + command + '" is no longer suppored due to:'
     due.forEach (it) ->
         logPad ('| ' + it), 1
 
-(export log)
+export log
 export br
 export logAlias
 export logSeprate
 export getMaxLength
 export logFace
 export faces
-(export logInline)
-(export logPad)
-(export logHelp)
-(export logHelpMore)
-(export logInfo)
-(export logAbout)
-(export logUnderline)
-(export logStatus)
-(export logCommand)
-(export logSymbol)
-(export logVersion)
-(export logUnknown)
-(export logPostInstall)
-(export logPostNPMInstall)
-(export logWhatIs)
-(export logUpdate)
-(export logList)
-(export logListPlus)
-(export logFileList)
-(export logGame)
-(export logGameCommand)
-(export logDeprecated)
+export logInline
+export logPad
+export logHelp
+export logHelpMore
+export logInfo
+export logAbout
+export logUnderline
+export logStatus
+export logCommand
+export logSymbol
+export logVersion
+export logUnknown
+export logPostInstall
+export logPostNPMInstall
+export logWhatIs
+export logUpdate
+export logList
+export logListPlus
+export logFileList
+export logGame
+export logGameCommand
+export logDeprecated

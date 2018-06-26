@@ -7,7 +7,7 @@ require! {
     '../func/deepclone': { deepClone }
 }
 
-const initUnderline = (ghoti, whenDone, env) ->
+const initUnderline = (ghoti, whenDone, env) !->
     const newGhoti = deepClone ghoti
     if !(checkGhoti newGhoti)
     then 
@@ -37,7 +37,7 @@ const initUnderline = (ghoti, whenDone, env) ->
         process.exit!
     if !newGhoti.underline.active
     then
-        const fin = ->
+        const fin = !->
             newGhoti.underline.active = true
             newGhoti.underline.path = []
             writeConfig newGhoti
@@ -51,7 +51,7 @@ const initUnderline = (ghoti, whenDone, env) ->
             log ''
             fin!
         else
-            getInput 'Do you want to init GHOTI UNDERLINE in your project?', false, (wantToInit) ->
+            getInput 'Do you want to init GHOTI UNDERLINE in your project?', false, (wantToInit) !->
                 if wantToInit
                 then
                     fin!
@@ -61,6 +61,5 @@ const initUnderline = (ghoti, whenDone, env) ->
                 whenDone!
     else
         log '| Have fun!'
-    void
 
 export initUnderline

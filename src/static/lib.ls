@@ -54,7 +54,7 @@ const libCommons = (common, ghoti_root) ->
             commonList.push commonPath(i.path, j, ghoti_root)
     commonList
 
-(const lib = (libName, ghoti_root?) ->
+const lib = (libName, ghoti_root?) ->
     (var re, commonList)
 
     # build-in templates
@@ -97,10 +97,10 @@ const libCommons = (common, ghoti_root) ->
                 re.location = 'external'
     (if re
     then re
-    else null))
+    else null)
 
 export getOuter
-(export lib)
-(export libList)
-(export commonPath)
+export lib
+export libList
+export commonPath
 export libCommons

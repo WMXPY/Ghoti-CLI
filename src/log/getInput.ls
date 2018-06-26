@@ -19,7 +19,7 @@ const qeustionCreater = (questionE, defaultText?) ->
     (question += ' :\r\n=>> ')
     question
 
-(const getInput = (question, defaultText, callback) ->
+const getInput = (question, defaultText, callback) !->
     (const intf = 
         input: process.stdin
         output: process.stdout
@@ -28,7 +28,7 @@ const qeustionCreater = (questionE, defaultText?) ->
     (const rl = (readline.createInterface intf))
     question = qeustionCreater question, defaultText
     
-    (rl.question question, (answer) ->
+    rl.question question, (answer) !->
         (rl.close!)
         (if typeof defaultText === 'boolean'
         then 
@@ -46,8 +46,6 @@ const qeustionCreater = (questionE, defaultText?) ->
             then 
                 (answer = defaultText)))
         (callback answer)
-        void)
-    void)
 
 export qeustionCreater
 export getInput
