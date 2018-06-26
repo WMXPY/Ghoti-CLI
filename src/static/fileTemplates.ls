@@ -92,6 +92,23 @@ const files = [
     }
     {
         name: [
+            'react-bp-page'
+            'rbpp'
+        ]
+        author: '$ghoti'
+        path: 'react'
+        file: 'page.bp.tsx.ghoti'
+        whatis: [
+            'react page file'
+            'rx-js'
+        ]
+        replaces: [
+            'author'
+            'page'
+        ]
+    }
+    {
+        name: [
             'react-component'
         ]
         author: '$ghoti'

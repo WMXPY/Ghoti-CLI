@@ -1,7 +1,6 @@
 {
     "compileOnSave": false,
     "compilerOptions": {
-        "experimentalDecorators": true,
         "jsx": "react",
         "module": "commonjs",
         "noImplicitAny": false,

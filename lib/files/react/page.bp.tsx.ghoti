@@ -5,6 +5,7 @@
  */
 
 import * as React from 'react';
+import { Subject } from 'rxjs';
 
 export interface IProps {
 
