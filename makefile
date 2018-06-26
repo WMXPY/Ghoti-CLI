@@ -30,6 +30,7 @@ func.ls:
 
 ame.ls:
 	$(ls) ./$(distPath)/ame/ ./$(sourcePath)/ame/*.ls
+	$(ls) ./$(distPath)/ame/tilde/ ./$(sourcePath)/ame/tilde/*.ls
 
 eng.ls:
 	$(ls) ./$(distPath)/eng/ ./$(sourcePath)/eng/*.ls

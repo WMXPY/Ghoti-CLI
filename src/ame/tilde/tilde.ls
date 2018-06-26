@@ -2,7 +2,7 @@ require! {
     '../../log/std': { log, logPad }
 }
 
-const excuteAt = ->
+const excuteTilde = ->
     
 
-export excuteAt
+export excuteTilde

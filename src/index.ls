@@ -198,8 +198,6 @@ const excute = (...mucall?) ->
             (logFileList env)
 
         # fix
-        case '~'
-            fallthrough
         case 'issue'
             fallthrough
         case 'fix'

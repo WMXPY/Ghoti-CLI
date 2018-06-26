@@ -1,5 +1,37 @@
 const list = [
     {
+        command: [
+            'tilde'
+            '~'
+        ]
+        arguments: 0
+        info: 'Start tilde command configuration setup'
+        plus: [
+            {
+                name: 'example'
+                value: 'ghoti ~'
+            }
+        ]
+        more: []
+    }
+    {
+        command: ['~[#?]']
+        arguments: 0
+        info: 'Excute tilde command'
+        plus: [
+            {
+                name: 'example'
+                value: 'ghoti ~[command name]'
+            }
+        ]
+        more: [
+            {
+                name: 'example'
+                value: 'ghoti ~ghoti'
+            }
+        ]
+    }
+    {
         command: ['_[#?]']
         arguments: 0
         info: 'Check "ghoti underline"'
@@ -249,7 +281,6 @@ const list = [
         command: [
             'fix'
             'issue'
-            '~'
         ]
         arguments: 0
         info: 'try to auto fix issue'
@@ -264,7 +295,6 @@ const list = [
         command: [
             'fix'
             'issue'
-            '~'
         ]
         arguments: 1
         info: 'show error message if it is knowned'
