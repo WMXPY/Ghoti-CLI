@@ -142,12 +142,13 @@ describe('test simple long log functions', (): void => {
         const func = () => {
             logVersion();
         };
-        const re = monk_log(func);
+        const re: string[] = monk_log(func);
         const face: string = (re.pop() as string);
+        const version: string[] = re.splice(2, 1);
+        expect(version[0].indexOf('version')).to.be.greaterThan(0);
         expect(re).to.be.deep.equal([
             "🐟  > 📜  Ghoti-CLI Version:",
             "----------------------------",
-            "    | version : 3.5.0",
             "      * try to update > npm install -g ghoti-cli",
             "    | info    : for more info, try \"ghoti help\"",
             "----------------------------",
