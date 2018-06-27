@@ -74,6 +74,9 @@ const runPrefixCommand = (command, ghoti, ghotiCLIPath, env) ->
             frogGame ghoti, env, whenDone
         case '='
             logWhatIs suffix, env
+        case '~'
+            whenDone = logTilde!
+            excuteTilde suffix, env, whenDone
         default
             notValid <| env
 
@@ -186,10 +189,11 @@ const excute = (...mucall?) ->
             (update whenDone, env)
 
         # tilde
+        case '~'
+            fallthrough
         case 'tilde'
             whenDone = logTilde!
-            excuteTilde!
-            whenDone!
+            excuteTilde whenDone
 
         # whatis
         case 'w'
