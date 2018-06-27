@@ -9,7 +9,8 @@ const execute = (program, str) !->
     exec cmd
     
 const reportAndEnd = (message, whenDone) !->
-    log message
+    logPad '| Excute failed', 1
+    logPad '| Error: ' + message, 1
     whenDone!
     process.exit 1
 
@@ -17,7 +18,7 @@ const excuteTilde = (suffix, env, whenDone) !->
     const config = readCLIConfig!
     const tilde = config.tilde
     var done
-    if !(tilde || tilde.map)
+    if !(tilde || tilde.length)
     then reportAndEnd 'Config error', whenDone
     else
     then 

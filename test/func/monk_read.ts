@@ -1,12 +1,12 @@
 import * as fs from 'fs';
 
-export default function (fun: Function): string {
+export const monk_read = (fun: () => void): string => {
     const fsTemp = fs.readFileSync;
     const fsExistTemp = fs.existsSync;
     let fileContent: string = '';
 
-    (fs.existsSync as any) = () => { return true };
-    (fs.readFileSync as any) = function (fileName: string, code: string) {
+    (fs.existsSync as any) = () => true;
+    (fs.readFileSync as any) = (fileName: string, code: string) => {
         fileContent += `${fileName} with ${code}`;
         fileContent += '\r\ntest file content';
         fileContent += '\r\ntest replaceable ${|replace|}';
@@ -20,4 +20,6 @@ export default function (fun: Function): string {
     (fs.readFileSync as any) = fsTemp;
     (fs.existsSync as any) = fsExistTemp;
     return fileContent;
-}
+};
+
+export default monk_read;

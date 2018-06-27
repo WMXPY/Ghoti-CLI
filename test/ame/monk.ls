@@ -25,5 +25,24 @@ const originGhotiConfig = {
     remote: []
 }
 
+const monk_log = (fun) ->
+    const logTemp = console.log
+    const exitTemp = process.exit
+    const logHistory = []
+
+    console.log = (...s) !->
+        const content = s.join ' '
+        logHistory.push content
+
+    process.exit = (code?) !->
+        logTemp 'qq', code
+
+    fun!
+
+    console.log = logTemp
+    process.exit = exitTemp
+    return logHistory
+
 export ghotiConfig
 export originGhotiConfig
+export monk_log
