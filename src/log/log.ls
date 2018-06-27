@@ -361,6 +361,15 @@ const logDeprecated = (command, due) ->
     due.forEach (it) ->
         logPad ('| ' + it), 1
 
+const logTilde = ->
+    const title = '🐟  > 📟  Ghoti-CLI Tilde:'
+    log title
+    logSeprate title.length
+    !->
+        logSeprate title.length
+        logFace!
+        process.exit!
+
 export log
 export br
 export logAlias
@@ -390,3 +399,4 @@ export logFileList
 export logGame
 export logGameCommand
 export logDeprecated
+export logTilde

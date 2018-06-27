@@ -3,8 +3,33 @@ require! {
     path
     './func/config': config
     './func/config': { updateConfig, cliPath }
-    './log/log': { log, logHelp, logHelpMore, logInfo, logPostNPMInstall, logAbout, logUnderline, logVersion, logCommand, logSymbol, logUnknown, logStatus, logWhatIs, logUpdate, logList, logListPlus, logFileList, logGame, logGameCommand, logDeprecated }
-    './func/argv': { argv, ghotiConfig }
+    './log/log': { 
+        log
+        logHelp
+        logHelpMore
+        logInfo
+        logPostNPMInstall
+        logAbout
+        logUnderline
+        logVersion
+        logCommand
+        logSymbol
+        logUnknown
+        logStatus
+        logWhatIs
+        logUpdate
+        logList
+        logListPlus
+        logFileList
+        logGame
+        logGameCommand
+        logDeprecated
+        logTilde
+    }
+    './func/argv': { 
+        argv
+        ghotiConfig 
+    }
     './func/init': { init, downloadArchirve }
     './structure/component': { component }
     './structure/page': { page }
@@ -21,6 +46,7 @@ require! {
     './func/file': { file }
     './func/suffix': { suffix }
     './func/pack': { pack }
+    './ame/tilde/tilde': { excuteTilde }
 }
 
 const notValid = (env) ->
@@ -158,6 +184,12 @@ const excute = (...mucall?) ->
         case 'update'
             whenDone = (logUpdate ghoti, env)
             (update whenDone, env)
+
+        # tilde
+        case 'tilde'
+            whenDone = logTilde!
+            excuteTilde!
+            whenDone!
 
         # whatis
         case 'w'

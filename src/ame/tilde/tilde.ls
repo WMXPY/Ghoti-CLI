@@ -3,6 +3,8 @@ require! {
 }
 
 const excuteTilde = ->
-    
+    # log process.cwd!
+    # process.chdir 'C:'
+    # log process.cwd!
 
 export excuteTilde
