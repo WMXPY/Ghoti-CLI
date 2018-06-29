@@ -1,7 +1,6 @@
 #!/usr/bin/env node
 
 const ghoti = require('../dist/index.js').excute;
-// console.log('Ghoti-cli is a command line tool, you should not import it like this');
-// console.log('View doc with "ghoti about"');
+
 module.exports = ghoti;
 module.exports.default = ghoti;

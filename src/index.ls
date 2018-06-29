@@ -80,7 +80,7 @@ const runPrefixCommand = (command, ghoti, ghotiCLIPath, env) ->
         default
             notValid <| env
 
-const excute = (...mucall?) ->
+const excute = (...mucall?) !->
     (var whenDone, env)
     (const ghoti = ghotiConfig)
     (const ghotiCLIPath = cliPath!)  
@@ -331,6 +331,5 @@ const excute = (...mucall?) ->
             minigame ghoti, env, whenDone            
         default
             runPrefixCommand mode, ghoti, ghotiCLIPath, env
-    void
 
 export excute
