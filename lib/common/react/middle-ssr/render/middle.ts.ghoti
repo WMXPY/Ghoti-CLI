@@ -5,8 +5,10 @@
 
 import renderer from './render';
 
-export default function (Route, Props) {
-    const route = Route || '/'
-    const props = Props || {}
+const middle = (Route, Props) => {
+    const route = Route || '/';
+    const props = Props || {};
     return renderer(route, props);
 };
+
+export default middle;
