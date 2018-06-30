@@ -29,7 +29,7 @@
 		"node": ">=7.x"
 	},
 	"homepage": "https://github.com/WMXPY/Ghoti-CLI#readme",
-	"license": "SEE LICENSE IN LICENSE",
+	"license": "MIT",
 	"main": "bin/import",
 	"name": "ghoti-cli",
 	"nyc": {
