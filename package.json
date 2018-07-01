@@ -29,6 +29,13 @@
 		"node": ">=7.x"
 	},
 	"homepage": "https://github.com/WMXPY/Ghoti-CLI#readme",
+	"keywords": [
+		"cli",
+		"ghoti",
+		"react",
+		"templates",
+		"vue"
+	],
 	"license": "MIT",
 	"main": "bin/import",
 	"name": "ghoti-cli",
