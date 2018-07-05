@@ -1,0 +1,30 @@
+{
+    "compileOnSave": false,
+    "compilerOptions": {
+        "jsx": "react",
+        "module": "commonjs",
+        "noImplicitAny": false,
+        "noImplicitThis": false,
+        "outDir": "dist",
+        "removeComments": true,
+        "sourceMap": true,
+        "strict": false,
+        "strictNullChecks": false,
+        "target": "es2015",
+        "lib": [
+            "dom",
+            "es5",
+            "es2015",
+            "es2016",
+            "es2017"
+        ]
+    },
+    "exclude": [
+        "node_modules",
+        "public"
+    ],
+    "include": [
+        "src/**/*",
+        "render/**/*"
+    ]
+}

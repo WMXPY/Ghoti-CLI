@@ -1,12 +1,23 @@
-src
+/src
 doc
 tex
 package-lock.json
 .ghoticonfig
 .gitignore
 makefile
+
+test
 tests
+distTest
+
 script
+node_modules
+bin/*.sh
+.nyc_output
+coverage
+
+# testing files
+
 a
 b
 c

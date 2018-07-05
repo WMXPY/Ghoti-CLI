@@ -2,8 +2,10 @@ require! {
     fs,
     path,
     './common': { comments, verifyNameValiation }
+    './lib/lib': { libLambda, pathBuilder }
     '../log/log': { log, logPad }
     '../func/config': { updateConfig }
+    '../func/fs/fileController': { readFileC }
 }
 
 (const ghotiLambdaClassName = (name) ->
@@ -17,7 +19,7 @@ require! {
 
 (const readFile = (root, name, ghoti) ->
     (var re)
-    (re = ((fs.readFileSync root, 'utf8').toString!))
+    (re = ((readFileC root, 'utf8').toString!))
     (re = (re.replace /\${\|lambda\|}/g, (ghotiLambdaClassName name)))
     (re = (re.replace /\${\|author\|}/g, ghoti.author || "unknown"))
     re)
@@ -51,7 +53,7 @@ require! {
             (process.exit!))
     (const target = (path.join targetPath, "src", "lambda", name + ".lambda.ts" ))
     (const importTarget = (path.join targetPath, "src", "lambda", "import.ts" ))
-    (const data = (readFile (path.join root, "lib", "structure", "lambda", "lambda.ts.ghoti"), name, ghoti))
+    (const data = (readFile (pathBuilder root, (libLambda 'ts')), name, ghoti))
     (ghoti.lambdas.push name)
     (log '| update .ghoticonfig file')
     (updateConfig ghoti)

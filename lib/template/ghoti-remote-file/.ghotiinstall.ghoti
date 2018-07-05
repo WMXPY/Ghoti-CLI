@@ -1,0 +1,14 @@
+{
+    "name": "${|title|}",
+    "type": "file",
+    "main": "${|filePath|}",
+    "author": "${|author|}",
+    "language": "${|language|}",
+    "replaces": [],
+    "postLog": [
+        "$empty",
+        "HELLO WORLD!",
+        "$empty"
+    ],
+    "whatis": []
+}

@@ -2,8 +2,10 @@ require! {
     fs,
     path,
     './common': { comments, verifyNameValiation }
+    './lib/lib': { libComponent, pathBuilder }
     '../log/log': { log, logPad }
     '../func/config': { updateConfig }
+    '../func/fs/fileController': { readFileC }
 }
 
 (const ghotiComponentClassName = (name) ->
@@ -22,7 +24,7 @@ const ghotiComponentExportVue = (name) ->
 
 (const readFile = (root, name, ghoti) ->
     (var re)
-    (re = ((fs.readFileSync root, 'utf8').toString!))
+    (re = ((readFileC root, 'utf8').toString!))
     (re = (re.replace /\${\|component\|}/g, (ghotiComponentClassName name)))
     (re = (re.replace /\${\|author\|}/g, ghoti.author || "unknown"))
     re)
@@ -76,15 +78,15 @@ const comVueAddon = (ghoti) ->
     (var data, target, importTarget)
     (switch ghoti.template
         case 'react'
-            data = (readFile (path.join root, "lib", "react", "component", "component.tsx.ghoti"), name, ghoti)
+            data = (readFile (pathBuilder root, (libComponent 'react-tsx')), name, ghoti)
             target = (path.join targetPath, "src", "component", name + ".component.tsx" )
             importTarget = (path.join targetPath, "src", "component", "import.ts" )
         case 'react-js'
-            data = (readFile (path.join root, "lib", "react-js", "component", "component.jsx.ghoti"), name, ghoti)
+            data = (readFile (pathBuilder root, (libComponent 'react-jsx')), name, ghoti)
             target = (path.join targetPath, "src", "component", name + ".component.jsx" )
             importTarget = (path.join targetPath, "src", "component", "import.js" )
         case 'vue'
-            data = (readFile (path.join root, "lib", "vue", "component", "component.vue.ghoti"), name, ghoti)
+            data = (readFile (pathBuilder root, (libComponent 'vue')), name, ghoti)
             target = (path.join targetPath, "src", "component", name + ".component.vue" )
             importTarget = (path.join targetPath, "src", "component", "addon.ts" )
         default
@@ -107,3 +109,6 @@ const comVueAddon = (ghoti) ->
     (fs.writeFileSync target, data, 'utf8'))
 
 export component
+
+# for testing
+export ghotiComponentFileName

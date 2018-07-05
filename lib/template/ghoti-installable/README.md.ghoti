@@ -1,0 +1,6 @@
+# ${|title|}
+
+${|description|}
+
+> Created by [Ghoti-CLI](https://github.com/WMXPY/Ghoti-CLI/) ${|version|}
+${|readme|}

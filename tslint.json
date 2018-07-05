@@ -1,0 +1,26 @@
+{
+    "extends": "tslint:recommended",
+    "jsRules": {
+        "max-line-length": {
+            "options": [
+                128
+            ]
+        }
+    },
+    "rules": {
+        "max-line-length": false,
+        "jsdoc-format": false,
+        "new-parens": true,
+        "no-arg": true,
+        "no-bitwise": true,
+        "no-conditional-assignment": true,
+        "no-consecutive-blank-lines": false,
+        "no-console": false,
+        "no-eval": false,
+        "no-var-requires": false,
+        "object-literal-sort-keys": false,
+        "prefer-const": false,
+        "quotemark": false,
+        "variable-name": false
+    }
+}

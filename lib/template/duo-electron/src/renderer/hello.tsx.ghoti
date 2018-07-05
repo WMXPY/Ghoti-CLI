@@ -1,0 +1,32 @@
+// G!Page Index
+import { ipcRenderer, shell } from "electron";
+
+import * as React from "react";
+import { Redirect, Route } from "react-router-dom";
+
+import * as Pages from "./pages/import";
+
+import "../style/global.sass";
+
+export interface IProps {
+}
+
+export interface IState {
+}
+
+class Hello extends React.Component<IProps, IState> {
+
+    public constructor(props: IProps) {
+        super(props);
+    }
+
+    public render(): any {
+        return (
+            <React.Fragment>
+                <Route path="/" exact component={Pages.Root} />
+            </React.Fragment>
+        );
+    }
+}
+
+export default Hello;

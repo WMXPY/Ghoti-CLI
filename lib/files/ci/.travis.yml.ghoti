@@ -1,0 +1,12 @@
+language: node_js
+
+install:
+ - npm install
+ - npm install --only=dev
+
+node_js:
+ - '5'
+ - '7'
+ - '9'
+
+script: npm test

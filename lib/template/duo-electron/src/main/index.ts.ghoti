@@ -1,0 +1,20 @@
+// G!Electron Entry
+import { app, ipcMain } from "electron";
+
+import { createHello, destroyHello, getHello, getWebContentHello } from './hello';
+
+app.on("ready", () => {
+    createHello();
+});
+
+app.on("window-all-closed", () => {
+    if (process.platform !== "darwin") {
+        app.quit();
+    }
+});
+
+app.on("activate", () => {
+    if (getHello === null) {
+        createHello();
+    }
+});

@@ -2,7 +2,7 @@ require! {
     fs
     path
     '../log/log': { log, logPostInstall }
-    './parser': { parseAll, parseFile }
+    './parser/parser': { parseAll, parseFile }
 }
 
 (const update = (whenDone, env) ->

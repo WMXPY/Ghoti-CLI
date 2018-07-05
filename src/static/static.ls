@@ -1,3 +1,3 @@
-(const version = "2.3.2")
+(const version = "4.0.1")
 
 (export version)

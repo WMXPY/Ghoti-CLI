@@ -1,0 +1,14 @@
+{
+    "type": "project",
+    "template": "${|title|}",
+    "sub": "${|description|}",
+    "version": "$ {|version|}",
+    "title": "$ {|title|}",
+    "description": "$ {|description|}",
+    "author": "$ {|author|}",
+    "config": { 
+    },
+    "underline": {
+        "active": false
+    }
+}

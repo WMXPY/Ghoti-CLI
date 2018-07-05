@@ -1,0 +1,28 @@
+# ${|title|}
+
+${|description|}
+
+### Install
+
+```bash
+npm install
+```
+
+### Devlopment
+
+```bash
+# Start hot reload webpage
+npm start
+
+# Start electron
+npm run electron
+```
+
+### Build
+
+```bash
+# Build
+npm run build
+```
+
+> Created by [Ghoti-CLI](https://github.com/WMXPY/Ghoti-CLI/) ${|version|}

@@ -1,0 +1,18 @@
+{
+    "name": "${|title|}",
+    "type": "template",
+    "common": [{
+        "path": "",
+        "commons": []
+    }],
+    "author": "${|author|}",
+    "language": "${|language|}",
+    "framework": "${|framework|}",
+    "replaces": [],
+    "postLog": [
+        "$empty",
+        "HELLO WORLD!",
+        "$empty"
+    ],
+    "whatis": []
+}

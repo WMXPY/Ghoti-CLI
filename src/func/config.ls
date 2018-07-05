@@ -4,6 +4,7 @@ require! {
     os
     '../log/log': { log }
     '../func/argv': { path_ghoti }
+    './fs/fileController': { readFileC }
 }
 
 (const cliPath = ->
@@ -40,9 +41,18 @@ require! {
     (const configExist = (fs.existsSync (path.join path_current, '.ghoticonfig')))
 
     (if configExist
-    then config = (JSON.parse (fs.readFileSync (path.join path_current, '.ghoticonfig'), 'utf8'))
+    then config = (JSON.parse (readFileC (path.join path_current, '.ghoticonfig'), 'utf8'))
     else config = null)
 
+    config)
+
+(const getGameConfig = ->
+    (var config)
+    (const path_current = (process.cwd!))
+    (const configExist = (fs.existsSync (path.join path_current, '.ghotigameconfig')))
+    (if configExist
+    then config = (JSON.parse (readFileC (path.join path_current, '.ghotigameconfig'), 'utf8'))
+    else config = null)
     config)
 
 (const writeConfig = (config) ->
@@ -54,6 +64,16 @@ require! {
         configExist
     else 
         (fs.writeFileSync (path.join path_current, '.ghoticonfig'), (JSON.stringify config) , 'utf8')
+        true))
+
+(const writeGameConfig = (config) ->
+    (const path_current = (process.cwd!))
+    (const configExist = (fs.existsSync path.join path_current, '.ghotigameconfig'))
+    (if configExist
+        (fs.writeFileSync (path.join path_current, '.ghotigameconfig'), (JSON.stringify config) , 'utf8')
+        configExist
+    else 
+        (fs.writeFileSync (path.join path_current, '.ghotigameconfig'), (JSON.stringify config) , 'utf8')
         true))
 
 (const writeCLIConfig = (config) ->
@@ -70,7 +90,7 @@ require! {
     (const configExist = (fs.existsSync path.join cliPath!, '.ghoticonfig'))
 
     (if configExist
-    then (JSON.parse (fs.readFileSync (path.join cliPath!, '.ghoticonfig'), 'utf8'))
+    then (JSON.parse (readFileC (path.join cliPath!, '.ghoticonfig'), 'utf8'))
     else false))
 
 (const initConfig = (type) ->
@@ -87,3 +107,6 @@ export tempConfig
 export updateConfig
 export readCLIConfig
 export writeCLIConfig
+
+export getGameConfig
+export writeGameConfig

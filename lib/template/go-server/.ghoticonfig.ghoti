@@ -11,20 +11,5 @@
     },
     "underline": {
         "active": false
-    },
-    "components": [
-        
-    ],
-    "pages": [
-
-    ],
-    "funcs": [
-
-    ],
-    "lambdas": [
-        
-    ],
-    "features": [
-        
-    ]
+    }
 }

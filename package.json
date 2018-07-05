@@ -1,31 +1,75 @@
 {
-  "name": "ghoti-cli",
-  "version": "2.3.2",
-  "description": ":fish: A CLI tool that helps you start developing your new project within 60 seconds",
-  "main": "bin/import",
-  "directories": {
-    "doc": "doc"
-  },
-  "bin": {
-    "ghoti": "bin/ghoti",
-    "nuh": "bin/ghoti"
-  },
-  "scripts": {
-    "test": "make tests"
-  },
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/WMXPY/Ghoti-CLI.git"
-  },
-  "author": "WMXPY",
-  "license": "SEE LICENSE IN LICENSE",
-  "bugs": {
-    "url": "https://github.com/WMXPY/Ghoti-CLI/issues"
-  },
-  "homepage": "https://github.com/WMXPY/Ghoti-CLI#readme",
-  "devEngines": {
-    "node": ">=7.x",
-    "npm": ">=4.x"
-  },
-  "dependencies": {}
+	"author": "WMXPY",
+	"bin": {
+		"ghoti": "bin/ghoti",
+		"nuh": "bin/ghoti"
+	},
+	"bugs": {
+		"url": "https://github.com/WMXPY/Ghoti-CLI/issues"
+	},
+	"directories": {
+		"doc": "doc"
+	},
+	"dependencies": {},
+	"description": ":fish: A CLI tool that helps you start developing your new project within 60 seconds",
+	"devDependencies": {
+		"@types/chai": "^4.1.4",
+		"@types/mocha": "^5.2.4",
+		"@types/node": "^10.5.1",
+		"chai": "^4.1.2",
+		"eslint": "^5.0.1",
+		"livescript": "1.5.0",
+		"mocha": "^5.2.0",
+		"ts-node": "^7.0.0",
+		"tslint": "^5.10.0",
+		"typescript": "^2.9.2"
+	},
+	"devEngines": {
+		"npm": ">=4.x",
+		"node": ">=7.x"
+	},
+	"homepage": "https://github.com/WMXPY/Ghoti-CLI#readme",
+	"keywords": [
+		"cli",
+		"ghoti",
+		"react",
+		"templates",
+		"vue"
+	],
+	"license": "MIT",
+	"main": "bin/import",
+	"name": "ghoti-cli",
+	"nyc": {
+		"extension": [
+			".ts",
+			".ls"
+		],
+		"include": [
+			"src/**/*.ts",
+			"src/**/*.ls",
+			"src/*.ls"
+		],
+		"instrument": true,
+		"reporter": [
+			"json",
+			"text-summary"
+		],
+		"report-dir": "coverage",
+		"require": [
+			"ts-node/register",
+			"livescript"
+		],
+		"sourceMap": true
+	},
+	"repository": {
+		"type": "git",
+		"url": "git+https://github.com/WMXPY/Ghoti-CLI.git"
+	},
+	"scripts": {
+		"test": "mocha",
+		"build": "make",
+		"tsTest": "tsc --p ./test/tsconfig.json",
+		"cov": "codecov -f ./coverage/coverage-final.json -t [key]"
+	},
+	"version": "4.0.1"
 }

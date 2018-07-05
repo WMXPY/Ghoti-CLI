@@ -1,76 +1,59 @@
 ls := lsc -co
-depdence := log.ls static.ls func.ls structure.ls ame.ls game.ls outer.ls
+ts := tsc --p
+depdence := log.ls static.ls func.ls structure.ls ame.ls eng.ls eng.ts
 sourcePath := src
+testPath := test
 distPath := dist
 
 ghoti: $(depdence)
-ifeq ($(UNAME), win32)
-	$(ls) .\dist\ .\src\*.ls
-else
 	$(ls) ./dist/ ./src/*.ls
-endif
+
+install:
+	npm install
+	npm install --only=dev
 
 log.ls:
-ifeq ($(UNAME), win32)
-	$(ls) .\$(distPath)\log\ .\$(sourcePath)\log\*.ls
-else
 	$(ls) ./$(distPath)/log/ ./$(sourcePath)/log/*.ls
-endif
 
 static.ls:
-ifeq ($(UNAME), win32)
-	$(ls) .\$(distPath)\static\ .\$(sourcePath)\static\*.ls
-else
 	$(ls) ./$(distPath)/static/ ./$(sourcePath)/static/*.ls
-endif
+	$(ls) ./$(distPath)/static/outer/ ./$(sourcePath)/static/outer/*.ls
 
 structure.ls:
-ifeq ($(UNAME), win32)
-	$(ls) .\$(distPath)\structure\ .\$(sourcePath)\structure\*.ls
-else
 	$(ls) ./$(distPath)/structure/ ./$(sourcePath)/structure/*.ls
-endif
+	$(ls) ./$(distPath)/structure/lib/ ./$(sourcePath)/structure/lib/*.ls
 
 func.ls:
-ifeq ($(UNAME), win32)
-	$(ls) .\$(distPath)\func\ .\$(sourcePath)\func\*.ls
-else
 	$(ls) ./$(distPath)/func/ ./$(sourcePath)/func/*.ls
-endif
+	$(ls) ./$(distPath)/func/parser/ ./$(sourcePath)/func/parser/*.ls
+	$(ls) ./$(distPath)/func/fs/ ./$(sourcePath)/func/fs/*.ls
 
 ame.ls:
-ifeq ($(UNAME), win32)
-	$(ls) .\$(distPath)\ame\ .\$(sourcePath)\ame\*.ls
-else
 	$(ls) ./$(distPath)/ame/ ./$(sourcePath)/ame/*.ls
-endif
+	$(ls) ./$(distPath)/ame/tilde/ ./$(sourcePath)/ame/tilde/*.ls
 
-game.ls:
-ifeq ($(UNAME), win32)
-	$(ls) .\$(distPath)\game\ .\$(sourcePath)\game\*.ls
-else
-	$(ls) ./$(distPath)/game/ ./$(sourcePath)/game/*.ls
-endif
+eng.ls:
+	$(ls) ./$(distPath)/eng/ ./$(sourcePath)/eng/*.ls
 
-outer.ls:
-ifeq ($(UNAME), win32)
-	$(ls) .\$(distPath)\outer\ .\$(sourcePath)\outer\*.ls
-else
-	$(ls) ./$(distPath)/outer/ ./$(sourcePath)/outer/*.ls
-endif
+eng.ts:
+	$(ts) ./$(sourcePath)/eng/tsconfig.json
 
-run:
-ifeq ($(UNAME), win32)
-	lsc test.ls
-else
-	lsc test.ls
-endif
+dist.test:
+	$(ts) ./$(testPath)/tsconfig.json
 
 clean:
-ifeq ($(UNAME), win32)
-	del .\$(distPath)
-	del *.aux *.dvi *.fdb* *.fls *.log *.gz *.pdf
+ifeq ($(OS), Windows_NT)
+	cmd //C del .\$(distPath)
+	cmd //C del *.aux *.dvi *.fdb* *.fls *.log *.gz *.pdf
+	cmd //C del .\src\eng\*.js
+	cmd //C del .\src\eng\*.js.map
+	cmd //C del .\test\eng\*.js
+	cmd //C del .\test\eng\*.js.map
 else
 	rm -rf ./$(distPath)
 	rm -rf *.aux *.dvi *.fdb* *.fls *.log *.gz *.pdf
+	rm -rf ./src/eng/*.js
+	rm -rf ./src/eng/*.js.map
+	rm -rf ./test/eng/*.js
+	rm -rf ./test/eng/*.js.map
 endif

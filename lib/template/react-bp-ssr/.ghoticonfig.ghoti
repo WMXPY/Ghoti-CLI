@@ -1,0 +1,43 @@
+{
+    "type": "project",
+    "template": "react",
+    "sub": "ssr",
+    "version": "${|version|}",
+    "title": "${|title|}",
+    "description": "${|description|}",
+    "author": "${|author|}",
+    "config": {
+        "router": {
+            "router": "react-router-dom",
+            "config": {
+                "router": "browser-router"
+            }
+        },
+        "pack": "webpack",
+        "test": {
+            "test": "mocha",
+            "expect": "code",
+            "render": "enzyme"
+        },
+        "style": "sass",
+        "sub": "typescript"
+    },
+    "underline": {
+        "active": false
+    },
+    "components": [
+        
+    ],
+    "pages": [
+
+    ],
+    "funcs": [
+
+    ],
+    "lambdas": [
+        
+    ],
+    "features": [
+        
+    ]
+}

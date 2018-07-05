@@ -5,10 +5,24 @@
 *.log
 *.gz
 *.pdf
+
 dist
 !lib/**/dist
-package-lock.json
-test.ls
+distTest
+
+node_modules
+external
+.nyc_output
+coverage
+
+src/**/*.js
+src/**/*.js.map
+
+test/**/*.js
+test/**/*.js.map
+
+# testing folders
+
 a
 b
 c

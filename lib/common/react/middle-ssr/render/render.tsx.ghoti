@@ -11,11 +11,11 @@ import StaticRouter from 'react-router-dom/StaticRouter';
 
 import routes from '../src/root/routes';
 
-export default function (route, data) {
+const render = (route, data) => {
     const content = renderToString(
         <html>
             <head>
-                <meta charset="UTF-8" />
+                <meta name="charset" content="UTF-8" />
                 <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
                 <meta name="theme-color" content="#000000" />
                 <link rel="manifest" href="manifest.json" />
@@ -34,8 +34,10 @@ export default function (route, data) {
             </body>
             <script id="initial-data" type="text/plain" data-json={JSON.stringify(data)}></script>
             <script src="bundle.js"></script>
-        </html>
+        </html>,
     );
 
     return content;
 };
+
+export default render;

@@ -1,0 +1,14 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <link href="https://use.fontawesome.com/releases/v5.0.13/css/all.css" rel="stylesheet">
+    <meta charset="UTF-8" />
+    <title>${|title|}</title>
+</head>
+
+<body>
+    <div id="container"></div>
+</body>
+
+</html>

@@ -1,4 +1,5 @@
 #!/usr/bin/env node
 
 const ghoti = require('../dist/index.js').excute;
-ghoti('underline');
+
+ghoti();

@@ -1,0 +1,48 @@
+{
+    "name": "${|title|}",
+    "version": "0.0.1",
+    "description": "${|description|}",
+    "main": "main/bundle.js",
+    "private": true,
+    "repository": {
+        "type": "git",
+        "url": "git+https://github.com/${|git-id|}/${|git-repo-name|}.git"
+    },
+    "keywords": [
+    ],
+    "license": "PRIVATE",
+    "author": "${|author|}",
+    "bugs": {
+        "url": "https://github.com/${|git-id|}/${|git-repo-name|}/issues"
+    },
+    "build": {
+        "productName": "${|title|}",
+        "appId": "${|appid|}",
+        "copyright": "Copyright © 2018 ${|author|}",
+        "files": [
+            "main",
+            "renderer",
+            "package.json",
+            "renderer/index.html"
+        ],
+        "directories": {
+            "buildResources": "/../"
+        },
+        "mac": {
+            "target": "dmg",
+            "type": "distribution",
+            "category": "efficiency",
+            "icon": "../public/icon.png"
+        },
+        "win": {
+            "target": "nsis",
+            "icon": "../public/icon.png"
+        },
+        "linux": {
+            "target": "AppImage",
+            "category": "efficiency",
+            "icon": "../public/icon.png"
+        }
+    },
+    "homepage": "https://github.com/${|git-id|}/${|git-repo-name|}#readme"
+}

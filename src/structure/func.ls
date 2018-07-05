@@ -2,8 +2,10 @@ require! {
     fs,
     path,
     './common': { comments, verifyNameValiation }
+    './lib/lib': { libFunc, pathBuilder }
     '../log/log': { log, logPad }
     '../func/config': { updateConfig }
+    '../func/fs/fileController': { readFileC }
 }
 
 const ghotiFuncClassName = (name) ->
@@ -16,7 +18,7 @@ const ghotiFuncExport = (name) ->
     "    " + (ghotiFuncClassName name) + " as " + name
 
 const readFile = (root, name, ghoti) ->
-    re = ((fs.readFileSync root, 'utf8').toString!)
+    re = ((readFileC root, 'utf8').toString!)
     re = (re.replace /\${\|func\|}/g, (ghotiFuncClassName name))
     re = (re.replace /\${\|author\|}/g, ghoti.author || "unknown")
     re
@@ -50,7 +52,7 @@ const func = (root, targetPath, name, ghoti, whenDone, env) ->
             (process.exit!)
     const target = (path.join targetPath, "src", "func", name + ".func.ts" )
     const importTarget = (path.join targetPath, "src", "func", "import.ts" )
-    const data = (readFile (path.join root, "lib", "structure", "func", "func.ts.ghoti"), name, ghoti)
+    const data = (readFile (pathBuilder root, (libFunc 'ts')), name, ghoti)
     (ghoti.funcs.push name)
     (log '| update .ghoticonfig file')
     (updateConfig ghoti)

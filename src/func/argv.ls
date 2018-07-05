@@ -2,6 +2,7 @@ require! {
     fs
     path
     '../log/log': { log }
+    './fs/fileController': { readFileC }
 }
 (const path_argv = (process.argv))
 (const path_node = (path_argv.shift!))
@@ -10,17 +11,8 @@ require! {
 (const path_path = (process.cwd!))
 (var ghotiConfig)
 (if (fs.existsSync (path.join path_path, '.ghoticonfig'))
-then ghotiConfig = (JSON.parse (fs.readFileSync (path.join path_path, '.ghoticonfig')).toString!)
+then ghotiConfig = (JSON.parse (readFileC (path.join path_path, '.ghoticonfig')).toString!)
 else ghotiConfig = {})
-
-(const env =
-    mode: mode ? 'empty'
-    auto: false
-    test: false
-    output: false
-    debug: false
-    rename: false
-    texture: [])
 
 (const command = (command) ->
     (switch(command)
@@ -32,29 +24,42 @@ else ghotiConfig = {})
             'auto'
         case '-r'
             'rename'
+        case '-f'
+            'fetch'
+        case '-y'
+            'yes'
         case '-d'
             fallthrough
         default
             'debug'))
 
-(const texture = (texture) ->
+(const texture = (env, texture) ->
     (env.texture.push texture)
     texture)
 
 (const argv = ->
+    (const env =
+        mode: mode ? 'empty'
+        auto: false
+        test: false
+        fetch: false
+        output: false
+        debug: false
+        rename: false
+        yes: false
+        texture: [])
     (path_argv.map (it) ->
         (switch(it.substring 0 1)
             case '-'
                 env[command it] = true 
                 (it.substring 1 it.length)
             default
-                texture it))
+                texture env, it))
     env)
 
 (if (fs.existsSync (path.join path_path, '.ghoticonfig'))
-then ghotiConfig = (JSON.parse (fs.readFileSync (path.join path_path, '.ghoticonfig')).toString!))
+then ghotiConfig = (JSON.parse (readFileC (path.join path_path, '.ghoticonfig')).toString!))
 
-export env
 export argv
 export path_argv
 export path_ghoti

@@ -1,82 +1,70 @@
 require! {
     path
+    '../func/config': config
+    './fileTemplates': { files }
+    './compare': { compareName }
+    '../log/std': { log }
 }
 
-const files = [
-    {
-        name: [
-            'nginx-conf'
-            'nginx-link'
-            'nginx-config'
-        ]
-        author: '$ghoti'
-        path: 'nginx'
-        file: 'nginx.d.conf.ghoti'
-        whatis: [
-            'nginx sub config file'
-            'support a sublink'
-        ]
-        replaces: [
-            'uniqueName'
-            'port'
-            'url'
-        ]
-    }
-    {
-        name: [
-            'nginx'
-        ]
-        author: '$ghoti'
-        path: 'nginx'
-        file: 'nginx.conf.ghoti'
-        whatis: [
-            'nginx main config file'
-            '.conf file'
-        ]
-        replaces: []
-    }
-    {
-        name: [
-            'docker-node'
-        ]
-        author: '$ghoti'
-        path: 'docker'
-        file: 'dockerfile-node.ghoti'
-        whatis: [
-            'dockerfile for node'
-        ]
-        replaces: [
-            'node-version'
-            'port'
-            'path'
-            'excuteable'
-        ]
-    }
-]
-
-(const compareName = (name, name2) ->
-    (const splitName = (((name.split '-').join '').toLowerCase!))
-    (const splitName2 = (((name2.split '-').join '').toLowerCase!))
-    splitName === splitName2)
+const getOuter = ->
+    const outer = config.readCLIConfig!
+    if outer
+    then if outer.remote
+    then if outer.remote.length
+    then outer
+    else null
 
 const libFile = (fileName, ghoti_root) ->
     var re
+
+    # build-in files
+
     for i in files
         for j in i.name
             if compareName j, fileName
                 re = {...i}
-    if !Boolean re
-    then return null
-    else return re
+                re.location = 'built-in'
+    if re
+    then return re
+    else 
 
-(const libFileList = ->
+    # downloaded files
+
+        const outer = getOuter!
+        if outer
+        then 
+            for i in outer.remote
+            then
+                if compareName i.name, fileName
+                then 
+                    re = {...i}
+                    re.path = path.join i.path, i.main
+                    re.file = i.main
+                    re.location = 'external'
+            if !Boolean re
+            then return null
+            else return re
+
+const libFileList = ->
     (const re = [])
     (for i in files
-        (const ea = 
+        const ea = 
             name: i.name[0]
-            author: i.author)
+            author: i.author
+            location: 'built-in'
         (re.push ea))
-    re)
+
+    const outer = getOuter!
+    if outer
+    then 
+        for i in outer.remote
+        then
+            re.push {
+                name: i.name
+                author: i.author
+                location: 'external'
+            }
+    re
 
 export libFile
 export libFileList

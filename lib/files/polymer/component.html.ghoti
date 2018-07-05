@@ -1,0 +1,16 @@
+<!-- Generaged by ghoti-cli -->
+
+<link rel="import" href="https://polygit.org/components/polymer/polymer-element.html">
+
+<script>
+    class ${|title|} extends Polymer.Element {
+        static get is() {
+            return "${|title|}";
+        }
+        constructor() {
+            super();
+            this.textContent = "Hello, ${|title|}";
+        }
+    }
+    customElements.define(${|title|}.is, ${|title|});
+</script>

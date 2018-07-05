@@ -2,8 +2,10 @@ require! {
     fs,
     path,
     '../log/log': { log, logPad }
+    './lib/lib': { libFeature, libTest, pathBuilder }
     '../func/config': { updateConfig }
     './common': { verifyNameValiation }
+    '../func/fs/fileController': { readFileC }
 }
 
 (const ghotiTestClassName = (name) ->
@@ -26,7 +28,7 @@ require! {
 
 (const readFile = (root, name, ghoti) ->
     (var re)
-    (re = ((fs.readFileSync root, 'utf8').toString!))
+    (re = ((readFileC root, 'utf8').toString!))
     (re = (re.replace /\${\|test\|}/g, (ghotiTestClassName name)))
     (re = (re.replace /\${\|feature\|}/g, (ghotiFeatureClassName name)))
     (re = (re.replace /\${\|author\|}/g, ghoti.author || "unknown"))
@@ -48,16 +50,16 @@ require! {
     (const featureTarget = (path.join targetPath, "feature", (ghotiFeatureFileName name)))
     (switch ghoti.template
         case 'react'
-            data = (readFile (path.join root, "lib", "react", "test", "test.test.tsx.ghoti"), name, ghoti)
+            data = (readFile (pathBuilder root, (libTest 'react')), name, ghoti)
             target = (path.join targetPath, "test", (ghotiTestFileName name))
         case 'react-js'
-            data = (readFile (path.join root, "lib", "react", "test", "test.test.tsx.ghoti"), name, ghoti)
+            data = (readFile (pathBuilder root, (libTest 'react-js')), name, ghoti)
             target = (path.join targetPath, "test", (ghotiTestFileName name))
         case 'vue'
-            data = (readFile (path.join root, "lib", "vue", "test", "test.test.vue.ghoti"), name, ghoti)
+            data = (readFile (pathBuilder root, (libTest 'vue')), name, ghoti)
             target = (path.join targetPath, "test", (ghotiTestVueFileName name))
         case 'node'
-            data = (readFile (path.join root, "lib", "node", "test", "test.test.ts.ghoti"), name, ghoti)
+            data = (readFile (pathBuilder root, (libTest 'node')), name, ghoti)
             target = (path.join targetPath, "test", (ghotiTestNormalFileName name))
         default
             (log '| ERROR: type "' + ghoti.template + '" is not supported')
@@ -65,7 +67,7 @@ require! {
             (log '| Try "ghoti whatis ' + ghoti.template + '" is there any known issue')
             (whenDone!)
             (process.exit!))
-    (const featureData = (readFile (path.join root, "lib", "structure", "feature", "feature.feature.ghoti"), name, ghoti))
+    (const featureData = (readFile (pathBuilder root, (libFeature 'default')), name, ghoti))
     (ghoti.features.push name)
     (log '| update .ghoticonfig file')
     (updateConfig ghoti)
