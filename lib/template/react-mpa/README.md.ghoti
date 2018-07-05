@@ -26,5 +26,5 @@ npm run feature [feature name]
 npm run hint
 ```
 
-> Created by [Ghoti-CLI](https://github.com/WMXPY/Ghoti-CLI/) ${|version|}
+> Created with [Ghoti-CLI](https://github.com/WMXPY/Ghoti-CLI/) ${|version|}
 ${|readme|}
