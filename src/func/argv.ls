@@ -16,6 +16,8 @@ else ghotiConfig = {})
 
 (const command = (command) ->
     (switch(command)
+        case '-z'
+            'article'
         case '-t'
             'test'
         case '-o'
@@ -33,13 +35,14 @@ else ghotiConfig = {})
         default
             'debug'))
 
-(const texture = (env, texture) ->
+const texture = (env, texture) ->
     (env.texture.push texture)
-    texture)
+    texture
 
 (const argv = ->
-    (const env =
+    const env =
         mode: mode ? 'empty'
+        article: false
         auto: false
         test: false
         fetch: false
@@ -47,7 +50,7 @@ else ghotiConfig = {})
         debug: false
         rename: false
         yes: false
-        texture: [])
+        texture: []
     (path_argv.map (it) ->
         (switch(it.substring 0 1)
             case '-'

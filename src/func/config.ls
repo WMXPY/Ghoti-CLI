@@ -76,7 +76,7 @@ require! {
         (fs.writeFileSync (path.join path_current, '.ghotigameconfig'), (JSON.stringify config) , 'utf8')
         true))
 
-(const writeCLIConfig = (config) ->
+const writeCLIConfig = (config) ->
     (const configExist = (fs.existsSync path.join cliPath!, '.ghoticonfig'))
 
     (if configExist
@@ -84,20 +84,20 @@ require! {
         configExist
     else 
         (fs.writeFileSync (path.join cliPath!, '.ghoticonfig'), (JSON.stringify config) , 'utf8')
-        true))
+        true)
 
-(const readCLIConfig = ->
+const readCLIConfig = ->
     (const configExist = (fs.existsSync path.join cliPath!, '.ghoticonfig'))
 
     (if configExist
     then (JSON.parse (readFileC (path.join cliPath!, '.ghoticonfig'), 'utf8'))
-    else false))
+    else false)
 
-(const initConfig = (type) ->
-    (writeConfig (tempConfig type)))
+const initConfig = (type) !->
+    writeConfig <| tempConfig <| type
 
-(const updateConfig = (newConfig) ->
-    (writeConfig newConfig))
+const updateConfig = (newConfig) !->
+    writeConfig newConfig
 
 export getConfig
 export cliPath

@@ -24,14 +24,11 @@ const processMucall = (env, mucall) ->
         else log i
     env
 
-(const checkTypescript = (callback) ->
-    (const child = (exec 'tsc -v', (err, stdout, stderr) ->
-        (if err
+const checkTypescript = (callback) !->
+    const child = exec 'tsc -v', (err, stdout, stderr) !->
+        if err
         then callback false
-        else callback true)
-        void
-    ))
-    void)
+        else callback true
 
 const commonParse = (content, vars) ->
     var re
@@ -121,48 +118,57 @@ const commonGather = (list, done, second?) ->
 
     void
 
-(const parseFile = (filename, text, vars, specVars, typescript?) -> 
-    (var re)
-    (re = text)
+const parseFile = (filename, text, vars, specVars, typescript?) -> 
+    var re
+    re = text
     re = parseComments filename, text, vars
-    (re = (re.replace /\${\|version\|}/g, version))
-    (if (filename === 'package.json.ghoti')
+    re = re.replace /\${\|version\|}/g, version
+    if (filename === 'package.json.ghoti')
     || (filename === 'README.md.ghoti')
-        (if typescript
-        then re = (re.replace /\${\|typescript\|}/g, '"typescript": "^2.7.2",')
-        else re = (re.replace /\${\|typescript\|}/g, ''))
-        (if vars.open
+        if typescript
+        then re = re.replace /\${\|typescript\|}/g, '"typescript": "^2.7.2",'
+        else re = re.replace /\${\|typescript\|}/g, ''
+
+        re = re.replace /\${\|readme\|}/g, ''
+
+        if vars.open
         then
             re = (re.replace /\${\|private\|}/g, 'false')
-            re = (re.replace /\${\|readme\|}/g, getSeprate! + '<a rel="license" href="http://creativecommons.org/licenses/by-sa/4.0/"><img alt="Creative Commons License" style="border-width:0" src="https://i.creativecommons.org/l/by-sa/4.0/88x31.png" /></a><br />This work is licensed under a <a rel="license" href="http://creativecommons.org/licenses/by-sa/4.0/">Creative Commons Attribution-ShareAlike 4.0 International License</a>.' + getSeprate!)
-            re = (re.replace /\${\|license\|}/g, 'MIT')
-        else
-            re = (re.replace /\${\|private\|}/g, 'true')
-            re = (re.replace /\${\|readme\|}/g, '')
-            re = (re.replace /\${\|license\|}/g, 'PRIVATE')))
-    (for i of vars 
-        (switch(i)
-            case 'title'
-                re = (re.replace /\${\|title\|}/g, vars.title)
-            case 'description'
-                re = (re.replace /\${\|description\|}/g, vars.description)
-            case 'author'
-                re = (re.replace /\${\|author\|}/g, vars.author)))
-    re = commonParse re, specVars
-    re)
 
-(const parseAllIn = (textList, vars) ->
-    vars)
-    # todo
+            # UPDATE 2018-07-05
+            # Need to verify enviorment before change.
+            # re = (re.replace /\${\|readme\|}/g, getSeprate! + '<a rel="license" href="http://creativecommons.org/licenses/by-sa/4.0/"><img alt="Creative Commons License" style="border-width:0" src="https://i.creativecommons.org/l/by-sa/4.0/88x31.png" /></a><br />This work is licensed under a <a rel="license" href="http://creativecommons.org/licenses/by-sa/4.0/">Creative Commons Attribution-ShareAlike 4.0 International License</a>.' + getSeprate!)
+            re = re.replace /\${\|license\|}/g, 'MIT'
+        else
+            re = re.replace /\${\|private\|}/g, 'true'
+
+            # UPDATE 2018-07-05
+            # Need to verify enviorment before change.
+            # re = (re.replace /\${\|readme\|}/g, '')
+            re = re.replace /\${\|license\|}/g, 'PRIVATE'
+    for i of vars 
+        switch i
+            case 'title'
+                re = re.replace /\${\|title\|}/g, vars.title
+            case 'description'
+                re = re.replace /\${\|description\|}/g, vars.description
+            case 'author'
+                re = re.replace /\${\|author\|}/g, vars.author
+    re = commonParse re, specVars
+    re
+
+# TODO
+const parseAllIn = (textList, vars) ->
+    vars
 
 (const parseAll = (textList, targetPath, env, callback) ->
     (checkTypescript (typescriptExist) ->
-        (const vars = 
+        const vars = 
             title: ''
             description: ''
             author: ''
             open: false
-            )
+            
         (log '✒️  More about your awesome project~')
         (const titleQuestionText = 'Project Title')
         (getInput titleQuestionText, targetPath, (title)->
