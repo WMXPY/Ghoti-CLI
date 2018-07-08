@@ -6,10 +6,6 @@
 
 import Config from '../config/config';
 
-const ${|func|} = () => {
+export const ${|func|} = () => {
     // Hello, ${|func|}!
-};
-
-export {
-    ${|func|},
 };

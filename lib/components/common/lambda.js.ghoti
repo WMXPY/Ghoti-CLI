@@ -6,10 +6,6 @@
 
 import Config from '../config/config';
 
-const ${|lambda|} = () => {
+export const ${|lambda|} = () => {
     // Hello, ${|lambda|}!
-};
-
-export {
-    ${|lambda|},
 };

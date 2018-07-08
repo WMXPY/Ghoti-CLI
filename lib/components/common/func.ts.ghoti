@@ -6,15 +6,10 @@
 
 import Config from '../config/config';
 
-const ${|func|} = (): void => {
+export const ${|func|} = (): void => {
     // Hello, ${|func|}!
 };
 
-const fetch${|func|} = async (): void => {
+export const fetch${|func|} = async (): Promise<void> => {
     // Hello, ${|func|}!
-};
-
-export {
-    ${|func|},
-    fetch${|func|},
 };
