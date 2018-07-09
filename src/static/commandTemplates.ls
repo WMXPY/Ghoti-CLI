@@ -15,6 +15,22 @@ const list = [
         more: []
     }
     {
+        command: [
+            'bk'
+            'b'
+            'bark'
+        ]
+        arguments: 1
+        info: 'Excute bark lang'
+        plus: [
+            {
+                name: 'example'
+                value: 'ghoti b "return 1"'
+            }
+        ]
+        more: []
+    }
+    {
         command: ['~[#?]']
         arguments: 0
         info: 'Excute tilde command'

@@ -36,6 +36,7 @@ require! {
     './structure/lambda': { lambda }
     './structure/func': { func }
     './structure/feature': { feature }
+    './func/bark': { excuteBkc }
     './func/parser/parser': { processMucall }
     './func/fix': { fix }
     './func/update': { update }
@@ -103,6 +104,14 @@ const excute = (...mucall?) !->
             fallthrough
         case 'about'
             (logAbout env)
+
+        # barklang
+        case 'b'
+            fallthrough
+        case 'bk'
+            fallthrough
+        case 'bark'
+            excuteBkc env.texture[0]
 
         # empty
         case 'empty'

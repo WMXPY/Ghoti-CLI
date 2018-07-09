@@ -10,7 +10,9 @@
 	"directories": {
 		"doc": "doc"
 	},
-	"dependencies": {},
+	"dependencies": {
+		"bkc": "^3.1.0"
+	},
 	"description": ":fish: A CLI tool that helps you start developing your new project within 60 seconds",
 	"devDependencies": {
 		"@types/chai": "^4.1.4",
