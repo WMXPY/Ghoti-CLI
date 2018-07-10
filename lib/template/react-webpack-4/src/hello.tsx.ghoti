@@ -1,0 +1,30 @@
+// G!Router
+import * as React from 'react';
+import * as Component from './component/import';
+import * as Func from './func/import';
+import * as Lambda from './lambda/import';
+import * as Page from './page/import';
+
+import { Route } from 'react-router-dom';
+import Config from './config/config';
+
+class Hello extends React.Component<{}, {}> {
+    public constructor(props) {
+        super(props);
+    }
+
+    public render() {
+        return (
+            <React.Fragment>
+                <Route path="/hello" component={() => {
+                    return <div>Route</div>;
+                }} />
+                <Route path="/" exact component={() => {
+                    return <div>Home</div>;
+                }} />
+            </React.Fragment>
+        );
+    }
+}
+
+export default Hello;
