@@ -1,0 +1,47 @@
+{
+    "name": "react-webpack-3",
+    "common": [{
+        "path": "react",
+        "commons": [
+            "typescript",
+            "typescript-feature",
+            "typescript-structure",
+            "sass-style"
+        ]
+    }, {
+        "path": "common",
+        "commons": [
+            "ghoti",
+            "public",
+            "public-template",
+            "eslint",
+            "tslint",
+            "typescript-config"
+        ]
+    }],
+    "author": "WMXPY",
+    "language": "TypeScript",
+    "framework": "Express, React",
+    "replaces": [],
+    "postLog": [
+        "$empty",
+        "Here are some useful shortcuts for your hacking",
+        "You can always enter \"npm run hint\" for this message again",
+        "$empty",
+        "npm run feature [feature name]     > create a feature",
+        "npm run lambda [function name]     > create a lambda function set",
+        "npm run component [function name]  > create a component",
+        "npm run page [page name]           > create a page",
+        "npm run func [function name]       > create a function set",
+        "$empty",
+        "npm test                           > test features by mocha",
+        "npm run build                      > bundle application and get server ready",
+        "$empty"
+    ],
+    "whatis": [
+        "react single page application",
+        "build with webpack 3",
+        "test with mocha",
+        "use typescript"
+    ]
+}

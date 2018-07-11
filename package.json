@@ -73,5 +73,5 @@
 		"tsTest": "tsc --p ./test/tsconfig.json",
 		"cov": "codecov -f ./coverage/coverage-final.json -t [key]"
 	},
-	"version": "4.0.2"
+	"version": "4.1.0"
 }

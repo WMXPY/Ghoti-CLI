@@ -16,6 +16,7 @@ const MANIFEST_DIR = path.resolve(__dirname, '..', 'public', 'manifest.json');
 
 let config = {
     devtool: 'cheap-module-eval-source-map',
+    mode: "development",
     entry: [
         'react-hot-loader/patch',
         'webpack-dev-server/client',

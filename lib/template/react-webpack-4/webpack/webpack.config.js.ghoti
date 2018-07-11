@@ -17,6 +17,7 @@ const MANIFEST_DIR = path.resolve(__dirname, '..', 'public', 'manifest.json');
 
 let config = {
     entry: APP_DIR + "/index.tsx",
+    mode: "production",
     output: {
         filename: "bundle.js",
         path: BUILD_DIR

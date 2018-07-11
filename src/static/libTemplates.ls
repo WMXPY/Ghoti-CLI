@@ -206,6 +206,59 @@ const libs = [
     }
     {
         name: [
+            'react'
+            'react-normal'
+            'react-ts'
+            'react-typescript'
+        ]
+        common: [
+            {
+                path: 'react'
+                commons: [
+                    'typescript'
+                    'typescript-feature'
+                    'typescript-structure'
+                    'sass-style'
+                ]
+            }
+            {
+                path: 'common'
+                commons: [
+                    'ghoti'
+                    'public'
+                    'public-template'
+                    'eslint'
+                    'tslint'
+                    'typescript-config'
+                ]
+            }
+        ]
+        author: '$ghoti'
+        path: 'react-webpack-4'
+        language: 'TypeScript'
+        framework: 'React'
+        replaces: [
+        ]
+        postLog: (defaultLogs [
+            'npm run feature [feature name]     > create a feature'
+            'npm run lambda [function name]     > create a lambda function set'
+            'npm run component [function name]  > create a component'
+            'npm run page [page name]           > create a page'
+            'npm run func [function name]       > create a function set'
+            '$empty'
+            'npm run build                      > bundle application for production'
+            'npm start                          > start development with localhost server'
+            'npm test                           > test features by mocha'
+        ])
+        whatis: [
+            'react single page application'
+            'build with webpack 4'
+            'test with mocha'
+            'use typescript'
+        ]
+    }
+    {
+        name: [
             'vue'
             'vue-normal'
         ]
