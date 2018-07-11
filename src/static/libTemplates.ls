@@ -97,62 +97,6 @@ const libs = [
     }
     {
         name: [
-            'react-ssr'
-            'react-server'
-            'react-server-side-render'
-            'react-server-side-rending'
-        ]
-        author: '$ghoti'
-        path: 'react-ssr'
-        language: 'TypeScript'
-        framework: 'React'
-        common: [
-            {
-                path: 'react'
-                commons: [
-                    'typescript'
-                    'typescript-feature'
-                    'typescript-structure'
-                    'sass-style'
-                    'middle-ssr'
-                ]
-            }
-            {
-                path: 'common'
-                commons: [
-                    'ghoti'
-                    'public'
-                    'public-template'
-                    'eslint'
-                    'tslint'
-                    'typescript-config'
-                ]
-            }
-        ]
-        replaces: [
-        ]
-        postLog: (defaultLogs [
-            'npm run feature [feature name]     > create a feature'
-            'npm run lambda [function name]     > create a lambda function set'
-            'npm run component [function name]  > create a component'
-            'npm run page [page name]           > create a page'
-            'npm run func [function name]       > create a function set'
-            '$empty'
-            'npm run build                      > bundle application for production'
-            'npm start                          > start development with localhost server'
-            'npm test                           > test features by mocha'
-        ])
-        whatis: [
-            'react single page application'
-            'build with webpack 3'
-            'use typescript'
-            'test with mocha'
-            'support server side render'
-            'suggested'
-        ]
-    }
-    {
-        name: [
             'react-bp-ssr'
             'react-bp'
             'rbp'
@@ -204,63 +148,6 @@ const libs = [
             'test with mocha'
             'support server side render'
             'suggested'
-        ]
-    }
-    {
-        name: [
-            'react'
-            'react-typescript'
-            'react-ts'
-            'react-normal'
-            'react-normal-ts'
-            'react-ts-normal'
-            'react-typescript-normal'
-            'react-default'
-        ]
-        common: [
-            {
-                path: 'react'
-                commons: [
-                    'typescript'
-                    'typescript-feature'
-                    'typescript-structure'
-                    'sass-style'
-                ]
-            }
-            {
-                path: 'common'
-                commons: [
-                    'ghoti'
-                    'public'
-                    'public-template'
-                    'eslint'
-                    'tslint'
-                    'typescript-config'
-                ]
-            }
-        ]
-        author: '$ghoti'
-        path: 'react-normal'
-        language: 'TypeScript'
-        framework: 'React'
-        replaces: [
-        ]
-        postLog: (defaultLogs [
-            'npm run feature [feature name]     > create a feature'
-            'npm run lambda [function name]     > create a lambda function set'
-            'npm run component [function name]  > create a component'
-            'npm run page [page name]           > create a page'
-            'npm run func [function name]       > create a function set'
-            '$empty'
-            'npm run build                      > bundle application for production'
-            'npm start                          > start development with localhost server'
-            'npm test                           > test features by mocha'
-        ])
-        whatis: [
-            'react single page application'
-            'build with webpack 3'
-            'test with mocha'
-            'use typescript'
         ]
     }
     {
