@@ -9,12 +9,12 @@ const execute = (program, str) !->
     exec cmd
     
 const reportAndEnd = (message, whenDone) !->
-    logPad '| Excute failed', 1
+    logPad '| Execute failed', 1
     logPad '| Error: ' + message, 1
     whenDone!
     process.exit 1
 
-const excuteTilde = (suffix, env, whenDone) !->
+const executeTilde = (suffix, env, whenDone) !->
     const config = readCLIConfig!
     const tilde = config.tilde
     var done
@@ -36,7 +36,7 @@ const addTilde = (whenDone) !->
     whenDone!
 
 export addTilde
-export excuteTilde
+export executeTilde
 
 export reportAndEnd
 export execute

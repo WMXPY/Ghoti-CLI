@@ -36,18 +36,18 @@ require! {
     './structure/lambda': { lambda }
     './structure/func': { func }
     './structure/feature': { feature }
-    './func/bark': { excuteBkc }
+    './func/bark': { executeBkc }
     './func/parser/parser': { processMucall }
     './func/fix': { fix }
     './func/update': { update }
     './ame/init': { initUnderline }
-    './ame/excute': { checkAme, excuteAme }
+    './ame/execute': { checkAme, executeAme }
     './eng/init': { minigame }
     './eng/frog': { frogGame }
     './func/file': { file }
     './func/suffix': { suffix }
     './func/pack': { pack }
-    './ame/tilde/tilde': { excuteTilde }
+    './ame/tilde/tilde': { executeTilde }
 }
 
 const notValid = (env) ->
@@ -68,7 +68,7 @@ const runPrefixCommand = (command, ghoti, ghotiCLIPath, env) ->
         case '_'
             const ameResult = checkAme command
             if ameResult
-            then (excuteAme ameResult, env.texture, ghoti, logSymbol, env, ghotiCLIPath, process.cwd!)
+            then (executeAme ameResult, env.texture, ghoti, logSymbol, env, ghotiCLIPath, process.cwd!)
             else notValid <| env
         case '!'
             whenDone = (logGameCommand!)
@@ -77,11 +77,11 @@ const runPrefixCommand = (command, ghoti, ghotiCLIPath, env) ->
             logWhatIs suffix, env
         case '~'
             whenDone = logTilde!
-            excuteTilde suffix, env, whenDone
+            executeTilde suffix, env, whenDone
         default
             notValid <| env
 
-const excute = (...mucall?) !->
+const execute = (...mucall?) !->
     (var whenDone, env)
     (const ghoti = ghotiConfig)
     (const ghotiCLIPath = cliPath!)  
@@ -111,7 +111,7 @@ const excute = (...mucall?) !->
         case 'bk'
             fallthrough
         case 'bark'
-            excuteBkc env.texture[0]
+            executeBkc env.texture[0]
 
         # empty
         case 'empty'
@@ -202,7 +202,7 @@ const excute = (...mucall?) !->
             fallthrough
         case 'tilde'
             whenDone = logTilde!
-            excuteTilde whenDone
+            executeTilde whenDone
 
         # whatis
         case 'w'
@@ -341,4 +341,4 @@ const excute = (...mucall?) !->
         default
             runPrefixCommand mode, ghoti, ghotiCLIPath, env
 
-export excute
+export execute

@@ -113,7 +113,7 @@ installGit()
     fi
 }
 
-# Determine if nodeJS and npm enviorment is exist
+# Determine if nodeJS and npm environment is exist
 # Install ghoti-cli by npm after install or determine
 if command -v node >/dev/null 2>&1; then
 

@@ -65,7 +65,7 @@ describe('test std function of debug log', (): void => {
         ]);
     });
 
-    it('test dlog with null enviorment', (): void => {
+    it('test dlog with null environment', (): void => {
         let fun = () => {
             dlog({} as any, 'test');
         };
@@ -73,7 +73,7 @@ describe('test std function of debug log', (): void => {
         expect(re).to.be.deep.equal([]);
     });
 
-    it('test dlog with non debug enviorment', (): void => {
+    it('test dlog with non debug environment', (): void => {
         let fun = () => {
             dlog({
                 debug: false,
@@ -83,7 +83,7 @@ describe('test std function of debug log', (): void => {
         expect(re).to.be.deep.equal([]);
     });
 
-    it('test dlog with debug enviorment, single argument', (): void => {
+    it('test dlog with debug environment, single argument', (): void => {
         let fun = () => {
             dlog({
                 debug: true,
@@ -95,7 +95,7 @@ describe('test std function of debug log', (): void => {
         ]);
     });
 
-    it('test dlog with debug enviorment, mulitple argument', (): void => {
+    it('test dlog with debug environment, mulitple argument', (): void => {
         let fun = () => {
             dlog({
                 debug: true,
@@ -107,7 +107,7 @@ describe('test std function of debug log', (): void => {
         ]);
     });
 
-    it('test dlog with debug enviorment, mulitple call', (): void => {
+    it('test dlog with debug environment, mulitple call', (): void => {
         let fun = () => {
             dlog({
                 debug: true,

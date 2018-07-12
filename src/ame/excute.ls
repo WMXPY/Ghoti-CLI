@@ -1,11 +1,11 @@
 require! {
     '../log/std': { log, logPad }
-    './underline': { mergeGhoti, checkAvailbility, calculateNewUpdate, calculateProgress, calculateNewMinus, calculateNewUnderlineSet, calculateNewUnderlinePlus }
+    './underline': { mergeGhoti, checkAvailability, calculateNewUpdate, calculateProgress, calculateNewMinus, calculateNewUnderlineSet, calculateNewUnderlinePlus }
     '../func/config': { getConfig, writeConfig }
     '../func/deepclone': { deepClone }
 }
 
-const stopImmediatly = (whenDone) !->
+const stopImmediately = (whenDone) !->
     whenDone!
     process.exit!
 
@@ -46,10 +46,10 @@ const amePath = (other) ->
 
 const ameActive = (logSymbol) !->
     const whenDone = logSymbol '~~~'
-    logPad '| Underline is not actived yet', 1
+    logPad '| Underline is not activated yet', 1
     logPad '| Know more about GHOTI UNDERLINE, and activate it', 1
     logPad '| Try "ghoti underline" in your project', 1
-    stopImmediatly(whenDone)
+    stopImmediately(whenDone)
 
 const accessPath = (path, ame, whenDone) ->
     var re, stat
@@ -67,7 +67,7 @@ const accessPath = (path, ame, whenDone) ->
         if !stat
         then 
             logPad '| "' + i + '" is not a valid path'
-            stopImmediatly(whenDone)
+            stopImmediately(whenDone)
         else stat = false
     re
 
@@ -77,7 +77,7 @@ const ameStatus = (path, context, ghoti, whenDone, isEdit?) !->
     const { total, amount } = calculateProgress current, whenDone, true
     if isEdit
     then
-        log '| Excution complete'
+        log '| Execution complete'
     else
         if total === 0
         then
@@ -100,7 +100,7 @@ const ameUpdate = (path, contexts, ghoti, whenDone) !->
 const ameSet = (path, context, ghoti, whenDone) !->
     const ame = ghoti.underline.path
     const current = accessPath path, ame, whenDone
-    if checkAvailbility current, context
+    if checkAvailability current, context
     then
         const re = calculateNewUnderlineSet current, context, whenDone
         const newGhoti = mergeGhoti ghoti, path, re, whenDone
@@ -108,12 +108,12 @@ const ameSet = (path, context, ghoti, whenDone) !->
         writeConfig newGhoti
     else
         log '| Input is not valid'
-        stopImmediatly(whenDone)
+        stopImmediately(whenDone)
 
 const amePlus = (path, context, ghoti, whenDone) !->
     const ame = ghoti.underline.path
     const current = accessPath path, ame, whenDone
-    if checkAvailbility current, context
+    if checkAvailability current, context
     then
         const re = calculateNewUnderlinePlus current, context, whenDone
         const newGhoti = mergeGhoti ghoti, path, re, whenDone
@@ -121,7 +121,7 @@ const amePlus = (path, context, ghoti, whenDone) !->
         writeConfig newGhoti
     else
         log '| Input is not valid'
-        stopImmediatly whenDone
+        stopImmediately whenDone
 
 const ameMinus = (path, context, ghoti, whenDone) !->
     const ame = ghoti.underline.path
@@ -131,7 +131,7 @@ const ameMinus = (path, context, ghoti, whenDone) !->
     ameStatus path, context, newGhoti, whenDone, true
     writeConfig newGhoti
 
-const excuteAme = (oriOther, contexts, ghoti, logSymbol, env, ghotiCLIPath, targetPath) !->
+const executeAme = (oriOther, contexts, ghoti, logSymbol, env, ghotiCLIPath, targetPath) !->
     var whenDone
     if (!ghoti.underline)
     then ameActive logSymbol
@@ -151,7 +151,7 @@ const excuteAme = (oriOther, contexts, ghoti, logSymbol, env, ghotiCLIPath, targ
             (ameMinus other, context, ghoti, whenDone)
         case '!'
             (ameUpdate other, contexts, ghoti, whenDone))
-    stopImmediatly whenDone
+    stopImmediately whenDone
 
 export checkAme
-export excuteAme
+export executeAme

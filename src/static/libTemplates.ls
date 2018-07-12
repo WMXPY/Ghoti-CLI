@@ -60,7 +60,7 @@ const libs = [
             'theme-color'
         ]
         postLog: (defaultLogs [
-            'Start to work on a elctron project with react and typescript'
+            'Start to work on a electron project with react and typescript'
             'use -npm run ins- instead of -npm install-'
         ])
         whatis: [
@@ -86,7 +86,7 @@ const libs = [
             'filePath'
         ]
         postLog: (defaultLogs [
-            'Start to work on a ghoti remtoe file and pack it to zip before upload'
+            'Start to work on a ghoti remote file and pack it to zip before upload'
             '$empty'
             'ghoti-cli support .zip file download, and .zip from github'
             'see Readme for more information'
@@ -428,7 +428,7 @@ const libs = [
             'make run                           > start server'
         ])
         whatis: [
-            'golang serverside sample code'
+            'golang server side sample code'
             'build managed by makefile'
             'ghoti cli structure'
         ]

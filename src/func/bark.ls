@@ -3,8 +3,8 @@ require! {
     '../log/log': { log }
 }
 
-const excuteBkc = (lang) !->
+const executeBkc = (lang) !->
     const re = bkc lang
     log re
 
-export excuteBkc
+export executeBkc

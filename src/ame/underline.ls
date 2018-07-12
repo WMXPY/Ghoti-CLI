@@ -8,7 +8,7 @@ require! {
 const underline = (ghoti) ->
     return ghoti
 
-const puls = (name) ->
+const plus = (name) ->
     return name
 
 const plus = (name) ->
@@ -54,11 +54,11 @@ const whatIsCurrent = (current) ->
         case 'set'
             'Ghoti underline SET'
         case 'task'
-            'Ghoti underlint Task'
+            'Ghoti underline Task'
         default
             'Ghoti underline Root or not a underline path'
 
-const checkAvailbility = (current, context) ->
+const checkAvailability = (current, context) ->
     switch current.type
         case 'set' # current is set
             if context === ''
@@ -212,12 +212,12 @@ const calculateProgress = (current, whenDone, doLog? = false, logLevel? = 1) ->
     }
 
 export underline
-export puls
+export plus
 export plus
 export minus
 export mergeGhoti
 export whatIsCurrent
-export checkAvailbility
+export checkAvailability
 export calculateProgress
 export calculateNewMinus
 export calculateNewUpdate

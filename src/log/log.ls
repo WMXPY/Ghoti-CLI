@@ -26,7 +26,7 @@ const faces = [
     ' (´・ω・｀)'
 ]
 
-(const logSeprate = (length) ->
+(const logSeparate = (length) ->
     (var re)
     (re = '')
 
@@ -61,9 +61,9 @@ const logCommand = (command?, original?) ->
     (log title)
     (if ((Boolean command) && (Boolean original))
     then (logAlias command, original))
-    (logSeprate title.length) 
+    (logSeparate title.length) 
     !->
-        (logSeprate title.length)
+        (logSeparate title.length)
         (logFace!)
 
 const logSymbol = (mark, path?) ->
@@ -72,26 +72,26 @@ const logSymbol = (mark, path?) ->
     then (title = '🐟  > 💫  Ghoti-CLI SYMBOL ' + mark + ' of "' + path + '":')
     else (title = '🐟  > 💫  Ghoti-CLI SYMBOL ' + mark + ':')
     (log title)
-    (logSeprate title.length) 
+    (logSeparate title.length) 
     !->
-        (logSeprate title.length)
+        (logSeparate title.length)
         (logFace!)
 
 const logVersion = (env?) !->
     (const title = '🐟  > 📜  Ghoti-CLI Version:')
     (log title)
-    (logSeprate title.length)
+    (logSeparate title.length)
     (logPad '| version : ' + version, 1)
     (logPad '* try to update > npm install -g ghoti-cli', 2)
     (logPad '| info    : for more info, try "ghoti help"', 1)
-    (logSeprate title.length)
+    (logSeparate title.length)
     (logFace!)
     (process.exit!)
 
 const logStatus = (ghoti, env?) !->
     (const title = '🐟  > 📇  Ghoti-CLI Status:')
     (log title)
-    (logSeprate title.length)
+    (logSeparate title.length)
     (if (
     (!(Boolean ghoti.template))
     || (!(Boolean ghoti.author))
@@ -104,7 +104,7 @@ const logStatus = (ghoti, env?) !->
     || (!(Boolean ghoti.lambdas)))
         (logPad '| ERROR, ghoti have no at least one required configeration', 1)
         (logPad '| Try to fix it: "ghoti fix"', 1)
-        (logSeprate title.length)
+        (logSeparate title.length)
         (logFace!)
         (process.exit!))
     (logPad '| Info        : status is came from .ghoticonfig file', 1)
@@ -125,21 +125,21 @@ const logStatus = (ghoti, env?) !->
     (logPad '| Lambdas     : availble count - ' + ghoti.lambdas.length, 1)
     (for i in ghoti.lambdas
         (logPad '* lambda    - ' + i, 2))
-    (logSeprate title.length)
+    (logSeparate title.length)
     (logFace!)
     (process.exit!)
 
 const logAbout = (env?) !->
     (const title = '🐟  > 📖  Ghoti-CLI About:')
     (log title)
-    (logSeprate title.length)
+    (logSeparate title.length)
     (logPad '| source  : //github.com/WMXPY/Ghoti-CLI', 1)
     (logPad '| author  : WMXPY', 1)
     (logPad '| version : ' + version, 1)
     (logPad '| license : CC-BY-SA', 1)
     (logPad '| website : //mengw.io', 1)
     (logPad '| contact : wm@mengw.io', 1)
-    (logSeprate title.length)
+    (logSeparate title.length)
     (logFace!)
     (process.exit!)
     void
@@ -147,33 +147,33 @@ const logAbout = (env?) !->
 const logUnderline = ->
     (const title = '🐟  > 🎆  Ghoti-CLI GHOTI UNDERLINE:')
     (log title)
-    (logSeprate title.length)
+    (logSeparate title.length)
     !->
-        (logSeprate title.length)
+        (logSeparate title.length)
         (logFace!)
         (process.exit!)
 
 const logGame = ->
     (const title = '🐟  > 🎲  Ghoti-CLI Minigame:')
     (log title)
-    (logSeprate title.length)
+    (logSeparate title.length)
     !->
-        (logSeprate title.length)
+        (logSeparate title.length)
         (logFace!)
         (process.exit!)
 
 const logGameCommand = ->
     (const title = '🐟  > 🎮  Ghoti-CLI Minigame:')
     (log title)
-    (logSeprate title.length) 
+    (logSeparate title.length) 
     !->
-        (logSeprate title.length)
+        (logSeparate title.length)
         (logFace!)
 
 const logHelpMore = (env?) !->
     (const title ='🐟  > ⭐  Ghoti-CLI Available commands:')
     (log title)
-    (logSeprate title.length)
+    (logSeparate title.length)
     (const commands = ((allCommands!).map (it) ->
         (for i to it.arguments - 1
             it.command[0] += ' [ARG]')
@@ -186,7 +186,7 @@ const logHelpMore = (env?) !->
             then (logPad '* nickname - ' + i, 2))
         (for i in it.plus
             (logPad '* ' + i.name + '  - ' + i.value, 2)))
-    (logSeprate title.length)
+    (logSeparate title.length)
     (logFace!)
     (process.exit!)
 
@@ -196,7 +196,7 @@ const logHelp = (isEmpty?, env?) !->
     then (title = '🐟  > 🏠  Ghoti-CLI Available commands:')
     else (title = '🐟  > ⭐  Ghoti-CLI Available commands:'))
     (log title)
-    (logSeprate title.length)
+    (logSeparate title.length)
     (const commands = ((allCommands!).map (it) ->
         (for i to it.arguments - 1
             it.command[0] += ' *')
@@ -204,16 +204,16 @@ const logHelp = (isEmpty?, env?) !->
     (const len = (getMaxLength_List commands))
     (commands.forEach (it) ->
         (logPad '| ' + (padRight it.command[0], len) + ': ' + it.info, 1))
-    (logSeprate title.length)
+    (logSeparate title.length)
     (logFace!)
     (process.exit!)
 
 const logUnknown = (env?) !->
     (const title = '🐟  > 🙋  Ghoti-CLI Unknown command:')
     (log title)
-    (logSeprate title.length)
+    (logSeparate title.length)
     (logPad '| You just inputed a unknown command, try "ghoti help" for command list', 1)
-    (logSeprate title.length)
+    (logSeparate title.length)
     (logFace!)
     (process.exit!)
 
@@ -223,7 +223,7 @@ const logInfo = (command, env?) !->
     then title = '🐟  > 📺  Ghoti-CLI Command information ' + command + ':'
     else title = 'Ghoti-CLI Error, info target is not available, try "Ghoti info help"')
     (log title)
-    (logSeprate title.length)
+    (logSeparate title.length)
     (const t = (getCommand command))
     (const len = (getMaxLength_Entire t, 'Command', 'Function'))
     (logPad '| ' + (padRight 'Command', len) + ': ' + command, 1)
@@ -232,14 +232,14 @@ const logInfo = (command, env?) !->
         (logPad '| ' + (padRight i.name, len) + ': ' + i.value, 1))
     (for i in t.more
         (logPad '| ' + (padRight i.name, len) + ': ' + i.value, 1))
-    (logSeprate title.length)
+    (logSeparate title.length)
     (logFace!)
     (process.exit!)
 
 const logWhatIs = (keyword, env?) !->
     const title = '🐟  > 🏇🏼  Ghoti-CLI what is "' + keyword + '":'
     log title
-    logSeprate title.length
+    logSeparate title.length
     const whatisK = whatis keyword
     if whatisK
     then 
@@ -248,14 +248,14 @@ const logWhatIs = (keyword, env?) !->
         whatisK.map (it) ->
             logPad '| ' + it, 1
     else logPad '| "' + keyword + '" is not in ghoti database', 1
-    logSeprate title.length
+    logSeparate title.length
     logFace!
     process.exit!
 
 const logPostNPMInstall = (type, env?) !->
     (const title = '🐟  > 🦉  Ghoti-CLI information "' + type + '":')
     (log title)
-    (logSeprate title.length)
+    (logSeparate title.length)
     (const postInstallK = (postInstall type))
     (if postInstallK
     then (postInstallK.map (it) ->
@@ -265,19 +265,19 @@ const logPostNPMInstall = (type, env?) !->
             default
                 (logPad '| ' + it, 1)))
     else (logPad '| "' + type + '" is not a exist ghoti init type' , 1))
-    (logSeprate title.length)
+    (logSeparate title.length)
     (logFace!)
     (process.exit!)
 
 const logUpdate = (ghoti, env?) ->
     (const title = '🐟  > 🦉  Ghoti-CLI update:')
     (log title)
-    (logSeprate title.length)
+    (logSeparate title.length)
     (logPad '| Auto update fature is indevlopment', 1)
     (logPad '| To update ghoti version manually, follow the document on Github', 1)
     (logPad '| Try: "ghoti about"', 1)
     !->
-        (logSeprate title.length)
+        (logSeparate title.length)
         (logFace!)
 
 const logListPlus = !->
@@ -364,16 +364,16 @@ const logDeprecated = (command, due) ->
 const logTilde = ->
     const title = '🐟  > 📟  Ghoti-CLI Tilde:'
     log title
-    logSeprate title.length
+    logSeparate title.length
     !->
-        logSeprate title.length
+        logSeparate title.length
         logFace!
         process.exit!
 
 export log
 export br
 export logAlias
-export logSeprate
+export logSeparate
 export getMaxLength
 export logFace
 export faces

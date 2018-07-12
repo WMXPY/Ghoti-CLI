@@ -33,7 +33,7 @@ const frogGame = (ghoti, env, whenDone) ->
     game!
     if !Boolean ghoti.game
     then
-        log '| Ghoti Game is not actived, try "Ghoti game"'
+        log '| Ghoti Game is not activated, try "Ghoti game"'
         whenDone!
         process.exit!
     const rec = (count, last) ->

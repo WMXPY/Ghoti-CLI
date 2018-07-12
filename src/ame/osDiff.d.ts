@@ -1,1 +1,1 @@
-export declare const getSeprate: () => string;
+export declare const getSeparate: () => string;

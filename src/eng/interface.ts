@@ -1,4 +1,12 @@
-export type TType = 'root' | 'node' | 'end' | 'empty' | 'stoped';
+export type TType = 'root' | 'node' | 'end' | 'empty' | 'stopped';
+
+export enum TYPE {
+    ROOT = 'root',
+    NODE = 'node',
+    END = 'end',
+    EMPTY = 'empty',
+    STOPPED = 'stopped',
+}
 
 export interface IMap {
     type: TType;
@@ -6,7 +14,7 @@ export interface IMap {
     second?: IMap;
     length: number;
     cost: number;
-    fulidCost?: number;
+    fluidCost?: number;
     mudCost?: number;
     loot: number;
     reward: number;
@@ -17,13 +25,13 @@ export interface IMapConfig {
     lengthLimit: number;
     endPercentage: number;
     costLimit: number;
-    fulidPercentage: number;
-    fulidLimit: number;
+    fluidPercentage: number;
+    fluidLimit: number;
     mudPercentage: number;
     mudLimit: number;
     lootLimit: number;
     rewardLimit: number;
-    nodeMinum: number;
+    nodeMinimum: number;
     nodeLimit: number;
 }
 

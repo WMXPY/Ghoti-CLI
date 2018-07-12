@@ -3,4 +3,4 @@ COPY . ${|path|}
 WORKDIR ${|path|}
 RUN npm install
 EXPOSE ${|port|}
-CMD node ${|excuteable|}
+CMD node ${|executeable|}

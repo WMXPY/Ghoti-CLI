@@ -5,7 +5,7 @@ require! {
     '../deepclone': { deepClone }
     './commentsTemplates': { comments }
     './languageTemplates': { languages }
-    '../../ame/osDiff': { getSeprate }
+    '../../ame/osDiff': { getSeparate }
 }
 
 const mapVars = (vars) ->
@@ -40,7 +40,7 @@ const libComments = (type, vars?) ->
         if i.name === type
         then re = deepClone i.content
     if re
-    then (replaceVars re, vars).join getSeprate!
+    then (replaceVars re, vars).join getSeparate!
     else null
 
 const libLanguages = (language) ->
@@ -82,7 +82,7 @@ const getComments = (filename, vars) ->
 const addComments = (filename, context, vars) ->
     const adding = getComments filename, vars
     if adding
-    then adding + getSeprate! + getSeprate! + context
+    then adding + getSeparate! + getSeparate! + context
     else context
 
 const parseComments = (filename, content, vars) ->
@@ -90,7 +90,7 @@ const parseComments = (filename, content, vars) ->
     then return content
     if vars && (!Boolean vars.length) && (!Boolean vars.push)
     then vars = mapVars vars
-    const splited = content.split(getSeprate!)
+    const splited = content.split(getSeparate!)
     if (splited[0].substring 0, 5) === '// G!'
     then
         const overview = splited[0].substring 5, splited[0].length
@@ -98,8 +98,8 @@ const parseComments = (filename, content, vars) ->
             name: 'overview'
             value: overview
         }
-        splited[0] = (getComments filename, vars) + getSeprate!
-    splited.join getSeprate!
+        splited[0] = (getComments filename, vars) + getSeparate!
+    splited.join getSeparate!
 
 export determinLanguage
 export addComments

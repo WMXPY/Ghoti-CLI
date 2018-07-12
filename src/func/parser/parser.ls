@@ -7,7 +7,7 @@ require! {
     '../../log/getInput': { getInput }
     'child_process': { exec }
     './comments': { parseComments }
-    '../../ame/osDiff': { getSeprate }
+    '../../ame/osDiff': { getSeparate }
     readline
 }
 
@@ -81,13 +81,13 @@ const commonGather = (list, done, second?) ->
             if defaultValue
             then defaultStr = 'default: Y'
             else defaultStr = 'default: N'
-            question = 'Gathering replace parameter "' + currentName + '" (Y/N, ' + defaultStr + ') :'+ getSeprate! +'=>> '
+            question = 'Gathering replace parameter "' + currentName + '" (Y/N, ' + defaultStr + ') :'+ getSeparate! +'=>> '
         case 'string'
             fallthrough
         default
             if defaultValue
-            then question = 'Gathering replace parameter "' + currentName + '" (default: ' + defaultValue + ') :' + getSeprate! + '=>> '
-            else question = 'Gathering replace parameter "' + currentName + '" :' + getSeprate! + '=>> '
+            then question = 'Gathering replace parameter "' + currentName + '" (default: ' + defaultValue + ') :' + getSeparate! + '=>> '
+            else question = 'Gathering replace parameter "' + currentName + '" :' + getSeparate! + '=>> '
 
     rl.question question, (answer) ->
         rl.close!
@@ -136,14 +136,14 @@ const parseFile = (filename, text, vars, specVars, typescript?) ->
             re = (re.replace /\${\|private\|}/g, 'false')
 
             # UPDATE 2018-07-05
-            # Need to verify enviorment before change.
-            # re = (re.replace /\${\|readme\|}/g, getSeprate! + '<a rel="license" href="http://creativecommons.org/licenses/by-sa/4.0/"><img alt="Creative Commons License" style="border-width:0" src="https://i.creativecommons.org/l/by-sa/4.0/88x31.png" /></a><br />This work is licensed under a <a rel="license" href="http://creativecommons.org/licenses/by-sa/4.0/">Creative Commons Attribution-ShareAlike 4.0 International License</a>.' + getSeprate!)
+            # Need to verify environment before change.
+            # re = (re.replace /\${\|readme\|}/g, getSeparate! + '<a rel="license" href="http://creativecommons.org/licenses/by-sa/4.0/"><img alt="Creative Commons License" style="border-width:0" src="https://i.creativecommons.org/l/by-sa/4.0/88x31.png" /></a><br />This work is licensed under a <a rel="license" href="http://creativecommons.org/licenses/by-sa/4.0/">Creative Commons Attribution-ShareAlike 4.0 International License</a>.' + getSeparate!)
             re = re.replace /\${\|license\|}/g, 'MIT'
         else
             re = re.replace /\${\|private\|}/g, 'true'
 
             # UPDATE 2018-07-05
-            # Need to verify enviorment before change.
+            # Need to verify environment before change.
             # re = (re.replace /\${\|readme\|}/g, '')
             re = re.replace /\${\|license\|}/g, 'PRIVATE'
     for i of vars 

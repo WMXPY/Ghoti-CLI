@@ -1,6 +1,6 @@
 require! {
     'chai': { expect, assert }
-    '../../src/ame/underline': { underline, puls, plus, minus, mergeGhoti, whatIsCurrent }
+    '../../src/ame/underline': { underline, plus, plus, minus, mergeGhoti, whatIsCurrent }
     './monk': { originGhotiConfig, ghotiConfig }
 }
 
@@ -9,8 +9,8 @@ describe 'check underline dumb functions', ->
         const test = underline 'test'
         (expect <| test) .to.be.equal 'test'
 
-    specify 'check puls', ->
-        const test = puls 'test'
+    specify 'check plus', ->
+        const test = plus 'test'
         (expect <| test) .to.be.equal 'test'
 
     specify 'check plus', ->

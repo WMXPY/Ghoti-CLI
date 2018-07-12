@@ -11,12 +11,12 @@ const initUnderline = (ghoti, whenDone, env) !->
     const newGhoti = deepClone ghoti
     if !(checkGhoti newGhoti)
     then 
-        log '| Current enviorment is not a ghoti project'
+        log '| Current environment is not a ghoti project'
         log '| Try "ghoti about"'
         whenDone!
         process.exit!
-    log '| Ghoit Underline is a awesome, light, sample progress tracking system'
-    log '| here is some awesome example to use Ghoit Underline'
+    log '| Ghoti Underline is a awesome, light, sample progress tracking system'
+    log '| here is some awesome example to use Ghoti Underline'
     log ' | "ghoti _"             for overall progress'
     log ' | "ghoti _[any]?"       for target status'
     log ' | "ghoti _#"            for new task set'
@@ -26,7 +26,7 @@ const initUnderline = (ghoti, whenDone, env) !->
     log ''
     log '| Use a sentence as set or task name is welcome, but:'
     log '| you need use like "ghoti "_my sentence set+" some task"'
-    log '| that quoted command name to modifiy it during usage'
+    log '| that quoted command name to modify it during usage'
     log ''
     if !newGhoti.underline
     then 
@@ -43,11 +43,11 @@ const initUnderline = (ghoti, whenDone, env) !->
             writeConfig newGhoti
             log '| ghoti underline is now setted up, have fun'
             log '| You can always use "ghoti _" to see overall progress'
-            log '| To start your first step, Try "ghoti _# fisrt-step"'
-            log '| Add a task is as easy as, Try "ghoti _fisrt-step+ my awesome fisrt task" as your command'
+            log '| To start your first step, Try "ghoti _# first-step"'
+            log '| Add a task is as easy as, Try "ghoti _first-step+ my awesome first task" as your command'
         if env.yes
         then
-            log '| -y argument is actived, skipping question.'
+            log '| -y argument is activated, skipping question.'
             log ''
             fin!
         else
@@ -56,7 +56,7 @@ const initUnderline = (ghoti, whenDone, env) !->
                 then
                     fin!
                 else
-                    log '| thanks for concidering ghoti underline'
+                    log '| thanks for considering ghoti underline'
                     log '| You can always use "ghoti underline" to active it in the future'
                 whenDone!
     else

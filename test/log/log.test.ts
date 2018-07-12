@@ -9,7 +9,7 @@ import {
     logHelp,
     logHelpMore,
     logInfo,
-    logSeprate,
+    logSeparate,
     logStatus,
     logSymbol,
     logVersion,
@@ -22,9 +22,9 @@ const stringBilder = (str: string[]): string => {
 
 describe('test common logging functions from log/log.ls', (): void => {
 
-    let enviorment;
+    let environment;
     beforeEach(() => {
-        enviorment = {
+        environment = {
             mode: 'test',
             auto: false,
             test: false,
@@ -60,7 +60,7 @@ describe('test common logging functions from log/log.ls', (): void => {
 
     it('test log seprate function with argument 0', (): void => {
         const func = () => {
-            logSeprate(0);
+            logSeparate(0);
         };
         const re = monk_log(func);
         expect(re).to.be.deep.equal([
@@ -70,9 +70,9 @@ describe('test common logging functions from log/log.ls', (): void => {
 
     it('test log seprate function with argument numbers', (): void => {
         const func = () => {
-            logSeprate(3);
-            logSeprate(5);
-            logSeprate(1);
+            logSeparate(3);
+            logSeparate(5);
+            logSeparate(1);
         };
         const re = monk_log(func);
         expect(re).to.be.deep.equal([
@@ -84,9 +84,9 @@ describe('test common logging functions from log/log.ls', (): void => {
 
     it('test log seprate function multiple times', (): void => {
         const func = () => {
-            logSeprate(3);
-            logSeprate(3);
-            logSeprate(1);
+            logSeparate(3);
+            logSeparate(3);
+            logSeparate(1);
         };
         const re = monk_log(func);
         expect(re).to.be.deep.equal([

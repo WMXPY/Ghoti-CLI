@@ -4,7 +4,7 @@ require! {
     '../log/log': { log, logPostInstall }
     './parser/parser': { parseAll, parseFile, commonGather }
     '../static/lib': { lib, commonPath, libCommons }
-    '../static/outer/achive': { excuteExternal, excuteSwitch }
+    '../static/outer/achive': { executeExternal, executeSwitch }
     './fs/fileController': { readFileC }
 }
 

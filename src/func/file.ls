@@ -4,7 +4,7 @@ require! {
     '../log/std': { log }
     '../static/file': { libFile }
     './parser/parser': { commonParse, commonGather }
-    '../static/outer/achive': { excuteExternalFile }
+    '../static/outer/achive': { executeExternalFile }
     './fs/fileController': { readFileC }
 }
 
@@ -32,7 +32,7 @@ const getFileRoot = (location, filePath, fileName, ghoti_root) ->
     else filePath
 
 const fileFromAchrive = (ghoti_root, fileName, targetPath, whenDone, env) ->
-    excuteExternalFile ghoti_root, fileName, targetPath, whenDone, env, (externalPath, ghotiinstall) ->
+    executeExternalFile ghoti_root, fileName, targetPath, whenDone, env, (externalPath, ghotiinstall) ->
         const filePath = path.join externalPath, ghotiinstall.main
         commonGather ghotiinstall.replaces, (vars) ->
             if env.rename

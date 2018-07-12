@@ -45,7 +45,7 @@ const files = [
             'node-version'
             'port'
             'path'
-            'excuteable'
+            'executeable'
         ]
     }
     {

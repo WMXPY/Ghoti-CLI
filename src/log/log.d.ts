@@ -15,7 +15,7 @@ export interface IEnv {
 export declare const getMaxLength: (list: string[]) => number;
 export declare const faces: string[];
 
-export declare const logSeprate: (length: number) => string;
+export declare const logSeparate: (length: number) => string;
 export declare const logAlias: (command: string, original: string) => string;
 export declare const br: () => string;
 export declare const logHelp: (isEmpty?: boolean, env?: IEnv) => void;

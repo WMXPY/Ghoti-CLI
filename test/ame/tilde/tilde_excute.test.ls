@@ -1,6 +1,6 @@
 require! {
     'chai': { expect, assert }
-    '../../../src/ame/tilde/tilde': { excuteTilde }
+    '../../../src/ame/tilde/tilde': { executeTilde }
     '../../../src/log/log': { log }
     '../monk': { originGhotiConfig, ghotiConfig }
     '../../log/monk_log': { monk_log_read }
@@ -10,17 +10,17 @@ require! {
 const exitFunction = !->
     log 'exit'
 
-describe 'test excute tilde', ->
+describe 'test execute tilde', ->
 
     specify 'unknown suffix should exit the process', ->
         const test = !->
-            excuteTilde 'hello', {}, exitFunction
+            executeTilde 'hello', {}, exitFunction
         const config = {
             tilde: []
         }
 
         (expect <| monk_log_read test, (JSON.stringify config)) .to.be.deep.equal [
-            '    | Excute failed'
+            '    | Execute failed'
             '    | Error: Unknown command'
             'exit'
             'exit'

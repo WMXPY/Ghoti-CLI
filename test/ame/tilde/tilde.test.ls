@@ -1,6 +1,6 @@
 require! {
     'chai': { expect, assert }
-    '../../../src/ame/tilde/tilde': { excuteTilde }
+    '../../../src/ame/tilde/tilde': { executeTilde }
     '../monk': { originGhotiConfig, ghotiConfig }
 }
 

@@ -11,7 +11,7 @@ import {
 } from './interface';
 
 import {
-    getSeprate,
+    getSeparate,
 } from '../ame/osDiff';
 
 export default class Map {
@@ -34,7 +34,7 @@ export default class Map {
                 }
             }
             if (full && i < renderList.length - 1) {
-                print += getSeprate();
+                print += getSeparate();
             }
         }
         log(print);
@@ -71,7 +71,7 @@ export default class Map {
                     return '---';
                 case 'end':
                     return '-|#';
-                case 'stoped':
+                case 'stopped':
                     return '|!|';
                 default:
                     return '   ';
@@ -100,10 +100,10 @@ export default class Map {
         const type: TType = 'end';
         const length: number = this.random(config.lengthLimit);
         const cost: number = this.random(config.costLimit);
-        let fulidCost: number | undefined;
+        let fluidCost: number | undefined;
         let mudCost: number | undefined;
-        if (this.random(100) < config.fulidPercentage) {
-            fulidCost = this.random(config.fulidLimit);
+        if (this.random(100) < config.fluidPercentage) {
+            fluidCost = this.random(config.fluidLimit);
         }
         if (this.random(100) < config.mudPercentage) {
             mudCost = this.random(config.mudLimit);
@@ -114,7 +114,7 @@ export default class Map {
             type,
             length,
             cost,
-            fulidCost,
+            fluidCost,
             mudCost,
             loot,
             reward,
@@ -124,11 +124,11 @@ export default class Map {
 
     public static generateNode(config: IMapConfig, end: IMap): IMap {
         config.nodeLimit -= 1;
-        config.nodeMinum -= 1;
+        config.nodeMinimum -= 1;
         const type: TType = 'node';
         let next: IMap;
         let second: IMap | undefined;
-        let fulidCost: number | undefined;
+        let fluidCost: number | undefined;
         let mudCost: number | undefined;
         if (this.random(100) > config.endPercentage) {
             if (config.nodeLimit <= 0) {
@@ -144,7 +144,7 @@ export default class Map {
                 }
             }
         } else {
-            if (config.nodeMinum >= 0) {
+            if (config.nodeMinimum >= 0) {
                 next = this.generateNode(config, end);
             } else {
                 next = end;
@@ -152,8 +152,8 @@ export default class Map {
         }
         const length: number = this.random(config.lengthLimit);
         const cost: number = this.random(config.costLimit);
-        if (this.random(100) < config.fulidPercentage) {
-            fulidCost = this.random(config.fulidLimit);
+        if (this.random(100) < config.fluidPercentage) {
+            fluidCost = this.random(config.fluidLimit);
         }
         if (this.random(100) < config.mudPercentage) {
             mudCost = this.random(config.mudLimit);
@@ -166,7 +166,7 @@ export default class Map {
             second,
             length,
             cost,
-            fulidCost,
+            fluidCost,
             mudCost,
             loot,
             reward,

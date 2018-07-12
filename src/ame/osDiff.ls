@@ -2,7 +2,7 @@ require! {
     os
 }
 
-const getSeprate = ->
+const getSeparate = ->
     const platform = os.platform!
 
     switch platform
@@ -13,4 +13,4 @@ const getSeprate = ->
         default
             return '\r\n'
 
-export getSeprate
+export getSeparate

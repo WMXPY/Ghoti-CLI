@@ -9,7 +9,7 @@ const minigame = (ghotiE, env, whenDone) ->
     const ghoti = deepClone ghotiE
     if !(checkGhoti ghoti)
     then 
-        log '| Current enviorment is not a ghoti project'
+        log '| Current environment is not a ghoti project'
         log '| Try "ghoti about"'
         whenDone!
         process.exit!
@@ -31,13 +31,13 @@ const initDefaultMapgenSetting = ->
         lengthLimit: 45
         endPercentage: 20
         costLimit: 7
-        fulidLimit: 15
-        fulidPercentage: 15
+        fluidLimit: 15
+        fluidPercentage: 15
         mudLimit: 10
         mudPercentage: 23
         lootLimit: 150
         rewardLimit: 135
-        nodeMinum: 10
+        nodeMinimum: 10
         nodeLimit: 100
     }
 

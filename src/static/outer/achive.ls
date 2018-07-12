@@ -122,7 +122,7 @@ const checkGhotiFile = (whenDone) ->
         void
     cliConfig
 
-const excuteSwitch = (ghoti_path, opit, targetPath, whenDone, env, callback) ->
+const executeSwitch = (ghoti_path, opit, targetPath, whenDone, env, callback) ->
     const cliConfig = checkGhotiFile whenDone
     const { link, next } = parseLink opit, whenDone
     switch next
@@ -154,7 +154,7 @@ const excuteSwitch = (ghoti_path, opit, targetPath, whenDone, env, callback) ->
             process.exit!
     void
 
-const excuteExternalFile = (ghoti_path, fileName, targetPath, whenDone, env, callback) ->
+const executeExternalFile = (ghoti_path, fileName, targetPath, whenDone, env, callback) ->
     const cliConfig = checkGhotiFile whenDone
     const { link, next } = parseLink fileName, whenDone
     switch next
@@ -197,7 +197,7 @@ const excuteExternalFile = (ghoti_path, fileName, targetPath, whenDone, env, cal
             process.exit!
     void
 
-const excuteExternal = (ghoti_path, type, targetPath, whenDone, env, callback) ->
+const executeExternal = (ghoti_path, type, targetPath, whenDone, env, callback) ->
     const cliConfig = checkGhotiFile whenDone
     const { link, next } = parseLink type, whenDone
     switch next
@@ -332,6 +332,6 @@ const unlinkFile = (filePath, whenDone) ->
     fs.unlinkSync filePath
 
 export parseLink
-export excuteSwitch
-export excuteExternal
-export excuteExternalFile
+export executeSwitch
+export executeExternal
+export executeExternalFile

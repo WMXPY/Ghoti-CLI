@@ -2,7 +2,7 @@ require! {
     './std': { log }
 }
 
-const logSeprate = (length) ->
+const logSeparate = (length) ->
     var re
     re = ''
     for i to length
@@ -40,9 +40,9 @@ const logTable = (table, ...title) !->
         then i.text += ' '
         titleDisplay += '|' + i.text
     titleDisplay += '|'
-    logSeprate titleDisplay.length - 1
+    logSeparate titleDisplay.length - 1
     log titleDisplay
-    logSeprate titleDisplay.length - 1
+    logSeparate titleDisplay.length - 1
     for i in table
         var lane
         lane = ''
@@ -53,6 +53,6 @@ const logTable = (table, ...title) !->
             for _ to cat + 2
             then lane += ' '
         (log lane + '|')
-    logSeprate titleDisplay.length - 1
+    logSeparate titleDisplay.length - 1
 
 export logTable

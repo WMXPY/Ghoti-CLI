@@ -21,7 +21,7 @@ const list = [
             'bark'
         ]
         arguments: 1
-        info: 'Excute bark lang'
+        info: 'Execute bark lang'
         plus: [
             {
                 name: 'example'
@@ -33,7 +33,7 @@ const list = [
     {
         command: ['~[#?]']
         arguments: 0
-        info: 'Excute tilde command'
+        info: 'Execute tilde command'
         plus: [
             {
                 name: 'example'

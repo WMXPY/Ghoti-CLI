@@ -1,1 +1,1 @@
-export declare const excute: (...mucall: string[]) => void;
+export declare const execute: (...mucall: string[]) => void;

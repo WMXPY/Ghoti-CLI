@@ -4,7 +4,7 @@ require! {
     '../log/log': { log, logPostInstall }
     './parser/parser': { parseAll, parseFile, commonGather }
     '../static/lib': { lib, commonPath, libCommons }
-    '../static/outer/achive': { excuteExternal, excuteSwitch }
+    '../static/outer/achive': { executeExternal, executeSwitch }
     './fs/fileController': { readFileC }
 }
 
@@ -87,7 +87,7 @@ require! {
     (copyInitReacursion root, 0, (path.join path_current, targetPath), root.length, vars, specVars, whenDone))
 
 const downloadArchirve = (ghoti_root, type, targetPath, whenDone, env) ->
-    excuteSwitch ghoti_root, type, targetPath, whenDone, env, (externalPath, ghotiinstall) ->
+    executeSwitch ghoti_root, type, targetPath, whenDone, env, (externalPath, ghotiinstall) ->
         log '| Finished.'
         log '| see "ghoti lt" & "ghoti lf" for new avaiable list'
         whenDone!
@@ -117,7 +117,7 @@ const identifyIsJavaScript = (language) ->
     else false
 
 const initFromAchrive = (ghoti_root, type, targetPath, whenDone, env) ->
-    excuteExternal ghoti_root, type, targetPath, whenDone, env, (externalPath, ghotiinstall) ->
+    executeExternal ghoti_root, type, targetPath, whenDone, env, (externalPath, ghotiinstall) ->
         readParseAll type, targetPath, env, ghotiinstall, (re, newRe, typesciprt) ->
             (log ' | @ Copying lib files')
             (copyInit type, targetPath, re, newRe, externalPath)
