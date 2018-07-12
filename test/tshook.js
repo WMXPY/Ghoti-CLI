@@ -8,9 +8,9 @@ require("ts-node").register({
         experimentalDecorators: true,
         emitDecoratorMetadata: true,
         moduleResolution: "node",
-        target: "es6",
+        target: "es5",
         lib: [
-            "es2017"
+            "es2016"
         ]
     },
 });
