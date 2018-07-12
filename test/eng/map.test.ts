@@ -1,5 +1,5 @@
 import { expect } from 'chai';
-import Map from '../../src/eng/map';
+import * as Map from '../../src/eng/map';
 import { defaultSetting } from './init';
 
 import { } from 'mocha';

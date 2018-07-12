@@ -5,7 +5,7 @@
 
 import { deepClone } from '../func/deepclone';
 import { IGameConfig, IMap, IMapConfig, IStatus } from './interface';
-import Map from './map';
+import * as Map from './map';
 import pack from './pack';
 
 export default class Controller {
