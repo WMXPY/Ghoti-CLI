@@ -18,7 +18,6 @@ coverage
 src/**/*.js
 src/**/*.js.map
 
-test/**/*.js
 test/**/*.js.map
 
 # testing folders

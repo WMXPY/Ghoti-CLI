@@ -1,7 +1,7 @@
 --reporter spec
 --ui bdd
 
---require ts-node/register
+--require test/tshook.js
 --require livescript
 
 --recursive
