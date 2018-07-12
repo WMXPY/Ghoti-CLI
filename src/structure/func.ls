@@ -1,7 +1,7 @@
 require! {
     fs,
     path,
-    './common': { comments, verifyNameValiation }
+    './common': { comments, verifyNameValidation }
     './lib/lib': { libFunc, pathBuilder }
     '../log/log': { log, logPad }
     '../func/config': { updateConfig }
@@ -25,7 +25,7 @@ const readFile = (root, name, ghoti) ->
 
 const comImport = (ghoti) ->
     if !Boolean ghoti.funcs
-        (log 'ERROR, ghoti have no functions configeration')
+        (log 'ERROR, ghoti have no functions configuration')
         (log 'Try to fix it: "ghoti fix"')
         (process.exit!)
     var re
@@ -39,9 +39,9 @@ const comImport = (ghoti) ->
 
 const func = (root, targetPath, name, ghoti, whenDone, env) ->
     # [2018-03-23 Update] Add verify name function 
-    (verifyNameValiation name, 'func', whenDone)
+    (verifyNameValidation name, 'func', whenDone)
     if !Boolean ghoti.funcs
-        (log 'ERROR, ghoti have no functions configeration')
+        (log 'ERROR, ghoti have no functions configuration')
         (log 'Try to fix it: "ghoti fix"')
         (process.exit!)
     for i in ghoti.funcs

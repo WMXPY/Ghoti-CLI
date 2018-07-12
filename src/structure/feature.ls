@@ -4,7 +4,7 @@ require! {
     '../log/log': { log, logPad }
     './lib/lib': { libFeature, libTest, pathBuilder }
     '../func/config': { updateConfig }
-    './common': { verifyNameValiation }
+    './common': { verifyNameValidation }
     '../func/fs/fileController': { readFileC }
 }
 
@@ -36,9 +36,9 @@ require! {
 
 (const feature = (root, targetPath, name, ghoti, whenDone, env) ->
     # [2018-03-23 Update] Add verify name function 
-    (verifyNameValiation name, 'feature', whenDone)
+    (verifyNameValidation name, 'feature', whenDone)
     (if (!(Boolean ghoti.features))
-        (log 'ERROR, ghoti have no features configeration')
+        (log 'ERROR, ghoti have no features configuration')
         (log 'Try to fix it: "ghoti fix"')
         (process.exit!))
     (for i in ghoti.features

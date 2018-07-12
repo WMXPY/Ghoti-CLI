@@ -58,7 +58,7 @@ const errorList =
                 'have'
                 'no'
                 'components'
-                'configeration'
+                'configuration'
             ]
             value: [
                 'mostly is because you are not in a ghoti project folder'
@@ -71,7 +71,7 @@ const errorList =
                 'have'
                 'no'
                 'pages'
-                'configeration'
+                'configuration'
             ]
             value: [
                 'mostly is because you are not in a ghoti project folder'
@@ -84,7 +84,7 @@ const errorList =
                 'have'
                 'no'
                 'lambdas'
-                'configeration'
+                'configuration'
             ]
             value: [
                 'mostly is because you are not in a ghoti project folder'
@@ -97,7 +97,7 @@ const errorList =
                 'have'
                 'no'
                 'functions'
-                'configeration'
+                'configuration'
             ]
             value: [
                 'mostly is because you are not in a ghoti project folder'
@@ -110,7 +110,7 @@ const errorList =
                 'have'
                 'no'
                 'guncs'
-                'configeration'
+                'configuration'
             ]
             value: [
                 'mostly is because you are not in a ghoti project folder'
@@ -123,7 +123,7 @@ const errorList =
                 'have'
                 'no'
                 'features'
-                'configeration'
+                'configuration'
             ]
             value: [
                 'mostly is because you are not in a ghoti project folder'

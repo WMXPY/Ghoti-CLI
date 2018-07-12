@@ -33,7 +33,7 @@ class Example extends React.Component<{}, IState> {
                 <div>ghoti-cli quick start example</div>
                 <hr />
                 {this.steps.bind(this)(this.state.step).map(this._mapSteps)}
-                <div><button onClick={this.nextStep.bind(this)}>NEXT</button><button onClick={this.priviousStep.bind(this)}>BACK</button></div>
+                <div><button onClick={this.nextStep.bind(this)}>NEXT</button><button onClick={this.previousStep.bind(this)}>BACK</button></div>
                 <hr />
             </div>
         );
@@ -44,7 +44,7 @@ class Example extends React.Component<{}, IState> {
         this.setStep(this.state.step + 1);
     }
 
-    protected priviousStep() {
+    protected previousStep() {
         localStorage.setItem('step', (this.state.step - 1).toString());
         this.setStep(this.state.step - 1);
     }
@@ -93,7 +93,7 @@ class Example extends React.Component<{}, IState> {
                 ];
             case 4:
                 return [
-                    'Simplly use whatever method you want to complete the list component',
+                    'Simply use whatever method you want to complete the list component',
                     'You may need to give it a sample test case to make it render normally',
                     'In /src/pages/example.page.tsx file, put <Component.list {[...props you setted]} /> to test it',
                 ];
@@ -107,12 +107,12 @@ class Example extends React.Component<{}, IState> {
             case 6:
                 return [
                     'Check out your /src/func/calc.func.ts file',
-                    'Write a simple function like determin a string\' length is larger than 5 or not',
+                    'Write a simple function like determine a string\' length is larger than 5 or not',
                     'Add your function into export list, with ghoti cli func and lambda file structure, export default is not suggested',
                 ];
             case 7:
                 return [
-                    'Back to /src/pages/example.page.tsx, Lambda and Func sets are alreay imported for you',
+                    'Back to /src/pages/example.page.tsx, Lambda and Func sets are already imported for you',
                     'With webpack, functions will not be duplicated imported, pre-imported function can make things easier and clearer',
                     'Try your function in the list',
                 ];

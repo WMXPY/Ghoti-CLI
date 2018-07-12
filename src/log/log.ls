@@ -54,7 +54,7 @@ const br = !->
     faces[ran])
 
 const logAlias = (command, original) !->
-    (log 'Tips: "ghoti ' + command + '" is an alia of "ghoti ' + original + '"')
+    (log 'Tips: "ghoti ' + command + '" is an alias of "ghoti ' + original + '"')
 
 const logCommand = (command?, original?) ->
     (const title = '🐟  > 👟  Ghoti-CLI:')
@@ -102,7 +102,7 @@ const logStatus = (ghoti, env?) !->
     || (!(Boolean ghoti.pages))
     || (!(Boolean ghoti.funcs))
     || (!(Boolean ghoti.lambdas)))
-        (logPad '| ERROR, ghoti have no at least one required configeration', 1)
+        (logPad '| ERROR, ghoti have no at least one required configuration', 1)
         (logPad '| Try to fix it: "ghoti fix"', 1)
         (logSeparate title.length)
         (logFace!)
@@ -110,19 +110,19 @@ const logStatus = (ghoti, env?) !->
     (logPad '| Info        : status is came from .ghoticonfig file', 1)
     (logPad '| Template    : ' + ghoti.template, 1)
     (logPad '| Author      : ' + ghoti.author, 1)
-    (logPad '| Descript    : ' + ghoti.description, 1)
+    (logPad '| Description : ' + ghoti.description, 1)
     (logPad '| CLI Version : ' + ghoti.version, 1)
     (logPad '| Title       : ' + ghoti.title, 1)
-    (logPad '| Components  : availble count - ' + ghoti.components.length, 1)
+    (logPad '| Components  : available count - ' + ghoti.components.length, 1)
     (for i in ghoti.components
         (logPad '* component - ' + i, 2))
-    (logPad '| Pages       : availble count - ' + ghoti.pages.length, 1)
+    (logPad '| Pages       : available count - ' + ghoti.pages.length, 1)
     (for i in ghoti.pages
         (logPad '* page      - ' + i, 2))
-    (logPad '| Functions   : availble count - ' + ghoti.funcs.length, 1)
+    (logPad '| Functions   : available count - ' + ghoti.funcs.length, 1)
     (for i in ghoti.funcs
         (logPad '* function  - ' + i, 2))
-    (logPad '| Lambdas     : availble count - ' + ghoti.lambdas.length, 1)
+    (logPad '| Lambdas     : available count - ' + ghoti.lambdas.length, 1)
     (for i in ghoti.lambdas
         (logPad '* lambda    - ' + i, 2))
     (logSeparate title.length)
@@ -212,7 +212,7 @@ const logUnknown = (env?) !->
     (const title = '🐟  > 🙋  Ghoti-CLI Unknown command:')
     (log title)
     (logSeparate title.length)
-    (logPad '| You just inputed a unknown command, try "ghoti help" for command list', 1)
+    (logPad '| You just inputted a unknown command, try "ghoti help" for command list', 1)
     (logSeparate title.length)
     (logFace!)
     (process.exit!)
@@ -273,7 +273,7 @@ const logUpdate = (ghoti, env?) ->
     (const title = '🐟  > 🦉  Ghoti-CLI update:')
     (log title)
     (logSeparate title.length)
-    (logPad '| Auto update fature is indevlopment', 1)
+    (logPad '| Auto update feature is in development', 1)
     (logPad '| To update ghoti version manually, follow the document on Github', 1)
     (logPad '| Try: "ghoti about"', 1)
     !->
@@ -339,7 +339,7 @@ const logPostInstall = (targetPath, type, typescript, env?) !->
             (log '')
             (logPad 'Congratulations!!! 😎', 1)
             (log '')
-            (logPad '| All needed files are configed and "almost" ready to go!', 1)
+            (logPad '| All needed files are configured and "almost" ready to go!', 1)
             (logPad '| JUST A FEW MORE STEP: ', 1)
             (log '')
             (logPad '* cd ' + targetPath, 2)
@@ -357,7 +357,7 @@ const logPostInstall = (targetPath, type, typescript, env?) !->
             (logPad '* ghoti whatis git-init', 2)
 
 const logDeprecated = (command, due) ->
-    log '| Command "' + command + '" is no longer suppored due to:'
+    log '| Command "' + command + '" is no longer supported due to:'
     due.forEach (it) ->
         logPad ('| ' + it), 1
 

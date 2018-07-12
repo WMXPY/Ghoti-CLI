@@ -12,7 +12,7 @@ describe('test std function of log', (): void => {
         expect(re).to.be.deep.equal(['test']);
     });
 
-    it('test log mutiple argument string', (): void => {
+    it('test log multiple argument string', (): void => {
         let fun = () => {
             log('test', 'happy', 'treefriend');
         };
@@ -53,7 +53,7 @@ describe('test std function of debug log', (): void => {
         ]);
     });
 
-    it('test dlog with normal log usage (mulitple)', (): void => {
+    it('test dlog with normal log usage (multiple)', (): void => {
         let fun = () => {
             dlog('test' as any);
             dlog('test' as any);
@@ -95,7 +95,7 @@ describe('test std function of debug log', (): void => {
         ]);
     });
 
-    it('test dlog with debug environment, mulitple argument', (): void => {
+    it('test dlog with debug environment, multiple argument', (): void => {
         let fun = () => {
             dlog({
                 debug: true,
@@ -107,19 +107,19 @@ describe('test std function of debug log', (): void => {
         ]);
     });
 
-    it('test dlog with debug environment, mulitple call', (): void => {
+    it('test dlog with debug environment, multiple call', (): void => {
         let fun = () => {
             dlog({
                 debug: true,
             } as any, 'haa');
             dlog({
                 debug: true,
-            } as any, 'qucamber', 'haa');
+            } as any, 'cucumber', 'haa');
         };
         const re = monk_log(fun);
         expect(re).to.be.deep.equal([
             'haa',
-            'qucamber,haa',
+            'cucumber,haa',
         ]);
     });
 });

@@ -16,7 +16,7 @@ import {
 } from '../../src/log/log';
 import monk_log, { ghotiConfig, isAnyOfFace } from './monk_log';
 
-const stringBilder = (str: string[]): string => {
+export const stringBuilder = (str: string[]): string => {
     return str.join('\r\n');
 };
 
@@ -44,7 +44,7 @@ describe('test common logging functions from log/log.ls', (): void => {
 
         const re = monk_log(func);
         expect(re).to.be.deep.equal([
-            'Tips: "ghoti after" is an alia of "ghoti before"',
+            'Tips: "ghoti after" is an alias of "ghoti before"',
         ]);
     });
 
@@ -58,7 +58,7 @@ describe('test common logging functions from log/log.ls', (): void => {
         ]);
     });
 
-    it('test log seprate function with argument 0', (): void => {
+    it('test log separate function with argument 0', (): void => {
         const func = () => {
             logSeparate(0);
         };
@@ -68,7 +68,7 @@ describe('test common logging functions from log/log.ls', (): void => {
         ]);
     });
 
-    it('test log seprate function with argument numbers', (): void => {
+    it('test log separate function with argument numbers', (): void => {
         const func = () => {
             logSeparate(3);
             logSeparate(5);
@@ -82,7 +82,7 @@ describe('test common logging functions from log/log.ls', (): void => {
         ]);
     });
 
-    it('test log seprate function multiple times', (): void => {
+    it('test log separate function multiple times', (): void => {
         const func = () => {
             logSeparate(3);
             logSeparate(3);
@@ -203,7 +203,7 @@ describe('test simple long log functions', (): void => {
         const re = monk_log(func);
         expect(re).to.be.deep.equal([
             "🐟  > 👟  Ghoti-CLI:",
-            "Tips: \"ghoti hello\" is an alia of \"ghoti world\"",
+            "Tips: \"ghoti hello\" is an alias of \"ghoti world\"",
             "--------------------",
         ]);
         const func2 = () => {
@@ -226,13 +226,13 @@ describe('test simple long log functions', (): void => {
             "    | Info        : status is came from .ghoticonfig file",
             "    | Template    : test",
             "    | Author      : test",
-            "    | Descript    : test",
+            "    | Description : test",
             "    | CLI Version : 1.0.0",
             "    | Title       : test",
-            "    | Components  : availble count - 0",
-            "    | Pages       : availble count - 0",
-            "    | Functions   : availble count - 0",
-            "    | Lambdas     : availble count - 0",
+            "    | Components  : available count - 0",
+            "    | Pages       : available count - 0",
+            "    | Functions   : available count - 0",
+            "    | Lambdas     : available count - 0",
             "---------------------------",
         ]);
         // tslint:disable-next-line

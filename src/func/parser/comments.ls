@@ -51,7 +51,7 @@ const libLanguages = (language) ->
         then return i
     null
 
-const determinLanguage = (filename) ->
+const determineLanguage = (filename) ->
     var ext
     ext = path.extname filename
     if ext === '.ghoti'
@@ -62,7 +62,7 @@ const determinLanguage = (filename) ->
     else null
 
 const getComments = (filename, vars) ->
-    const lang = determinLanguage filename
+    const lang = determineLanguage filename
     var adding
     switch lang
         case 'javascript'
@@ -101,6 +101,6 @@ const parseComments = (filename, content, vars) ->
         splited[0] = (getComments filename, vars) + getSeparate!
     splited.join getSeparate!
 
-export determinLanguage
+export determineLanguage
 export addComments
 export parseComments

@@ -4,7 +4,7 @@ require! {
     '../log/std': { log }
     '../static/file': { libFile }
     './parser/parser': { commonParse, commonGather }
-    '../static/outer/achive': { executeExternalFile }
+    '../static/outer/achieve': { executeExternalFile }
     './fs/fileController': { readFileC }
 }
 
@@ -31,7 +31,7 @@ const getFileRoot = (location, filePath, fileName, ghoti_root) ->
     then path.join ghoti_root, 'lib', 'files', filePath, fileName
     else filePath
 
-const fileFromAchrive = (ghoti_root, fileName, targetPath, whenDone, env) ->
+const fileFromAchieve = (ghoti_root, fileName, targetPath, whenDone, env) ->
     executeExternalFile ghoti_root, fileName, targetPath, whenDone, env, (externalPath, ghotiinstall) ->
         const filePath = path.join externalPath, ghotiinstall.main
         commonGather ghotiinstall.replaces, (vars) ->
@@ -62,12 +62,12 @@ const file = (ghoti_root, fileName, targetPathE, whenDone, env) ->
     else targetPath = targetPathE
 
     if env.fetch
-    then fileFromAchrive ghoti_root, fileName, targetPath, whenDone, env
+    then fileFromAchieve ghoti_root, fileName, targetPath, whenDone, env
     else
         const root = (switchRoot fileName, ghoti_root)
 
         # Update 2018-5-14
-        # Remove useless log, going to seprate debug log and print
+        # Remove useless log, going to separate debug log and print
         # log root, 1
         if !Boolean root
         then

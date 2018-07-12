@@ -30,7 +30,7 @@ require! {
         argv
         ghotiConfig 
     }
-    './func/init': { init, downloadArchirve }
+    './func/init': { init, downloadArchive }
     './structure/component': { component }
     './structure/page': { page }
     './structure/lambda': { lambda }
@@ -88,12 +88,12 @@ const execute = (...mucall?) !->
     (env = argv!)
     if env
     # Update 2018-04-02
-    # Fix length determin issue
+    # Fix length determine issue
     then 
         if mucall.length >= 1
         then env = processMucall env, mucall
     else 
-        log '| Enviorment process Error'
+        log '| Environment process Error'
         log '| Try "ghoti fix"'
         process.exit!
     const mode = (env.mode.toLowerCase!)
@@ -148,7 +148,7 @@ const execute = (...mucall?) !->
             fallthrough
         case 'download'
             whenDone = (logCommand!)
-            downloadArchirve ghotiCLIPath, env.texture[0], env.texture[1], whenDone, env
+            downloadArchive ghotiCLIPath, env.texture[0], env.texture[1], whenDone, env
 
         # info
         case 'inf'

@@ -1,7 +1,7 @@
 require! {
     fs,
     path,
-    './common': { comments, verifyNameValiation }
+    './common': { comments, verifyNameValidation }
     './lib/lib': { libLambda, pathBuilder }
     '../log/log': { log, logPad }
     '../func/config': { updateConfig }
@@ -26,7 +26,7 @@ require! {
 
 (const comImport = (ghoti) ->
     (if (!(Boolean ghoti.lambdas))
-        (log 'ERROR, ghoti have no lambdas configeration')
+        (log 'ERROR, ghoti have no lambdas configuration')
         (log 'Try to fix it: "ghoti fix"')
         (process.exit!))
     var re
@@ -40,9 +40,9 @@ require! {
 
 (const lambda = (root, targetPath, name, ghoti, whenDone, env) ->
     # [2018-03-23 Update] Add verify name function 
-    (verifyNameValiation name, 'lambda', whenDone)
+    (verifyNameValidation name, 'lambda', whenDone)
     (if (!(Boolean ghoti.lambdas))
-        (log 'ERROR, ghoti have no lambdas configeration')
+        (log 'ERROR, ghoti have no lambdas configuration')
         (log 'Try to fix it: "ghoti fix"')
         (process.exit!))
     (for i in ghoti.lambdas

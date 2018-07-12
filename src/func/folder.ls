@@ -7,25 +7,25 @@ require! {
     (if (!(fs.existsSync root))
         (fs.mkdirSync root)))
 
-const eachFolderReacursion = (root, level, folder, formula) ->
+const eachFolderRecursions = (root, level, folder, formula) ->
     const files = fs.readdirSync root
     const eachFile = (file) ->
         const pathname = path.join root, file
         const stat = fs.lstatSync pathname
         
-        # flootROOT???
+        # floatROOT???
 
         if stat.isDirectory!
         then
             folder pathname, level
-            eachFolderReacursion pathname, level + 1, folder, formula
+            eachFolderRecursions pathname, level + 1, folder, formula
         else
             formula pathname, level
     files.forEach eachFile
 
 const eachFolder = (root, folder, formula) ->
     makeDir path.join root
-    eachFolderReacursion root, 0, folder, formula
+    eachFolderRecursions root, 0, folder, formula
 
 export makeDir
 export eachFolder

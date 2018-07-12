@@ -23,12 +23,12 @@ const parseLink = (linkE, whenDone) ->
     const splited = linkE.split /:\/\/|\//g
     if splited.length <= 0
     then
-        log '| Not a vaild link'
+        log '| Not a valid link'
         whenDone!
         process.exit!
-    const protocal = (splited.shift!).toLowerCase!
+    const protocol = (splited.shift!).toLowerCase!
     var link, next
-    switch protocal
+    switch protocol
         case 'github'
             next = 'download'
             link = 'https://raw.githubusercontent.com/' + (splited.join '/')
@@ -41,7 +41,7 @@ const parseLink = (linkE, whenDone) ->
             next = 'file'
             link = linkE
         default
-            log '| Not a vaild link'
+            log '| Not a valid link'
             whenDone!
             process.exit!
     {
@@ -68,7 +68,7 @@ const addExternal = (cliConfigE, ghotiinstallE, expackPath, whenDone) ->
             then 
                 if i.name === ghotiinstallE.name
                 then 
-                    log '| ghotiinstall name alreay exist'
+                    log '| ghotiinstall name already exist'
                     whenDone!
                     process.exit!
     else 
@@ -90,7 +90,7 @@ const addRemote = (cliConfigE, ghotiinstallE, expackPath, whenDone) ->
             then 
                 if i.name === ghotiinstallE.name
                 then 
-                    log '| ghotiinstall name alreay exist'
+                    log '| ghotiinstall name already exist'
                     whenDone!
                     process.exit!
     else 
@@ -149,7 +149,7 @@ const executeSwitch = (ghoti_path, opit, targetPath, whenDone, env, callback) ->
         case 'file'
             log next
         default
-            log '| Not a vaild link'
+            log '| Not a valid link'
             whenDone!
             process.exit!
     void
@@ -192,7 +192,7 @@ const executeExternalFile = (ghoti_path, fileName, targetPath, whenDone, env, ca
         case 'file'
             log next
         default
-            log '| Not a vaild link'
+            log '| Not a valid link'
             whenDone!
             process.exit!
     void
@@ -238,7 +238,7 @@ const executeExternal = (ghoti_path, type, targetPath, whenDone, env, callback) 
         case 'file'
             log next
         default
-            log '| Not a vaild link'
+            log '| Not a valid link'
             whenDone!
             process.exit!
     void

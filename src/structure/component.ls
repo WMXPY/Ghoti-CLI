@@ -1,7 +1,7 @@
 require! {
     fs,
     path,
-    './common': { comments, verifyNameValiation }
+    './common': { comments, verifyNameValidation }
     './lib/lib': { libComponent, pathBuilder }
     '../log/log': { log, logPad }
     '../func/config': { updateConfig }
@@ -31,7 +31,7 @@ const ghotiComponentExportVue = (name) ->
 
 (const comImport = (ghoti) ->
     (if (!(Boolean ghoti.components))
-        (log 'ERROR, ghoti have no components configeration')
+        (log 'ERROR, ghoti have no components configuration')
         (log 'Try to fix it: "ghoti fix"')
         (process.exit!))
     var re
@@ -45,7 +45,7 @@ const ghotiComponentExportVue = (name) ->
 
 const comVueAddon = (ghoti) ->
     (if (!(Boolean ghoti.components))
-        (log 'ERROR, ghoti have no components configeration')
+        (log 'ERROR, ghoti have no components configuration')
         (log 'Try to fix it: "ghoti fix"')
         (process.exit!))
     var re
@@ -63,9 +63,9 @@ const comVueAddon = (ghoti) ->
 
 (const component = (root, targetPath, name, ghoti, whenDone, env) ->  
     # [2018-03-23 Update] Add verify name function 
-    (verifyNameValiation name, 'component', whenDone)
+    (verifyNameValidation name, 'component', whenDone)
     (if (!(Boolean ghoti.components))
-        (logPad '| ERROR, ghoti have no components configeration', 1)
+        (logPad '| ERROR, ghoti have no components configuration', 1)
         (logPad '| Try to fix it: "ghoti fix"', 1)
         (whenDone!)
         (process.exit!))

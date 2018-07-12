@@ -173,7 +173,7 @@ const parseAllIn = (textList, vars) ->
         (const titleQuestionText = 'Project Title')
         (getInput titleQuestionText, targetPath, (title)->
             (vars.title = title)
-            (const descriptionQuestionText = 'Description of ' + vars.title)
+            (const descriptionQuestionText = 'Descriptions of ' + vars.title)
             (getInput descriptionQuestionText, '', (description) ->
                 (vars.description = description)
                 (const authorQuestionText = 'Author of ' + vars.title)

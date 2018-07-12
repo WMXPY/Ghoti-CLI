@@ -38,7 +38,7 @@ const whatis = (keyword) ->
             'git push -u origin master'
         ]
         '.ghoticonfig': [
-            'configeration of ghoti project'
+            'configuration of ghoti project'
         ]
     }
 

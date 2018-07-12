@@ -1,7 +1,7 @@
 require! {
     fs,
     path,
-    './common': { comments, verifyNameValiation }
+    './common': { comments, verifyNameValidation }
     './lib/lib': { libPage, pathBuilder }
     '../log/log': { log, logPad }
     '../func/config': { updateConfig }
@@ -28,7 +28,7 @@ require! {
 
 (const comImport = (ghoti) ->
     (if (!(Boolean ghoti.pages))
-        (log 'ERROR, ghoti have no pages configeration')
+        (log 'ERROR, ghoti have no pages configuration')
         (log 'Try to fix it: "ghoti fix"')
         (process.exit!))
     (var re)
@@ -42,7 +42,7 @@ require! {
 
 (const comImportVue = (ghoti) ->
     (if (!(Boolean ghoti.pages))
-        (log 'ERROR, ghoti have no pages configeration')
+        (log 'ERROR, ghoti have no pages configuration')
         (log 'Try to fix it: "ghoti fix"')
         (process.exit!))
     (var re)
@@ -56,9 +56,9 @@ require! {
 
 (const page = (root, targetPath, name, ghoti, whenDone, env) ->
     # [2018-03-23 Update] Add verify name function 
-    (verifyNameValiation name, 'page', whenDone)
+    (verifyNameValidation name, 'page', whenDone)
     (if (!(Boolean ghoti.pages))
-        (log 'ERROR, ghoti have no pages configeration')
+        (log 'ERROR, ghoti have no pages configuration')
         (log 'Try to fix it: "ghoti fix"')
         (process.exit!))
     (for i in ghoti.pages

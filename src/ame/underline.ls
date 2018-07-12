@@ -11,9 +11,6 @@ const underline = (ghoti) ->
 const plus = (name) ->
     return name
 
-const plus = (name) ->
-    return name
-
 const minus = (name) ->
     return name
 
@@ -212,7 +209,6 @@ const calculateProgress = (current, whenDone, doLog? = false, logLevel? = 1) ->
     }
 
 export underline
-export plus
 export plus
 export minus
 export mergeGhoti

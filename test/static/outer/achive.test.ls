@@ -1,10 +1,10 @@
 require! {
     path
     'chai': { expect, assert }
-    '../../../src/static/outer/achive': { parseLink }
+    '../../../src/static/outer/achieve': { parseLink }
 }
 
-describe 'test achive functions', ->
+describe 'test achieve functions', ->
 
     specify 'test link parser (download)', ->
         const test1 = 'https://raw.githubusercontent.com/WMXPY/Ghoti-CLI-templates/master/dist/b.zip'

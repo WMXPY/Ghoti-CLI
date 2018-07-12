@@ -83,11 +83,11 @@ const list = [
         plus: [
             {
                 name: 'example'
-                value: 'ghoti _+ component-devlopment'
+                value: 'ghoti _+ component-development'
             }
             {
                 name: 'example'
-                value: 'ghoti _[path] component-devlopment'
+                value: 'ghoti _[path] component-development'
             }
         ]
         more: [
@@ -313,7 +313,7 @@ const list = [
             'issue'
         ]
         arguments: 1
-        info: 'show error message if it is knowned'
+        info: 'show error message if it is knowns'
         plus: [
             {
                 name: 'example'
@@ -440,7 +440,7 @@ const list = [
             'd'
         ]
         arguments: 1
-        info: 'download achive from external source'
+        info: 'download achieve from external source'
         plus: [
             {
                 name: 'example'
@@ -718,7 +718,7 @@ const list = [
         more: [
             {
                 name: 'some file'
-                value: 'file\'s nick name, see ghoti flist'
+                value: 'file\'s nick name, see ghoti first'
             }
         ]
     }
@@ -779,7 +779,7 @@ const list = [
             'p'
         ]
         arguments: 2
-        info: 'make all files in target path in to a installble package'
+        info: 'make all files in target path in to a installable package'
         plus: [
             {
                 name: 'example'

@@ -15,7 +15,7 @@ const comments = (type) ->
     re
 
 # [2018-03-23 Update] Add verify name function 
-const verifyNameValiation = (name, funcName?, whenDone?) ->
+const verifyNameValidation = (name, funcName?, whenDone?) ->
     if !Boolean name
     then 
         log '| You have not entered a part name'
@@ -30,4 +30,4 @@ const verifyNameValiation = (name, funcName?, whenDone?) ->
 
 export commonAdd
 export comments
-export verifyNameValiation
+export verifyNameValidation

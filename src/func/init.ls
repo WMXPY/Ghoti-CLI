@@ -4,7 +4,7 @@ require! {
     '../log/log': { log, logPostInstall }
     './parser/parser': { parseAll, parseFile, commonGather }
     '../static/lib': { lib, commonPath, libCommons }
-    '../static/outer/achive': { executeExternal, executeSwitch }
+    '../static/outer/achieve': { executeExternal, executeSwitch }
     './fs/fileController': { readFileC }
 }
 
@@ -61,7 +61,7 @@ require! {
         space += ' |')
     (log space + text))
 
-(const copyInitReacursion = (root, level, targetPath, beforeLength, vars, specVars, whenDone) ->
+(const copyInitRecursions = (root, level, targetPath, beforeLength, vars, specVars, whenDone) ->
     (const files = (fs.readdirSync(root)))
     (const eachFile = (file) ->
         (const pathname = (path.join root, file))
@@ -70,7 +70,7 @@ require! {
         (if ((stat.isDirectory)!)
             (logPath '- ' + (removeTail file), level)
             (makeDir (path.join targetPath, floatRoot, file))
-            (copyInitReacursion pathname, level + 1, targetPath, beforeLength, vars, specVars, whenDone)
+            (copyInitRecursions pathname, level + 1, targetPath, beforeLength, vars, specVars, whenDone)
         else
             if (file.substring file.length - 6, file.length) === '.ghotb'
             then 
@@ -84,12 +84,12 @@ require! {
 (const copyInit = (type, targetPath, vars, specVars, root, whenDone) ->
     (const path_current = (process.cwd!))
     (makeDir (path.join path_current, targetPath))
-    (copyInitReacursion root, 0, (path.join path_current, targetPath), root.length, vars, specVars, whenDone))
+    (copyInitRecursions root, 0, (path.join path_current, targetPath), root.length, vars, specVars, whenDone))
 
-const downloadArchirve = (ghoti_root, type, targetPath, whenDone, env) ->
+const downloadArchive = (ghoti_root, type, targetPath, whenDone, env) ->
     executeSwitch ghoti_root, type, targetPath, whenDone, env, (externalPath, ghotiinstall) ->
         log '| Finished.'
-        log '| see "ghoti lt" & "ghoti lf" for new avaiable list'
+        log '| see "ghoti lt" & "ghoti lf" for new available list'
         whenDone!
         void
     void
@@ -116,7 +116,7 @@ const identifyIsJavaScript = (language) ->
     then true
     else false
 
-const initFromAchrive = (ghoti_root, type, targetPath, whenDone, env) ->
+const initFromAchieve = (ghoti_root, type, targetPath, whenDone, env) ->
     executeExternal ghoti_root, type, targetPath, whenDone, env, (externalPath, ghotiinstall) ->
         readParseAll type, targetPath, env, ghotiinstall, (re, newRe, typesciprt) ->
             (log ' | @ Copying lib files')
@@ -128,7 +128,7 @@ const initFromAchrive = (ghoti_root, type, targetPath, whenDone, env) ->
             (if re.open
 
                 # TODO
-                # Add is Javascript identifier to init from achive
+                # Add is Javascript identifier to init from achieve
                 (common.push (commonPath 'common', 'open-source', ghoti_root))
                 (common.push (commonPath 'common', 'license', ghoti_root)))
             (for i in common
@@ -148,7 +148,7 @@ const initFromAchrive = (ghoti_root, type, targetPath, whenDone, env) ->
         (process.exit!))
     if env.fetch
     then 
-        initFromAchrive ghoti_root, type, targetPath, whenDone, env
+        initFromAchieve ghoti_root, type, targetPath, whenDone, env
     else
         (const root = (switchRoot type, ghoti_root))
         (if (!(Boolean root))
@@ -177,4 +177,4 @@ const initFromAchrive = (ghoti_root, type, targetPath, whenDone, env) ->
         void)
 
 (export init)
-export downloadArchirve
+export downloadArchive
