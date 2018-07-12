@@ -22,7 +22,7 @@
 		"eslint": "^5.0.1",
 		"livescript": "1.5.0",
 		"mocha": "^5.2.0",
-		"ts-node": "^7.0.0",
+		"ts-node": "^6.2.0",
 		"tslint": "^5.10.0",
 		"typescript": "^2.9.2"
 	},
@@ -58,7 +58,7 @@
 		],
 		"report-dir": "coverage",
 		"require": [
-			"ts-node/register",
+			"./test/tshook.js",
 			"livescript"
 		],
 		"sourceMap": true

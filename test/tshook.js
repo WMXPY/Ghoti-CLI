@@ -10,6 +10,7 @@ require("ts-node").register({
         moduleResolution: "node",
         target: "es5",
         lib: [
+            "es2015",
             "es2016"
         ]
     },
