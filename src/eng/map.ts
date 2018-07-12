@@ -16,21 +16,21 @@ import {
 
 export default class Map {
     public static generate(config: IMapConfig): IMap {
-        const end: IMap = this.generateEnd(config);
-        const root: IMap = this.generateRoot(config, end);
+        const end: IMap = Map.generateEnd(config);
+        const root: IMap = Map.generateRoot(config, end);
         return root;
     }
 
     public static logMap(map: IMap, full?: boolean): void {
         const renderList: IMap[][] = [[]];
-        this.renderNode(map, renderList, renderList[0], true);
+        Map.renderNode(map, renderList, renderList[0], true);
         let print = '';
         for (let i = 0; i < renderList.length; i++) {
             for (let j of renderList[i]) {
                 if (full) {
-                    print += this.getSignal(j);
+                    print += Map.getSignal(j);
                 } else if (renderList[i][0] && renderList[i][0].type === 'root') {
-                    print += this.getSignal(j);
+                    print += Map.getSignal(j);
                 }
             }
             if (full && i < renderList.length - 1) {
@@ -55,10 +55,10 @@ export default class Map {
                     renderList.unshift(emptyArr);
                     nextList = renderList[0];
                 }
-                this.renderNode(map.second, renderList, nextList, !position);
+                Map.renderNode(map.second, renderList, nextList, !position);
             }
             currentList.push(map);
-            this.renderNode(map.next, renderList, currentList, position);
+            Map.renderNode(map.next, renderList, currentList, position);
         }
     }
 
@@ -84,7 +84,7 @@ export default class Map {
     public static generateRoot(configE: IMapConfig, end: IMap): IMap {
         const config = deepClone(configE);
         const type: TType = 'root';
-        const next: IMap = this.generateNode(config, end);
+        const next: IMap = Map.generateNode(config, end);
         const root: IMap = {
             type,
             next,
@@ -98,18 +98,18 @@ export default class Map {
 
     public static generateEnd(config: IMapConfig): IMap {
         const type: TType = 'end';
-        const length: number = this.random(config.lengthLimit);
-        const cost: number = this.random(config.costLimit);
+        const length: number = Map.random(config.lengthLimit);
+        const cost: number = Map.random(config.costLimit);
         let fluidCost: number | undefined;
         let mudCost: number | undefined;
-        if (this.random(100) < config.fluidPercentage) {
-            fluidCost = this.random(config.fluidLimit);
+        if (Map.random(100) < config.fluidPercentage) {
+            fluidCost = Map.random(config.fluidLimit);
         }
-        if (this.random(100) < config.mudPercentage) {
-            mudCost = this.random(config.mudLimit);
+        if (Map.random(100) < config.mudPercentage) {
+            mudCost = Map.random(config.mudLimit);
         }
-        const loot: number = this.random(config.lootLimit);
-        const reward: number = this.random(config.rewardLimit);
+        const loot: number = Map.random(config.lootLimit);
+        const reward: number = Map.random(config.rewardLimit);
         const node: IMap = {
             type,
             length,
@@ -130,36 +130,36 @@ export default class Map {
         let second: IMap | undefined;
         let fluidCost: number | undefined;
         let mudCost: number | undefined;
-        if (this.random(100) > config.endPercentage) {
+        if (Map.random(100) > config.endPercentage) {
             if (config.nodeLimit <= 0) {
                 next = end;
             } else {
-                next = this.generateNode(config, end);
+                next = Map.generateNode(config, end);
             }
-            if (this.random(100) < config.splitPercentage) {
+            if (Map.random(100) < config.splitPercentage) {
                 if (config.nodeLimit <= 0) {
                     second = end;
                 } else {
-                    second = this.generateNode(config, end);
+                    second = Map.generateNode(config, end);
                 }
             }
         } else {
             if (config.nodeMinimum >= 0) {
-                next = this.generateNode(config, end);
+                next = Map.generateNode(config, end);
             } else {
                 next = end;
             }
         }
-        const length: number = this.random(config.lengthLimit);
-        const cost: number = this.random(config.costLimit);
-        if (this.random(100) < config.fluidPercentage) {
-            fluidCost = this.random(config.fluidLimit);
+        const length: number = Map.random(config.lengthLimit);
+        const cost: number = Map.random(config.costLimit);
+        if (Map.random(100) < config.fluidPercentage) {
+            fluidCost = Map.random(config.fluidLimit);
         }
-        if (this.random(100) < config.mudPercentage) {
-            mudCost = this.random(config.mudLimit);
+        if (Map.random(100) < config.mudPercentage) {
+            mudCost = Map.random(config.mudLimit);
         }
-        const loot: number = this.random(config.lootLimit);
-        const reward: number = this.random(config.rewardLimit);
+        const loot: number = Map.random(config.lootLimit);
+        const reward: number = Map.random(config.rewardLimit);
         const node: IMap = {
             type,
             next,
