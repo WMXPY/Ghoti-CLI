@@ -47,7 +47,7 @@ require! {
     './func/file': { file }
     './func/suffix': { suffix }
     './func/pack': { pack }
-    './ame/tilde/tilde': { executeTilde }
+    './ame/tilde/tilde': { addTilde, executeTilde }
 }
 
 const notValid = (env) ->
@@ -202,7 +202,7 @@ const execute = (...mucall?) !->
             fallthrough
         case 'tilde'
             whenDone = logTilde!
-            executeTilde whenDone
+            addTilde whenDone
 
         # whatis
         case 'w'

@@ -2,7 +2,7 @@ require! {
     readline
 }
 
-const qeustionCreater = (questionE, defaultText?) ->
+const createQuestion = (questionE, defaultText?) ->
     var question, undef
     question = questionE
     if ((defaultText === true) || (defaultText === false))
@@ -16,36 +16,36 @@ const qeustionCreater = (questionE, defaultText?) ->
         else if typeof defaultText === 'number'
         then question += ' (default: ' + defaultText + ')'
     
-    (question += ' :\r\n=>> ')
+    question += ' :\r\n=>> '
     question
 
 const getInput = (question, defaultText, callback) !->
-    (const intf = 
+    const intf = 
         input: process.stdin
         output: process.stdout
-        terminal: false)
+        terminal: false
 
-    (const rl = (readline.createInterface intf))
-    question = qeustionCreater question, defaultText
+    const rl = readline.createInterface intf
+    question = createQuestion question, defaultText
     
     rl.question question, (answer) !->
-        (rl.close!)
-        (if typeof defaultText === 'boolean'
+        rl.close!
+        if typeof defaultText === 'boolean'
         then 
-            (if answer === ''
+            if answer === ''
             then answer = defaultText
             else
-                (if answer === 'Y'
+                if answer === 'Y'
                 then answer = true
                 else if answer === 'N'
                 then answer = false
                 else
-                then answer = false))
+                then answer = false
         else
-            (if answer === ''
+            if answer === ''
             then 
-                (answer = defaultText)))
-        (callback answer)
+                answer = defaultText
+        callback answer
 
-export qeustionCreater
+export createQuestion
 export getInput

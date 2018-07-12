@@ -33,6 +33,8 @@ const executeTilde = (suffix, env, whenDone) !->
     whenDone!
 
 const addTilde = (whenDone) !->
+    const config = readCLIConfig!
+    
     whenDone!
 
 export addTilde
