@@ -1,6 +1,7 @@
 require! {
     '../../log/std': { log, logPad }
     '../../func/config': { writeCLIConfig, readCLIConfig }
+    '../../log/getInputPromise': { getInputUntilDone, getInputUntilDoneCallback }
     child_process: { exec }
 }
 
@@ -34,8 +35,9 @@ const executeTilde = (suffix, env, whenDone) !->
 
 const addTilde = (whenDone) !->
     const config = readCLIConfig!
-    
-    whenDone!
+    (getInputUntilDone 'question').then (result) !->
+        log result
+        whenDone!
 
 export addTilde
 export executeTilde

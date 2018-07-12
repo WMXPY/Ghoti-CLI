@@ -1,3 +1,8 @@
+/**
+ * @author WMXPY
+ * @fileoverview End entry
+ */
+
 import { deepClone } from '../func/deepclone';
 import { IGameConfig, IMap, IMapConfig, IStatus } from './interface';
 import Map from './map';

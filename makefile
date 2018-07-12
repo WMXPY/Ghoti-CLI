@@ -1,11 +1,11 @@
 ls := lsc -co
 ts := tsc --p
-depdence := log.ls static.ls func.ls structure.ls ame.ls eng.ls eng.ts
+dependence := log.ls log.ts static.ls func.ls structure.ls ame.ls eng.ls eng.ts
 sourcePath := src
 testPath := test
 distPath := dist
 
-ghoti: $(depdence)
+ghoti: $(dependence)
 	$(ls) ./dist/ ./src/*.ls
 
 install:
@@ -14,6 +14,9 @@ install:
 
 log.ls:
 	$(ls) ./$(distPath)/log/ ./$(sourcePath)/log/*.ls
+	
+log.ts:
+	$(ts) ./$(sourcePath)/log/tsconfig.json
 
 static.ls:
 	$(ls) ./$(distPath)/static/ ./$(sourcePath)/static/*.ls
