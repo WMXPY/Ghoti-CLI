@@ -6,6 +6,8 @@
 export enum ERROR_CODE {
     TYPESCRIPT_REQUIRE_ARGUMENT = 411,
 
+    TEST_ERROR_CODE = 899,
+
     UNKNOWN_ERROR_CODE = 900,
 }
 
@@ -13,6 +15,7 @@ const errorList: {
     [key: number]: string;
 } = {
     411: 'Typescript file need static argument',
+    899: 'Test error code',
     900: 'Unknown error code',
 };
 
