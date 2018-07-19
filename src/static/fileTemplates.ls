@@ -77,6 +77,21 @@ const files = [
     }
     {
         name: [
+            'travis-mongo'
+        ]
+        author: '$ghoti'
+        path: 'ci'
+        file: '.travis_mongo.yml.ghoti'
+        whatis: [
+            'travis ci yml config file'
+            'with mongo db'
+            'with nyc'
+        ]
+        replaces: [
+        ]
+    }
+    {
+        name: [
             'react-page'
         ]
         author: '$ghoti'
