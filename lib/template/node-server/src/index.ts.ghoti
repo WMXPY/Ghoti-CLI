@@ -8,8 +8,13 @@ import Config from './config/config';
 
 const app: Express.Express = Express();
 
-app.use(BodyParser.json());
-app.use(BodyParser.urlencoded({ extended: true }));
+app.use(BodyParser.json({
+    limit: '5mb',
+}));
+app.use(BodyParser.urlencoded({
+    extended: true,
+    limit: '5mb',
+}));
 
 app.get('/', async (req: Express.Request, res: Express.Response): Promise<void> => {
     try {
