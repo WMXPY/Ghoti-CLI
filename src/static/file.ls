@@ -17,7 +17,7 @@ const getOuter = ->
 const libFile = (fileName, ghoti_root) ->
     var re
 
-    # build-in files
+    # built-in files
 
     for i in files
         for j in i.name
