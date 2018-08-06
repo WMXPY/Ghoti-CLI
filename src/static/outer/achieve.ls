@@ -10,14 +10,13 @@ require! {
     '../../func/fs/fileController': { readFileC }
 }
 
-const downloadPack = (uri, filename, callback) ->
-    downloadFile uri, filename, (err) ->
+const downloadPack = (uri, filename, callback) !->
+    downloadFile uri, filename, (err) !->
         if err
         then 
             log '| Err ' + err.toString!
             process.exit!
         else callback!
-    void
 
 const parseLink = (linkE, whenDone) ->
     const splited = linkE.split /:\/\/|\//g
@@ -122,7 +121,7 @@ const checkGhotiFile = (whenDone) ->
         void
     cliConfig
 
-const executeSwitch = (ghoti_path, opit, targetPath, whenDone, env, callback) ->
+const executeSwitch = (ghoti_path, opit, targetPath, whenDone, env, callback) !->
     const cliConfig = checkGhotiFile whenDone
     const { link, next } = parseLink opit, whenDone
     switch next
@@ -152,25 +151,15 @@ const executeSwitch = (ghoti_path, opit, targetPath, whenDone, env, callback) ->
             log '| Not a valid link'
             whenDone!
             process.exit!
-    void
 
 const executeExternalFile = (ghoti_path, fileName, targetPath, whenDone, env, callback) ->
     const cliConfig = checkGhotiFile whenDone
     const { link, next } = parseLink fileName, whenDone
     switch next
-        case 'download'
-            # FOR PRODUCTION
-            
+        case 'download'            
             const id = uniqueId!
-
-            # FOR TESTING
-
-            # const id = '_5gbu4tisu'
             const downloadPath = path.join ghoti_path, 'external', 'cache', (id + '.zip')
             const expendPath = path.join ghoti_path, 'external', 'external', id
-
-            # FOR PRODUCTION
-
             downloadPack link, downloadPath, ->
                 log '--- DOWNLOAD COMPLETED ---'
                 log '| PACKAGE UNIQUEID: ' + id
@@ -182,13 +171,6 @@ const executeExternalFile = (ghoti_path, fileName, targetPath, whenDone, env, ca
                         process.exit!
                     addRemote cliConfig, ghotiinstall, expendPath, whenDone
                     callback expendPath, ghotiinstall
-
-            # FOR TESTING
-
-            # expendPack downloadPath, expendPath, whenDone, (ghotiinstall) ->
-            #     addExternal cliConfig, ghotiinstall, expendPath
-            #     callback expendPath, ghotiinstall
-                
         case 'file'
             log next
         default
@@ -197,23 +179,14 @@ const executeExternalFile = (ghoti_path, fileName, targetPath, whenDone, env, ca
             process.exit!
     void
 
-const executeExternal = (ghoti_path, type, targetPath, whenDone, env, callback) ->
+const executeExternal = (ghoti_path, type, targetPath, whenDone, env, callback) !->
     const cliConfig = checkGhotiFile whenDone
     const { link, next } = parseLink type, whenDone
     switch next
-        case 'download'
-            # FOR PRODUCTION
-            
+        case 'download'            
             const id = uniqueId!
-
-            # FOR TESTING
-
-            # const id = '_5gbu4tisu'
             const downloadPath = path.join ghoti_path, 'external', 'cache', (id + '.zip')
             const expendPath = path.join ghoti_path, 'external', 'external', id
-
-            # FOR PRODUCTION
-
             downloadPack link, downloadPath, ->
                 log '--- DOWNLOAD COMPLETED ---'
                 log '| PACKAGE UNIQUEID: ' + id
@@ -228,20 +201,12 @@ const executeExternal = (ghoti_path, type, targetPath, whenDone, env, callback) 
                         process.exit!
                     addExternal cliConfig, ghotiinstall, expendPath, whenDone
                     callback expendPath, ghotiinstall
-
-            # FOR TESTING
-
-            # expendPack downloadPath, expendPath, whenDone, (ghotiinstall) ->
-            #     addExternal cliConfig, ghotiinstall, expendPath
-            #     callback expendPath, ghotiinstall
-                
         case 'file'
             log next
         default
             log '| Not a valid link'
             whenDone!
             process.exit!
-    void
 
 const archiveLinux = (filePath, targetPath, whenDone, callback) ->
     const unzip = spawn 'unzip', [
