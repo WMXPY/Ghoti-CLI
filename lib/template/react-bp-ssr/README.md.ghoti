@@ -8,7 +8,7 @@ ${|description|}
 npm install
 ```
 
-### Devlopment, test and Build
+### Development, test and Build
 
 ```bash
 npm start
