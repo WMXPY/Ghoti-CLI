@@ -7,12 +7,6 @@
     "description": "${|description|}",
     "author": "${|author|}",
     "config": {
-        "router": {
-            "router": "vue-router",
-            "config": {
-                "router": "browser"
-            }
-        },
         "pack": "webpack",
         "test": {
             "test": "mocha",
