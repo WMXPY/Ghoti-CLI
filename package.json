@@ -16,8 +16,8 @@
 	"description": ":fish: A CLI tool that helps you start developing your new project within 60 seconds",
 	"devDependencies": {
 		"@types/chai": "^4.1.4",
-		"@types/mocha": "^5.2.4",
-		"@types/node": "^10.5.1",
+		"@types/mocha": "^5.2.5",
+		"@types/node": "^10.9.1",
 		"chai": "^4.1.2",
 		"livescript": "1.5.0",
 		"mocha": "^5.2.0",
