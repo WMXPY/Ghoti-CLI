@@ -57,7 +57,7 @@ const expendPack = (filePath, targetPath, whenDone, callback) ->
         default
             archiveLinux filePath, targetPath, whenDone, callback
 
-const addExternal = (cliConfigE, ghotiinstallE, expackPath, whenDone) ->
+const addExternal = (cliConfigE, ghotiinstallE, expackPath, whenDone) !->
     cliConfig = deepClone cliConfigE
     if cliConfig.external
     then 
@@ -79,7 +79,7 @@ const addExternal = (cliConfigE, ghotiinstallE, expackPath, whenDone) ->
     cliConfig.external.push ghotiinstall
     writeCLIConfig cliConfig
 
-const addRemote = (cliConfigE, ghotiinstallE, expackPath, whenDone) ->
+const addRemote = (cliConfigE, ghotiinstallE, expackPath, whenDone) !->
     cliConfig = deepClone cliConfigE
     if cliConfig.remote
     then 
@@ -152,7 +152,7 @@ const executeSwitch = (ghoti_path, opit, targetPath, whenDone, env, callback) !-
             whenDone!
             process.exit!
 
-const executeExternalFile = (ghoti_path, fileName, targetPath, whenDone, env, callback) ->
+const executeExternalFile = (ghoti_path, fileName, targetPath, whenDone, env, callback) !->
     const cliConfig = checkGhotiFile whenDone
     const { link, next } = parseLink fileName, whenDone
     switch next
@@ -177,7 +177,6 @@ const executeExternalFile = (ghoti_path, fileName, targetPath, whenDone, env, ca
             log '| Not a valid link'
             whenDone!
             process.exit!
-    void
 
 const executeExternal = (ghoti_path, type, targetPath, whenDone, env, callback) !->
     const cliConfig = checkGhotiFile whenDone
@@ -208,7 +207,7 @@ const executeExternal = (ghoti_path, type, targetPath, whenDone, env, callback) 
             whenDone!
             process.exit!
 
-const archiveLinux = (filePath, targetPath, whenDone, callback) ->
+const archiveLinux = (filePath, targetPath, whenDone, callback) !->
     const unzip = spawn 'unzip', [
         '-o'
         filePath
@@ -237,7 +236,7 @@ const archiveLinux = (filePath, targetPath, whenDone, callback) ->
             whenDone!
             process.exit!
 
-const archiveDarwin = (filePath, targetPath, whenDone, callback) ->
+const archiveDarwin = (filePath, targetPath, whenDone, callback) !->
     const unzip = spawn 'unzip', [
         '-o'
         filePath
@@ -265,7 +264,7 @@ const archiveDarwin = (filePath, targetPath, whenDone, callback) ->
             whenDone!
             process.exit!
 
-const archiveWin32 = (filePath, targetPath, whenDone, callback) ->
+const archiveWin32 = (filePath, targetPath, whenDone, callback) !->
     const unzip = spawn 'unzip', [
         '-o'
         filePath
@@ -293,7 +292,7 @@ const archiveWin32 = (filePath, targetPath, whenDone, callback) ->
             whenDone!
             process.exit!
 
-const unlinkFile = (filePath, whenDone) ->
+const unlinkFile = (filePath, whenDone) !->
     fs.unlinkSync filePath
 
 export parseLink
