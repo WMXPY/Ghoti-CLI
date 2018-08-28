@@ -60,10 +60,10 @@ require! {
     (const configExist = (fs.existsSync path.join path_current, '.ghoticonfig'))
     
     (if configExist
-        (fs.writeFileSync (path.join path_current, '.ghoticonfig'), (JSON.stringify config) , 'utf8')
+        (fs.writeFileSync (path.join path_current, '.ghoticonfig'), (JSON.stringify config, null, 2) , 'utf8')
         configExist
     else 
-        (fs.writeFileSync (path.join path_current, '.ghoticonfig'), (JSON.stringify config) , 'utf8')
+        (fs.writeFileSync (path.join path_current, '.ghoticonfig'), (JSON.stringify config, null, 2) , 'utf8')
         true))
 
 (const writeGameConfig = (config) ->
