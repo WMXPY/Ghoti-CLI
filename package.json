@@ -2,7 +2,7 @@
 	"author": "WMXPY",
 	"bin": {
 		"ghoti": "bin/ghoti",
-		"nuh": "bin/ghoti"
+		"qz": "bin/qwertz"
 	},
 	"bugs": {
 		"url": "https://github.com/WMXPY/Ghoti-CLI/issues"

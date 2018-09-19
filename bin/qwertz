@@ -1,0 +1,5 @@
+#!/usr/bin/env node
+
+const qwertz = require('../dist/qwertz/qwertz.js');
+
+qwertz();
