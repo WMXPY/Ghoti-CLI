@@ -21,6 +21,7 @@ if (!global.Binding) {
     const here: string = Path.join(__dirname, ...route);
     ModuleAlias.addAliases({
         "#sudo": here,
+        "#util": Path.join(here, '..', 'util'),
     });
     global.Binding = true;
 }

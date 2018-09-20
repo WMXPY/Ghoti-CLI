@@ -8,7 +8,7 @@ distPath := dist
 ghoti: $(dependence)
 	@$(ls) ./dist/ ./src/*.ls
 
-sudo: sudo.ls sudo.ts
+sudo: sudo.ls sudo.ts util.ts
 
 install:
 	@echo "[INFO] Installing Dependences"
@@ -59,6 +59,10 @@ sudo.ls:
 sudo.ts:
 	@echo "[INFO] TypeScript Building sudo"
 	@$(ts) ./$(sourcePath)/sudo/tsconfig.json
+
+util.ts:
+	@echo "[INFO] TypeScript Building util"
+	@$(ts) ./$(sourcePath)/util/tsconfig.json
 
 dist.test:
 	@$(ts) ./$(testPath)/tsconfig.json

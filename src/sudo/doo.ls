@@ -1,12 +1,12 @@
 '''
 @author WMXPY
 @description sudo-cli
-@fileoverview do
+@fileoverview doo
 '''
 
 require! './binding'
 require! {
-    '#sudo/util/log': {log}
+    '#util/log': {log}
 }
 
 export doo = !->
