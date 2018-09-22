@@ -8,8 +8,6 @@ distPath := dist
 ghoti: $(dependence)
 	@$(ls) ./dist/ ./src/*.ls
 
-sudo: sudo.ls sudo.ts util.ts
-
 install:
 	@echo "[INFO] Installing Dependences"
 	@npm install

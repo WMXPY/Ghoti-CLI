@@ -1,9 +1,7 @@
 {
 	"author": "WMXPY",
 	"bin": {
-		"ghoti": "bin/ghoti",
-		"su": "bin/su",
-		"doo": "bin/doo"
+		"ghoti": "bin/ghoti"
 	},
 	"bugs": {
 		"url": "https://github.com/WMXPY/Ghoti-CLI/issues"
