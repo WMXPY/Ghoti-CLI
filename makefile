@@ -50,14 +50,6 @@ eng.ts:
 	@echo "[INFO] TypeScript Building engs"
 	@$(ts) ./$(sourcePath)/eng/tsconfig.json
 
-sudo.ls:
-	@echo "[INFO] LiveScript Building sudo"
-	@$(ls) ./$(distPath)/sudo/ ./$(sourcePath)/sudo/*.ls
-
-sudo.ts:
-	@echo "[INFO] TypeScript Building sudo"
-	@$(ts) ./$(sourcePath)/sudo/tsconfig.json
-
 util.ts:
 	@echo "[INFO] TypeScript Building util"
 	@$(ts) ./$(sourcePath)/util/tsconfig.json
@@ -85,12 +77,6 @@ help:
 clean:
 ifeq ($(OS), Windows_NT)
 	@echo "[INFO] Skipping"
-	# @cmd //C del .\$(distPath)
-	# @cmd //C del *.aux *.dvi *.fdb* *.fls *.log *.gz *.pdf
-	# @cmd //C del .\src\eng\*.js
-	# @cmd //C del .\src\eng\*.js.map
-	# @cmd //C del .\test\eng\*.js
-	# @cmd //C del .\test\eng\*.js.map
 else
 	@echo "[INFO] Cleaning dist files"
 	@rm -rf ./$(distPath)
