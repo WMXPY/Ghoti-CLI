@@ -1,5 +1,0 @@
-#!/usr/bin/env node
-
-const doo = require('../dist/sudo/doo.js').doo;
-
-doo();

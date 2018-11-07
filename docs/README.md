@@ -37,7 +37,7 @@ npm install -g typescript
 sudo npm install -g typescript
 ```
 
-After install, you have to link `typescript` to every justcreated project by using:
+After install, you have to link `typescript` to every just created project by using:
 
 ```bash
 # To link typescript to your project
