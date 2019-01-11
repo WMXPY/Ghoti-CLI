@@ -1,5 +1,8 @@
-ls := lsc -co
-ts := tsc --p
+# NPX functions
+lsc := node_modules/.bin/lsc
+tsc := node_modules/.bin/tsc
+ls := $(lsc) -co
+ts := $(tsc) --p
 dependence := log.ls log.ts static.ls func.ls structure.ls ame.ls eng.ls eng.ts
 sourcePath := src
 testPath := test
@@ -9,53 +12,56 @@ ghoti: $(dependence)
 	@$(ls) ./dist/ ./src/*.ls
 
 install:
-	@echo "[INFO] Installing Dependences"
-	@npm install
-	@npm install --only=dev
+	@echo "[INFO] Installing dev Dependencies"
+	@yarn install --production=false
+
+install-prod:
+	@echo "[INFO] Installing Dependencies"
+	@yarn install --production=true
 
 log.ls:
 	@echo "[INFO] LiveScript Building logs"
-	@$(ls) ./$(distPath)/log/ ./$(sourcePath)/log/*.ls
+	@NODE_ENV=production $(ls) ./$(distPath)/log/ ./$(sourcePath)/log/*.ls
 	
 log.ts:
 	@echo "[INFO] TypeScript Building logs"
-	@$(ts) ./$(sourcePath)/log/tsconfig.json
+	@NODE_ENV=development $(ts) ./$(sourcePath)/log/tsconfig.json
 
 static.ls:
 	@echo "[INFO] LiveScript Building statics"
-	@$(ls) ./$(distPath)/static/ ./$(sourcePath)/static/*.ls
-	@$(ls) ./$(distPath)/static/outer/ ./$(sourcePath)/static/outer/*.ls
+	@NODE_ENV=development $(ls) ./$(distPath)/static/ ./$(sourcePath)/static/*.ls
+	@NODE_ENV=development $(ls) ./$(distPath)/static/outer/ ./$(sourcePath)/static/outer/*.ls
 
 structure.ls:
 	@echo "[INFO] LiveScript Building structures"
-	@$(ls) ./$(distPath)/structure/ ./$(sourcePath)/structure/*.ls
-	@$(ls) ./$(distPath)/structure/lib/ ./$(sourcePath)/structure/lib/*.ls
+	@NODE_ENV=development $(ls) ./$(distPath)/structure/ ./$(sourcePath)/structure/*.ls
+	@NODE_ENV=development $(ls) ./$(distPath)/structure/lib/ ./$(sourcePath)/structure/lib/*.ls
 
 func.ls:
 	@echo "[INFO] LiveScript Building functions"
-	@$(ls) ./$(distPath)/func/ ./$(sourcePath)/func/*.ls
-	@$(ls) ./$(distPath)/func/parser/ ./$(sourcePath)/func/parser/*.ls
-	@$(ls) ./$(distPath)/func/fs/ ./$(sourcePath)/func/fs/*.ls
+	@NODE_ENV=development $(ls) ./$(distPath)/func/ ./$(sourcePath)/func/*.ls
+	@NODE_ENV=development $(ls) ./$(distPath)/func/parser/ ./$(sourcePath)/func/parser/*.ls
+	@NODE_ENV=development $(ls) ./$(distPath)/func/fs/ ./$(sourcePath)/func/fs/*.ls
 
 ame.ls:
 	@echo "[INFO] LiveScript Building ames"
-	@$(ls) ./$(distPath)/ame/ ./$(sourcePath)/ame/*.ls
-	@$(ls) ./$(distPath)/ame/tilde/ ./$(sourcePath)/ame/tilde/*.ls
+	@NODE_ENV=development $(ls) ./$(distPath)/ame/ ./$(sourcePath)/ame/*.ls
+	@NODE_ENV=development $(ls) ./$(distPath)/ame/tilde/ ./$(sourcePath)/ame/tilde/*.ls
 
 eng.ls:
 	@echo "[INFO] LiveScript Building engs"
-	@$(ls) ./$(distPath)/eng/ ./$(sourcePath)/eng/*.ls
+	@NODE_ENV=development $(ls) ./$(distPath)/eng/ ./$(sourcePath)/eng/*.ls
 
 eng.ts:
 	@echo "[INFO] TypeScript Building engs"
-	@$(ts) ./$(sourcePath)/eng/tsconfig.json
+	@NODE_ENV=development $(ts) ./$(sourcePath)/eng/tsconfig.json
 
 util.ts:
 	@echo "[INFO] TypeScript Building util"
-	@$(ts) ./$(sourcePath)/util/tsconfig.json
+	@NODE_ENV=development $(ts) ./$(sourcePath)/util/tsconfig.json
 
 dist.test:
-	@$(ts) ./$(testPath)/tsconfig.json
+	@NODE_ENV=development $(ts) ./$(testPath)/tsconfig.json
 
 help:
 	@echo ""
