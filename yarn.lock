@@ -3,11 +3,11 @@
 
 
 "@sudoo/triforce@^1.1.0":
-  version "1.1.0"
-  resolved "https://registry.yarnpkg.com/@sudoo/triforce/-/triforce-1.1.0.tgz#955011d7e4b87490babc2f7c3f4938a94e183eb1"
-  integrity sha512-U5qR0Nh39Ibrp1FRD/aGr1SVl9c2Fmd7vlAFWyhW0ur7KVNDrUScRG3YH244hwo4kyx6XvdeAM/g1bVE0y8iiw==
+  version "1.2.0"
+  resolved "https://registry.yarnpkg.com/@sudoo/triforce/-/triforce-1.2.0.tgz#b889cdea63de75c1837d7665bdeecf782cd215fa"
+  integrity sha512-skVq+N2pZIp9qwBQRBiX64nvNYJ78/mi8ABZ/y5sae6zhcrlCewCR8y4qOw9+f9dSUJ0DquzSMtO71f38KaBWQ==
   dependencies:
-    "@sudoo/tslint-config" "^1.1.0"
+    "@sudoo/tslint-config" "^1.2.0"
     "@types/chai" "^4.1.7"
     "@types/chance" "^1.0.1"
     "@types/mocha" "^5.2.5"
@@ -15,13 +15,13 @@
     chance "^1.0.18"
     mocha "^5.2.0"
     ts-node "^7.0.1"
-    tslint "^5.12.0"
-    typescript "^3.2.2"
+    tslint "^5.12.1"
+    typescript "^3.2.4"
 
-"@sudoo/tslint-config@^1.1.0":
-  version "1.1.0"
-  resolved "https://registry.yarnpkg.com/@sudoo/tslint-config/-/tslint-config-1.1.0.tgz#f8712fb5a5d26e531af911d25d4c5ce3618c9198"
-  integrity sha512-nYvQthhovGpRSNz8YKTDy64ICJjINlDCJ0umqXifwZUwNAv9TEIpM4K5zsoBmLowMgg0XCZ2cyUV0DBAjqg26Q==
+"@sudoo/tslint-config@^1.2.0":
+  version "1.2.0"
+  resolved "https://registry.yarnpkg.com/@sudoo/tslint-config/-/tslint-config-1.2.0.tgz#00f02d8b1ec73eedfc9ad89a19293c858f5f6ea2"
+  integrity sha512-0kCb5BO9YcG+eE9MLLFz2GAlDdFY9v3xEYQbyouMAC8FedPky+tYB8/2jfvpnKdidF/lQXK7tfrN34EBX1fX8A==
 
 "@types/chai@^4.1.7":
   version "4.1.7"
@@ -515,7 +515,7 @@ tslib@^1.8.0, tslib@^1.8.1:
   resolved "https://registry.yarnpkg.com/tslib/-/tslib-1.9.3.tgz#d7e4dd79245d85428c4d7e4822a79917954ca286"
   integrity sha512-4krF8scpejhaOgqzBEcGM7yDIEfi0/8+8zDRZhNZZ2kjmHJ4hv3zCbQWxoJGz1iw5U0Jl0nma13xzHXcncMavQ==
 
-tslint@^5.12.0:
+tslint@^5.12.1:
   version "5.12.1"
   resolved "https://registry.yarnpkg.com/tslint/-/tslint-5.12.1.tgz#8cec9d454cf8a1de9b0a26d7bdbad6de362e52c1"
   integrity sha512-sfodBHOucFg6egff8d1BvuofoOQ/nOeYNfbp7LDlKBcLNrL3lmS5zoiDGyOMdT7YsEXAwWpTdAHwOGOc8eRZAw==
@@ -552,10 +552,10 @@ type-detect@^4.0.0, type-detect@^4.0.5:
   resolved "https://registry.yarnpkg.com/type-detect/-/type-detect-4.0.8.tgz#7646fb5f18871cfbb7749e69bd39a6388eb7450c"
   integrity sha512-0fr/mIH1dlO+x7TlcMy+bIDqKPsw/70tVyeHW787goQjhmqaZe10uwLujubK9q9Lg6Fiho1KUKDYz0Z7k7g5/g==
 
-typescript@^3.2.2:
-  version "3.2.2"
-  resolved "https://registry.yarnpkg.com/typescript/-/typescript-3.2.2.tgz#fe8101c46aa123f8353523ebdcf5730c2ae493e5"
-  integrity sha512-VCj5UiSyHBjwfYacmDuc/NOk4QQixbE+Wn7MFJuS0nRuPQbof132Pw4u53dm264O8LPc2MVsc7RJNml5szurkg==
+typescript@^3.2.4:
+  version "3.2.4"
+  resolved "https://registry.yarnpkg.com/typescript/-/typescript-3.2.4.tgz#c585cb952912263d915b462726ce244ba510ef3d"
+  integrity sha512-0RNDbSdEokBeEAkgNbxJ+BLwSManFy9TeXz8uW+48j/xhEXv1ePME60olyzw2XzUqUBNAYFeJadIqAgNqIACwg==
 
 wordwrap@~1.0.0:
   version "1.0.0"
