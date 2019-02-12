@@ -17,7 +17,7 @@
 	"devDependencies": {
 		"@sudoo/triforce": "^1.1.0",
 		"@types/module-alias": "^2.0.0",
-		"@types/node": "^10.12.8",
+		"@types/node": "^11.9.0",
 		"livescript": "1.6.0"
 	},
 	"devEngines": {
