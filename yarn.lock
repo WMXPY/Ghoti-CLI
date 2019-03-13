@@ -3,20 +3,21 @@
 
 
 "@sudoo/triforce@^1.3.0":
-  version "1.4.0"
-  resolved "https://registry.yarnpkg.com/@sudoo/triforce/-/triforce-1.4.0.tgz#4c7d5ae21044a21df0f494c0031e7c24b17921cb"
-  integrity sha512-zAV41LHUcS0svk3waJ1JOtQ/U1xkzHLgBooWyNyxCUMvgX7WGTyUc6gbwtet0eq0jrpWPoraXe+1kPiDrMtxBg==
+  version "1.5.0"
+  resolved "https://registry.yarnpkg.com/@sudoo/triforce/-/triforce-1.5.0.tgz#128b9177d2ff4ad0ce19e05bffc9fc408eee0bcd"
+  integrity sha512-YK/7mgBkXsflJBNqP1+P0J3qibs8RySwO73Y4kNVkn5iaT81PlACTKaTp7f8Fl3FfxgkRluIhqS3zS55ai4Tow==
   dependencies:
     "@sudoo/tslint-config" "^1.2.0"
     "@types/chai" "^4.1.7"
     "@types/chance" "^1.0.1"
     "@types/mocha" "^5.2.6"
+    "@types/node" "^11.11.3"
     chai "^4.2.0"
     chance "^1.0.18"
     mocha "^5.2.0"
-    ts-node "^8.0.2"
+    ts-node "^8.0.3"
     tslint "^5.12.1"
-    typescript "^3.3.3"
+    typescript "^3.3.3333"
 
 "@sudoo/tslint-config@^1.2.0":
   version "1.2.0"
@@ -43,10 +44,10 @@
   resolved "https://registry.yarnpkg.com/@types/module-alias/-/module-alias-2.0.0.tgz#882668f8b8cdbda44812c3b592c590909e18849e"
   integrity sha512-e3sW4oEH0qS1QxSfX7PT6xIi5qk/YSMsrB9Lq8EtkhQBZB+bKyfkP+jpLJRySanvBhAQPSv2PEBe81M8Iy/7yg==
 
-"@types/node@^11.9.4":
-  version "11.9.4"
-  resolved "https://registry.yarnpkg.com/@types/node/-/node-11.9.4.tgz#ceb0048a546db453f6248f2d1d95e937a6f00a14"
-  integrity sha512-Zl8dGvAcEmadgs1tmSPcvwzO1YRsz38bVJQvH1RvRqSR9/5n61Q1ktcDL0ht3FXWR+ZpVmXVwN1LuH4Ax23NsA==
+"@types/node@^11.11.3", "@types/node@^11.9.4":
+  version "11.11.3"
+  resolved "https://registry.yarnpkg.com/@types/node/-/node-11.11.3.tgz#7c6b0f8eaf16ae530795de2ad1b85d34bf2f5c58"
+  integrity sha512-wp6IOGu1lxsfnrD+5mX6qwSwWuqsdkKKxTN4aQc4wByHAKZJf9/D4KXPQ1POUjEbnCP5LMggB0OEFNY9OTsMqg==
 
 ansi-regex@^2.0.0:
   version "2.1.1"
@@ -491,10 +492,10 @@ supports-color@^5.3.0:
   dependencies:
     has-flag "^3.0.0"
 
-ts-node@^8.0.2:
-  version "8.0.2"
-  resolved "https://registry.yarnpkg.com/ts-node/-/ts-node-8.0.2.tgz#9ecdf8d782a0ca4c80d1d641cbb236af4ac1b756"
-  integrity sha512-MosTrinKmaAcWgO8tqMjMJB22h+sp3Rd1i4fdoWY4mhBDekOwIAKI/bzmRi7IcbCmjquccYg2gcF6NBkLgr0Tw==
+ts-node@^8.0.3:
+  version "8.0.3"
+  resolved "https://registry.yarnpkg.com/ts-node/-/ts-node-8.0.3.tgz#aa60b836a24dafd8bf21b54766841a232fdbc641"
+  integrity sha512-2qayBA4vdtVRuDo11DEFSsD/SFsBXQBRZZhbRGSIkmYmVkWjULn/GGMdG10KVqkaGndljfaTD8dKjWgcejO8YA==
   dependencies:
     arg "^4.1.0"
     diff "^3.1.0"
@@ -544,10 +545,10 @@ type-detect@^4.0.0, type-detect@^4.0.5:
   resolved "https://registry.yarnpkg.com/type-detect/-/type-detect-4.0.8.tgz#7646fb5f18871cfbb7749e69bd39a6388eb7450c"
   integrity sha512-0fr/mIH1dlO+x7TlcMy+bIDqKPsw/70tVyeHW787goQjhmqaZe10uwLujubK9q9Lg6Fiho1KUKDYz0Z7k7g5/g==
 
-typescript@^3.3.3:
-  version "3.3.3"
-  resolved "https://registry.yarnpkg.com/typescript/-/typescript-3.3.3.tgz#f1657fc7daa27e1a8930758ace9ae8da31403221"
-  integrity sha512-Y21Xqe54TBVp+VDSNbuDYdGw0BpoR/Q6wo/+35M8PAU0vipahnyduJWirxxdxjsAkS7hue53x2zp8gz7F05u0A==
+typescript@^3.3.3333:
+  version "3.3.3333"
+  resolved "https://registry.yarnpkg.com/typescript/-/typescript-3.3.3333.tgz#171b2c5af66c59e9431199117a3bcadc66fdcfd6"
+  integrity sha512-JjSKsAfuHBE/fB2oZ8NxtRTk5iGcg6hkYXMnZ3Wc+b2RSqejEqTaem11mHASMnFilHrax3sLK0GDzcJrekZYLw==
 
 wordwrap@~1.0.0:
   version "1.0.0"
