@@ -8,6 +8,16 @@ sourcePath := src
 testPath := test
 distPath := dist
 
+# Paths
+build := typescript/tsconfig.build.json
+dev := typescript/tsconfig.dev.json
+
+main: dev
+
+dev: 
+	@echo "[INFO] Building for development"
+	@NODE_ENV=development $(tsc) --p $(dev)
+
 ghoti: $(dependence)
 	@$(ls) ./dist/ ./src/*.ls
 

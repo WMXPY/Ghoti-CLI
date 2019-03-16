@@ -1,0 +1,5 @@
+#!/usr/bin/env node
+
+const ghoti5 = require('../g5_dist/index.js').default;
+
+ghoti5();

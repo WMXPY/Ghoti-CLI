@@ -1,7 +1,8 @@
 {
 	"author": "WMXPY",
 	"bin": {
-		"ghoti": "bin/ghoti"
+		"ghoti": "bin/ghoti",
+		"g5": "bin/g5"
 	},
 	"bugs": {
 		"url": "https://github.com/WMXPY/Ghoti-CLI/issues"
@@ -11,6 +12,7 @@
 	},
 	"dependencies": {
 		"bkc": "^3.2.0",
+		"commander": "^2.19.0",
 		"module-alias": "^2.2.0"
 	},
 	"description": ":fish: A CLI tool that helps you start developing your new project within 60 seconds",
