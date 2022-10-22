@@ -17,7 +17,7 @@
 	},
 	"description": ":fish: A CLI tool that helps you start developing your new project within 60 seconds",
 	"devDependencies": {
-		"@sudoo/triforce": "^1.5.0",
+		"@sudoo/triforce": "^3.9.1",
 		"@types/module-alias": "^2.0.0",
 		"@types/node": "^11.11.3",
 		"livescript": "1.6.0"
